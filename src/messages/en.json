@@ -1,0 +1,1017 @@
+{
+  "meta": {
+    "siteName": "Stellar × VKU",
+    "defaultTitle": "Tokenization on Stellar — VKU",
+    "defaultDescription": "A hands-on course for fintech students: how digital assets are created, how a stablecoin is issued, and how to issue your own token on the Stellar testnet."
+  },
+  "common": {
+    "next": "Next",
+    "previous": "Back",
+    "start": "Start",
+    "restart": "Start over",
+    "continue": "Continue",
+    "finish": "Finish",
+    "cancel": "Cancel",
+    "retry": "Try again",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFailed": "Could not copy",
+    "details": "Details",
+    "close": "Close",
+    "loading": "Loading…",
+    "step": "Step",
+    "stepOf": "Step {current} of {total}",
+    "lesson": "Lesson",
+    "module": "Module",
+    "minutes": "{count} min",
+    "openInExplorer": "Open in explorer",
+    "learnMore": "Learn more",
+    "optional": "Optional",
+    "recommended": "Recommended",
+    "yes": "Yes",
+    "no": "No",
+    "show": "Show",
+    "hide": "Hide",
+    "reveal": "Reveal",
+    "language": "Language",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "backToLesson": "Back to the module",
+    "onThisPage": "On this page"
+  },
+  "nav": {
+    "home": "Home",
+    "curriculum": "Curriculum",
+    "modules": "Modules",
+    "startLearning": "Start learning",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "progress": "Progress",
+    "progressValue": "{done} of {total} lessons",
+    "markComplete": "Mark as done",
+    "markedComplete": "Done",
+    "nextLesson": "Next lesson",
+    "prevLesson": "Previous lesson"
+  },
+  "modules": {
+    "tokenization": {
+      "title": "Tokenization",
+      "short": "Tokenization",
+      "description": "What a token actually is on a ledger, and how one gets created on Stellar.",
+      "lessons": {
+        "overview": {
+          "title": "Concepts recap",
+          "short": "Concepts",
+          "description": "Fungible and non-fungible tokens, metadata, Stellar asset types, trustlines, and how to read an explorer."
+        },
+        "stablecoin": {
+          "title": "How a stablecoin is issued",
+          "short": "Stablecoin issuance",
+          "description": "Walk through Circle’s USDC issuance loop step by step — deposit, mint, reserves, yield, redeem, burn."
+        },
+        "issue": {
+          "title": "Issue your own token",
+          "short": "Issue a token",
+          "description": "Connect Freighter on testnet and issue a real token — as a classic Stellar asset or through the Stellar Asset Contract."
+        }
+      }
+    }
+  },
+  "home": {
+    "eyebrow": "VKU · Fintech program",
+    "title": "Tokenization on Stellar",
+    "titleRich": "Tokenization on <accent>Stellar</accent>",
+    "lede": "A hands-on companion to the lecture. Refresh the concepts, watch how a real stablecoin is issued, then issue a token of your own on the Stellar testnet — no coding required.",
+    "ctaPrimary": "Start with Tokenization",
+    "ctaSecondary": "See what you will build",
+    "badgeTestnet": "Everything here runs on the Stellar testnet. No real money is involved.",
+    "highlights": {
+      "title": "What this site is for",
+      "items": [
+        {
+          "title": "Concepts, then practice",
+          "body": "Every idea from the lecture — fungibility, metadata, asset types, trustlines — is followed by something you can click."
+        },
+        {
+          "title": "A real issuance, visualised",
+          "body": "Circle’s USDC loop drawn as a diagram you step through: dollars in, tokens out, reserves, yield, redemption, burn."
+        },
+        {
+          "title": "Your own token on chain",
+          "body": "Fill a form, sign in your wallet, and watch a token you named appear in your Freighter balance."
+        }
+      ]
+    },
+    "prereq": {
+      "title": "Before you start",
+      "lede": "Two of these take a minute each. Do them now and the last lesson will just work.",
+      "items": [
+        {
+          "title": "Install Freighter",
+          "body": "The Stellar browser wallet. Install the extension and create a wallet — write the recovery phrase on paper, not in a file.",
+          "action": "Get Freighter",
+          "href": "https://www.freighter.app/"
+        },
+        {
+          "title": "Switch to Test Net",
+          "body": "Open Freighter → the network dropdown at the top → choose “Test Net”. This site refuses to sign anything on the public network.",
+          "action": "Why testnet?",
+          "href": "https://developers.stellar.org/docs/learn/fundamentals/networks"
+        },
+        {
+          "title": "Get free test XLM",
+          "body": "A Stellar account needs a small XLM reserve to exist and to hold assets. The last lesson can fund yours from Friendbot in one click.",
+          "action": "About reserves",
+          "href": "https://developers.stellar.org/docs/learn/fundamentals/lumens#base-reserves"
+        }
+      ]
+    },
+    "curriculum": {
+      "title": "Curriculum",
+      "lede": "One module for now. More will be added as the course goes on.",
+      "comingSoon": "More modules coming",
+      "comingSoonBody": "Payments and anchors, DeFi on Stellar, and smart contracts with Soroban."
+    },
+    "footer": {
+      "docs": "Stellar developer docs",
+      "explorer": "Stellar Expert",
+      "lab": "Stellar Lab"
+    }
+  },
+  "overview": {
+    "title": "Concepts recap",
+    "lede": "Everything below was covered in the lecture. Read it as a checklist: if any card makes you pause, that is the part to review before the practical lesson.",
+    "quiz": {
+      "title": "Quick check",
+      "lede": "Five questions. No score is stored — this is just to see what stuck.",
+      "showAnswer": "Show answer",
+      "hideAnswer": "Hide answer",
+      "correct": "Correct",
+      "incorrect": "Not quite",
+      "progress": "{done} / {total} answered",
+      "reset": "Reset",
+      "questions": [
+        {
+          "question": "What is a token, technically?",
+          "options": [
+            "A file stored inside a user’s wallet",
+            "A row in a ledger that says which account controls how much of an asset",
+            "A copy of a coin sent from one computer to another",
+            "A smart contract, always"
+          ],
+          "answer": 1,
+          "explanation": "Nothing is ever “inside” a wallet. A token is an entry in a shared ledger — an amount attributed to an account. Your wallet only holds the private key that lets you authorise changes to that entry."
+        },
+        {
+          "question": "What does “tokenization” mean?",
+          "options": [
+            "Encrypting sensitive data so it cannot be read",
+            "Converting a currency into another currency",
+            "Representing a right or an asset as a transferable ledger entry",
+            "Splitting a payment into smaller instalments"
+          ],
+          "answer": 2,
+          "explanation": "Careful — the word also exists in payment security, where “tokenization” means replacing a card number with a surrogate value. In blockchain, it means representing ownership of something (a dollar, a bond, a building, a concert seat) as a ledger entry that can be transferred and settled."
+        },
+        {
+          "question": "Which of these is fungible?",
+          "options": [
+            "The deed to a specific apartment",
+            "Seat 14B on a specific flight",
+            "One USDC out of a million USDC",
+            "A one-of-a-kind artwork"
+          ],
+          "answer": 2,
+          "explanation": "Fungible means interchangeable: any one unit is as good as any other, and units can be split and merged. Non-fungible means each unit has an identity that matters — a seat number, a deed, a serial."
+        },
+        {
+          "question": "On Stellar, what does a trustline do?",
+          "options": [
+            "It proves the issuer is a licensed company",
+            "It records that an account is willing to hold a specific asset, and up to what limit",
+            "It transfers the token to the account",
+            "It locks the token so it cannot be sold"
+          ],
+          "answer": 1,
+          "explanation": "A trustline is an explicit opt-in stored on the receiving account: “I accept CODE from this issuer, up to this limit.” Without one, a payment in that asset simply fails."
+        },
+        {
+          "question": "Why do most other chains not have trustlines?",
+          "options": [
+            "Their tokens are safer by design",
+            "They track balances inside each token contract instead of on the account, so anyone can push a balance to any address",
+            "They charge a fee that makes it unnecessary",
+            "They do have trustlines, under another name"
+          ],
+          "answer": 1,
+          "explanation": "On an EVM-style chain the balance lives in the token contract’s own mapping, so a sender can write into it without the recipient’s consent — which is why address books fill up with unsolicited scam tokens. Stellar puts the asset entry on the account itself, so it requires consent and a reserve."
+        }
+      ]
+    },
+    "fungibility": {
+      "title": "Fungible and non-fungible",
+      "lede": "The difference is not technical sophistication — it is whether units have an identity.",
+      "fungible": {
+        "title": "Fungible token",
+        "points": [
+          "Every unit is interchangeable with every other unit",
+          "Divisible — you can send 0.37 of one",
+          "Balances merge: 3 + 5 is just 8",
+          "Priced per unit"
+        ],
+        "examples": "Currencies, stablecoins, shares of one class, loyalty points, carbon credits"
+      },
+      "nonFungible": {
+        "title": "Non-fungible token",
+        "points": [
+          "Each unit has its own identifier and its own history",
+          "Not divisible — half a ticket is nothing",
+          "Balances do not merge: two NFTs stay two distinct things",
+          "Priced per item"
+        ],
+        "examples": "Property deeds, event tickets with a seat, diplomas, invoices, artwork"
+      }
+    },
+    "metadata": {
+      "title": "What metadata a token carries",
+      "lede": "Metadata is what turns a number in a ledger into something a human can recognise. Some of it lives on chain; a lot of it does not — and knowing which is which is a security skill.",
+      "fungibleTitle": "Fungible token",
+      "nonFungibleTitle": "Non-fungible token",
+      "onChain": "On chain",
+      "offChain": "Off chain",
+      "columns": {
+        "field": "Field",
+        "meaning": "What it is",
+        "where": "Where it lives"
+      },
+      "fungibleRows": [
+        {
+          "field": "Asset code",
+          "meaning": "The short symbol, 1–12 alphanumeric characters on Stellar (USDC, EURC, MYTOKEN)",
+          "where": "onChain"
+        },
+        {
+          "field": "Issuer",
+          "meaning": "The account that created it. This is the real identity of the token — the code alone is not unique",
+          "where": "onChain"
+        },
+        {
+          "field": "Decimals / precision",
+          "meaning": "How finely it divides. Every classic Stellar asset uses 7 decimal places",
+          "where": "onChain"
+        },
+        {
+          "field": "Total supply",
+          "meaning": "How much has been issued. On Stellar it is derived: the sum of every holder’s balance",
+          "where": "onChain"
+        },
+        {
+          "field": "Authorization flags",
+          "meaning": "Whether the issuer must approve holders, can freeze them, or can claw tokens back",
+          "where": "onChain"
+        },
+        {
+          "field": "Name, logo, description, links",
+          "meaning": "Published by the issuer in a stellar.toml file at their home domain",
+          "where": "offChain"
+        }
+      ],
+      "nonFungibleRows": [
+        {
+          "field": "Token ID",
+          "meaning": "The identifier of this one item inside the collection",
+          "where": "onChain"
+        },
+        {
+          "field": "Owner",
+          "meaning": "The address that currently controls it",
+          "where": "onChain"
+        },
+        {
+          "field": "Collection / contract",
+          "meaning": "Which contract minted it — the equivalent of the issuer",
+          "where": "onChain"
+        },
+        {
+          "field": "Metadata URI",
+          "meaning": "A pointer to the JSON describing the item. On chain it is only the pointer",
+          "where": "onChain"
+        },
+        {
+          "field": "Name, image, attributes",
+          "meaning": "The JSON the URI resolves to. If it is hosted on a normal web server, the owner of that server can change it",
+          "where": "offChain"
+        }
+      ],
+      "callout": {
+        "title": "The thing to remember",
+        "body": "Anyone can issue an asset with the code USDC. What makes the real one real is the issuer address. Wallets and explorers show both — always check the issuer, never the symbol alone."
+      }
+    },
+    "assetTypes": {
+      "title": "The three kinds of asset on Stellar",
+      "lede": "Stellar is unusual here: issuing a token is a built-in ledger feature, not something you write a program for. Smart contracts are an addition on top, not the foundation.",
+      "columns": {
+        "type": "Type",
+        "what": "What it is",
+        "trustline": "Trustline",
+        "use": "Use it for"
+      },
+      "rows": [
+        {
+          "type": "Native — XLM (Lumens)",
+          "what": "The network’s own currency. It pays transaction fees and backs the minimum balance every account must keep.",
+          "trustline": "Not needed",
+          "use": "Fees, reserves, being the bridge asset in path payments"
+        },
+        {
+          "type": "Classic asset",
+          "what": "A code plus an issuer account, issued with a plain payment operation. No program, no deployment — it is a ledger primitive.",
+          "trustline": "Required",
+          "use": "Stablecoins, tokenized deposits, loyalty points, anything that behaves like currency"
+        },
+        {
+          "type": "Stellar Asset Contract (SAC)",
+          "what": "A built-in smart-contract wrapper around a classic asset, exposing the standard SEP-41 token interface at a contract address.",
+          "trustline": "Required for G-addresses",
+          "use": "Letting Soroban contracts hold and move an existing asset — DeFi, escrow, vaults"
+        }
+      ],
+      "sacNote": {
+        "title": "SAC is a wrapper, not a second token",
+        "body": "The classic asset and its SAC are the same asset with the same balances. The contract address is just a second doorway into it, so that a smart contract can call transfer() instead of submitting a classic payment. Its address is derived from the asset and the network, so it is known before it is even deployed."
+      }
+    },
+    "trustlines": {
+      "title": "Trustlines — Stellar’s consent step",
+      "lede": "This is the part that surprises people coming from other chains, and it is worth understanding properly because it explains an entire class of scams that Stellar does not have.",
+      "howTitle": "How it works",
+      "howBody": "Before an account can receive an asset, it submits a ChangeTrust operation: “I accept CODE issued by G…, up to this limit.” That creates a trustline — a sub-entry on the account holding the balance, the limit, and the authorization state. Paying an account with no trustline fails outright with op_no_trust.",
+      "costTitle": "What it costs",
+      "costBody": "Each trustline raises the account’s minimum XLM balance by 0.5 XLM. That XLM is not spent — it is locked while the trustline exists, and released when you remove it. This is the reserve that makes spam expensive.",
+      "whyOthersTitle": "Why other chains don’t do this",
+      "whyOthersBody": "On an EVM-style chain, balances live inside each token contract’s own mapping. A sender writes into that mapping directly, so anyone can push any token to any address without asking. That is why wallets there fill with unsolicited “airdrops” that are really phishing bait. Stellar stores the asset entry on the account itself, so the ledger cannot record a balance the account never agreed to hold.",
+      "tradeoffTitle": "The trade-off",
+      "tradeoffBody": "Consent costs a step. Every wallet, exchange and anchor has to build “add trustline” into onboarding, and each one locks a little XLM. Stellar took that friction deliberately: cleaner balances, no forced tokens, and an issuer that can be required to authorise each holder — which is exactly what a regulated stablecoin needs.",
+      "flowTitle": "The order of operations",
+      "flowSteps": [
+        {
+          "title": "Issuer exists",
+          "body": "An ordinary account. Nothing marks it as an issuer until it sends its first payment."
+        },
+        {
+          "title": "Holder opts in",
+          "body": "The holder signs ChangeTrust for CODE:ISSUER with a limit. 0.5 XLM of reserve is locked."
+        },
+        {
+          "title": "Issuer may authorise",
+          "body": "Only if the asset has AUTH_REQUIRED set — the compliance path for regulated assets."
+        },
+        {
+          "title": "Issuer pays",
+          "body": "A payment from the issuing account creates the tokens. Supply grows as they leave."
+        },
+        {
+          "title": "Tokens return to burn",
+          "body": "A payment back to the issuer destroys them. An issuer never holds a balance of its own asset."
+        }
+      ]
+    },
+    "explorer": {
+      "title": "Reading an explorer",
+      "lede": "An explorer is a read-only window on the ledger. You will use one after every step of the practical lesson, so learn what to look at.",
+      "whatToCheck": "What to check on an asset page",
+      "checkItems": [
+        "The issuer address — not just the code",
+        "How many accounts hold a trustline for it",
+        "Total supply, and whether the issuer is locked (can it print more?)",
+        "The home domain and whether a stellar.toml is actually published there",
+        "The authorization flags: can the issuer freeze or claw back your balance?"
+      ],
+      "toolsTitle": "The tools",
+      "tools": [
+        {
+          "name": "Stellar Expert",
+          "body": "The general-purpose explorer. Best for asset pages, holder counts and account history.",
+          "href": "https://stellar.expert/explorer/testnet"
+        },
+        {
+          "name": "Stellar Lab",
+          "body": "The official tool. Builds and inspects transactions field by field — closer to the protocol.",
+          "href": "https://lab.stellar.org"
+        },
+        {
+          "name": "Horizon API",
+          "body": "The REST API both of the above read from. Open an endpoint in a browser and you get JSON.",
+          "href": "https://developers.stellar.org/docs/data/apis/horizon"
+        }
+      ],
+      "examplesTitle": "Assets to look up",
+      "examplesLede": "Open these on mainnet and compare them. Notice how differently they answer the questions above.",
+      "viewOnExplorer": "View asset",
+      "kinds": {
+        "stablecoin": "Stablecoin",
+        "wrapped": "Wrapped",
+        "utility": "Utility"
+      }
+    },
+    "next": {
+      "title": "Ready?",
+      "body": "Next: watch how a real stablecoin is issued, then issue one of your own.",
+      "cta": "Go to the stablecoin walkthrough"
+    }
+  },
+  "stablecoin": {
+    "title": "How a stablecoin is issued",
+    "lede": "This is Circle’s USDC loop. Step through it and watch where the dollars go, when tokens are created, and what keeps one USDC worth one dollar.",
+    "hint": "Use the arrows, or the ← → keys.",
+    "autoplay": "Autoplay",
+    "pause": "Pause",
+    "diagram": {
+      "title": "The issuance loop",
+      "fiatWorld": "Off-chain — banks and regulation",
+      "chainWorld": "On-chain — public ledgers",
+      "nodes": {
+        "bank": {
+          "label": "Business",
+          "sub": "Holds USD at a bank"
+        },
+        "mint": {
+          "label": "Circle Mint",
+          "sub": "The issuer"
+        },
+        "reserve": {
+          "label": "Reserves",
+          "sub": "Custody & money market fund"
+        },
+        "auditor": {
+          "label": "Auditor",
+          "sub": "Monthly attestation"
+        },
+        "chain": {
+          "label": "Blockchain",
+          "sub": "Stellar, Ethereum, Solana…"
+        },
+        "wallet": {
+          "label": "Wallet",
+          "sub": "Holds USDC"
+        },
+        "market": {
+          "label": "Market",
+          "sub": "Exchanges, DeFi, payments"
+        }
+      },
+      "edges": {
+        "wireIn": "Wire USD",
+        "toReserve": "Into reserves",
+        "mintOrder": "Mint order",
+        "deliver": "USDC delivered",
+        "trade": "Circulates",
+        "tradeBack": "Comes back",
+        "sendBack": "USDC returned",
+        "burn": "Burned",
+        "release": "Reserves released",
+        "wireOut": "Wire USD back",
+        "attest": "Verified",
+        "interest": "Interest"
+      },
+      "meter": {
+        "reserves": "USD held by Circle",
+        "supply": "USDC in circulation",
+        "balanced": "1 : 1 — balanced",
+        "unbalanced": "Deposit received, nothing minted yet"
+      }
+    },
+    "steps": [
+      {
+        "id": "peg",
+        "eyebrow": "The promise",
+        "short": "The promise",
+        "title": "A stablecoin is a claim on a dollar",
+        "body": "A stablecoin is a token whose price is meant to stay pegged to something stable — almost always the US dollar. It is not stable because the code says so. It is stable because the issuer promises that one token can always be exchanged for one dollar, and holds the dollars to make that promise good.",
+        "points": [
+          "The peg is a redemption promise, not a technical property",
+          "Fiat-backed is the model used by USDC and USDT: one token, one real dollar held in reserve",
+          "Other designs exist — crypto-overcollateralised (DAI), and algorithmic ones with no reserves at all (which is how UST collapsed in 2022)"
+        ],
+        "callout": {
+          "kind": "info",
+          "title": "Why anyone wants this",
+          "body": "You get the settlement of a blockchain — final in seconds, open all night, cheap across borders — while still counting in dollars. That is why stablecoins settle more value on Stellar than anything else on the network."
+        }
+      },
+      {
+        "id": "onboard",
+        "eyebrow": "Step 1",
+        "short": "Onboarding",
+        "title": "Opening a Circle Mint account",
+        "body": "New USDC only enters existence through Circle, and only for institutions. A business applies for a Circle Mint account and goes through KYB, sanctions screening and ongoing AML monitoring before it can mint or redeem anything.",
+        "points": [
+          "Circle Mint is for exchanges, banks, institutional traders and large businesses — not individuals",
+          "Everyone else buys USDC that already exists, from an exchange or an on-ramp partner",
+          "That distinction matters: the primary market (mint and redeem at exactly 1:1) is small and gated; the secondary market where you and I buy is large and open"
+        ],
+        "callout": {
+          "kind": "warning",
+          "title": "So you never “mint” USDC",
+          "body": "When you buy USDC on an exchange you receive tokens that already exist. The supply only changes when a Mint account holder deposits or redeems."
+        }
+      },
+      {
+        "id": "deposit",
+        "eyebrow": "Step 2",
+        "short": "Deposit",
+        "title": "Dollars arrive by wire",
+        "body": "The business wires USD from its own bank to Circle. Circle credits their Mint account with a dollar balance. Notice what has not happened yet: no token exists. This is still an ordinary bank transfer between two ordinary bank accounts.",
+        "points": [
+          "The deposit is fiat, settled on traditional banking rails",
+          "The Mint account balance is a liability Circle owes the customer, denominated in USD",
+          "USDC supply is unchanged — the ledger has not been touched"
+        ],
+        "callout": {
+          "kind": "info",
+          "title": "Watch the two bars",
+          "body": "Dollars held by Circle just went up. USDC in circulation did not. They will only match again after the next step."
+        }
+      },
+      {
+        "id": "mint",
+        "eyebrow": "Step 3",
+        "short": "Mint",
+        "title": "Minting — dollars become tokens",
+        "body": "The business requests USDC against its dollar balance, names a blockchain and gives a wallet address. Circle mints exactly that amount on that chain and sends it. The dollars move into reserves; the tokens move to the customer. One dollar in, one token out.",
+        "points": [
+          "The customer chooses the chain: Stellar, Ethereum, Solana, Base and others are all the same USDC",
+          "Total USDC supply increases by exactly the amount minted",
+          "The whole issuance operation is a single on-chain transaction — publicly visible, forever"
+        ],
+        "callout": {
+          "kind": "success",
+          "title": "The invariant",
+          "body": "From this moment the two bars match again. Every USDC in existence corresponds to a dollar of reserves. Keeping that true is the entire job of a fiat-backed stablecoin issuer."
+        }
+      },
+      {
+        "id": "reserves",
+        "eyebrow": "Step 4",
+        "short": "Reserves",
+        "title": "Where the dollars actually sit",
+        "body": "The reserves are not a vault of cash. The majority is invested in the Circle Reserve Fund (ticker USDXX), an SEC-registered 2a-7 government money market fund managed by BlackRock and custodied at BNY Mellon. It holds short-dated US Treasuries and overnight Treasury repurchase agreements. The remainder is cash at regulated banks so redemptions can settle immediately.",
+        "points": [
+          "Managed by BlackRock, custodied at BNY Mellon — not by Circle itself",
+          "Portfolio holdings are published daily by BlackRock, and Circle publishes a monthly reserve attestation by a Big Four firm (Deloitte)",
+          "Short-dated government paper is chosen because it can be sold fast without a loss — liquidity matters more than yield when everyone might redeem at once"
+        ],
+        "callout": {
+          "kind": "warning",
+          "title": "This is the risk that actually matters",
+          "body": "A fiat-backed stablecoin’s real risk is not the smart contract — it is whether the reserves exist, are liquid, and are held somewhere safe. In March 2023 USDC briefly traded at $0.87 because $3.3bn of its cash sat at Silicon Valley Bank when the bank failed. The peg recovered the moment the deposits were guaranteed. Read attestations, not marketing."
+        }
+      },
+      {
+        "id": "yield",
+        "eyebrow": "Step 5",
+        "short": "Yield",
+        "title": "Who earns the interest",
+        "body": "Treasury bills pay interest. On tens of billions of dollars of reserves, that is a very large income — and it goes to the issuer, not to the holder. This is the business model: you hand over a dollar, you get back a token that pays you nothing, and the issuer keeps the yield.",
+        "points": [
+          "Holding USDC earns you no interest. The token itself has no yield",
+          "In the US, the GENIUS Act explicitly forbids payment stablecoin issuers from paying interest to holders",
+          "Circle shares a large part of that revenue with distribution partners — most visibly Coinbase, which is paid for USDC held on its platform",
+          "Any “USDC yield” you are offered comes from somewhere else — lending it out, a DeFi protocol, an exchange promotion — and carries that party’s risk, not Circle’s"
+        ],
+        "callout": {
+          "kind": "info",
+          "title": "The exam question",
+          "body": "If a stablecoin is fully backed and pays no interest, why would anyone hold one? Because they want dollars that settle on a blockchain — instantly, globally, at any hour. They are paying for settlement, not for return."
+        }
+      },
+      {
+        "id": "circulate",
+        "eyebrow": "Step 6",
+        "short": "Circulation",
+        "title": "Circulation, and what holds the peg",
+        "body": "Once minted, USDC moves like any other token — wallet to wallet, onto exchanges, into DeFi, across chains. Circle does not control where it goes. On the open market its price is set by supply and demand, so it can drift from a dollar. What pulls it back is arbitrage.",
+        "points": [
+          "If USDC trades at $0.995, an institution buys it cheaply and redeems it at Circle for a full dollar, pocketing the difference — buying pressure pushes the price back up",
+          "If it trades at $1.005, they mint new USDC at par and sell it into the market — supply pressure pushes the price back down",
+          "The peg therefore depends on redemption being reliable and fast. When people doubt they can redeem, the arbitrage stops and the peg slips"
+        ],
+        "callout": {
+          "kind": "success",
+          "title": "Why the primary market matters",
+          "body": "Mint and redeem are gated to institutions, but everyone benefits: those institutions are the arbitrageurs whose profit motive keeps the price you pay near one dollar."
+        }
+      },
+      {
+        "id": "redeem",
+        "eyebrow": "Step 7",
+        "short": "Redeem & burn",
+        "title": "Redemption — and the burn",
+        "body": "The loop closes. A Mint account holder sends USDC back to Circle and asks for dollars. Circle destroys the tokens — “burning” them — and wires the dollars back from reserves. Supply falls by exactly the amount burned, and the reserves fall with it.",
+        "points": [
+          "Burning removes the tokens from circulation permanently; they are not resold",
+          "Reserves shrink in step, so the 1:1 backing holds on the way down too",
+          "This is why USDC supply falls in bear markets: people are redeeming, not selling into a void"
+        ],
+        "callout": {
+          "kind": "info",
+          "title": "The whole model in one line",
+          "body": "Mint = dollars in, tokens out. Redeem = tokens in, dollars out. The issuer’s only job is to make sure those two are always exactly equal."
+        }
+      },
+      {
+        "id": "stellar",
+        "eyebrow": "Step 8",
+        "short": "On Stellar",
+        "title": "The same loop, in Stellar terms",
+        "body": "USDC on Stellar is not a smart contract. It is a plain classic asset — code USDC, issued by one Circle account — and the whole mint-and-burn loop maps onto operations you are about to use yourself in the next lesson.",
+        "points": [
+          "Minting = a payment operation from the issuing account. The tokens come into existence as they leave it",
+          "Burning = a payment back to the issuing account. An issuer never holds a balance of its own asset, so receiving it destroys it",
+          "Holding = a trustline. Before any wallet can receive USDC on Stellar it must opt in to CODE:ISSUER",
+          "Compliance = issuer flags. Authorization required, revocable, and clawback are protocol features, not custom code"
+        ],
+        "callout": {
+          "kind": "success",
+          "title": "Your turn",
+          "body": "In the next lesson you do exactly this: create an issuer, add a trustline from your own wallet, and mint a supply into it. The only difference is the size of the reserve behind it."
+        }
+      }
+    ],
+    "sources": {
+      "title": "Sources",
+      "lede": "Figures change. Check them at the source before quoting them in an exam.",
+      "items": [
+        {
+          "label": "Circle — What is USDC",
+          "href": "https://www.circle.com/usdc"
+        },
+        {
+          "label": "Circle — USDC transparency and reserves",
+          "href": "https://www.circle.com/transparency"
+        },
+        {
+          "label": "Circle Reserve Fund (USDXX) daily holdings, BlackRock",
+          "href": "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund"
+        },
+        {
+          "label": "USDC on Stellar — asset page",
+          "href": "https://stellar.expert/explorer/public/asset/USDC-GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN"
+        }
+      ]
+    },
+    "complete": {
+      "title": "That is the loop",
+      "body": "Deposit, mint, reserve, circulate, redeem, burn — and an issuer whose only real job is keeping two numbers equal.",
+      "cta": "Now issue your own token"
+    }
+  },
+  "issue": {
+    "title": "Issue your own token",
+    "lede": "You will create a real token on the Stellar testnet and mint the whole supply into your own wallet. Everything technical is handled for you — you choose what the token is.",
+    "steps": {
+      "connect": "Connect",
+      "type": "Type",
+      "details": "Details",
+      "review": "Review",
+      "execute": "Issue",
+      "done": "Done"
+    },
+    "wallet": {
+      "title": "Connect your wallet",
+      "lede": "Your wallet will receive the token. It also signs one transaction: the trustline that opts you in to holding it.",
+      "connect": "Connect Freighter",
+      "connecting": "Waiting for Freighter…",
+      "disconnect": "Disconnect",
+      "notInstalledTitle": "Freighter is not installed",
+      "notInstalledBody": "Freighter is the Stellar browser wallet. Install the extension, create a wallet, then reload this page.",
+      "notInstalledCta": "Install Freighter",
+      "disconnectedTitle": "Wallet not connected",
+      "disconnectedBody": "Connect Freighter to continue. This site can only read your public address and ask you to sign — it can never see your secret key.",
+      "wrongNetworkTitle": "Freighter is on the wrong network",
+      "wrongNetworkBody": "This lesson runs on the Stellar Test Net, but your wallet is on {current}. Open Freighter, use the network dropdown at the top, and choose Test Net.",
+      "unfundedTitle": "This account does not exist yet",
+      "unfundedBody": "A Stellar account has to be created on the ledger before it can hold anything. On testnet, Friendbot does that for free.",
+      "fund": "Fund with Friendbot",
+      "funding": "Funding…",
+      "funded": "Account funded",
+      "lowBalanceTitle": "Not much XLM left",
+      "lowBalanceBody": "Adding a trustline locks another 0.5 XLM of reserve, plus a small fee. Top up from Friendbot to be safe.",
+      "connectedTitle": "Connected",
+      "address": "Address",
+      "balance": "Balance",
+      "network": "Network",
+      "reserve": "Locked in reserve",
+      "trustlines": "Trustlines",
+      "refresh": "Refresh",
+      "readyCta": "Continue"
+    },
+    "mode": {
+      "title": "Choose how to issue it",
+      "lede": "Both create a real asset on the ledger with the same code, issuer and balances. The difference is which door you open on it.",
+      "classic": {
+        "name": "Classic Stellar asset",
+        "tagline": "The native way",
+        "body": "Issued with a payment operation — no contract is deployed, nothing is compiled. This is how USDC, EURC and nearly every asset on Stellar works today.",
+        "pros": [
+          "Cheapest and fastest — a few thousandths of a cent per transaction",
+          "Understood by every Stellar wallet, exchange and anchor out of the box",
+          "Trades on the built-in DEX with no extra work",
+          "Compliance flags (authorize, freeze, clawback) are built into the protocol"
+        ],
+        "cons": [
+          "Cannot run custom logic — no fees on transfer, no vesting, no conditions"
+        ],
+        "bestFor": "Stablecoins, tokenized deposits, points, and anything that behaves like money"
+      },
+      "sac": {
+        "name": "Stellar Asset Contract",
+        "tagline": "The smart-contract door",
+        "body": "Issues the same classic asset, then deploys the built-in contract wrapper over it. The asset gets a contract address (C…) implementing the standard SEP-41 token interface, so Soroban contracts can hold and move it.",
+        "pros": [
+          "Callable from smart contracts — required for DeFi, escrow, vaults",
+          "Standard token interface: transfer, approve, balance, mint, burn",
+          "Same asset, same balances — the classic side keeps working",
+          "The contract address is derived from the asset, so it is deterministic"
+        ],
+        "cons": [
+          "Two extra transactions and a higher fee",
+          "Sending to a normal G-address still needs a trustline — the wrapper does not remove that"
+        ],
+        "bestFor": "Any asset that a Soroban contract has to interact with"
+      },
+      "select": "Choose this",
+      "selected": "Selected",
+      "compare": "What is actually different",
+      "compareRows": [
+        {
+          "label": "Transactions to issue",
+          "classic": "3–4",
+          "sac": "5–6"
+        },
+        {
+          "label": "Deploys a contract",
+          "classic": "No",
+          "sac": "Yes"
+        },
+        {
+          "label": "Address you get",
+          "classic": "CODE : G… (issuer)",
+          "sac": "CODE : G… and C… (contract)"
+        },
+        {
+          "label": "Trustline needed",
+          "classic": "Yes",
+          "sac": "Yes, for G-addresses"
+        },
+        {
+          "label": "Usable by Soroban contracts",
+          "classic": "Not directly",
+          "sac": "Yes"
+        },
+        {
+          "label": "Shows in every wallet",
+          "classic": "Yes",
+          "sac": "Yes"
+        }
+      ]
+    },
+    "form": {
+      "title": "Describe your token",
+      "lede": "This is the only part you actually decide. Everything after it is signed and submitted for you.",
+      "sectionBasics": "Basics",
+      "sectionSupply": "Supply",
+      "sectionAdvanced": "Issuer controls",
+      "advancedHint": "These are the flags a regulated issuer uses. Turn them on to see the extra transactions they add.",
+      "fields": {
+        "code": {
+          "label": "Asset code",
+          "hint": "1–12 letters or digits. This is the symbol wallets display — it is not unique on its own.",
+          "placeholder": "VKUCOIN"
+        },
+        "name": {
+          "label": "Token name",
+          "hint": "The human name. On Stellar this lives off chain, in a stellar.toml file at your home domain.",
+          "placeholder": "VKU Fintech Coin"
+        },
+        "description": {
+          "label": "Description",
+          "hint": "Also off-chain metadata. Kept here so you can see what a real issuer would publish.",
+          "placeholder": "A classroom token issued during the Stellar course at VKU."
+        },
+        "supply": {
+          "label": "Total supply",
+          "hint": "Minted in full into your wallet. Maximum {max}.",
+          "placeholder": "1000000"
+        },
+        "homeDomain": {
+          "label": "Home domain",
+          "hint": "The domain where your stellar.toml would be published. Written onto the issuing account itself.",
+          "placeholder": "vku.udn.vn"
+        },
+        "authRequired": {
+          "label": "Authorization required",
+          "hint": "Holders must be approved by you before they can receive the token. This is how a regulated stablecoin enforces KYC. It adds one transaction: you authorising your own trustline."
+        },
+        "authRevocable": {
+          "label": "Authorization revocable",
+          "hint": "You can freeze a holder’s balance later. Required before clawback can be enabled."
+        },
+        "clawbackEnabled": {
+          "label": "Clawback enabled",
+          "hint": "You can take the token back from any holder without their signature. Used for court orders and stolen-funds recovery — and a serious thing for a holder to accept."
+        },
+        "lockIssuer": {
+          "label": "Lock the issuer afterwards",
+          "hint": "Sets the issuing account’s master key weight to 0 once the supply is minted. Nothing can ever be issued again — a permanent, verifiable fixed supply."
+        }
+      },
+      "errors": {
+        "code": {
+          "required": "Give your token a code",
+          "tooLong": "At most 12 characters",
+          "charset": "Letters and digits only — no spaces or symbols",
+          "reservedXlm": "XLM is the native asset. Pick another code."
+        },
+        "name": {
+          "required": "Give your token a name",
+          "tooLong": "At most 40 characters"
+        },
+        "description": {
+          "tooLong": "At most 160 characters"
+        },
+        "supply": {
+          "required": "Enter a supply",
+          "numeric": "Digits only, with an optional decimal point",
+          "decimals": "Stellar supports 7 decimal places",
+          "range": "Must be greater than 0 and at most 922,337,203,685.4775807"
+        },
+        "homeDomain": {
+          "tooLong": "At most 32 characters",
+          "invalid": "Enter a domain like vku.udn.vn — no https:// and no path"
+        },
+        "flags": {
+          "clawbackNeedsRevocable": "Clawback requires “Authorization revocable” to be on"
+        }
+      },
+      "lockWarning": {
+        "title": "Locking is permanent",
+        "body": "Once the issuer is locked you can never mint more, and — if you enabled them — you can never authorize a new holder, freeze anyone, or claw anything back. On testnet that costs nothing. On mainnet it is irreversible."
+      },
+      "submit": "Review"
+    },
+    "review": {
+      "title": "Check this before you sign",
+      "lede": "Read every line. On mainnet this is the last screen before something irreversible happens — build the habit here.",
+      "asset": "Asset",
+      "recipient": "Receiving wallet",
+      "network": "Network",
+      "mode": "Issued as",
+      "flags": "Issuer flags",
+      "noFlags": "None — a plain, open asset",
+      "plan": "What will happen",
+      "planLede": "{count} transactions. You sign one of them; the throwaway issuer account signs the rest.",
+      "signedByYou": "You sign",
+      "signedByIssuer": "Issuer signs",
+      "automatic": "Automatic",
+      "edit": "Change something",
+      "confirm": "Issue the token",
+      "issuerNote": {
+        "title": "About the issuer account",
+        "body": "A real issuer is a carefully secured account — often multisig, often in an HSM. For this lesson the app generates a throwaway testnet keypair and funds it from Friendbot, so the token can land in your own wallet where you can see it. The secret key exists only in this browser tab and is shown to you at the end."
+      }
+    },
+    "run": {
+      "title": "Issuing",
+      "lede": "Each line is one transaction on the ledger. Open any of them in the explorer.",
+      "signHint": "Freighter is asking you to sign. Check the popup.",
+      "steps": {
+        "createIssuer": {
+          "label": "Create the issuer account",
+          "body": "A fresh keypair is generated in your browser. Nothing has touched the network yet."
+        },
+        "fundIssuer": {
+          "label": "Fund the issuer from Friendbot",
+          "body": "The account has to exist on the ledger and hold a minimum balance before it can do anything."
+        },
+        "configureIssuer": {
+          "label": "Set flags and home domain",
+          "body": "Writes the authorization flags and the home domain onto the issuing account. Must happen before any trustline is created."
+        },
+        "deploySac": {
+          "label": "Deploy the Stellar Asset Contract",
+          "body": "Creates the contract wrapper for this asset. Its address was already known — it is derived from the asset and the network."
+        },
+        "createTrustline": {
+          "label": "Your wallet opts in (trustline)",
+          "body": "You sign this one. It records that your account accepts this asset, up to the supply, and locks 0.5 XLM of reserve."
+        },
+        "authorizeTrustline": {
+          "label": "Issuer authorises your trustline",
+          "body": "Needed because you enabled “authorization required”. This is the compliance gate a regulated issuer runs for every holder."
+        },
+        "mint": {
+          "label": "Mint the supply into your wallet",
+          "body": "The tokens come into existence as they leave the issuing account."
+        },
+        "mintSac": {
+          "label": "Mint through the contract",
+          "body": "Calls mint() on the Stellar Asset Contract. The issuing account is the contract’s admin, so its signature is the authorisation."
+        },
+        "lockIssuer": {
+          "label": "Lock the issuer",
+          "body": "Sets the master key weight to 0. The supply is now fixed forever, and anyone can verify that on the ledger."
+        }
+      },
+      "status": {
+        "pending": "Waiting",
+        "running": "Submitting…",
+        "awaitingSignature": "Confirm in your wallet…",
+        "done": "Confirmed",
+        "failed": "Failed"
+      },
+      "failedTitle": "That step did not go through",
+      "failedBody": "Nothing before it was undone. Fix the cause and continue — the flow picks up from here.",
+      "resume": "Continue from here",
+      "startOver": "Start over"
+    },
+    "result": {
+      "title": "Your token exists",
+      "lede": "It is on the Stellar testnet ledger, and the supply is in your wallet. Open Freighter and look.",
+      "assetLabel": "Asset",
+      "issuerLabel": "Issuer account",
+      "contractLabel": "Contract address",
+      "supplyLabel": "Supply minted",
+      "holderLabel": "Held by",
+      "lockedYes": "Issuer locked — supply is fixed",
+      "lockedNo": "Issuer unlocked — more can be minted",
+      "viewAsset": "Asset on explorer",
+      "viewIssuer": "Issuer on explorer",
+      "viewContract": "Contract on explorer",
+      "addToWallet": "Add to Freighter",
+      "addedToWallet": "Added",
+      "transactions": "Transactions",
+      "secretTitle": "The issuer secret key",
+      "secretBody": "This is the key that can mint more of your token. It was generated in this browser tab and is not stored anywhere. Close the tab and it is gone forever. On mainnet, a key like this would be the single most valuable secret your company owns.",
+      "secretReveal": "Reveal secret key",
+      "secretHide": "Hide",
+      "learnedTitle": "What just happened",
+      "learned": [
+        "You created an ordinary Stellar account and it became an issuer the moment it sent its first payment",
+        "Your wallet had to opt in with a trustline before it could receive anything — and 0.5 XLM of yours is now locked behind it",
+        "The supply is not stored anywhere: it is the sum of every holder’s balance, and it grew when the tokens left the issuer",
+        "Everything you just did is what Circle does for USDC, at a different scale and with dollars behind it"
+      ],
+      "tryTitle": "Try this next",
+      "try": [
+        "Open the asset in the explorer and find the holder count — it should be 1, you",
+        "Send some of it to a classmate. They will have to add a trustline first, and you will watch it fail if they do not",
+        "Issue the same code again from a different issuer, and see why wallets show the issuer and not just the symbol",
+        "If you locked the issuer, try issuing more. The ledger will refuse — that is what makes a fixed supply credible"
+      ],
+      "again": "Issue another token"
+    }
+  },
+  "explorerLink": {
+    "account": "View account on Stellar Expert",
+    "tx": "View transaction on Stellar Expert",
+    "asset": "View asset on Stellar Expert",
+    "contract": "View contract on Stellar Expert",
+    "external": "opens in a new tab"
+  },
+  "network": {
+    "testnet": "Testnet",
+    "mainnet": "Mainnet",
+    "testnetTooltip": "Everything here runs on the Stellar test network. The tokens have no value and the XLM is free."
+  },
+  "errors": {
+    "title": "Something went wrong",
+    "walletNotInstalled": "Freighter is not installed in this browser.",
+    "walletRejected": "You cancelled the signature in your wallet.",
+    "walletLocked": "Freighter is locked. Open the extension and unlock it.",
+    "wrongNetwork": "Your wallet is on a different network than this lesson. Switch Freighter to Test Net.",
+    "accountNotFunded": "This account does not exist on the ledger yet. Fund it with Friendbot first.",
+    "insufficientFee": "The network is busy and the fee was too low. Try again.",
+    "underfunded": "Not enough balance for this transaction.",
+    "noDestination": "The receiving account has not been created yet. It needs a starting balance of XLM.",
+    "noTrust": "The receiving account has no trustline for this asset yet.",
+    "notAuthorized": "This trustline has not been authorised by the issuer yet.",
+    "badSequence": "This transaction is out of sync with the ledger. Reload and try again.",
+    "txTooLate": "The transaction expired before it was submitted. Try again.",
+    "lowReserve": "Not enough XLM to cover the minimum reserve this operation needs.",
+    "trustLimitExceeded": "The amount is above the trustline limit for this asset.",
+    "assetAlreadyExists": "An asset with this code and issuer already exists.",
+    "friendbotFailed": "Friendbot could not fund the account. It may be rate-limited — wait a moment and try again.",
+    "simulationFailed": "The contract call could not be simulated. Check the values and try again.",
+    "network": "Could not reach the Stellar network. Check your connection and try again.",
+    "unknown": "Unexpected error. The details below will help your lecturer.",
+    "boundaryTitle": "This page hit an error",
+    "boundaryBody": "Reloading usually fixes it. If it does not, tell your lecturer what you were doing.",
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "That link does not lead anywhere on this site.",
+    "backHome": "Back to the start"
+  }
+}

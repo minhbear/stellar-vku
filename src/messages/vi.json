@@ -1,0 +1,1017 @@
+{
+  "meta": {
+    "siteName": "Stellar × VKU",
+    "defaultTitle": "Tokenization trên Stellar — VKU",
+    "defaultDescription": "Khoá thực hành cho sinh viên fintech: tài sản số được tạo ra như thế nào, một stablecoin được phát hành ra sao, và tự tay phát hành token của bạn trên Stellar testnet."
+  },
+  "common": {
+    "next": "Tiếp",
+    "previous": "Quay lại",
+    "start": "Bắt đầu",
+    "restart": "Làm lại từ đầu",
+    "continue": "Tiếp tục",
+    "finish": "Hoàn thành",
+    "cancel": "Huỷ",
+    "retry": "Thử lại",
+    "copy": "Sao chép",
+    "copied": "Đã chép",
+    "copyFailed": "Không sao chép được",
+    "details": "Chi tiết",
+    "close": "Đóng",
+    "loading": "Đang tải…",
+    "step": "Bước",
+    "stepOf": "Bước {current} / {total}",
+    "lesson": "Bài",
+    "module": "Chuyên đề",
+    "minutes": "{count} phút",
+    "openInExplorer": "Mở trên explorer",
+    "learnMore": "Tìm hiểu thêm",
+    "optional": "Tuỳ chọn",
+    "recommended": "Nên chọn",
+    "yes": "Có",
+    "no": "Không",
+    "show": "Hiện",
+    "hide": "Ẩn",
+    "reveal": "Hiện ra",
+    "language": "Ngôn ngữ",
+    "theme": "Giao diện",
+    "themeLight": "Sáng",
+    "themeDark": "Tối",
+    "themeSystem": "Theo hệ thống",
+    "backToLesson": "Về trang chuyên đề",
+    "onThisPage": "Trong trang này"
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "curriculum": "Chương trình học",
+    "modules": "Chuyên đề",
+    "startLearning": "Bắt đầu học",
+    "openMenu": "Mở menu",
+    "closeMenu": "Đóng menu",
+    "progress": "Tiến độ",
+    "progressValue": "{done} / {total} bài",
+    "markComplete": "Đánh dấu đã xong",
+    "markedComplete": "Đã xong",
+    "nextLesson": "Bài tiếp theo",
+    "prevLesson": "Bài trước"
+  },
+  "modules": {
+    "tokenization": {
+      "title": "Tokenization",
+      "short": "Tokenization",
+      "description": "Về mặt kỹ thuật token thực sự là gì trên sổ cái, và nó được tạo ra trên Stellar như thế nào.",
+      "lessons": {
+        "overview": {
+          "title": "Ôn lại khái niệm",
+          "short": "Khái niệm",
+          "description": "Fungible và non-fungible token, metadata, các loại asset của Stellar, trustline, và cách đọc explorer."
+        },
+        "stablecoin": {
+          "title": "Stablecoin được phát hành như thế nào",
+          "short": "Phát hành stablecoin",
+          "description": "Đi từng bước qua vòng phát hành USDC của Circle — nạp tiền, mint, dự trữ, lãi suất, redeem, burn."
+        },
+        "issue": {
+          "title": "Tự phát hành token",
+          "short": "Phát hành token",
+          "description": "Kết nối Freighter trên testnet và phát hành một token thật — dạng classic asset hoặc qua Stellar Asset Contract."
+        }
+      }
+    }
+  },
+  "home": {
+    "eyebrow": "VKU · Chương trình Fintech",
+    "title": "Tokenization trên Stellar",
+    "titleRich": "Tokenization trên <accent>Stellar</accent>",
+    "lede": "Phần thực hành đi kèm bài giảng. Ôn lại khái niệm, xem một stablecoin thật được phát hành ra sao, rồi tự phát hành token của mình trên Stellar testnet — không cần biết code.",
+    "ctaPrimary": "Bắt đầu với Tokenization",
+    "ctaSecondary": "Xem bạn sẽ làm được gì",
+    "badgeTestnet": "Mọi thứ ở đây chạy trên Stellar testnet. Không dùng tiền thật.",
+    "highlights": {
+      "title": "Trang này dùng để làm gì",
+      "items": [
+        {
+          "title": "Khái niệm rồi tới thực hành",
+          "body": "Mỗi ý trong bài giảng — tính thay thế, metadata, các loại asset, trustline — đều có một phần bấm được đi kèm ngay sau đó."
+        },
+        {
+          "title": "Một quy trình phát hành thật, vẽ ra thành hình",
+          "body": "Vòng USDC của Circle được vẽ thành sơ đồ bấm từng bước: đô la vào, token ra, dự trữ, lãi suất, redeem, burn."
+        },
+        {
+          "title": "Token của chính bạn, trên chain",
+          "body": "Điền form, ký trong ví, rồi nhìn token do bạn đặt tên hiện ra trong số dư Freighter."
+        }
+      ]
+    },
+    "prereq": {
+      "title": "Chuẩn bị trước",
+      "lede": "Hai việc đầu mất chừng một phút. Làm ngay bây giờ thì bài cuối sẽ chạy trơn tru.",
+      "items": [
+        {
+          "title": "Cài Freighter",
+          "body": "Ví Stellar chạy trên trình duyệt. Cài extension và tạo ví — ghi cụm từ khôi phục ra giấy, đừng lưu vào file.",
+          "action": "Tải Freighter",
+          "href": "https://www.freighter.app/"
+        },
+        {
+          "title": "Chuyển sang Test Net",
+          "body": "Mở Freighter → dropdown mạng ở trên cùng → chọn “Test Net”. Trang này từ chối ký bất kỳ giao dịch nào trên mạng chính.",
+          "action": "Vì sao dùng testnet?",
+          "href": "https://developers.stellar.org/docs/learn/fundamentals/networks"
+        },
+        {
+          "title": "Nhận XLM test miễn phí",
+          "body": "Một tài khoản Stellar cần một khoản XLM dự trữ nhỏ để tồn tại và để giữ tài sản. Bài cuối có nút nạp từ Friendbot cho bạn.",
+          "action": "Về minimum reserve",
+          "href": "https://developers.stellar.org/docs/learn/fundamentals/lumens#base-reserves"
+        }
+      ]
+    },
+    "curriculum": {
+      "title": "Chương trình học",
+      "lede": "Hiện có một chuyên đề. Sẽ bổ sung thêm theo tiến độ khoá học.",
+      "comingSoon": "Chuyên đề sắp có",
+      "comingSoonBody": "Thanh toán và anchor, DeFi trên Stellar, và smart contract với Soroban."
+    },
+    "footer": {
+      "docs": "Tài liệu Stellar",
+      "explorer": "Stellar Expert",
+      "lab": "Stellar Lab"
+    }
+  },
+  "overview": {
+    "title": "Ôn lại khái niệm",
+    "lede": "Tất cả những gì bên dưới đã có trong bài giảng. Hãy đọc như một checklist: card nào làm bạn khựng lại thì đó là phần cần xem lại trước khi vào bài thực hành.",
+    "quiz": {
+      "title": "Kiểm tra nhanh",
+      "lede": "Năm câu hỏi. Không lưu điểm — chỉ để xem bạn nhớ tới đâu.",
+      "showAnswer": "Xem đáp án",
+      "hideAnswer": "Ẩn đáp án",
+      "correct": "Chính xác",
+      "incorrect": "Chưa đúng",
+      "progress": "Đã trả lời {done} / {total}",
+      "reset": "Làm lại",
+      "questions": [
+        {
+          "question": "Về mặt kỹ thuật, token là gì?",
+          "options": [
+            "Một file được lưu bên trong ví người dùng",
+            "Một dòng dữ liệu trên sổ cái, ghi tài khoản nào đang nắm bao nhiêu của một tài sản",
+            "Một bản sao của đồng xu được gửi từ máy này sang máy khác",
+            "Luôn luôn là một smart contract"
+          ],
+          "answer": 1,
+          "explanation": "Không có gì nằm “bên trong” ví cả. Token là một bản ghi trên sổ cái chung — một số lượng được gán cho một tài khoản. Ví chỉ giữ private key cho phép bạn ký để thay đổi bản ghi đó."
+        },
+        {
+          "question": "“Tokenization” nghĩa là gì?",
+          "options": [
+            "Mã hoá dữ liệu nhạy cảm để không đọc được",
+            "Đổi một loại tiền tệ này sang loại khác",
+            "Biểu diễn một quyền hoặc một tài sản thành một bản ghi trên sổ cái có thể chuyển nhượng",
+            "Chia một khoản thanh toán thành nhiều kỳ nhỏ"
+          ],
+          "answer": 2,
+          "explanation": "Lưu ý — từ này cũng tồn tại trong bảo mật thanh toán, ở đó “tokenization” là thay số thẻ bằng một giá trị đại diện. Trong blockchain, nó là biểu diễn quyền sở hữu một thứ gì đó (một đô la, một trái phiếu, một toà nhà, một ghế xem nhạc hội) thành bản ghi trên sổ cái, có thể chuyển và tất toán được."
+        },
+        {
+          "question": "Cái nào sau đây là fungible?",
+          "options": [
+            "Sổ đỏ của một căn hộ cụ thể",
+            "Ghế 14B trên một chuyến bay cụ thể",
+            "Một USDC trong một triệu USDC",
+            "Một bức tranh độc bản"
+          ],
+          "answer": 2,
+          "explanation": "Fungible nghĩa là thay thế cho nhau được: đơn vị nào cũng như đơn vị nào, có thể chia nhỏ và gộp lại. Non-fungible nghĩa là mỗi đơn vị có một danh tính riêng và danh tính đó quan trọng — số ghế, số sổ đỏ, số serial."
+        },
+        {
+          "question": "Trên Stellar, trustline làm gì?",
+          "options": [
+            "Chứng minh issuer là một công ty có giấy phép",
+            "Ghi nhận rằng một tài khoản đồng ý giữ một asset cụ thể, và giữ tối đa bao nhiêu",
+            "Chuyển token vào tài khoản đó",
+            "Khoá token lại để không bán được"
+          ],
+          "answer": 1,
+          "explanation": "Trustline là một hành động đồng ý tường minh, lưu trên chính tài khoản nhận: “Tôi chấp nhận CODE từ issuer này, tối đa tới hạn mức này.” Không có trustline thì payment bằng asset đó đơn giản là fail."
+        },
+        {
+          "question": "Vì sao phần lớn chain khác không có trustline?",
+          "options": [
+            "Token của họ vốn đã an toàn hơn",
+            "Họ lưu số dư bên trong contract của token thay vì trên tài khoản, nên ai cũng có thể đẩy số dư vào bất kỳ địa chỉ nào",
+            "Họ thu phí khiến việc đó thành không cần thiết",
+            "Họ có trustline, chỉ là gọi bằng tên khác"
+          ],
+          "answer": 1,
+          "explanation": "Trên chain kiểu EVM, số dư nằm trong mapping của chính token contract, nên người gửi ghi thẳng vào đó mà không cần người nhận đồng ý — vì vậy sổ địa chỉ đầy token rác lừa đảo. Stellar đặt bản ghi asset ngay trên tài khoản, nên bắt buộc phải có sự đồng ý và một khoản reserve."
+        }
+      ]
+    },
+    "fungibility": {
+      "title": "Fungible và non-fungible",
+      "lede": "Khác biệt không nằm ở độ phức tạp kỹ thuật — mà ở chỗ từng đơn vị có danh tính riêng hay không.",
+      "fungible": {
+        "title": "Fungible token",
+        "points": [
+          "Mọi đơn vị thay thế cho nhau được",
+          "Chia nhỏ được — gửi 0,37 đơn vị vẫn bình thường",
+          "Số dư gộp lại: 3 + 5 chỉ là 8",
+          "Định giá theo đơn vị"
+        ],
+        "examples": "Tiền tệ, stablecoin, cổ phần cùng loại, điểm thưởng, tín chỉ carbon"
+      },
+      "nonFungible": {
+        "title": "Non-fungible token",
+        "points": [
+          "Mỗi đơn vị có định danh và lịch sử riêng",
+          "Không chia nhỏ được — nửa cái vé là vô nghĩa",
+          "Số dư không gộp: hai NFT vẫn là hai thứ khác nhau",
+          "Định giá theo từng món"
+        ],
+        "examples": "Sổ đỏ, vé sự kiện có số ghế, bằng cấp, hoá đơn, tác phẩm nghệ thuật"
+      }
+    },
+    "metadata": {
+      "title": "Token mang theo những metadata gì",
+      "lede": "Metadata là thứ biến một con số trên sổ cái thành cái mà con người nhận ra được. Một phần nằm on-chain; rất nhiều phần thì không — và biết phần nào nằm ở đâu chính là một kỹ năng bảo mật.",
+      "fungibleTitle": "Fungible token",
+      "nonFungibleTitle": "Non-fungible token",
+      "onChain": "On-chain",
+      "offChain": "Off-chain",
+      "columns": {
+        "field": "Trường",
+        "meaning": "Là gì",
+        "where": "Nằm ở đâu"
+      },
+      "fungibleRows": [
+        {
+          "field": "Asset code",
+          "meaning": "Ký hiệu ngắn, 1–12 ký tự chữ và số trên Stellar (USDC, EURC, MYTOKEN)",
+          "where": "onChain"
+        },
+        {
+          "field": "Issuer",
+          "meaning": "Tài khoản đã tạo ra nó. Đây mới là danh tính thật của token — riêng asset code thì không duy nhất",
+          "where": "onChain"
+        },
+        {
+          "field": "Decimals / độ chính xác",
+          "meaning": "Chia nhỏ tới đâu. Mọi classic asset trên Stellar đều dùng 7 chữ số thập phân",
+          "where": "onChain"
+        },
+        {
+          "field": "Tổng cung",
+          "meaning": "Đã phát hành bao nhiêu. Trên Stellar nó là giá trị suy ra: tổng số dư của tất cả người nắm giữ",
+          "where": "onChain"
+        },
+        {
+          "field": "Authorization flags",
+          "meaning": "Issuer có phải duyệt người nắm giữ không, có đóng băng được không, có thu hồi token được không",
+          "where": "onChain"
+        },
+        {
+          "field": "Tên, logo, mô tả, liên kết",
+          "meaning": "Do issuer công bố trong file stellar.toml đặt tại home domain của họ",
+          "where": "offChain"
+        }
+      ],
+      "nonFungibleRows": [
+        {
+          "field": "Token ID",
+          "meaning": "Định danh của đúng món này trong bộ sưu tập",
+          "where": "onChain"
+        },
+        {
+          "field": "Chủ sở hữu",
+          "meaning": "Địa chỉ đang nắm quyền kiểm soát nó",
+          "where": "onChain"
+        },
+        {
+          "field": "Collection / contract",
+          "meaning": "Contract nào đã mint ra nó — tương đương với issuer",
+          "where": "onChain"
+        },
+        {
+          "field": "Metadata URI",
+          "meaning": "Con trỏ tới file JSON mô tả món đồ. On-chain chỉ có mỗi con trỏ",
+          "where": "onChain"
+        },
+        {
+          "field": "Tên, hình ảnh, thuộc tính",
+          "meaning": "File JSON mà URI trỏ tới. Nếu nó nằm trên một web server thường, chủ server đó sửa được",
+          "where": "offChain"
+        }
+      ],
+      "callout": {
+        "title": "Điều cần nhớ",
+        "body": "Ai cũng có thể phát hành một asset mang code USDC. Cái làm nên USDC thật là địa chỉ issuer. Ví và explorer đều hiện cả hai — luôn kiểm tra issuer, đừng bao giờ chỉ nhìn ký hiệu."
+      }
+    },
+    "assetTypes": {
+      "title": "Ba loại asset trên Stellar",
+      "lede": "Stellar khác biệt ở chỗ này: phát hành token là tính năng có sẵn của sổ cái, không phải thứ bạn phải viết chương trình. Smart contract là phần thêm vào bên trên, không phải nền móng.",
+      "columns": {
+        "type": "Loại",
+        "what": "Là gì",
+        "trustline": "Trustline",
+        "use": "Dùng cho"
+      },
+      "rows": [
+        {
+          "type": "Native — XLM (Lumens)",
+          "what": "Đồng tiền của chính mạng lưới. Dùng trả phí giao dịch và làm minimum balance mà mọi tài khoản phải giữ.",
+          "trustline": "Không cần",
+          "use": "Phí, reserve, làm tài sản trung gian trong path payment"
+        },
+        {
+          "type": "Classic asset",
+          "what": "Một asset code cộng với một tài khoản issuer, phát hành bằng đúng một operation payment. Không contract, không deploy — đây là primitive của sổ cái.",
+          "trustline": "Bắt buộc",
+          "use": "Stablecoin, tiền gửi token hoá, điểm thưởng, bất cứ thứ gì hành xử như tiền tệ"
+        },
+        {
+          "type": "Stellar Asset Contract (SAC)",
+          "what": "Lớp bọc smart contract có sẵn cho một classic asset, phơi ra giao diện token chuẩn SEP-41 tại một địa chỉ contract.",
+          "trustline": "Vẫn cần với địa chỉ G",
+          "use": "Cho phép contract Soroban giữ và chuyển một asset có sẵn — DeFi, escrow, vault"
+        }
+      ],
+      "sacNote": {
+        "title": "SAC là lớp bọc, không phải token thứ hai",
+        "body": "Classic asset và SAC của nó là cùng một asset, cùng một số dư. Địa chỉ contract chỉ là cánh cửa thứ hai đi vào nó, để smart contract có thể gọi transfer() thay vì gửi một payment classic. Địa chỉ này được suy ra từ asset và network, nên biết trước cả khi deploy."
+      }
+    },
+    "trustlines": {
+      "title": "Trustline — bước đồng ý của Stellar",
+      "lede": "Đây là phần làm người quen chain khác thấy lạ, và đáng hiểu cho kỹ vì nó giải thích cả một nhóm chiêu lừa mà Stellar không có.",
+      "howTitle": "Cách hoạt động",
+      "howBody": "Trước khi một tài khoản nhận được một asset, nó phải gửi operation ChangeTrust: “Tôi chấp nhận CODE do G… phát hành, tối đa tới hạn mức này.” Việc đó tạo ra một trustline — một sub-entry trên tài khoản, chứa số dư, hạn mức và trạng thái authorization. Trả tiền cho một tài khoản chưa có trustline sẽ fail thẳng với mã op_no_trust.",
+      "costTitle": "Chi phí",
+      "costBody": "Mỗi trustline làm minimum balance của tài khoản tăng thêm 0,5 XLM. Số XLM đó không mất đi — nó bị khoá trong lúc trustline còn tồn tại, và được trả lại khi bạn xoá trustline. Chính khoản reserve này làm cho việc spam trở nên tốn kém.",
+      "whyOthersTitle": "Vì sao chain khác không làm vậy",
+      "whyOthersBody": "Trên chain kiểu EVM, số dư nằm trong mapping của chính token contract. Người gửi ghi thẳng vào mapping đó, nên ai cũng có thể đẩy token bất kỳ vào địa chỉ bất kỳ mà không cần hỏi. Đó là lý do ví bên đó đầy “airdrop” không mời mà tới, thực chất là mồi phishing. Stellar lưu bản ghi asset ngay trên tài khoản, nên sổ cái không thể ghi nhận một số dư mà tài khoản chưa từng đồng ý giữ.",
+      "tradeoffTitle": "Cái giá phải trả",
+      "tradeoffBody": "Sự đồng ý tốn thêm một bước. Mọi ví, sàn và anchor đều phải đưa “thêm trustline” vào luồng onboarding, và mỗi trustline khoá một chút XLM. Stellar cố tình chấp nhận ma sát đó: số dư sạch, không bị nhét token, và issuer có thể được yêu cầu phải duyệt từng người nắm giữ — đúng thứ mà một stablecoin chịu quản lý cần.",
+      "flowTitle": "Thứ tự các bước",
+      "flowSteps": [
+        {
+          "title": "Issuer tồn tại",
+          "body": "Một tài khoản bình thường. Không có gì đánh dấu nó là issuer cho tới khi nó gửi payment đầu tiên."
+        },
+        {
+          "title": "Người giữ opt-in",
+          "body": "Người giữ ký ChangeTrust cho CODE:ISSUER kèm hạn mức. 0,5 XLM reserve bị khoá lại."
+        },
+        {
+          "title": "Issuer có thể phải duyệt",
+          "body": "Chỉ khi asset bật cờ AUTH_REQUIRED — đường đi tuân thủ dành cho tài sản chịu quản lý."
+        },
+        {
+          "title": "Issuer trả tiền",
+          "body": "Một payment từ tài khoản issuer tạo ra token. Tổng cung tăng lên đúng lúc token rời khỏi issuer."
+        },
+        {
+          "title": "Token quay về để burn",
+          "body": "Một payment gửi ngược lại issuer sẽ huỷ chúng. Issuer không bao giờ giữ số dư asset của chính mình."
+        }
+      ]
+    },
+    "explorer": {
+      "title": "Đọc explorer",
+      "lede": "Explorer là cửa sổ chỉ đọc nhìn vào sổ cái. Bạn sẽ dùng nó sau mỗi bước ở bài thực hành, nên hãy học xem cần nhìn vào đâu.",
+      "whatToCheck": "Cần kiểm tra gì trên trang của một asset",
+      "checkItems": [
+        "Địa chỉ issuer — chứ không chỉ asset code",
+        "Có bao nhiêu tài khoản đang giữ trustline cho nó",
+        "Tổng cung, và issuer đã bị khoá chưa (còn in thêm được không?)",
+        "Home domain, và ở đó có thật sự công bố stellar.toml hay không",
+        "Các authorization flag: issuer có đóng băng hay thu hồi được số dư của bạn không?"
+      ],
+      "toolsTitle": "Công cụ",
+      "tools": [
+        {
+          "name": "Stellar Expert",
+          "body": "Explorer đa dụng. Tốt nhất để xem trang asset, số người nắm giữ và lịch sử tài khoản.",
+          "href": "https://stellar.expert/explorer/testnet"
+        },
+        {
+          "name": "Stellar Lab",
+          "body": "Công cụ chính thức. Dựng và soi giao dịch theo từng trường — sát với protocol hơn.",
+          "href": "https://lab.stellar.org"
+        },
+        {
+          "name": "Horizon API",
+          "body": "REST API mà cả hai công cụ trên đều đọc từ đó. Mở một endpoint trên trình duyệt là ra JSON.",
+          "href": "https://developers.stellar.org/docs/data/apis/horizon"
+        }
+      ],
+      "examplesTitle": "Vài asset để tra thử",
+      "examplesLede": "Mở chúng trên mainnet rồi so sánh. Để ý chúng trả lời các câu hỏi trên khác nhau thế nào.",
+      "viewOnExplorer": "Xem asset",
+      "kinds": {
+        "stablecoin": "Stablecoin",
+        "wrapped": "Wrapped",
+        "utility": "Tiện ích"
+      }
+    },
+    "next": {
+      "title": "Sẵn sàng chưa?",
+      "body": "Tiếp theo: xem một stablecoin thật được phát hành ra sao, rồi tự phát hành một cái của bạn.",
+      "cta": "Sang phần stablecoin"
+    }
+  },
+  "stablecoin": {
+    "title": "Stablecoin được phát hành như thế nào",
+    "lede": "Đây là vòng phát hành USDC của Circle. Đi từng bước và để ý xem đô la đi đâu, token được tạo ra lúc nào, và cái gì giữ cho một USDC luôn bằng một đô la.",
+    "hint": "Dùng nút mũi tên, hoặc phím ← →.",
+    "autoplay": "Tự chạy",
+    "pause": "Tạm dừng",
+    "diagram": {
+      "title": "Vòng phát hành",
+      "fiatWorld": "Ngoài chain — ngân hàng và pháp lý",
+      "chainWorld": "Trên chain — sổ cái công khai",
+      "nodes": {
+        "bank": {
+          "label": "Doanh nghiệp",
+          "sub": "Giữ USD ở ngân hàng"
+        },
+        "mint": {
+          "label": "Circle Mint",
+          "sub": "Đơn vị phát hành"
+        },
+        "reserve": {
+          "label": "Quỹ dự trữ",
+          "sub": "Lưu ký & quỹ thị trường tiền tệ"
+        },
+        "auditor": {
+          "label": "Kiểm toán",
+          "sub": "Xác nhận hàng tháng"
+        },
+        "chain": {
+          "label": "Blockchain",
+          "sub": "Stellar, Ethereum, Solana…"
+        },
+        "wallet": {
+          "label": "Ví",
+          "sub": "Nắm giữ USDC"
+        },
+        "market": {
+          "label": "Thị trường",
+          "sub": "Sàn, DeFi, thanh toán"
+        }
+      },
+      "edges": {
+        "wireIn": "Chuyển khoản USD",
+        "toReserve": "Vào quỹ dự trữ",
+        "mintOrder": "Lệnh mint",
+        "deliver": "USDC được giao",
+        "trade": "Lưu thông",
+        "tradeBack": "Quay về",
+        "sendBack": "USDC gửi lại",
+        "burn": "Bị huỷ",
+        "release": "Giải phóng dự trữ",
+        "wireOut": "Chuyển USD trả lại",
+        "attest": "Đã xác nhận",
+        "interest": "Lãi suất"
+      },
+      "meter": {
+        "reserves": "USD Circle đang giữ",
+        "supply": "USDC đang lưu hành",
+        "balanced": "1 : 1 — cân bằng",
+        "unbalanced": "Đã nhận tiền gửi, chưa mint gì cả"
+      }
+    },
+    "steps": [
+      {
+        "id": "peg",
+        "eyebrow": "Lời hứa",
+        "short": "Lời hứa",
+        "title": "Stablecoin là một quyền đòi một đô la",
+        "body": "Stablecoin là token mà giá của nó được neo vào một thứ ổn định — hầu như luôn là đô la Mỹ. Nó không ổn định vì code viết vậy. Nó ổn định vì đơn vị phát hành cam kết một token luôn đổi được lấy một đô la, và giữ đủ đô la để cam kết đó là thật.",
+        "points": [
+          "Peg là một lời hứa đổi lại, không phải một tính chất kỹ thuật",
+          "Được bảo chứng bằng fiat là mô hình của USDC và USDT: một token, một đô la thật nằm trong dự trữ",
+          "Còn các thiết kế khác — thế chấp vượt mức bằng crypto (DAI), và loại thuật toán không có dự trữ nào cả (đó là cách UST sụp đổ năm 2022)"
+        ],
+        "callout": {
+          "kind": "info",
+          "title": "Vì sao người ta cần thứ này",
+          "body": "Bạn có được cách tất toán của blockchain — chốt trong vài giây, chạy cả đêm, rẻ khi qua biên giới — mà vẫn tính bằng đô la. Đó là lý do stablecoin tất toán nhiều giá trị trên Stellar hơn bất kỳ thứ gì khác trên mạng lưới này."
+        }
+      },
+      {
+        "id": "onboard",
+        "eyebrow": "Bước 1",
+        "short": "Mở tài khoản",
+        "title": "Mở tài khoản Circle Mint",
+        "body": "USDC mới chỉ ra đời qua Circle, và chỉ dành cho tổ chức. Doanh nghiệp nộp hồ sơ mở tài khoản Circle Mint và phải qua KYB, sàng lọc trừng phạt và giám sát AML liên tục trước khi được mint hay redeem bất cứ thứ gì.",
+        "points": [
+          "Circle Mint dành cho sàn, ngân hàng, nhà giao dịch tổ chức và doanh nghiệp lớn — không dành cho cá nhân",
+          "Những người còn lại mua USDC đã tồn tại sẵn, từ sàn hoặc từ đối tác on-ramp",
+          "Phân biệt này quan trọng: thị trường sơ cấp (mint và redeem đúng tỉ lệ 1:1) thì nhỏ và có cổng chặn; thị trường thứ cấp nơi bạn và tôi mua thì lớn và mở"
+        ],
+        "callout": {
+          "kind": "warning",
+          "title": "Nên bạn không bao giờ “mint” USDC",
+          "body": "Khi bạn mua USDC trên sàn, bạn nhận token đã tồn tại sẵn. Tổng cung chỉ thay đổi khi một chủ tài khoản Mint nạp tiền hoặc redeem."
+        }
+      },
+      {
+        "id": "deposit",
+        "eyebrow": "Bước 2",
+        "short": "Nạp tiền",
+        "title": "Đô la đến bằng chuyển khoản ngân hàng",
+        "body": "Doanh nghiệp chuyển USD từ ngân hàng của họ sang Circle. Circle ghi có vào tài khoản Mint của họ một số dư đô la. Để ý điều chưa xảy ra: chưa có token nào tồn tại. Đây vẫn chỉ là một lệnh chuyển tiền thường giữa hai tài khoản ngân hàng thường.",
+        "points": [
+          "Khoản nạp là fiat, chạy trên hạ tầng ngân hàng truyền thống",
+          "Số dư tài khoản Mint là khoản nợ Circle nợ khách hàng, tính bằng USD",
+          "Tổng cung USDC không đổi — sổ cái chưa hề bị đụng tới"
+        ],
+        "callout": {
+          "kind": "info",
+          "title": "Nhìn hai thanh đo",
+          "body": "Số đô la Circle giữ vừa tăng lên. USDC lưu hành thì không. Chúng chỉ khớp lại sau bước tiếp theo."
+        }
+      },
+      {
+        "id": "mint",
+        "eyebrow": "Bước 3",
+        "short": "Mint",
+        "title": "Mint — đô la thành token",
+        "body": "Doanh nghiệp yêu cầu USDC tương ứng với số dư đô la của mình, chọn blockchain và đưa địa chỉ ví. Circle mint đúng số lượng đó trên chain đó và gửi đi. Đô la chuyển vào quỹ dự trữ; token chuyển sang khách hàng. Một đô la vào, một token ra.",
+        "points": [
+          "Khách hàng chọn chain: Stellar, Ethereum, Solana, Base… đều là cùng một USDC",
+          "Tổng cung USDC tăng đúng bằng số lượng vừa mint",
+          "Toàn bộ thao tác phát hành là một giao dịch on-chain — công khai, và vĩnh viễn"
+        ],
+        "callout": {
+          "kind": "success",
+          "title": "Bất biến cần nhớ",
+          "body": "Từ khoảnh khắc này hai thanh đo khớp lại. Mỗi USDC đang tồn tại đều tương ứng với một đô la trong dự trữ. Giữ cho điều đó luôn đúng chính là toàn bộ công việc của một đơn vị phát hành stablecoin bảo chứng bằng fiat."
+        }
+      },
+      {
+        "id": "reserves",
+        "eyebrow": "Bước 4",
+        "short": "Dự trữ",
+        "title": "Đô la thật sự nằm ở đâu",
+        "body": "Quỹ dự trữ không phải một kho tiền mặt. Phần lớn được đầu tư vào Circle Reserve Fund (mã USDXX), một quỹ thị trường tiền tệ chính phủ theo quy tắc 2a-7 đăng ký với SEC, do BlackRock quản lý và lưu ký tại BNY Mellon. Quỹ nắm trái phiếu kho bạc Mỹ ngắn hạn và hợp đồng repo kho bạc qua đêm. Phần còn lại là tiền mặt tại các ngân hàng chịu quản lý để redeem tất toán được ngay.",
+        "points": [
+          "Do BlackRock quản lý, lưu ký tại BNY Mellon — không phải do chính Circle giữ",
+          "Danh mục được BlackRock công bố hằng ngày, còn Circle công bố báo cáo xác nhận dự trữ hàng tháng do một hãng Big Four thực hiện (Deloitte)",
+          "Chọn giấy tờ chính phủ ngắn hạn vì bán ra nhanh mà không lỗ — khi mọi người có thể cùng redeem một lúc thì thanh khoản quan trọng hơn lợi suất"
+        ],
+        "callout": {
+          "kind": "warning",
+          "title": "Đây mới là rủi ro thật sự",
+          "body": "Rủi ro thật của stablecoin bảo chứng fiat không nằm ở smart contract — mà ở chỗ dự trữ có thật không, có thanh khoản không, và được giữ ở nơi an toàn không. Tháng 3/2023 USDC có lúc giao dịch ở 0,87 đô vì 3,3 tỷ đô tiền mặt của nó nằm ở Silicon Valley Bank đúng lúc ngân hàng này sụp. Peg hồi lại ngay khi khoản tiền gửi được bảo đảm. Hãy đọc báo cáo xác nhận, đừng đọc quảng cáo."
+        }
+      },
+      {
+        "id": "yield",
+        "eyebrow": "Bước 5",
+        "short": "Lãi suất",
+        "title": "Ai ăn lãi",
+        "body": "Tín phiếu kho bạc trả lãi. Trên hàng chục tỷ đô dự trữ, đó là một nguồn thu rất lớn — và nó thuộc về đơn vị phát hành, không thuộc về người nắm giữ. Đây chính là mô hình kinh doanh: bạn đưa một đô la, nhận về một token không trả bạn đồng nào, và bên phát hành giữ phần lãi.",
+        "points": [
+          "Giữ USDC không sinh lãi cho bạn. Bản thân token không có lợi suất",
+          "Tại Mỹ, đạo luật GENIUS cấm rõ đơn vị phát hành stablecoin thanh toán trả lãi cho người nắm giữ",
+          "Circle chia phần lớn nguồn thu đó cho các đối tác phân phối — rõ nhất là Coinbase, được trả tiền cho lượng USDC giữ trên nền tảng của họ",
+          "Bất kỳ “lợi suất USDC” nào được chào mời đều đến từ chỗ khác — cho vay, một giao thức DeFi, một chương trình khuyến mãi của sàn — và mang rủi ro của bên đó, không phải của Circle"
+        ],
+        "callout": {
+          "kind": "info",
+          "title": "Câu hỏi thi",
+          "body": "Nếu stablecoin được bảo chứng đầy đủ mà không trả lãi, vì sao người ta vẫn giữ? Vì họ muốn đô la tất toán được trên blockchain — tức thì, toàn cầu, bất kể mấy giờ. Họ trả tiền cho khả năng tất toán, không phải cho lợi nhuận."
+        }
+      },
+      {
+        "id": "circulate",
+        "eyebrow": "Bước 6",
+        "short": "Lưu thông",
+        "title": "Lưu thông, và cái gì giữ peg",
+        "body": "Sau khi mint, USDC di chuyển như mọi token khác — ví sang ví, lên sàn, vào DeFi, qua các chain. Circle không kiểm soát nó đi đâu. Trên thị trường mở, giá của nó do cung cầu quyết định, nên nó có thể lệch khỏi một đô la. Thứ kéo nó về là arbitrage.",
+        "points": [
+          "Nếu USDC giao dịch ở 0,995 đô, một tổ chức mua rẻ rồi redeem tại Circle lấy đủ một đô, bỏ túi phần chênh — lực mua đẩy giá lên lại",
+          "Nếu nó ở 1,005 đô, họ mint USDC mới ở mức ngang giá rồi bán ra thị trường — lực cung đẩy giá xuống lại",
+          "Vậy nên peg phụ thuộc vào việc redeem phải đáng tin và nhanh. Khi người ta nghi ngờ khả năng redeem, arbitrage dừng lại và peg trượt"
+        ],
+        "callout": {
+          "kind": "success",
+          "title": "Vì sao thị trường sơ cấp quan trọng",
+          "body": "Mint và redeem bị giới hạn cho tổ chức, nhưng ai cũng hưởng lợi: chính các tổ chức đó là những người arbitrage, và động cơ lợi nhuận của họ giữ cho giá bạn mua luôn quanh một đô la."
+        }
+      },
+      {
+        "id": "redeem",
+        "eyebrow": "Bước 7",
+        "short": "Redeem & burn",
+        "title": "Redeem — và burn",
+        "body": "Vòng lặp khép lại. Chủ tài khoản Mint gửi USDC về Circle và yêu cầu nhận đô la. Circle huỷ số token đó — gọi là “burn” — rồi chuyển đô la về từ quỹ dự trữ. Tổng cung giảm đúng bằng lượng đã burn, và quỹ dự trữ giảm theo.",
+        "points": [
+          "Burn xoá token khỏi lưu thông vĩnh viễn; chúng không được bán lại",
+          "Dự trữ co lại đồng thời, nên tỉ lệ bảo chứng 1:1 vẫn đúng cả khi đi xuống",
+          "Đó là lý do tổng cung USDC giảm trong thị trường gấu: người ta redeem chứ không phải bán vào khoảng không"
+        ],
+        "callout": {
+          "kind": "info",
+          "title": "Cả mô hình gói trong một dòng",
+          "body": "Mint = đô la vào, token ra. Redeem = token vào, đô la ra. Việc duy nhất của đơn vị phát hành là bảo đảm hai vế đó luôn bằng nhau."
+        }
+      },
+      {
+        "id": "stellar",
+        "eyebrow": "Bước 8",
+        "short": "Trên Stellar",
+        "title": "Vẫn vòng đó, nói bằng ngôn ngữ Stellar",
+        "body": "USDC trên Stellar không phải smart contract. Nó là một classic asset thuần — code USDC, do một tài khoản của Circle phát hành — và toàn bộ vòng mint-burn ánh xạ đúng vào những operation mà bạn sắp tự tay dùng ở bài sau.",
+        "points": [
+          "Mint = một operation payment từ tài khoản issuer. Token ra đời đúng lúc rời khỏi tài khoản đó",
+          "Burn = một payment gửi ngược về tài khoản issuer. Issuer không bao giờ giữ số dư asset của chính mình, nên nhận lại tức là huỷ",
+          "Nắm giữ = một trustline. Trước khi bất kỳ ví nào nhận được USDC trên Stellar, nó phải opt-in vào CODE:ISSUER",
+          "Tuân thủ = các cờ của issuer. Bắt buộc duyệt, thu hồi quyền, và clawback là tính năng của protocol, không phải code tự viết"
+        ],
+        "callout": {
+          "kind": "success",
+          "title": "Tới lượt bạn",
+          "body": "Ở bài sau bạn làm đúng những việc này: tạo issuer, thêm trustline từ ví của mình, rồi mint tổng cung vào đó. Khác biệt duy nhất là quy mô của khoản dự trữ đứng sau."
+        }
+      }
+    ],
+    "sources": {
+      "title": "Nguồn",
+      "lede": "Các con số sẽ thay đổi. Kiểm tra tại nguồn trước khi trích trong bài thi.",
+      "items": [
+        {
+          "label": "Circle — USDC là gì",
+          "href": "https://www.circle.com/usdc"
+        },
+        {
+          "label": "Circle — Minh bạch và dự trữ USDC",
+          "href": "https://www.circle.com/transparency"
+        },
+        {
+          "label": "Danh mục Circle Reserve Fund (USDXX) hằng ngày, BlackRock",
+          "href": "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund"
+        },
+        {
+          "label": "USDC trên Stellar — trang asset",
+          "href": "https://stellar.expert/explorer/public/asset/USDC-GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN"
+        }
+      ]
+    },
+    "complete": {
+      "title": "Đó là toàn bộ vòng lặp",
+      "body": "Nạp tiền, mint, dự trữ, lưu thông, redeem, burn — và một đơn vị phát hành mà việc thật sự duy nhất là giữ hai con số bằng nhau.",
+      "cta": "Giờ tự phát hành token của bạn"
+    }
+  },
+  "issue": {
+    "title": "Tự phát hành token",
+    "lede": "Bạn sẽ tạo một token thật trên Stellar testnet và mint toàn bộ tổng cung vào ví của chính mình. Phần kỹ thuật đã được lo hết — bạn chỉ quyết định token đó là gì.",
+    "steps": {
+      "connect": "Kết nối",
+      "type": "Loại",
+      "details": "Thông tin",
+      "review": "Xem lại",
+      "execute": "Phát hành",
+      "done": "Xong"
+    },
+    "wallet": {
+      "title": "Kết nối ví",
+      "lede": "Ví của bạn sẽ nhận token. Nó cũng ký một giao dịch: trustline để bạn opt-in vào việc nắm giữ token đó.",
+      "connect": "Kết nối Freighter",
+      "connecting": "Đang chờ Freighter…",
+      "disconnect": "Ngắt kết nối",
+      "notInstalledTitle": "Chưa cài Freighter",
+      "notInstalledBody": "Freighter là ví Stellar chạy trên trình duyệt. Cài extension, tạo ví, rồi tải lại trang này.",
+      "notInstalledCta": "Cài Freighter",
+      "disconnectedTitle": "Ví chưa kết nối",
+      "disconnectedBody": "Kết nối Freighter để tiếp tục. Trang này chỉ đọc được địa chỉ công khai và xin bạn ký — không bao giờ thấy được secret key của bạn.",
+      "wrongNetworkTitle": "Freighter đang ở sai network",
+      "wrongNetworkBody": "Bài này chạy trên Stellar Test Net, nhưng ví của bạn đang ở {current}. Mở Freighter, bấm dropdown network ở trên cùng, chọn Test Net.",
+      "unfundedTitle": "Tài khoản này chưa tồn tại",
+      "unfundedBody": "Tài khoản Stellar phải được tạo trên sổ cái trước khi giữ được bất cứ thứ gì. Trên testnet, Friendbot làm việc đó miễn phí.",
+      "fund": "Nạp bằng Friendbot",
+      "funding": "Đang nạp…",
+      "funded": "Đã nạp xong",
+      "lowBalanceTitle": "XLM còn hơi ít",
+      "lowBalanceBody": "Thêm một trustline sẽ khoá thêm 0,5 XLM reserve, cộng một khoản phí nhỏ. Nạp thêm từ Friendbot cho chắc.",
+      "connectedTitle": "Đã kết nối",
+      "address": "Địa chỉ",
+      "balance": "Số dư",
+      "network": "Network",
+      "reserve": "Đang khoá làm reserve",
+      "trustlines": "Trustline",
+      "refresh": "Làm mới",
+      "readyCta": "Tiếp tục"
+    },
+    "mode": {
+      "title": "Chọn cách phát hành",
+      "lede": "Cả hai đều tạo ra một asset thật trên sổ cái, cùng asset code, cùng issuer, cùng số dư. Khác nhau ở cánh cửa bạn mở ra trên nó.",
+      "classic": {
+        "name": "Classic Stellar asset",
+        "tagline": "Cách gốc của Stellar",
+        "body": "Phát hành bằng một operation payment — không deploy contract, không biên dịch gì cả. Đây là cách USDC, EURC và gần như mọi asset trên Stellar đang hoạt động.",
+        "pros": [
+          "Rẻ nhất và nhanh nhất — vài phần nghìn xu mỗi giao dịch",
+          "Mọi ví, sàn và anchor Stellar đều hiểu ngay, không cần thêm gì",
+          "Giao dịch được trên DEX tích hợp sẵn mà không cần làm gì thêm",
+          "Các cờ tuân thủ (duyệt, đóng băng, thu hồi) nằm sẵn trong protocol"
+        ],
+        "cons": [
+          "Không chạy được logic riêng — không thu phí khi chuyển, không vesting, không điều kiện"
+        ],
+        "bestFor": "Stablecoin, tiền gửi token hoá, điểm thưởng, và mọi thứ hành xử như tiền"
+      },
+      "sac": {
+        "name": "Stellar Asset Contract",
+        "tagline": "Cánh cửa smart contract",
+        "body": "Vẫn phát hành đúng classic asset đó, rồi deploy lớp bọc contract có sẵn lên trên. Asset có thêm một địa chỉ contract (C…) triển khai giao diện token chuẩn SEP-41, để contract Soroban giữ và chuyển được nó.",
+        "pros": [
+          "Gọi được từ smart contract — bắt buộc cho DeFi, escrow, vault",
+          "Giao diện token chuẩn: transfer, approve, balance, mint, burn",
+          "Cùng asset, cùng số dư — phía classic vẫn chạy bình thường",
+          "Địa chỉ contract suy ra từ asset, nên xác định trước được"
+        ],
+        "cons": [
+          "Thêm hai giao dịch và phí cao hơn",
+          "Gửi tới địa chỉ G thường vẫn cần trustline — lớp bọc không bỏ được điều đó"
+        ],
+        "bestFor": "Mọi asset mà một contract Soroban cần tương tác"
+      },
+      "select": "Chọn cái này",
+      "selected": "Đã chọn",
+      "compare": "Khác nhau thật sự ở đâu",
+      "compareRows": [
+        {
+          "label": "Số giao dịch để phát hành",
+          "classic": "3–4",
+          "sac": "5–6"
+        },
+        {
+          "label": "Có deploy contract không",
+          "classic": "Không",
+          "sac": "Có"
+        },
+        {
+          "label": "Định danh nhận được",
+          "classic": "CODE : G… (issuer)",
+          "sac": "CODE : G… và C… (contract)"
+        },
+        {
+          "label": "Cần trustline",
+          "classic": "Có",
+          "sac": "Có, với địa chỉ G"
+        },
+        {
+          "label": "Contract Soroban dùng được",
+          "classic": "Không trực tiếp",
+          "sac": "Có"
+        },
+        {
+          "label": "Hiện trong mọi ví",
+          "classic": "Có",
+          "sac": "Có"
+        }
+      ]
+    },
+    "form": {
+      "title": "Mô tả token của bạn",
+      "lede": "Đây là phần duy nhất bạn thật sự quyết định. Mọi thứ sau đó được ký và gửi lên chain tự động.",
+      "sectionBasics": "Thông tin cơ bản",
+      "sectionSupply": "Tổng cung",
+      "sectionAdvanced": "Quyền kiểm soát của issuer",
+      "advancedHint": "Đây là những cờ mà một issuer chịu quản lý sẽ dùng. Bật lên để thấy chúng thêm những giao dịch nào.",
+      "fields": {
+        "code": {
+          "label": "Asset code",
+          "hint": "1–12 chữ cái hoặc chữ số. Đây là ký hiệu ví hiển thị — riêng nó thì không duy nhất.",
+          "placeholder": "VKUCOIN"
+        },
+        "name": {
+          "label": "Tên token",
+          "hint": "Tên cho người đọc. Trên Stellar phần này nằm off-chain, trong file stellar.toml tại home domain của bạn.",
+          "placeholder": "VKU Fintech Coin"
+        },
+        "description": {
+          "label": "Mô tả",
+          "hint": "Cũng là metadata off-chain. Để ở đây cho bạn thấy một issuer thật sẽ công bố những gì.",
+          "placeholder": "Token lớp học phát hành trong khoá Stellar tại VKU."
+        },
+        "supply": {
+          "label": "Tổng cung",
+          "hint": "Được mint toàn bộ vào ví của bạn. Tối đa {max}.",
+          "placeholder": "1000000"
+        },
+        "homeDomain": {
+          "label": "Home domain",
+          "hint": "Tên miền nơi stellar.toml của bạn sẽ được công bố. Được ghi thẳng lên tài khoản issuer.",
+          "placeholder": "vku.udn.vn"
+        },
+        "authRequired": {
+          "label": "Bắt buộc duyệt (authorization required)",
+          "hint": "Người giữ phải được bạn duyệt trước khi nhận được token. Đây là cách một stablecoin chịu quản lý thực thi KYC. Nó thêm một giao dịch: bạn tự duyệt trustline của chính mình."
+        },
+        "authRevocable": {
+          "label": "Thu hồi được quyền (authorization revocable)",
+          "hint": "Bạn có thể đóng băng số dư của một người giữ sau này. Bắt buộc phải bật trước khi bật được clawback."
+        },
+        "clawbackEnabled": {
+          "label": "Bật clawback",
+          "hint": "Bạn lấy lại được token từ bất kỳ người giữ nào mà không cần chữ ký của họ. Dùng cho lệnh toà và thu hồi tiền bị đánh cắp — và là điều rất đáng cân nhắc với người nắm giữ."
+        },
+        "lockIssuer": {
+          "label": "Khoá issuer sau khi phát hành",
+          "hint": "Đặt trọng số master key của tài khoản issuer về 0 sau khi mint xong. Không bao giờ phát hành thêm được nữa — tổng cung cố định vĩnh viễn và ai cũng kiểm chứng được."
+        }
+      },
+      "errors": {
+        "code": {
+          "required": "Đặt asset code cho token",
+          "tooLong": "Tối đa 12 ký tự",
+          "charset": "Chỉ chữ cái và chữ số — không dấu cách, không ký tự đặc biệt",
+          "reservedXlm": "XLM là asset gốc của mạng. Chọn code khác."
+        },
+        "name": {
+          "required": "Đặt tên cho token",
+          "tooLong": "Tối đa 40 ký tự"
+        },
+        "description": {
+          "tooLong": "Tối đa 160 ký tự"
+        },
+        "supply": {
+          "required": "Nhập tổng cung",
+          "numeric": "Chỉ chữ số, có thể có một dấu chấm thập phân",
+          "decimals": "Stellar hỗ trợ 7 chữ số thập phân",
+          "range": "Phải lớn hơn 0 và tối đa 922.337.203.685,4775807"
+        },
+        "homeDomain": {
+          "tooLong": "Tối đa 32 ký tự",
+          "invalid": "Nhập dạng vku.udn.vn — không có https:// và không có đường dẫn"
+        },
+        "flags": {
+          "clawbackNeedsRevocable": "Clawback cần bật “Thu hồi được quyền” trước"
+        }
+      },
+      "lockWarning": {
+        "title": "Khoá là vĩnh viễn",
+        "body": "Một khi issuer bị khoá, bạn không mint thêm được nữa, và — nếu đã bật — cũng không duyệt được người giữ mới, không đóng băng được ai, không thu hồi được gì. Trên testnet thì không sao. Trên mainnet thì không đảo ngược được."
+      },
+      "submit": "Xem lại"
+    },
+    "review": {
+      "title": "Kiểm tra kỹ trước khi ký",
+      "lede": "Đọc từng dòng. Trên mainnet đây là màn hình cuối trước khi một việc không đảo ngược được xảy ra — tập thói quen đó ngay từ đây.",
+      "asset": "Asset",
+      "recipient": "Ví nhận",
+      "network": "Network",
+      "mode": "Phát hành dạng",
+      "flags": "Cờ của issuer",
+      "noFlags": "Không bật cờ nào — asset mở, thuần tuý",
+      "plan": "Điều gì sẽ xảy ra",
+      "planLede": "{count} giao dịch. Bạn ký một trong số đó; tài khoản issuer tạm thời ký phần còn lại.",
+      "signedByYou": "Bạn ký",
+      "signedByIssuer": "Issuer ký",
+      "automatic": "Tự động",
+      "edit": "Sửa lại",
+      "confirm": "Phát hành token",
+      "issuerNote": {
+        "title": "Về tài khoản issuer",
+        "body": "Issuer thật là một tài khoản được bảo vệ rất kỹ — thường là multisig, thường nằm trong HSM. Trong bài này ứng dụng tự sinh một cặp khoá testnet dùng một lần và nạp từ Friendbot, để token rơi vào chính ví của bạn nơi bạn nhìn thấy được. Secret key chỉ tồn tại trong tab trình duyệt này và sẽ được hiện cho bạn ở cuối."
+      }
+    },
+    "run": {
+      "title": "Đang phát hành",
+      "lede": "Mỗi dòng là một giao dịch trên sổ cái. Bấm để mở bất kỳ dòng nào trên explorer.",
+      "signHint": "Freighter đang xin bạn ký. Kiểm tra cửa sổ pop-up.",
+      "steps": {
+        "createIssuer": {
+          "label": "Tạo tài khoản issuer",
+          "body": "Một cặp khoá mới được sinh ra ngay trong trình duyệt. Chưa có gì chạm tới network."
+        },
+        "fundIssuer": {
+          "label": "Nạp cho issuer từ Friendbot",
+          "body": "Tài khoản phải tồn tại trên sổ cái và có số dư tối thiểu trước khi làm được gì."
+        },
+        "configureIssuer": {
+          "label": "Đặt cờ và home domain",
+          "body": "Ghi các authorization flag và home domain lên tài khoản issuer. Phải làm trước khi tạo bất kỳ trustline nào."
+        },
+        "deploySac": {
+          "label": "Deploy Stellar Asset Contract",
+          "body": "Tạo lớp bọc contract cho asset này. Địa chỉ của nó vốn đã biết trước — suy ra từ asset và network."
+        },
+        "createTrustline": {
+          "label": "Ví của bạn opt-in (trustline)",
+          "body": "Bạn ký giao dịch này. Nó ghi nhận tài khoản bạn chấp nhận asset này, tới hạn mức bằng tổng cung, và khoá 0,5 XLM reserve."
+        },
+        "authorizeTrustline": {
+          "label": "Issuer duyệt trustline của bạn",
+          "body": "Cần bước này vì bạn đã bật “bắt buộc duyệt”. Đây chính là cổng tuân thủ mà một issuer chịu quản lý chạy cho từng người nắm giữ."
+        },
+        "mint": {
+          "label": "Mint tổng cung vào ví bạn",
+          "body": "Token ra đời đúng lúc rời khỏi tài khoản issuer."
+        },
+        "mintSac": {
+          "label": "Mint qua contract",
+          "body": "Gọi mint() trên Stellar Asset Contract. Tài khoản issuer là admin của contract, nên chữ ký của nó chính là phần authorization."
+        },
+        "lockIssuer": {
+          "label": "Khoá issuer",
+          "body": "Đặt trọng số master key về 0. Tổng cung cố định vĩnh viễn, và ai cũng kiểm chứng được trên sổ cái."
+        }
+      },
+      "status": {
+        "pending": "Đang chờ",
+        "running": "Đang gửi…",
+        "awaitingSignature": "Xác nhận trong ví…",
+        "done": "Đã xác nhận",
+        "failed": "Thất bại"
+      },
+      "failedTitle": "Bước này không đi qua được",
+      "failedBody": "Những bước trước đó không bị huỷ. Xử lý nguyên nhân rồi tiếp tục — luồng sẽ chạy tiếp từ đây.",
+      "resume": "Tiếp tục từ đây",
+      "startOver": "Làm lại từ đầu"
+    },
+    "result": {
+      "title": "Token của bạn đã tồn tại",
+      "lede": "Nó nằm trên sổ cái Stellar testnet, và tổng cung đang ở trong ví bạn. Mở Freighter ra xem thử.",
+      "assetLabel": "Asset",
+      "issuerLabel": "Tài khoản issuer",
+      "contractLabel": "Địa chỉ contract",
+      "supplyLabel": "Đã mint",
+      "holderLabel": "Đang giữ bởi",
+      "lockedYes": "Issuer đã khoá — tổng cung cố định",
+      "lockedNo": "Issuer chưa khoá — còn mint thêm được",
+      "viewAsset": "Xem asset trên explorer",
+      "viewIssuer": "Xem issuer trên explorer",
+      "viewContract": "Xem contract trên explorer",
+      "addToWallet": "Thêm vào Freighter",
+      "addedToWallet": "Đã thêm",
+      "transactions": "Các giao dịch",
+      "secretTitle": "Secret key của issuer",
+      "secretBody": "Đây là khoá có thể mint thêm token của bạn. Nó được sinh ra trong tab trình duyệt này và không được lưu ở đâu cả. Đóng tab là mất vĩnh viễn. Trên mainnet, một khoá như thế này là bí mật giá trị nhất công ty bạn sở hữu.",
+      "secretReveal": "Hiện secret key",
+      "secretHide": "Ẩn đi",
+      "learnedTitle": "Vừa rồi đã xảy ra chuyện gì",
+      "learned": [
+        "Bạn tạo một tài khoản Stellar bình thường, và nó trở thành issuer đúng lúc gửi payment đầu tiên",
+        "Ví của bạn phải opt-in bằng trustline trước khi nhận được gì — và 0,5 XLM của bạn hiện đang bị khoá sau nó",
+        "Tổng cung không được lưu ở đâu cả: nó là tổng số dư của tất cả người nắm giữ, và nó tăng lên khi token rời khỏi issuer",
+        "Tất cả những gì bạn vừa làm chính là điều Circle làm với USDC, chỉ khác quy mô và khác chỗ có đô la đứng sau"
+      ],
+      "tryTitle": "Thử tiếp",
+      "try": [
+        "Mở asset trên explorer và tìm số người nắm giữ — phải là 1, là bạn",
+        "Gửi một ít cho bạn cùng lớp. Họ sẽ phải thêm trustline trước, và bạn sẽ thấy nó fail nếu họ chưa làm",
+        "Phát hành lại đúng asset code đó từ một issuer khác, để thấy vì sao ví hiển thị issuer chứ không chỉ ký hiệu",
+        "Nếu bạn đã khoá issuer, thử mint thêm xem. Sổ cái sẽ từ chối — đó là thứ làm cho tổng cung cố định trở nên đáng tin"
+      ],
+      "again": "Phát hành token khác"
+    }
+  },
+  "explorerLink": {
+    "account": "Xem tài khoản trên Stellar Expert",
+    "tx": "Xem giao dịch trên Stellar Expert",
+    "asset": "Xem asset trên Stellar Expert",
+    "contract": "Xem contract trên Stellar Expert",
+    "external": "mở trong tab mới"
+  },
+  "network": {
+    "testnet": "Testnet",
+    "mainnet": "Mainnet",
+    "testnetTooltip": "Mọi thứ ở đây chạy trên mạng thử nghiệm của Stellar. Token không có giá trị và XLM là miễn phí."
+  },
+  "errors": {
+    "title": "Có gì đó không ổn",
+    "walletNotInstalled": "Trình duyệt này chưa cài Freighter.",
+    "walletRejected": "Bạn đã huỷ chữ ký trong ví.",
+    "walletLocked": "Freighter đang khoá. Mở extension và mở khoá nó.",
+    "wrongNetwork": "Ví của bạn đang ở network khác với bài học này. Chuyển Freighter sang Test Net.",
+    "accountNotFunded": "Tài khoản này chưa tồn tại trên sổ cái. Nạp bằng Friendbot trước đã.",
+    "insufficientFee": "Mạng đang bận và phí đặt quá thấp. Thử lại nhé.",
+    "underfunded": "Số dư không đủ cho giao dịch này.",
+    "noDestination": "Tài khoản nhận chưa được tạo. Nó cần một khoản XLM khởi tạo.",
+    "noTrust": "Tài khoản nhận chưa có trustline cho asset này.",
+    "notAuthorized": "Trustline này chưa được issuer duyệt.",
+    "badSequence": "Giao dịch không đồng bộ với sổ cái. Tải lại và thử lại.",
+    "txTooLate": "Giao dịch hết hạn trước khi gửi được. Thử lại.",
+    "lowReserve": "Không đủ XLM để đáp ứng minimum reserve mà thao tác này cần.",
+    "trustLimitExceeded": "Số lượng vượt quá hạn mức trustline của asset này.",
+    "assetAlreadyExists": "Đã tồn tại asset với asset code và issuer này.",
+    "friendbotFailed": "Friendbot không nạp được cho tài khoản. Có thể đang bị giới hạn tần suất — đợi một chút rồi thử lại.",
+    "simulationFailed": "Không mô phỏng được lời gọi contract. Kiểm tra lại các giá trị rồi thử lại.",
+    "network": "Không kết nối được tới mạng Stellar. Kiểm tra đường truyền rồi thử lại.",
+    "unknown": "Lỗi không lường trước. Phần chi tiết bên dưới sẽ giúp giảng viên của bạn.",
+    "boundaryTitle": "Trang này gặp lỗi",
+    "boundaryBody": "Tải lại thường là xong. Nếu vẫn không được, báo giảng viên bạn đang làm gì lúc đó.",
+    "notFoundTitle": "Không tìm thấy trang",
+    "notFoundBody": "Đường dẫn đó không dẫn tới đâu trên trang này.",
+    "backHome": "Về trang đầu"
+  }
+}
