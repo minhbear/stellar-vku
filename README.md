@@ -18,6 +18,9 @@ npm run dev            # http://localhost:3000 → redirects to /en
 | `/[locale]/learn/tokenization` | Concepts recap — fungibility, metadata, Stellar asset types, trustlines, explorers, plus a five-question self-check |
 | `/[locale]/learn/tokenization/stablecoin` | Step-through visualisation of Circle's USDC issuance loop |
 | `/[locale]/learn/tokenization/issue-token` | Wizard that issues a real token on testnet from the student's own wallet |
+| `/[locale]/learn/forensics` | Mission 01: read one wallet in Stellar Expert (creator, holdings, history, what it claims about itself) |
+| `/[locale]/learn/forensics/airdrop` | Mission 02: trace a token airdrop from a bare token address to every holder |
+| `/[locale]/learn/forensics/frozen-wallet` | Mission 03 (homework): a frozen customer wallet and an issuer that kept approval, freezing and clawback |
 
 Locales are `en` (source of truth) and `vi`. Messages live in
 `src/messages/*.json`; the course structure lives in `src/lib/curriculum.ts`.
@@ -53,6 +56,46 @@ substituting a local keypair for the wallet signature. It covers the plain
 classic path, the regulated path (flags + home domain + locked issuer), and the
 SAC path, and asserts the minted balance and the derived contract address.
 
+## The explorer missions
+
+Module 2 is a workshop, not a reading: each lesson hands the student one address,
+asks questions whose answers are only findable by clicking around Stellar Expert,
+and unlocks a step-through walkthrough once every question is answered. A
+lecturer can open the walkthrough early with a button.
+
+Missions 01 and 02 are taught in the room. Mission 03 is the homework: same
+shape, eight questions, and `homework` on `CaseWorkspace` changes the locked
+panel to say so.
+
+The audience is non-technical, so **the lessons never mention an API, an
+endpoint or a query**. Hints name boxes and tabs in the explorer UI ("Summary
+box", "Account Signers", "History tab") and link straight to the page where the
+answer is visible. Copy carries no em dashes.
+
+The data is **real, seeded testnet data**, not fixtures:
+
+```bash
+npm run seed:forensics   # builds both cases on testnet, rewrites the case data
+```
+
+`scripts/seed-forensics.ts` creates the accounts, assets, trustlines, payments,
+the Stellar Asset Contract, the batched airdrop, a second-hop
+transfer, a locked issuer, a same-code look-alike asset, and for mission 03 a
+regulated stablecoin whose issuer approves every holder, freezes one of them and
+claws tokens back from another — one airdrop
+recipient deliberately holds both, so the explorer shows it two identical token
+codes side by side — then writes everything to `src/lib/forensics/case-data.json`.
+
+SDF wipes testnet every few months, so **re-run the seed before the workshop**
+and commit the regenerated JSON. Nothing else needs touching: no lesson copy
+contains an address, `src/lib/forensics/cases.ts` derives every answer and every
+explorer link from that file, and the walkthrough diagrams label their nodes
+from it.
+
+Answers are checked in the browser (normalised: case-folded addresses,
+`1,000,000` = `1000000.0000000`). A student who opens devtools can read them —
+this is a self-check during a workshop, not an exam.
+
 ## Conventions
 
 Documented in `.agents/skills/`:
@@ -65,10 +108,13 @@ Documented in `.agents/skills/`:
 - `forms-and-validation` — react-hook-form + zod, string amounts, full addresses
   on confirmation screens
 
-Two project-specific rules worth repeating:
+Three project-specific rules worth repeating:
 
 - **Amounts stay strings.** `src/lib/stellar/format.ts` converts through
   `bigint`; `Number()` on a token supply loses precision.
+- **No address is ever written in a message file.** Copy is translated, ledger
+  data is generated. Everything the explorer missions point at comes from
+  `case-data.json` through `cases.ts`.
 - **Entrance animations are CSS, not JS.** Chrome pauses `requestAnimationFrame`
   in background tabs, which leaves a framer-motion entrance frozen at
   `opacity: 0`. The `.animate-rise` utility in `globals.css` uses

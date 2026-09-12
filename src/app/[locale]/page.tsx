@@ -153,7 +153,7 @@ function Curriculum() {
           </p>
         </Reveal>
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-[2fr_1fr]">
+        <div className="mt-8 grid gap-4 lg:grid-cols-2">
           {MODULES.map((module) => (
             <Reveal key={module.id}>
               <Card className="h-full">

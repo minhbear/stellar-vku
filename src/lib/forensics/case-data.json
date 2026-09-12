@@ -1,0 +1,152 @@
+{
+  "network": "testnet",
+  "generatedAt": "2026-09-12T16:32:14.531Z",
+  "case1": {
+    "subject": "GCI3APSXP5YIE72VLCO5QKMX57EFCAKGZVIMSUKTQMM2RMH6FHCFTH7A",
+    "creator": "GB2VSIMOCWJ5FPAJDT47MSBBZPAV67GTEJBVR752GVOONSQSGMSYNJCU",
+    "homeDomain": "case01.vku.stellar",
+    "dataEntry": {
+      "key": "vku:case",
+      "value": "01"
+    },
+    "trustlineCount": 2,
+    "birthTx": "f75e0282d09803a5ad18a349b334bbcd4d49eb121f44c29645115873088ef96e",
+    "holdings": [
+      {
+        "code": "VKUSD04",
+        "issuer": "GC2RRTKKFLLO6CBHQ7RPK7KAQJLGHR4GMZ26LE74XVI54ZJ3AINGDOAQ",
+        "balance": "3250.0000000"
+      },
+      {
+        "code": "VKUPT04",
+        "issuer": "GC4I32XVV4WTE6MORNMO3MNPEVVRVQY7ARIE2PP5HUYL4UZNDP2VTYRH",
+        "balance": "8000.0000000"
+      }
+    ],
+    "spend": {
+      "code": "VKUSD04",
+      "destination": "GDJB5D4BLWICABESRBPLYPQ3GUFOFI5LLMD5FGDTSIFC2WEMEWTYTPQC",
+      "amount": "450"
+    },
+    "xlmSpend": {
+      "destination": "GA6HO4AUNAAM4LOV3NR3F3Z25IE65V2X3E3ANZYIO67MDNSS6IZ67DGL",
+      "amount": "25"
+    }
+  },
+  "case2": {
+    "code": "VKUAIR04",
+    "issuer": "GDKYZKQ3RNZTQC3AZBHV4AVB7CH7VNSBPY4SXEVOYLMN3XWGV2MC2RM3",
+    "contractId": "CCPI55DEUS6DUSX5ETXXZLXMBQ3KS6M4DGFLBABS55YAA5R24WW46CPF",
+    "supply": "1000000",
+    "treasury": "GBBE4OD7IQYICFRW73J4EMBTNIIBXRL7APKKGC2LQROGCGSZ6XVDYL7P",
+    "issuerHomeDomain": "vku-airdrop.stellar",
+    "issuerLocked": true,
+    "recipients": [
+      {
+        "address": "GBYW4QZCHNAA6426IN2FGXSGWDIBI5Q5IATKXUHVPJLRQM66573WX2TU",
+        "amount": "50000"
+      },
+      {
+        "address": "GB7PFW5PCP2VFMDQPXTVTR354BPSBEP6XEZEK2ATJNJDWVLENCWGNC3I",
+        "amount": "35000"
+      },
+      {
+        "address": "GBMQKL3E53QMOZKYJ45HY76LNL7CWH2552SB3QT36GRUILB4STQ4Z6FP",
+        "amount": "25000"
+      },
+      {
+        "address": "GBLXSCVFZB6XEJNUY35EW6KKXAHSSV2R5I7K4KYLK7HI6F246I4PHBOI",
+        "amount": "12500"
+      },
+      {
+        "address": "GAU4LOGI7QAV5ORAZ4CZURVLGTFOIHDBM3EWMMZAX3LPVXMX2UTXASUX",
+        "amount": "7500"
+      },
+      {
+        "address": "GCIIWLQXKH4B7HYNR6LDGCVJIBVQ5CVQSQVTXCZVU7OGY57DNXFEBJ4L",
+        "amount": "2500"
+      }
+    ],
+    "forward": {
+      "from": "GBMQKL3E53QMOZKYJ45HY76LNL7CWH2552SB3QT36GRUILB4STQ4Z6FP",
+      "to": "GBGRTUBB3YEQLA45LRPX6XWD33VXLOFTAWDIJZP3EAEKXXE3YTOV5Z6U",
+      "amount": "10000"
+    },
+    "decoy": {
+      "issuer": "GAJR7CIGE46QGKVTPE4SPDEPTA5JK7OVMIKJVYRMSAID2RHSAGL2PH4Y",
+      "holder": "GB3SBFQPKKL2ZJL67C4C7N5U4WJXHS2MHMR73MQ4YOMP4NPAB7KPCDQF",
+      "homeDomain": "vku-airdrop-official.io",
+      "supply": "1000000",
+      "confusedHolder": "GBLXSCVFZB6XEJNUY35EW6KKXAHSSV2R5I7K4KYLK7HI6F246I4PHBOI",
+      "confusedAmount": "40000"
+    },
+    "txs": {
+      "mint": "7932aa599eb8866081a8567c4447c54d7b53e3879433276a19bf3b8f673b6ad5",
+      "sac": "34468ddfd10d04038442e2d990f991e44187e851eb36e7412d1d6ddcb3761856",
+      "airdrop1": "fd7ffea26fb1d2bdf48934d57949bba2bbb12e3cfdd11eadb58ccb475867011e",
+      "airdrop2": "8dcc9ef38a023422c1281c01dc080ebddd296c7476a18fc969576c0353a87e39",
+      "forward": "920fb274849a6863ac20cebaa672d9a2358beed0b75c31179d0e0e74a8b167db",
+      "lock": "85b4fb30a030984351d580becc4a3fb6787080f7656f990e7aedbe9226ae7b3a"
+    }
+  },
+  "case3": {
+    "code": "VKUVND01",
+    "issuer": "GBFFTFRNSP373TJ7D644SBW2TSULLOOOBLUZ7OMRHTPU5ZSPES2Y5PIX",
+    "issuerHomeDomain": "vku-bank.stellar",
+    "treasury": "GDUZA52FDMHHXBNFXQ3NMRVNHTVRHLOP24QOKFPVYLLJ5KBBA5D7WJIX",
+    "subject": "GAEFBDAH5MD2QBBB2WA2ZEPA7BKSMZXNTRIISQJD5O26SNWROTQKRJCO",
+    "supply": "739000",
+    "supplyAuthorized": "729000.0000000",
+    "mints": [
+      "500000",
+      "250000"
+    ],
+    "customers": [
+      {
+        "address": "GAEFBDAH5MD2QBBB2WA2ZEPA7BKSMZXNTRIISQJD5O26SNWROTQKRJCO",
+        "balance": "10000.0000000",
+        "authorized": false
+      },
+      {
+        "address": "GALFIOL74C72T2FKTRTFFS5VR7FUNZXR7YBDMZ6BH5BHWDZS3MVVWWTH",
+        "balance": "10500.0000000",
+        "authorized": true
+      },
+      {
+        "address": "GBTESTMYPXBKHSB2Q7MXLE5N35IPOU5RSE6AR7DU44DTDMRFDSTLOG5C",
+        "balance": "24000.0000000",
+        "authorized": true
+      },
+      {
+        "address": "GDVK442LINVRBGMYOLOHNL3GITL6HSVSNRSHQJGFHVSOZZZUCRVNDRDX",
+        "balance": "0.0000000",
+        "authorized": true
+      }
+    ],
+    "spend": {
+      "to": "GALFIOL74C72T2FKTRTFFS5VR7FUNZXR7YBDMZ6BH5BHWDZS3MVVWWTH",
+      "amount": "2000"
+    },
+    "burn": {
+      "address": "GBTESTMYPXBKHSB2Q7MXLE5N35IPOU5RSE6AR7DU44DTDMRFDSTLOG5C",
+      "amount": "6000"
+    },
+    "clawback": {
+      "address": "GDVK442LINVRBGMYOLOHNL3GITL6HSVSNRSHQJGFHVSOZZZUCRVNDRDX",
+      "amount": "5000"
+    },
+    "frozen": {
+      "address": "GAEFBDAH5MD2QBBB2WA2ZEPA7BKSMZXNTRIISQJD5O26SNWROTQKRJCO",
+      "balance": "10000.0000000"
+    },
+    "txs": {
+      "flags": "5851744f25425f907fda4a818fec6f39b8b7e8921ccc834b6fe9604ef9c07f36",
+      "mint1": "b637cb37e5cce335e7d19d4e2ed75d291fec6f5105277582e36a411a18f3f72b",
+      "payout": "ee2476fe62694e3c70411624510d0545af692f85b035dadde61ee835af8d170d",
+      "burn": "2aa2067fc34009567352f4566286763e138200ac2980c1ee38282ae1edd2131f",
+      "clawback": "c9fbfbeab191a851de9c60dc826337600fcd0c9b1fa5c90e95dcaa3febf91a95",
+      "freeze": "c4a21bd93c59f0e9c67cdc2cc7978702983164dec48963a343a56063b86f8f76",
+      "mint2": "812d0b5eb635a53cbaf94af4d66037bff4c651574e1d5a46fa3814ac6623a8b9"
+    }
+  }
+}

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "verify:issuance": "tsx scripts/verify-issuance.ts"
+    "verify:issuance": "tsx scripts/verify-issuance.ts",
+    "seed:forensics": "tsx scripts/seed-forensics.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",
