@@ -4,7 +4,13 @@
  * this file plus the matching messages under `modules.*`.
  */
 
-export type LessonIcon = "concepts" | "stablecoin" | "issue";
+export type LessonIcon =
+  | "concepts"
+  | "stablecoin"
+  | "issue"
+  | "trace"
+  | "hunt"
+  | "homework";
 
 export interface LessonDef {
   id: string;
@@ -12,7 +18,7 @@ export interface LessonDef {
   slug: string;
   icon: LessonIcon;
   /** Rendered in the sidebar so students know what is interactive. */
-  kind: "reading" | "walkthrough" | "hands-on";
+  kind: "reading" | "walkthrough" | "hands-on" | "investigation";
   /** Estimated minutes. Not translated — it is a number, not copy. */
   minutes: number;
 }
@@ -39,6 +45,22 @@ export const MODULES: ModuleDef[] = [
         minutes: 15,
       },
       { id: "issue", slug: "issue-token", icon: "issue", kind: "hands-on", minutes: 20 },
+    ],
+  },
+  {
+    id: "forensics",
+    slug: "forensics",
+    order: 2,
+    lessons: [
+      { id: "wallet", slug: "", icon: "trace", kind: "investigation", minutes: 25 },
+      { id: "airdrop", slug: "airdrop", icon: "hunt", kind: "investigation", minutes: 35 },
+      {
+        id: "frozen",
+        slug: "frozen-wallet",
+        icon: "homework",
+        kind: "investigation",
+        minutes: 35,
+      },
     ],
   },
 ];

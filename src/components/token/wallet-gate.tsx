@@ -144,7 +144,7 @@ export function WalletGate({ onReady }: { onReady: () => void }) {
           </div>
           <div>
             <dt className="text-xs text-muted-foreground">{t("network")}</dt>
-            <dd className="mt-1 font-onchain text-xs">{network ?? "—"}</dd>
+            <dd className="mt-1 font-onchain text-xs">{network ?? "…"}</dd>
           </div>
           <div>
             <dt className="text-xs text-muted-foreground">{t("balance")}</dt>

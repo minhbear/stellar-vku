@@ -1,8 +1,8 @@
 {
   "meta": {
     "siteName": "Stellar × VKU",
-    "defaultTitle": "Tokenization on Stellar — VKU",
-    "defaultDescription": "A hands-on course for fintech students: how digital assets are created, how a stablecoin is issued, and how to issue your own token on the Stellar testnet."
+    "defaultTitle": "Tokenization on Stellar · VKU",
+    "defaultDescription": "A hands-on course for fintech students: how digital assets are created, how a stablecoin is issued, how to issue your own token on the Stellar testnet, and how to trace wallets and tokens on-chain."
   },
   "common": {
     "next": "Next",
@@ -69,12 +69,34 @@
         "stablecoin": {
           "title": "How a stablecoin is issued",
           "short": "Stablecoin issuance",
-          "description": "Walk through Circle’s USDC issuance loop step by step — deposit, mint, reserves, yield, redeem, burn."
+          "description": "Walk through Circle’s USDC issuance loop step by step: deposit, mint, reserves, yield, redeem, burn."
         },
         "issue": {
           "title": "Issue your own token",
           "short": "Issue a token",
-          "description": "Connect Freighter on testnet and issue a real token — as a classic Stellar asset or through the Stellar Asset Contract."
+          "description": "Connect Freighter on testnet and issue a real token, either as a classic Stellar asset or through the Stellar Asset Contract."
+        }
+      }
+    },
+    "forensics": {
+      "title": "Reading on-chain data",
+      "short": "Read on-chain",
+      "description": "Two missions in Stellar Expert on real testnet data: read a wallet end to end, then trace a token airdrop from a bare address to every holder.",
+      "lessons": {
+        "wallet": {
+          "title": "Mission 01: Read the wallet",
+          "short": "Read a wallet",
+          "description": "One address. Work out who created it, what it holds and everything it has done."
+        },
+        "airdrop": {
+          "title": "Mission 02: Follow the airdrop",
+          "short": "Trace an airdrop",
+          "description": "One token address. Find the issuer, the distributor, every recipient, and whether more tokens can still appear."
+        },
+        "frozen": {
+          "title": "Mission 03: The wallet that cannot spend",
+          "short": "Homework",
+          "description": "Homework: one frozen customer wallet, and an issuer that kept every power it could."
         }
       }
     }
@@ -83,7 +105,7 @@
     "eyebrow": "VKU · Fintech program",
     "title": "Tokenization on Stellar",
     "titleRich": "Tokenization on <accent>Stellar</accent>",
-    "lede": "A hands-on companion to the lecture. Refresh the concepts, watch how a real stablecoin is issued, then issue a token of your own on the Stellar testnet — no coding required.",
+    "lede": "A hands-on companion to the lecture. Refresh the concepts, watch how a real stablecoin is issued, issue a token of your own on the Stellar testnet, then trace one back through the explorer. No coding required.",
     "ctaPrimary": "Start with Tokenization",
     "ctaSecondary": "See what you will build",
     "badgeTestnet": "Everything here runs on the Stellar testnet. No real money is involved.",
@@ -92,7 +114,7 @@
       "items": [
         {
           "title": "Concepts, then practice",
-          "body": "Every idea from the lecture — fungibility, metadata, asset types, trustlines — is followed by something you can click."
+          "body": "Every idea from the lecture (fungibility, metadata, asset types, trustlines) is followed by something you can click."
         },
         {
           "title": "A real issuance, visualised",
@@ -110,7 +132,7 @@
       "items": [
         {
           "title": "Install Freighter",
-          "body": "The Stellar browser wallet. Install the extension and create a wallet — write the recovery phrase on paper, not in a file.",
+          "body": "The Stellar browser wallet. Install the extension and create a wallet, then write the recovery phrase on paper, not in a file.",
           "action": "Get Freighter",
           "href": "https://www.freighter.app/"
         },
@@ -130,7 +152,7 @@
     },
     "curriculum": {
       "title": "Curriculum",
-      "lede": "One module for now. More will be added as the course goes on.",
+      "lede": "Two modules so far. More will be added as the course goes on.",
       "comingSoon": "More modules coming",
       "comingSoonBody": "Payments and anchors, DeFi on Stellar, and smart contracts with Soroban."
     },
@@ -145,7 +167,7 @@
     "lede": "Everything below was covered in the lecture. Read it as a checklist: if any card makes you pause, that is the part to review before the practical lesson.",
     "quiz": {
       "title": "Quick check",
-      "lede": "Five questions. No score is stored — this is just to see what stuck.",
+      "lede": "Five questions. No score is stored. This is just to see what stuck.",
       "showAnswer": "Show answer",
       "hideAnswer": "Hide answer",
       "correct": "Correct",
@@ -162,7 +184,7 @@
             "A smart contract, always"
           ],
           "answer": 1,
-          "explanation": "Nothing is ever “inside” a wallet. A token is an entry in a shared ledger — an amount attributed to an account. Your wallet only holds the private key that lets you authorise changes to that entry."
+          "explanation": "Nothing is ever “inside” a wallet. A token is an entry in a shared ledger: an amount attributed to an account. Your wallet only holds the private key that lets you authorise changes to that entry."
         },
         {
           "question": "What does “tokenization” mean?",
@@ -173,7 +195,7 @@
             "Splitting a payment into smaller instalments"
           ],
           "answer": 2,
-          "explanation": "Careful — the word also exists in payment security, where “tokenization” means replacing a card number with a surrogate value. In blockchain, it means representing ownership of something (a dollar, a bond, a building, a concert seat) as a ledger entry that can be transferred and settled."
+          "explanation": "Careful: the word also exists in payment security, where “tokenization” means replacing a card number with a surrogate value. In blockchain, it means representing ownership of something (a dollar, a bond, a building, a concert seat) as a ledger entry that can be transferred and settled."
         },
         {
           "question": "Which of these is fungible?",
@@ -184,7 +206,7 @@
             "A one-of-a-kind artwork"
           ],
           "answer": 2,
-          "explanation": "Fungible means interchangeable: any one unit is as good as any other, and units can be split and merged. Non-fungible means each unit has an identity that matters — a seat number, a deed, a serial."
+          "explanation": "Fungible means interchangeable: any one unit is as good as any other, and units can be split and merged. Non-fungible means each unit has an identity that matters: a seat number, a deed, a serial."
         },
         {
           "question": "On Stellar, what does a trustline do?",
@@ -206,18 +228,18 @@
             "They do have trustlines, under another name"
           ],
           "answer": 1,
-          "explanation": "On an EVM-style chain the balance lives in the token contract’s own mapping, so a sender can write into it without the recipient’s consent — which is why address books fill up with unsolicited scam tokens. Stellar puts the asset entry on the account itself, so it requires consent and a reserve."
+          "explanation": "On an EVM-style chain the balance lives in the token contract’s own mapping, so a sender can write into it without the recipient’s consent, which is why address books fill up with unsolicited scam tokens. Stellar puts the asset entry on the account itself, so it requires consent and a reserve."
         }
       ]
     },
     "fungibility": {
       "title": "Fungible and non-fungible",
-      "lede": "The difference is not technical sophistication — it is whether units have an identity.",
+      "lede": "The difference is not technical sophistication. It is whether units have an identity.",
       "fungible": {
         "title": "Fungible token",
         "points": [
           "Every unit is interchangeable with every other unit",
-          "Divisible — you can send 0.37 of one",
+          "Divisible: you can send 0.37 of one",
           "Balances merge: 3 + 5 is just 8",
           "Priced per unit"
         ],
@@ -227,7 +249,7 @@
         "title": "Non-fungible token",
         "points": [
           "Each unit has its own identifier and its own history",
-          "Not divisible — half a ticket is nothing",
+          "Not divisible: half a ticket is nothing",
           "Balances do not merge: two NFTs stay two distinct things",
           "Priced per item"
         ],
@@ -236,7 +258,7 @@
     },
     "metadata": {
       "title": "What metadata a token carries",
-      "lede": "Metadata is what turns a number in a ledger into something a human can recognise. Some of it lives on chain; a lot of it does not — and knowing which is which is a security skill.",
+      "lede": "Metadata is what turns a number in a ledger into something a human can recognise. Some of it lives on chain; a lot of it does not, and knowing which is which is a security skill.",
       "fungibleTitle": "Fungible token",
       "nonFungibleTitle": "Non-fungible token",
       "onChain": "On chain",
@@ -254,7 +276,7 @@
         },
         {
           "field": "Issuer",
-          "meaning": "The account that created it. This is the real identity of the token — the code alone is not unique",
+          "meaning": "The account that created it. This is the real identity of the token. The code alone is not unique",
           "where": "onChain"
         },
         {
@@ -291,7 +313,7 @@
         },
         {
           "field": "Collection / contract",
-          "meaning": "Which contract minted it — the equivalent of the issuer",
+          "meaning": "Which contract minted it, the equivalent of the issuer",
           "where": "onChain"
         },
         {
@@ -307,7 +329,7 @@
       ],
       "callout": {
         "title": "The thing to remember",
-        "body": "Anyone can issue an asset with the code USDC. What makes the real one real is the issuer address. Wallets and explorers show both — always check the issuer, never the symbol alone."
+        "body": "Anyone can issue an asset with the code USDC. What makes the real one real is the issuer address. Wallets and explorers show both. Always check the issuer, never the symbol alone."
       }
     },
     "assetTypes": {
@@ -321,14 +343,14 @@
       },
       "rows": [
         {
-          "type": "Native — XLM (Lumens)",
+          "type": "Native: XLM (Lumens)",
           "what": "The network’s own currency. It pays transaction fees and backs the minimum balance every account must keep.",
           "trustline": "Not needed",
           "use": "Fees, reserves, being the bridge asset in path payments"
         },
         {
           "type": "Classic asset",
-          "what": "A code plus an issuer account, issued with a plain payment operation. No program, no deployment — it is a ledger primitive.",
+          "what": "A code plus an issuer account, issued with a plain payment operation. No program, no deployment. It is a ledger primitive.",
           "trustline": "Required",
           "use": "Stablecoins, tokenized deposits, loyalty points, anything that behaves like currency"
         },
@@ -336,7 +358,7 @@
           "type": "Stellar Asset Contract (SAC)",
           "what": "A built-in smart-contract wrapper around a classic asset, exposing the standard SEP-41 token interface at a contract address.",
           "trustline": "Required for G-addresses",
-          "use": "Letting Soroban contracts hold and move an existing asset — DeFi, escrow, vaults"
+          "use": "Letting Soroban contracts hold and move an existing asset: DeFi, escrow, vaults"
         }
       ],
       "sacNote": {
@@ -345,16 +367,16 @@
       }
     },
     "trustlines": {
-      "title": "Trustlines — Stellar’s consent step",
+      "title": "Trustlines: Stellar’s consent step",
       "lede": "This is the part that surprises people coming from other chains, and it is worth understanding properly because it explains an entire class of scams that Stellar does not have.",
       "howTitle": "How it works",
-      "howBody": "Before an account can receive an asset, it submits a ChangeTrust operation: “I accept CODE issued by G…, up to this limit.” That creates a trustline — a sub-entry on the account holding the balance, the limit, and the authorization state. Paying an account with no trustline fails outright with op_no_trust.",
+      "howBody": "Before an account can receive an asset, it submits a ChangeTrust operation: “I accept CODE issued by G…, up to this limit.” That creates a trustline: a sub-entry on the account holding the balance, the limit, and the authorization state. Paying an account with no trustline fails outright with op_no_trust.",
       "costTitle": "What it costs",
-      "costBody": "Each trustline raises the account’s minimum XLM balance by 0.5 XLM. That XLM is not spent — it is locked while the trustline exists, and released when you remove it. This is the reserve that makes spam expensive.",
+      "costBody": "Each trustline raises the account’s minimum XLM balance by 0.5 XLM. That XLM is not spent. It is locked while the trustline exists, and released when you remove it. This is the reserve that makes spam expensive.",
       "whyOthersTitle": "Why other chains don’t do this",
       "whyOthersBody": "On an EVM-style chain, balances live inside each token contract’s own mapping. A sender writes into that mapping directly, so anyone can push any token to any address without asking. That is why wallets there fill with unsolicited “airdrops” that are really phishing bait. Stellar stores the asset entry on the account itself, so the ledger cannot record a balance the account never agreed to hold.",
       "tradeoffTitle": "The trade-off",
-      "tradeoffBody": "Consent costs a step. Every wallet, exchange and anchor has to build “add trustline” into onboarding, and each one locks a little XLM. Stellar took that friction deliberately: cleaner balances, no forced tokens, and an issuer that can be required to authorise each holder — which is exactly what a regulated stablecoin needs.",
+      "tradeoffBody": "Consent costs a step. Every wallet, exchange and anchor has to build “add trustline” into onboarding, and each one locks a little XLM. Stellar took that friction deliberately: cleaner balances, no forced tokens, and an issuer that can be required to authorise each holder, which is exactly what a regulated stablecoin needs.",
       "flowTitle": "The order of operations",
       "flowSteps": [
         {
@@ -367,7 +389,7 @@
         },
         {
           "title": "Issuer may authorise",
-          "body": "Only if the asset has AUTH_REQUIRED set — the compliance path for regulated assets."
+          "body": "Only if the asset has AUTH_REQUIRED set. That is the compliance path for regulated assets."
         },
         {
           "title": "Issuer pays",
@@ -384,7 +406,7 @@
       "lede": "An explorer is a read-only window on the ledger. You will use one after every step of the practical lesson, so learn what to look at.",
       "whatToCheck": "What to check on an asset page",
       "checkItems": [
-        "The issuer address — not just the code",
+        "The issuer address, not just the code",
         "How many accounts hold a trustline for it",
         "Total supply, and whether the issuer is locked (can it print more?)",
         "The home domain and whether a stellar.toml is actually published there",
@@ -399,13 +421,13 @@
         },
         {
           "name": "Stellar Lab",
-          "body": "The official tool. Builds and inspects transactions field by field — closer to the protocol.",
+          "body": "The official tool. Builds and inspects transactions field by field, closer to the protocol.",
           "href": "https://lab.stellar.org"
         },
         {
-          "name": "Horizon API",
-          "body": "The REST API both of the above read from. Open an endpoint in a browser and you get JSON.",
-          "href": "https://developers.stellar.org/docs/data/apis/horizon"
+          "name": "Stellar Expert on the real network",
+          "body": "The same explorer pointed at mainnet. Identical layout, real money: the place to look up USDC and the assets in the table below.",
+          "href": "https://stellar.expert/explorer/public"
         }
       ],
       "examplesTitle": "Assets to look up",
@@ -431,8 +453,8 @@
     "pause": "Pause",
     "diagram": {
       "title": "The issuance loop",
-      "fiatWorld": "Off-chain — banks and regulation",
-      "chainWorld": "On-chain — public ledgers",
+      "fiatWorld": "Off-chain: banks and regulation",
+      "chainWorld": "On-chain: public ledgers",
       "nodes": {
         "bank": {
           "label": "Business",
@@ -480,7 +502,7 @@
       "meter": {
         "reserves": "USD held by Circle",
         "supply": "USDC in circulation",
-        "balanced": "1 : 1 — balanced",
+        "balanced": "1 : 1 balanced",
         "unbalanced": "Deposit received, nothing minted yet"
       }
     },
@@ -490,16 +512,16 @@
         "eyebrow": "The promise",
         "short": "The promise",
         "title": "A stablecoin is a claim on a dollar",
-        "body": "A stablecoin is a token whose price is meant to stay pegged to something stable — almost always the US dollar. It is not stable because the code says so. It is stable because the issuer promises that one token can always be exchanged for one dollar, and holds the dollars to make that promise good.",
+        "body": "A stablecoin is a token whose price is meant to stay pegged to something stable, almost always the US dollar. It is not stable because the code says so. It is stable because the issuer promises that one token can always be exchanged for one dollar, and holds the dollars to make that promise good.",
         "points": [
           "The peg is a redemption promise, not a technical property",
           "Fiat-backed is the model used by USDC and USDT: one token, one real dollar held in reserve",
-          "Other designs exist — crypto-overcollateralised (DAI), and algorithmic ones with no reserves at all (which is how UST collapsed in 2022)"
+          "Other designs exist too: crypto-overcollateralised (DAI), and algorithmic ones with no reserves at all (which is how UST collapsed in 2022)"
         ],
         "callout": {
           "kind": "info",
           "title": "Why anyone wants this",
-          "body": "You get the settlement of a blockchain — final in seconds, open all night, cheap across borders — while still counting in dollars. That is why stablecoins settle more value on Stellar than anything else on the network."
+          "body": "You get the settlement of a blockchain (final in seconds, open all night, cheap across borders) while still counting in dollars. That is why stablecoins settle more value on Stellar than anything else on the network."
         }
       },
       {
@@ -509,7 +531,7 @@
         "title": "Opening a Circle Mint account",
         "body": "New USDC only enters existence through Circle, and only for institutions. A business applies for a Circle Mint account and goes through KYB, sanctions screening and ongoing AML monitoring before it can mint or redeem anything.",
         "points": [
-          "Circle Mint is for exchanges, banks, institutional traders and large businesses — not individuals",
+          "Circle Mint is for exchanges, banks, institutional traders and large businesses, not individuals",
           "Everyone else buys USDC that already exists, from an exchange or an on-ramp partner",
           "That distinction matters: the primary market (mint and redeem at exactly 1:1) is small and gated; the secondary market where you and I buy is large and open"
         ],
@@ -528,7 +550,7 @@
         "points": [
           "The deposit is fiat, settled on traditional banking rails",
           "The Mint account balance is a liability Circle owes the customer, denominated in USD",
-          "USDC supply is unchanged — the ledger has not been touched"
+          "USDC supply is unchanged. The ledger has not been touched"
         ],
         "callout": {
           "kind": "info",
@@ -540,12 +562,12 @@
         "id": "mint",
         "eyebrow": "Step 3",
         "short": "Mint",
-        "title": "Minting — dollars become tokens",
+        "title": "Minting: dollars become tokens",
         "body": "The business requests USDC against its dollar balance, names a blockchain and gives a wallet address. Circle mints exactly that amount on that chain and sends it. The dollars move into reserves; the tokens move to the customer. One dollar in, one token out.",
         "points": [
           "The customer chooses the chain: Stellar, Ethereum, Solana, Base and others are all the same USDC",
           "Total USDC supply increases by exactly the amount minted",
-          "The whole issuance operation is a single on-chain transaction — publicly visible, forever"
+          "The whole issuance operation is a single on-chain transaction, publicly visible, forever"
         ],
         "callout": {
           "kind": "success",
@@ -560,14 +582,14 @@
         "title": "Where the dollars actually sit",
         "body": "The reserves are not a vault of cash. The majority is invested in the Circle Reserve Fund (ticker USDXX), an SEC-registered 2a-7 government money market fund managed by BlackRock and custodied at BNY Mellon. It holds short-dated US Treasuries and overnight Treasury repurchase agreements. The remainder is cash at regulated banks so redemptions can settle immediately.",
         "points": [
-          "Managed by BlackRock, custodied at BNY Mellon — not by Circle itself",
+          "Managed by BlackRock, custodied at BNY Mellon, not by Circle itself",
           "Portfolio holdings are published daily by BlackRock, and Circle publishes a monthly reserve attestation by a Big Four firm (Deloitte)",
-          "Short-dated government paper is chosen because it can be sold fast without a loss — liquidity matters more than yield when everyone might redeem at once"
+          "Short-dated government paper is chosen because it can be sold fast without a loss. Liquidity matters more than yield when everyone might redeem at once"
         ],
         "callout": {
           "kind": "warning",
           "title": "This is the risk that actually matters",
-          "body": "A fiat-backed stablecoin’s real risk is not the smart contract — it is whether the reserves exist, are liquid, and are held somewhere safe. In March 2023 USDC briefly traded at $0.87 because $3.3bn of its cash sat at Silicon Valley Bank when the bank failed. The peg recovered the moment the deposits were guaranteed. Read attestations, not marketing."
+          "body": "A fiat-backed stablecoin’s real risk is not the smart contract. It is whether the reserves exist, are liquid, and are held somewhere safe. In March 2023 USDC briefly traded at $0.87 because $3.3bn of its cash sat at Silicon Valley Bank when the bank failed. The peg recovered the moment the deposits were guaranteed. Read attestations, not marketing."
         }
       },
       {
@@ -575,17 +597,17 @@
         "eyebrow": "Step 5",
         "short": "Yield",
         "title": "Who earns the interest",
-        "body": "Treasury bills pay interest. On tens of billions of dollars of reserves, that is a very large income — and it goes to the issuer, not to the holder. This is the business model: you hand over a dollar, you get back a token that pays you nothing, and the issuer keeps the yield.",
+        "body": "Treasury bills pay interest. On tens of billions of dollars of reserves, that is a very large income, and it goes to the issuer, not to the holder. This is the business model: you hand over a dollar, you get back a token that pays you nothing, and the issuer keeps the yield.",
         "points": [
           "Holding USDC earns you no interest. The token itself has no yield",
           "In the US, the GENIUS Act explicitly forbids payment stablecoin issuers from paying interest to holders",
-          "Circle shares a large part of that revenue with distribution partners — most visibly Coinbase, which is paid for USDC held on its platform",
-          "Any “USDC yield” you are offered comes from somewhere else — lending it out, a DeFi protocol, an exchange promotion — and carries that party’s risk, not Circle’s"
+          "Circle shares a large part of that revenue with distribution partners, most visibly Coinbase, which is paid for USDC held on its platform",
+          "Any “USDC yield” you are offered comes from somewhere else (lending it out, a DeFi protocol, an exchange promotion) and carries that party’s risk, not Circle’s"
         ],
         "callout": {
           "kind": "info",
           "title": "The exam question",
-          "body": "If a stablecoin is fully backed and pays no interest, why would anyone hold one? Because they want dollars that settle on a blockchain — instantly, globally, at any hour. They are paying for settlement, not for return."
+          "body": "If a stablecoin is fully backed and pays no interest, why would anyone hold one? Because they want dollars that settle on a blockchain: instantly, globally, at any hour. They are paying for settlement, not for return."
         }
       },
       {
@@ -593,10 +615,10 @@
         "eyebrow": "Step 6",
         "short": "Circulation",
         "title": "Circulation, and what holds the peg",
-        "body": "Once minted, USDC moves like any other token — wallet to wallet, onto exchanges, into DeFi, across chains. Circle does not control where it goes. On the open market its price is set by supply and demand, so it can drift from a dollar. What pulls it back is arbitrage.",
+        "body": "Once minted, USDC moves like any other token: wallet to wallet, onto exchanges, into DeFi, across chains. Circle does not control where it goes. On the open market its price is set by supply and demand, so it can drift from a dollar. What pulls it back is arbitrage.",
         "points": [
-          "If USDC trades at $0.995, an institution buys it cheaply and redeems it at Circle for a full dollar, pocketing the difference — buying pressure pushes the price back up",
-          "If it trades at $1.005, they mint new USDC at par and sell it into the market — supply pressure pushes the price back down",
+          "If USDC trades at $0.995, an institution buys it cheaply and redeems it at Circle for a full dollar, pocketing the difference, and buying pressure pushes the price back up",
+          "If it trades at $1.005, they mint new USDC at par and sell it into the market, and supply pressure pushes the price back down",
           "The peg therefore depends on redemption being reliable and fast. When people doubt they can redeem, the arbitrage stops and the peg slips"
         ],
         "callout": {
@@ -609,8 +631,8 @@
         "id": "redeem",
         "eyebrow": "Step 7",
         "short": "Redeem & burn",
-        "title": "Redemption — and the burn",
-        "body": "The loop closes. A Mint account holder sends USDC back to Circle and asks for dollars. Circle destroys the tokens — “burning” them — and wires the dollars back from reserves. Supply falls by exactly the amount burned, and the reserves fall with it.",
+        "title": "Redemption and the burn",
+        "body": "The loop closes. A Mint account holder sends USDC back to Circle and asks for dollars. Circle destroys the tokens (“burning” them) and wires the dollars back from reserves. Supply falls by exactly the amount burned, and the reserves fall with it.",
         "points": [
           "Burning removes the tokens from circulation permanently; they are not resold",
           "Reserves shrink in step, so the 1:1 backing holds on the way down too",
@@ -627,7 +649,7 @@
         "eyebrow": "Step 8",
         "short": "On Stellar",
         "title": "The same loop, in Stellar terms",
-        "body": "USDC on Stellar is not a smart contract. It is a plain classic asset — code USDC, issued by one Circle account — and the whole mint-and-burn loop maps onto operations you are about to use yourself in the next lesson.",
+        "body": "USDC on Stellar is not a smart contract. It is a plain classic asset: code USDC, issued by one Circle account. The whole mint-and-burn loop maps onto operations you are about to use yourself in the next lesson.",
         "points": [
           "Minting = a payment operation from the issuing account. The tokens come into existence as they leave it",
           "Burning = a payment back to the issuing account. An issuer never holds a balance of its own asset, so receiving it destroys it",
@@ -646,11 +668,11 @@
       "lede": "Figures change. Check them at the source before quoting them in an exam.",
       "items": [
         {
-          "label": "Circle — What is USDC",
+          "label": "Circle: what is USDC",
           "href": "https://www.circle.com/usdc"
         },
         {
-          "label": "Circle — USDC transparency and reserves",
+          "label": "Circle: USDC transparency and reserves",
           "href": "https://www.circle.com/transparency"
         },
         {
@@ -658,20 +680,842 @@
           "href": "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund"
         },
         {
-          "label": "USDC on Stellar — asset page",
+          "label": "USDC on Stellar, asset page",
           "href": "https://stellar.expert/explorer/public/asset/USDC-GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN"
         }
       ]
     },
     "complete": {
       "title": "That is the loop",
-      "body": "Deposit, mint, reserve, circulate, redeem, burn — and an issuer whose only real job is keeping two numbers equal.",
+      "body": "Deposit, mint, reserve, circulate, redeem, burn, and an issuer whose only real job is keeping two numbers equal.",
       "cta": "Now issue your own token"
+    }
+  },
+  "forensics": {
+    "ui": {
+      "check": "Check",
+      "showHint": "Hint",
+      "hideHint": "Hide hint",
+      "reveal": "Show answer",
+      "revealed": "Answer",
+      "correct": "Correct",
+      "wrong": "Not it. Look again, everything you need is on the explorer page.",
+      "solvedOf": "{solved} of {total} answered",
+      "bonus": "Harder",
+      "placeholder": {
+        "address": "G… (paste the address)",
+        "number": "A number",
+        "text": "Your answer"
+      },
+      "openExplorer": "Open in Stellar Expert",
+      "openPage": "Open this page in Stellar Expert",
+      "locked": "The walkthrough opens once every question is answered. So far: {solved} of {total}. Going through it with the lecturer? Open it now.",
+      "lockedHomework": "This one is homework: answer all {total} questions yourself before opening the walkthrough. So far: {solved} of {total}.",
+      "unlock": "Open the walkthrough",
+      "caseClosed": "Done. You found {solved} of {total} on your own."
+    },
+    "case1": {
+      "title": "Mission 01: Read the wallet",
+      "lede": "One address, nothing else. By the end of this mission you can open any Stellar wallet in the explorer and say what it holds, who created it and everything it has ever done, with no tools beyond a browser.",
+      "manual": {
+        "title": "Field guide: what an account page is showing you",
+        "lede": "Stellar Expert puts everything about a wallet on one page. Once you know what each box is for, reading a wallet takes about a minute.",
+        "items": [
+          {
+            "panel": "Summary",
+            "body": "When the wallet was created and by whom, its home domain, how many signatures it needs, whether it is locked. Half of this mission's answers are in this one box.",
+            "where": "Account page → Summary box, top left"
+          },
+          {
+            "panel": "Account Balances",
+            "body": "One tile per asset: the amount on top, the token code underneath. XLM is the network's own currency; every other tile is a token the wallet deliberately opted in to hold.",
+            "where": "Account page → Account Balances box, top right"
+          },
+          {
+            "panel": "History",
+            "body": "Everything the wallet has ever done, written as sentences: “GAE4…MOP3 sent 450 VKUSD to GBX4…FHWC”. Newest first, so scroll to the bottom and you reach the moment it was born.",
+            "where": "Account page → History tab"
+          },
+          {
+            "panel": "Data Entries & home domain",
+            "body": "What the wallet says about itself: a website it claims, plus free-form notes it wrote onto the ledger. Useful, and self-declared: a claim, not a proof.",
+            "where": "Account page → Summary and Data Entries"
+          },
+          {
+            "panel": "The asset page",
+            "body": "Click any token code, anywhere, and you land on that token's own page: who issued it, how much exists, how many wallets hold it. Mission 02 lives on this page.",
+            "where": "Click a token code anywhere in the explorer"
+          }
+        ]
+      },
+      "layers": {
+        "title": "Transaction, operation, ledger",
+        "lede": "Three words the explorer uses constantly. Five minutes on them now saves a lot of confusion later.",
+        "items": [
+          {
+            "name": "Transaction",
+            "body": "One signed submission to the network. In the explorer, each History row is a transaction (plus its fee line). A single transaction can carry up to 100 separate actions."
+          },
+          {
+            "name": "Operation",
+            "body": "One action inside that transaction: a payment, opening a trustline, a settings change. A History row can expand into several of them, which is why “one transaction” never means “one payment”."
+          },
+          {
+            "name": "Ledger",
+            "body": "Roughly every five seconds the network agrees on a new page of the book containing every transaction from that moment. Once agreed it is never edited and never deleted, not even by the wallet's owner."
+          }
+        ]
+      },
+      "briefTitle": "The brief",
+      "briefLede": "A real wallet on Stellar testnet, set up for this workshop. Open it in the explorer and answer the six questions. Nothing here needs guessing: every answer is visible on the page.",
+      "evidenceLabel": "Starting point",
+      "evidenceHint": "Paste this into the Stellar Expert search box, or use the button. Keep the explorer open in a second tab while you work through the questions.",
+      "questionsTitle": "Six questions",
+      "questions": {
+        "creator": {
+          "prompt": "Which account created this wallet and paid for the XLM it started with?",
+          "hint": "The Summary box, top left of the account page. One of its lines names the account that created this one.",
+          "explain": "Every Stellar wallet is created by another account, which hands over its starting balance. The explorer reads that from the very first entry in the wallet's history and prints it as “Created by”. A wallet's origin can never be hidden."
+        },
+        "holdings": {
+          "prompt": "How many assets other than XLM does the wallet hold?",
+          "hint": "The Account Balances box. XLM is the network's own currency and does not count; each remaining tile is one token.",
+          "explain": "Two tiles, two tokens. Each one locks 0.5 XLM of reserve, which is part of why the wallet holds less XLM than it was created with."
+        },
+        "issuer": {
+          "prompt": "Which account issued the token {code}?",
+          "hint": "In Account Balances, click that token's tile. The page that opens starts with “Issued by” and an address.",
+          "explain": "A token's identity on Stellar is the pair (code, issuer). The code alone means nothing, since anyone may issue a token called {code}. The issuer account is what makes it unique, and it is the only account that can create more."
+        },
+        "balance": {
+          "prompt": "How many {code} does the wallet hold?",
+          "hint": "The number printed on that token's tile in Account Balances.",
+          "explain": "Amounts on Stellar always carry seven decimal places, so the explorer may show this as 3,250 and the token page as 3,250.0000000. Same number."
+        },
+        "spendTo": {
+          "prompt": "The wallet sent {code} to exactly one other address. Which one?",
+          "hint": "Scroll down to History and read the rows as sentences: who sent what to whom. You want the row where this wallet is the sender of that token.",
+          "explain": "Direction is what people most often get backwards. The explorer writes it out in words, “sent … to …”, so read the row rather than guessing from the amount."
+        },
+        "homeDomain": {
+          "prompt": "What home domain has this wallet published?",
+          "hint": "The first line of the Summary box.",
+          "explain": "A home domain points at a website that is supposed to publish who owns the wallet. It is self-declared: the wallet claims a domain, and only that website can confirm the claim."
+        }
+      },
+      "debrief": {
+        "title": "Walkthrough: how the explorer knows all this",
+        "lede": "The same boxes you just used, now from the bottom up: where the data comes from, and which part of the page answers which question.",
+        "diagramTitle": "An account page, and where each box comes from",
+        "steps": [
+          {
+            "id": "pipeline",
+            "short": "Where data comes from",
+            "eyebrow": "Step 1",
+            "title": "The explorer is a reader, not a source",
+            "body": "The Stellar network is a few hundred independent computers that agree, about every five seconds, on a new page of a shared book. That book is public and cannot be rewritten. Stellar Expert simply reads it back and lays it out nicely. It invents nothing.",
+            "points": [
+              "Anyone can read the same data, with no account and no permission",
+              "Two explorers may show different names and labels, never different numbers",
+              "Nothing can be deleted afterwards, not by the wallet owner, not by anyone"
+            ],
+            "callout": {
+              "kind": "info",
+              "title": "Labels are not ledger data",
+              "body": "When an explorer prints “Circle USDC” next to a token, that name was added by the explorer. The network itself only knows a code and an issuing account."
+            }
+          },
+          {
+            "id": "identity",
+            "short": "The account page",
+            "eyebrow": "Step 2",
+            "title": "One page holds almost the whole answer",
+            "body": "Everything above the history (balances, home domain, notes, the creation date and the creator) is the wallet's own entry in that shared book. Five of your six answers were on this single screen.",
+            "points": [
+              "The XLM balance is the network's own currency, used to pay the tiny fees",
+              "Every token the wallet accepts locks 0.5 XLM of reserve, so some XLM is never spendable",
+              "“Last year activity” and “Total payments” give you the size of the wallet at a glance"
+            ],
+            "callout": {
+              "kind": "success",
+              "title": "Try it",
+              "body": "Open the page again and read it top to bottom: address, home domain, created by, balances. That order is a good habit for any wallet you ever look at."
+            }
+          },
+          {
+            "id": "trustlines",
+            "short": "Opting in",
+            "eyebrow": "Step 3",
+            "title": "A wallet has to accept a token before it can receive it",
+            "body": "A token balance is not stored inside the wallet. It is a separate line, called a trustline, which the wallet opens on purpose, recording the token, the issuer, the balance and a limit the holder chooses.",
+            "points": [
+              "Nobody can push an unwanted token into a Stellar wallet",
+              "The limit is the maximum the holder agrees to hold; the issuer cannot raise it",
+              "In History you can see this as “established trustline to …” before the first payment arrives"
+            ],
+            "callout": {
+              "kind": "info",
+              "title": "Opt-in by design",
+              "body": "On most blockchains anyone can send you any token, and wallets fill up with junk. On Stellar the holder pays 0.5 XLM of reserve and agrees first, so token spam is priced out."
+            }
+          },
+          {
+            "id": "history",
+            "short": "The story",
+            "eyebrow": "Step 4",
+            "title": "History reads like sentences",
+            "body": "Every row says who did what to whom, in words. That is the whole skill: read the rows, keep track of the direction, and ignore the fee lines in between.",
+            "points": [
+              "Newest first, so to see how a wallet started, scroll all the way to the bottom",
+              "The explorer keeps loading more as you scroll; don't conclude anything from the first screen",
+              "One row can hide several actions at once, so open the arrow on the right when a row looks busy"
+            ],
+            "callout": {
+              "kind": "warning",
+              "title": "The classic mistake",
+              "body": "Reading the first few rows and deciding that is all of it. Keep scrolling until nothing more loads."
+            }
+          },
+          {
+            "id": "metadata",
+            "short": "What it claims",
+            "eyebrow": "Step 6",
+            "title": "What the wallet says about itself",
+            "body": "The home domain and the data entries are the only places a wallet can write free text about itself. They are useful, and they are claims rather than verified facts.",
+            "points": [
+              "A home domain points at a website; that website is where ownership is supposed to be published",
+              "Data entries are notes the wallet wrote onto the ledger itself",
+              "Anyone can claim any domain, and a claim does not prove itself"
+            ],
+            "callout": {
+              "kind": "warning",
+              "title": "Never trust a label",
+              "body": "A wallet claiming a bank's domain proves nothing until you visit that bank's website and find this exact address published there."
+            }
+          }
+        ]
+      },
+      "diagram": {
+        "nodes": {
+          "core": {
+            "label": "Stellar network",
+            "sub": "agrees every ~5s"
+          },
+          "ledger": {
+            "label": "The public book",
+            "sub": "permanent record"
+          },
+          "expert": {
+            "label": "Stellar Expert",
+            "sub": "reads it back"
+          },
+          "account": {
+            "label": "The wallet",
+            "sub": "one entry"
+          },
+          "trust": {
+            "label": "Tokens",
+            "sub": "opted in"
+          },
+          "meta": {
+            "label": "Domain & notes",
+            "sub": "self-declared"
+          },
+          "ops": {
+            "label": "Everything it did",
+            "sub": "in order"
+          },
+          "payments": {
+            "label": "Money moved",
+            "sub": "in / out"
+          }
+        },
+        "edges": {
+          "ingest": "written into the book",
+          "serve": "read and displayed",
+          "query": "account page",
+          "entry": "Account Balances",
+          "metadata": "Summary box",
+          "history": "History tab",
+          "flow": "the “sent … to …” rows"
+        }
+      },
+      "further": {
+        "title": "Take it further",
+        "lede": "Three extra hunts on the same wallet, if you finish early.",
+        "items": [
+          "Open the wallet that received 450 tokens from this one. Who else has been paying it?",
+          "The wallet holds less XLM than it was created with. From History, name the two different reasons why.",
+          "Find the row in History where the wallet first accepted a token, and read off what time it happened."
+        ],
+        "toolsTitle": "Toolbox",
+        "tools": [
+          {
+            "label": "Stellar Expert on testnet",
+            "href": "https://stellar.expert/explorer/testnet"
+          },
+          {
+            "label": "Stellar Expert on the real network, for the same practice on real wallets",
+            "href": "https://stellar.expert/explorer/public"
+          },
+          {
+            "label": "What Stellar is, in plain language",
+            "href": "https://www.stellar.org/learn/intro-to-stellar"
+          }
+        ]
+      }
+    },
+    "case2": {
+      "title": "Mission 02: Follow the airdrop",
+      "lede": "One token address, and nothing else. Find who issued it, who handed it out, who received it, and whether more can still be created. That sequence is how anyone checks a token before trusting it.",
+      "toolkit": {
+        "title": "Three questions, always in this order",
+        "lede": "Whatever the token, you ask the same three things: what is it exactly, how much of it exists, and who is holding it. Answer them in order and the rest of the picture assembles itself.",
+        "items": [
+          {
+            "name": "Identity: what exactly is this token?",
+            "body": "A token on Stellar is a code plus the account that issued it. The code alone identifies nothing: any number of accounts can issue a token called USDC. Always get to an issuer address before you say anything else about it.",
+            "where": "Search box at the top → paste the address"
+          },
+          {
+            "name": "Supply: how much exists, and can more appear?",
+            "body": "The supply is everything the issuer has handed out and not taken back. Whether more can appear is a separate question, and the asset page answers it in one line.",
+            "where": "Asset page → Summary → Total supply"
+          },
+          {
+            "name": "Distribution: who holds it, and how did they get it?",
+            "body": "Follow the payments outward from the issuer. The first stop is usually a treasury account; the next are the real holders. The number of wallets holding a token is not the number of wallets that were paid.",
+            "where": "Issuer's account page → History"
+          }
+        ]
+      },
+      "briefTitle": "The brief",
+      "briefLede": "You get a token address and nothing else. Eight questions; every answer is visible in the explorer, and one of them is a trap that catches professionals.",
+      "evidenceLabel": "Starting point",
+      "evidenceHint": "A token address on Stellar testnet. Paste it into the Stellar Expert search box. The page it opens will tell you what token this is.",
+      "questionsTitle": "Eight questions",
+      "questions": {
+        "issuer": {
+          "prompt": "Which account issued this token?",
+          "hint": "Paste the address into the search box. The page says “Contract from asset” and names the token; click the token to open its page, which begins with “Issued by”.",
+          "explain": "A token address on Stellar always maps back to exactly one code and one issuing account. Watch out: on testnet a second account issues a token with this very same code, and it is a completely different token."
+        },
+        "supply": {
+          "prompt": "How many units of this token exist in total?",
+          "hint": "On the token's page, the Summary box has a line called Total supply.",
+          "explain": "Stellar has no separate supply counter. The supply is simply everything the issuer has handed out and not received back, added up from the holders, so the number can never disagree with the balances."
+        },
+        "treasury": {
+          "prompt": "The issuer sent the entire supply to one account, all at once. Which account?",
+          "hint": "Open the issuer's account page and read its History. An issuer that only ever handed out its token once has almost no history to read.",
+          "explain": "Keeping issuance and distribution in two different accounts is standard practice: the issuer hands the supply over once and is then locked away, while a distributor account does the day-to-day sending."
+        },
+        "recipients": {
+          "prompt": "How many wallets received the airdrop directly from the distributor?",
+          "hint": "Open the distributor's account page and count the History rows where it sends the token out. They are not all in one place, so keep scrolling.",
+          "explain": "Six wallets, handed out in two batches of four and two. Meanwhile the token's page reports eight holders: the distributor itself, plus one wallet that was never airdropped and got its tokens another way. Holders are not recipients."
+        },
+        "whale": {
+          "prompt": "Which wallet received the largest airdrop?",
+          "hint": "Compare the amounts in those same History rows. The token page's “Asset Holders” tab also ranks wallets by balance, but careful: the wallet at the top of it was never airdropped at all.",
+          "explain": "Concentration is the first thing anyone measures: this single wallet got more than a third of everything handed out. For a real token that one number decides whether one holder can move the whole market."
+        },
+        "forward": {
+          "prompt": "One of the six recipients immediately passed part of its airdrop to another wallet. Which wallet received it?",
+          "hint": "The token page → “Asset Holders” tab lists more wallets than the airdrop paid. Find the one that is not on the airdrop list, open it, and see who sent it the token.",
+          "explain": "This is why airdrop numbers age badly: the recipient list is a photograph, and it starts going out of date the moment the tokens are sent. Anything serious has to follow the second hop, and then the third."
+        },
+        "mintMore": {
+          "prompt": "Can the issuer still create more of this token?",
+          "options": [
+            "Yes, an issuer can always create more at any time",
+            "No, the issuer's key was destroyed after handing out the supply, so it can never act again",
+            "Only if the holders agree to it"
+          ],
+          "hint": "The token's page → Summary → “Issuer account lock status”.",
+          "explain": "Locking the issuer is how a fixed supply is proven on Stellar rather than promised. The account can never sign anything again, so the supply is frozen for good, and it is one of very few things on the network that cannot be undone."
+        },
+        "lookalike": {
+          "prompt": "One of the six recipients also holds a second token with exactly the same code. Which account issued that look-alike?",
+          "hint": "Open the six recipient wallets one by one. Exactly one of them shows two balance tiles with the same token code. Click the unfamiliar tile and read its “Issued by” line.",
+          "explain": "Two completely different tokens that share a name. The ledger has no idea they look alike, and the imitation even publishes a more official-sounding website than the real one. Checking the issuer address is the only defence, and it costs five seconds."
+        }
+      },
+      "debrief": {
+        "title": "Walkthrough: anatomy of an airdrop",
+        "lede": "Seven steps from a bare token address to a full picture of who holds what, with the page to open at each step.",
+        "diagramTitle": "The airdrop, from issuance to the second hop",
+        "steps": [
+          {
+            "id": "address",
+            "short": "The address",
+            "eyebrow": "Step 1",
+            "title": "An address that turns out to be a token",
+            "body": "Addresses starting with C are contracts. This one is the standard token contract that Stellar builds for a classic asset, so its page names the token it stands for: one code, one issuing account.",
+            "points": [
+              "The contract page says “Contract from asset” and links straight to the token",
+              "The token page links back the other way, under “Soroban Contract”",
+              "Balances in ordinary wallets are unaffected, since it is the same token seen through a second door"
+            ],
+            "callout": {
+              "kind": "info",
+              "title": "You have met this before",
+              "body": "It is the contract the issuing lesson creates. Same thing, now seen from the reading side."
+            }
+          },
+          {
+            "id": "identity",
+            "short": "Code + issuer",
+            "eyebrow": "Step 2",
+            "title": "A token's name proves nothing",
+            "body": "Two accounts on testnet issue a token with this code. They are different tokens with different issuers, different supplies and different holders. The network has no idea they share a name.",
+            "points": [
+              "Always write down the code and the issuer together; the code alone is not an identifier",
+              "The imitation here even publishes a more official-looking website than the genuine issuer",
+              "Wallets and explorers add trust badges themselves, and those badges are not part of the ledger"
+            ],
+            "callout": {
+              "kind": "warning",
+              "title": "How people actually lose money",
+              "body": "A convincing website, a familiar token code, and one tap to accept it. The issuer address is the only part of that story anyone can check."
+            }
+          },
+          {
+            "id": "mint",
+            "short": "Issuance",
+            "eyebrow": "Step 3",
+            "title": "Tokens are created by being sent",
+            "body": "The issuer created the entire supply by sending it to the distributor. On Stellar a token comes into existence as it leaves the issuing account. There is no separate “create tokens” button.",
+            "points": [
+              "Everything the issuer has sent out and not got back is the supply, and that is what the token page reports",
+              "Sending tokens back to the issuer destroys them again",
+              "So an issuer's own history is the shortest and most revealing history you will read"
+            ],
+            "callout": {
+              "kind": "info",
+              "title": "Why this is tidy",
+              "body": "There is no separate supply number that could disagree with the balances. The balances are the supply."
+            }
+          },
+          {
+            "id": "fanout",
+            "short": "Handing it out",
+            "eyebrow": "Step 4",
+            "title": "Two transactions, six payments",
+            "body": "The distributor paid six wallets across two transactions. Every recipient had already accepted the token, which is why the tokens could arrive at all.",
+            "points": [
+              "One transaction can carry up to 100 payments, so counting transactions tells you nothing about the number of recipients",
+              "Each recipient's acceptance costs them 0.5 XLM of reserve, which real airdrops usually fund first",
+              "Counting the distinct destination addresses is the only reliable way to size an airdrop"
+            ],
+            "callout": {
+              "kind": "success",
+              "title": "The Stellar difference",
+              "body": "An airdrop list on Stellar is also a consent list: every wallet on it had agreed to hold the token before it was paid."
+            }
+          },
+          {
+            "id": "secondary",
+            "short": "Second hop",
+            "eyebrow": "Step 5",
+            "title": "The list starts going stale immediately",
+            "body": "One recipient passed part of its share to a wallet that was never in the airdrop. There are now more holders than recipients, and the gap widens every day.",
+            "points": [
+              "The token page shows eight holders against six airdropped wallets",
+              "This is where fraud analysis starts: recipients that instantly funnel everything into one address",
+              "Following it properly means opening every recipient, not just the distributor"
+            ],
+            "callout": {
+              "kind": "warning",
+              "title": "Never report holders as recipients",
+              "body": "They answer different questions, and the difference between them only grows with time."
+            }
+          },
+          {
+            "id": "lock",
+            "short": "Locked supply",
+            "eyebrow": "Step 6",
+            "title": "The issuer threw away its key",
+            "body": "After handing out the supply, the issuer disabled its own key. The account can never sign anything again, so no more of this token can ever exist.",
+            "points": [
+              "The token page states it in one line: issuer account lock status",
+              "Any rules the issuer wanted (freezing, reclaiming) must be set before locking; afterwards nothing can change",
+              "A locked issuer is a fact you can check, not a promise in a whitepaper"
+            ],
+            "callout": {
+              "kind": "info",
+              "title": "What to check on any token",
+              "body": "Issuer address, issuer lock status, home domain, and whether that website really lists this issuer. In that order, before you buy anything."
+            }
+          },
+          {
+            "id": "checklist",
+            "short": "Checklist",
+            "eyebrow": "Step 7",
+            "title": "The five-minute check you can now run on any token",
+            "body": "Everything in this mission works the same way on the real network, for a token someone sends you at three in the morning. It is five clicks.",
+            "points": [
+              "Open the token page: who issued it, how much exists, how many hold it, is the issuer locked",
+              "Open the issuer: how old is it, what has it done, does its website really name this token",
+              "Open the top holders: is one wallet holding most of the supply, and where did it get it"
+            ],
+            "callout": {
+              "kind": "success",
+              "title": "Where to go next",
+              "body": "Do the same walk on a token you have actually heard of, on the real network. The layout of the pages is identical."
+            }
+          }
+        ]
+      },
+      "diagram": {
+        "nodes": {
+          "contract": {
+            "label": "Token address",
+            "sub": "what you were given"
+          },
+          "asset": {
+            "label": "The token",
+            "sub": "code + issuer"
+          },
+          "decoy": {
+            "label": "Look-alike",
+            "sub": "same code, other issuer"
+          },
+          "issuer": {
+            "label": "Issuer",
+            "sub": "creates the supply"
+          },
+          "treasury": {
+            "label": "Distributor",
+            "sub": "holds and sends"
+          },
+          "holders": {
+            "label": "Recipients",
+            "sub": "the airdropped wallets"
+          },
+          "keys": {
+            "label": "Issuer's key",
+            "sub": "disabled for good"
+          },
+          "mule": {
+            "label": "Second hop",
+            "sub": "never airdropped"
+          }
+        },
+        "edges": {
+          "resolve": "stands for",
+          "identify": "issued by",
+          "lookalike": "same code ≠ same token",
+          "mint": "hands over the supply",
+          "airdrop": "airdrop payments",
+          "trustline": "accepted it first",
+          "forward": "passed on",
+          "lock": "key disabled"
+        }
+      },
+      "further": {
+        "title": "Take it further",
+        "lede": "Three harder hunts on the same token, if you finish early.",
+        "items": [
+          "Write out every holder with its balance and check that they add up to the total supply.",
+          "Open the look-alike token's issuer and compare its website with the genuine one. Which looks more trustworthy, and what does that tell you?",
+          "The distributor still holds most of the supply. How much exactly, and who would have to agree before it could move?"
+        ],
+        "toolsTitle": "Toolbox",
+        "tools": [
+          {
+            "label": "Stellar Expert on testnet",
+            "href": "https://stellar.expert/explorer/testnet"
+          },
+          {
+            "label": "Stellar Expert on the real network, to run the same check on real tokens",
+            "href": "https://stellar.expert/explorer/public"
+          },
+          {
+            "label": "What Stellar is, in plain language",
+            "href": "https://www.stellar.org/learn/intro-to-stellar"
+          }
+        ]
+      }
+    },
+    "case3": {
+      "badge": "Homework",
+      "title": "Mission 03: The wallet that cannot spend",
+      "lede": "A customer wallet holding 10,000 tokens it is not allowed to move. Work out what the token is, who controls it, why this wallet is stuck, and what the same issuer has done to two other customers. Same explorer, no lecturer.",
+      "homework": {
+        "title": "How to hand this in",
+        "body": "Work on your own. Write down your eight answers and, next to each one, the page where you found it. Open the walkthrough at the bottom only after you have answered everything: it is the answer key, and it explains what all of this means for anyone holding a token like this."
+      },
+      "powers": {
+        "title": "What a regulated issuer can do to your balance",
+        "lede": "A token can be issued with rules attached. These three are chosen by the issuer once, before anybody holds the token, and the explorer prints them on the token's page for everyone to read.",
+        "items": [
+          {
+            "name": "Approval before holding",
+            "body": "With this rule on, a wallet cannot receive the token until the issuer approves that specific wallet. Agreeing to hold it is not enough; someone at the issuer has to say yes. This is how a bank keeps unverified customers out.",
+            "where": "Token page → Asset authorization flags → required"
+          },
+          {
+            "name": "Freezing a balance",
+            "body": "The issuer can take that approval away again later. The balance stays in the wallet and everyone can still see it, but it cannot move at all. The explorer marks it with a small padlock next to the token.",
+            "where": "Account page → Account Balances → padlock on the tile"
+          },
+          {
+            "name": "Taking tokens back",
+            "body": "The strongest one. The issuer can remove tokens from a wallet without the owner signing anything. It exists for court orders and stolen funds, and it has to be switched on before anyone holds the token.",
+            "where": "Token page → Asset authorization flags → clawback_enabled"
+          }
+        ]
+      },
+      "briefTitle": "The brief",
+      "briefLede": "One customer wallet on Stellar testnet. Eight questions, all of them answerable by clicking around the explorer. The last one is harder than the rest.",
+      "evidenceLabel": "Starting point",
+      "evidenceHint": "A customer of a bank that issues its own token on Stellar. Open it in the explorer and start with the balances box.",
+      "questionsTitle": "Eight questions",
+      "questions": {
+        "issuer": {
+          "prompt": "Which account issued the token this wallet is holding?",
+          "hint": "In Account Balances, click the token tile. The page that opens starts with Issued by and an address.",
+          "explain": "Identity first, always. A token is a code plus the account that issued it, and everything else in this mission is something that one account decided to do."
+        },
+        "frozen": {
+          "prompt": "There is a small padlock next to the token balance. What does it mean?",
+          "options": [
+            "The wallet has run out of XLM to pay transaction fees",
+            "The issuer has taken away this wallet's permission to use the token",
+            "The tokens were sent to the wrong address by mistake"
+          ],
+          "hint": "Read the newest row in this wallet's History. The issuer did something to this wallet shortly after the wallet last spent.",
+          "explain": "The balance is still there and everyone can see it, but it cannot move. Nothing is broken in the wallet: the issuer simply took back the permission it granted when the wallet first accepted the token."
+        },
+        "payer": {
+          "prompt": "Which account paid the 12,000 tokens into this wallet?",
+          "hint": "History again, the row that says sent 12,000 to this wallet.",
+          "explain": "Banks rarely pay customers from the issuing account itself. A separate distribution account does the daily work, so the address that pays you is usually not the address that created the token."
+        },
+        "supply": {
+          "prompt": "How many of these tokens exist in total?",
+          "hint": "Open the token page and read Total supply in the Summary box.",
+          "explain": "Frozen tokens still count. They exist, they are simply not allowed to move, which is why this number is larger than what the unfrozen wallets add up to."
+        },
+        "mintMore": {
+          "prompt": "Can this issuer create more of the token?",
+          "options": [
+            "No, its key was destroyed after the first issuance",
+            "Yes, the issuer account is unlocked and has already issued twice",
+            "Only if every holder agrees to it"
+          ],
+          "hint": "The token page says it in one line: issuer account lock status. Then count how many times the issuer has sent tokens out in its History.",
+          "explain": "This is the opposite of the token in mission 02. Neither is wrong by itself: a bank that has to match tokens to real deposits needs to keep issuing, while a fixed-supply token proves scarcity by throwing the key away. What matters is knowing which one you are holding."
+        },
+        "clawback": {
+          "prompt": "The issuer took 5,000 tokens back from one customer. Which wallet lost them?",
+          "hint": "Open the issuer's own account page and read its History. One row says clawed back.",
+          "explain": "No signature from the owner, no warning, no way to refuse. The power was written into the token before anybody held it, and the explorer states it in plain words."
+        },
+        "burn": {
+          "prompt": "One customer sent tokens back to the issuer. How many?",
+          "hint": "Still on the issuer's History: find the row where a customer sends tokens to the issuer rather than the other way round.",
+          "explain": "Tokens that arrive at the issuing account stop existing. On Stellar that is what burning is, and the total supply falls by exactly that amount."
+        },
+        "topHolder": {
+          "prompt": "Apart from the distributor, which wallet holds the most of this token today?",
+          "hint": "The token page has an Asset Holders tab. Ignore the account sitting on most of the supply, that one is the distributor.",
+          "explain": "Holder lists are the fastest way to see who actually has the money, and they are public for every token and every wallet on Stellar."
+        }
+      },
+      "debrief": {
+        "title": "Walkthrough: a token with rules attached",
+        "lede": "Seven steps from a padlocked balance to the full picture of what this issuer can do, and what that means for anyone holding its token.",
+        "diagramTitle": "One issuer, four customers, three powers",
+        "steps": [
+          {
+            "id": "wallet",
+            "short": "The padlock",
+            "eyebrow": "Step 1",
+            "title": "A balance you can see and cannot move",
+            "body": "The wallet holds 10,000 tokens and a small padlock. The padlock means the issuer has taken away this wallet's permission to use that token. Nothing was moved and nothing was deleted; the balance is frozen exactly where it is.",
+            "points": [
+              "The tokens arrived from the distributor in a single payment",
+              "The wallet spent part of the balance normally before the freeze, and that history is still readable",
+              "Anyone in the world can see this, including the wallet owner and their lawyer"
+            ],
+            "callout": {
+              "kind": "info",
+              "title": "What this is not",
+              "body": "It has nothing to do with running out of XLM or losing a key. The wallet works perfectly; only that one token is blocked."
+            }
+          },
+          {
+            "id": "token",
+            "short": "The token",
+            "eyebrow": "Step 2",
+            "title": "Every question starts with the issuer",
+            "body": "One click on the token tile names the account that issued it. From there the token page carries the supply, the number of holders, the rules attached to the token, and whether more of it can still appear.",
+            "points": [
+              "A token is a code plus an issuing account, and the code alone means nothing",
+              "The issuer publishes a website, which is a claim you can go and check",
+              "The same page tells you how many wallets hold the token"
+            ],
+            "callout": {
+              "kind": "success",
+              "title": "The habit to build",
+              "body": "Token tile, then Issued by, then the issuer's own page. Three clicks, and you know who you are dealing with."
+            }
+          },
+          {
+            "id": "permission",
+            "short": "Approval",
+            "eyebrow": "Step 3",
+            "title": "Permission to hold, granted one wallet at a time",
+            "body": "This token was issued with approval required. A wallet that agrees to hold it still receives nothing until the issuer approves that wallet. In the history the approval arrives right after the wallet accepted the token.",
+            "points": [
+              "This is how a regulated issuer keeps unverified customers out",
+              "Many bank-issued and government-linked tokens work this way; most open crypto tokens do not",
+              "The rules are chosen once, before anyone holds the token, and the token page lists them"
+            ],
+            "callout": {
+              "kind": "info",
+              "title": "Read the flags first",
+              "body": "required, revocable and clawback_enabled are three separate powers. A token can have none of them, some of them, or all three."
+            }
+          },
+          {
+            "id": "freeze",
+            "short": "The freeze",
+            "eyebrow": "Step 4",
+            "title": "The same switch, turned off again",
+            "body": "Approval can be taken back at any moment, and that is the padlock. It is the most important thing to understand about a token like this: the balance is yours only while the issuer agrees that it is.",
+            "points": [
+              "A frozen balance still counts towards the total supply",
+              "Nothing else about the wallet is affected; its XLM and any other tokens keep working normally",
+              "Only the issuer can undo it"
+            ],
+            "callout": {
+              "kind": "warning",
+              "title": "Why the power exists",
+              "body": "Sanctions, fraud investigations, court orders. Whether that is reassuring or alarming depends on who you are and what the token is for."
+            }
+          },
+          {
+            "id": "clawback",
+            "short": "Taking it back",
+            "eyebrow": "Step 5",
+            "title": "Tokens removed without a signature",
+            "body": "Another customer had 5,000 tokens taken out of its wallet by the issuer. That customer signed nothing and could not have refused. The tokens were destroyed on the way out, so the supply fell.",
+            "points": [
+              "The power has to be switched on before the wallet ever accepted the token",
+              "The explorer writes it in plain words: clawed back 5,000 from that wallet",
+              "This is the power that turns a token from money into a claim on a company"
+            ],
+            "callout": {
+              "kind": "warning",
+              "title": "Before you accept any token",
+              "body": "Read the flags on its page. If clawback is on, understand that somebody else holds a key to your balance."
+            }
+          },
+          {
+            "id": "supply",
+            "short": "Supply moves",
+            "eyebrow": "Step 6",
+            "title": "A supply that moves in both directions",
+            "body": "This issuer has issued twice, one customer sent tokens back and destroyed them, and the clawback destroyed more. The number on the token page is a snapshot, not a promise.",
+            "points": [
+              "New tokens appear when the issuer sends them out, which for a bank should match new money coming in",
+              "Tokens that arrive back at the issuer stop existing and the supply drops",
+              "Compare this with mission 02, where the key was destroyed and the number can never change again"
+            ],
+            "callout": {
+              "kind": "info",
+              "title": "The question to ask",
+              "body": "If a token claims to be worth one dollar or one dong each, the supply is the number that has to match the money held somewhere else. That is why serious issuers publish reserve reports."
+            }
+          },
+          {
+            "id": "verdict",
+            "short": "The verdict",
+            "eyebrow": "Step 7",
+            "title": "So is this a good token or a bad one?",
+            "body": "Neither, on its own. A bank token with approval, freezing and clawback is doing what a regulated issuer is required to do. The only real problem is a holder who did not know.",
+            "points": [
+              "A fixed supply with a destroyed key, as in mission 02, is a different promise rather than a better one",
+              "What you can always check in five minutes: issuer, flags, lock status, supply, holders",
+              "What the ledger can never tell you: whether the money backing the token is really there"
+            ],
+            "callout": {
+              "kind": "success",
+              "title": "Finish the homework",
+              "body": "Under your eight answers, write one sentence: would you accept this token as your salary, and why? There is no single right answer, but there is a wrong reason, which is not having looked."
+            }
+          }
+        ]
+      },
+      "diagram": {
+        "nodes": {
+          "rules": {
+            "label": "The rules",
+            "sub": "approve, freeze, claw back"
+          },
+          "issuer": {
+            "label": "Issuer",
+            "sub": "the bank"
+          },
+          "treasury": {
+            "label": "Distributor",
+            "sub": "pays customers"
+          },
+          "subject": {
+            "label": "This wallet",
+            "sub": "frozen"
+          },
+          "victim": {
+            "label": "Another customer",
+            "sub": "lost tokens"
+          },
+          "burner": {
+            "label": "A third customer",
+            "sub": "sent tokens back"
+          }
+        },
+        "edges": {
+          "flags": "sets the rules",
+          "mint": "issues tokens",
+          "payout": "pays the customer",
+          "payout2": "pays the customer",
+          "freeze": "freezes the balance",
+          "claw": "takes tokens back",
+          "burn": "returns tokens"
+        }
+      },
+      "further": {
+        "title": "Take it further",
+        "lede": "Three harder questions, if you want to go past full marks.",
+        "items": [
+          "The distributor is still holding most of the supply. Work out exactly how much, and what would happen to it if the issuer froze the distributor as well.",
+          "Put this token's page next to the airdrop token from mission 02 and compare the Summary boxes line by line. Write down every difference you find.",
+          "Find the moment this wallet was first approved to hold the token, and work out how long it was between that approval and the freeze."
+        ],
+        "toolsTitle": "Toolbox",
+        "tools": [
+          {
+            "label": "Stellar Expert on testnet",
+            "href": "https://stellar.expert/explorer/testnet"
+          },
+          {
+            "label": "USDC on the real network: check its flags and compare",
+            "href": "https://stellar.expert/explorer/public/asset/USDC-GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN"
+          },
+          {
+            "label": "What Stellar is, in plain language",
+            "href": "https://www.stellar.org/learn/intro-to-stellar"
+          }
+        ]
+      }
     }
   },
   "issue": {
     "title": "Issue your own token",
-    "lede": "You will create a real token on the Stellar testnet and mint the whole supply into your own wallet. Everything technical is handled for you — you choose what the token is.",
+    "lede": "You will create a real token on the Stellar testnet and mint the whole supply into your own wallet. Everything technical is handled for you. You choose what the token is.",
     "steps": {
       "connect": "Connect",
       "type": "Type",
@@ -690,7 +1534,7 @@
       "notInstalledBody": "Freighter is the Stellar browser wallet. Install the extension, create a wallet, then reload this page.",
       "notInstalledCta": "Install Freighter",
       "disconnectedTitle": "Wallet not connected",
-      "disconnectedBody": "Connect Freighter to continue. This site can only read your public address and ask you to sign — it can never see your secret key.",
+      "disconnectedBody": "Connect Freighter to continue. This site can only read your public address and ask you to sign. It can never see your secret key.",
       "wrongNetworkTitle": "Freighter is on the wrong network",
       "wrongNetworkBody": "This lesson runs on the Stellar Test Net, but your wallet is on {current}. Open Freighter, use the network dropdown at the top, and choose Test Net.",
       "unfundedTitle": "This account does not exist yet",
@@ -715,15 +1559,15 @@
       "classic": {
         "name": "Classic Stellar asset",
         "tagline": "The native way",
-        "body": "Issued with a payment operation — no contract is deployed, nothing is compiled. This is how USDC, EURC and nearly every asset on Stellar works today.",
+        "body": "Issued with a payment operation. No contract is deployed, nothing is compiled. This is how USDC, EURC and nearly every asset on Stellar works today.",
         "pros": [
-          "Cheapest and fastest — a few thousandths of a cent per transaction",
+          "Cheapest and fastest, a few thousandths of a cent per transaction",
           "Understood by every Stellar wallet, exchange and anchor out of the box",
           "Trades on the built-in DEX with no extra work",
           "Compliance flags (authorize, freeze, clawback) are built into the protocol"
         ],
         "cons": [
-          "Cannot run custom logic — no fees on transfer, no vesting, no conditions"
+          "Cannot run custom logic: no fees on transfer, no vesting, no conditions"
         ],
         "bestFor": "Stablecoins, tokenized deposits, points, and anything that behaves like money"
       },
@@ -732,14 +1576,14 @@
         "tagline": "The smart-contract door",
         "body": "Issues the same classic asset, then deploys the built-in contract wrapper over it. The asset gets a contract address (C…) implementing the standard SEP-41 token interface, so Soroban contracts can hold and move it.",
         "pros": [
-          "Callable from smart contracts — required for DeFi, escrow, vaults",
+          "Callable from smart contracts, required for DeFi, escrow, vaults",
           "Standard token interface: transfer, approve, balance, mint, burn",
-          "Same asset, same balances — the classic side keeps working",
+          "Same asset, same balances, and the classic side keeps working",
           "The contract address is derived from the asset, so it is deterministic"
         ],
         "cons": [
           "Two extra transactions and a higher fee",
-          "Sending to a normal G-address still needs a trustline — the wrapper does not remove that"
+          "Sending to a normal G-address still needs a trustline, the wrapper does not remove that"
         ],
         "bestFor": "Any asset that a Soroban contract has to interact with"
       },
@@ -789,7 +1633,7 @@
       "fields": {
         "code": {
           "label": "Asset code",
-          "hint": "1–12 letters or digits. This is the symbol wallets display — it is not unique on its own.",
+          "hint": "1–12 letters or digits. This is the symbol wallets display. It is not unique on its own.",
           "placeholder": "VKUCOIN"
         },
         "name": {
@@ -822,18 +1666,18 @@
         },
         "clawbackEnabled": {
           "label": "Clawback enabled",
-          "hint": "You can take the token back from any holder without their signature. Used for court orders and stolen-funds recovery — and a serious thing for a holder to accept."
+          "hint": "You can take the token back from any holder without their signature. Used for court orders and stolen-funds recovery, and a serious thing for a holder to accept."
         },
         "lockIssuer": {
           "label": "Lock the issuer afterwards",
-          "hint": "Sets the issuing account’s master key weight to 0 once the supply is minted. Nothing can ever be issued again — a permanent, verifiable fixed supply."
+          "hint": "Sets the issuing account’s master key weight to 0 once the supply is minted. Nothing can ever be issued again: a permanent, verifiable fixed supply."
         }
       },
       "errors": {
         "code": {
           "required": "Give your token a code",
           "tooLong": "At most 12 characters",
-          "charset": "Letters and digits only — no spaces or symbols",
+          "charset": "Letters and digits only, no spaces or symbols",
           "reservedXlm": "XLM is the native asset. Pick another code."
         },
         "name": {
@@ -851,7 +1695,7 @@
         },
         "homeDomain": {
           "tooLong": "At most 32 characters",
-          "invalid": "Enter a domain like vku.udn.vn — no https:// and no path"
+          "invalid": "Enter a domain like vku.udn.vn, with no https:// and no path"
         },
         "flags": {
           "clawbackNeedsRevocable": "Clawback requires “Authorization revocable” to be on"
@@ -859,19 +1703,19 @@
       },
       "lockWarning": {
         "title": "Locking is permanent",
-        "body": "Once the issuer is locked you can never mint more, and — if you enabled them — you can never authorize a new holder, freeze anyone, or claw anything back. On testnet that costs nothing. On mainnet it is irreversible."
+        "body": "Once the issuer is locked you can never mint more, and, if you enabled them, you can never authorize a new holder, freeze anyone, or claw anything back. On testnet that costs nothing. On mainnet it is irreversible."
       },
       "submit": "Review"
     },
     "review": {
       "title": "Check this before you sign",
-      "lede": "Read every line. On mainnet this is the last screen before something irreversible happens — build the habit here.",
+      "lede": "Read every line. On mainnet this is the last screen before something irreversible happens, so build the habit here.",
       "asset": "Asset",
       "recipient": "Receiving wallet",
       "network": "Network",
       "mode": "Issued as",
       "flags": "Issuer flags",
-      "noFlags": "None — a plain, open asset",
+      "noFlags": "None: a plain, open asset",
       "plan": "What will happen",
       "planLede": "{count} transactions. You sign one of them; the throwaway issuer account signs the rest.",
       "signedByYou": "You sign",
@@ -881,7 +1725,7 @@
       "confirm": "Issue the token",
       "issuerNote": {
         "title": "About the issuer account",
-        "body": "A real issuer is a carefully secured account — often multisig, often in an HSM. For this lesson the app generates a throwaway testnet keypair and funds it from Friendbot, so the token can land in your own wallet where you can see it. The secret key exists only in this browser tab and is shown to you at the end."
+        "body": "A real issuer is a carefully secured account, often multisig, often in an HSM. For this lesson the app generates a throwaway testnet keypair and funds it from Friendbot, so the token can land in your own wallet where you can see it. The secret key exists only in this browser tab and is shown to you at the end."
       }
     },
     "run": {
@@ -903,7 +1747,7 @@
         },
         "deploySac": {
           "label": "Deploy the Stellar Asset Contract",
-          "body": "Creates the contract wrapper for this asset. Its address was already known — it is derived from the asset and the network."
+          "body": "Creates the contract wrapper for this asset. Its address was already known, because it is derived from the asset and the network."
         },
         "createTrustline": {
           "label": "Your wallet opts in (trustline)",
@@ -934,7 +1778,7 @@
         "failed": "Failed"
       },
       "failedTitle": "That step did not go through",
-      "failedBody": "Nothing before it was undone. Fix the cause and continue — the flow picks up from here.",
+      "failedBody": "Nothing before it was undone. Fix the cause and continue. The flow picks up from here.",
       "resume": "Continue from here",
       "startOver": "Start over"
     },
@@ -946,8 +1790,8 @@
       "contractLabel": "Contract address",
       "supplyLabel": "Supply minted",
       "holderLabel": "Held by",
-      "lockedYes": "Issuer locked — supply is fixed",
-      "lockedNo": "Issuer unlocked — more can be minted",
+      "lockedYes": "Issuer locked, supply is fixed",
+      "lockedNo": "Issuer unlocked, more can be minted",
       "viewAsset": "Asset on explorer",
       "viewIssuer": "Issuer on explorer",
       "viewContract": "Contract on explorer",
@@ -961,16 +1805,16 @@
       "learnedTitle": "What just happened",
       "learned": [
         "You created an ordinary Stellar account and it became an issuer the moment it sent its first payment",
-        "Your wallet had to opt in with a trustline before it could receive anything — and 0.5 XLM of yours is now locked behind it",
+        "Your wallet had to opt in with a trustline before it could receive anything, and 0.5 XLM of yours is now locked behind it",
         "The supply is not stored anywhere: it is the sum of every holder’s balance, and it grew when the tokens left the issuer",
         "Everything you just did is what Circle does for USDC, at a different scale and with dollars behind it"
       ],
       "tryTitle": "Try this next",
       "try": [
-        "Open the asset in the explorer and find the holder count — it should be 1, you",
+        "Open the asset in the explorer and find the holder count. It should be 1, you",
         "Send some of it to a classmate. They will have to add a trustline first, and you will watch it fail if they do not",
         "Issue the same code again from a different issuer, and see why wallets show the issuer and not just the symbol",
-        "If you locked the issuer, try issuing more. The ledger will refuse — that is what makes a fixed supply credible"
+        "If you locked the issuer, try issuing more. The ledger will refuse, and that is what makes a fixed supply credible"
       ],
       "again": "Issue another token"
     }
@@ -1004,7 +1848,7 @@
     "lowReserve": "Not enough XLM to cover the minimum reserve this operation needs.",
     "trustLimitExceeded": "The amount is above the trustline limit for this asset.",
     "assetAlreadyExists": "An asset with this code and issuer already exists.",
-    "friendbotFailed": "Friendbot could not fund the account. It may be rate-limited — wait a moment and try again.",
+    "friendbotFailed": "Friendbot could not fund the account. It may be rate-limited. Wait a moment and try again.",
     "simulationFailed": "The contract call could not be simulated. Check the values and try again.",
     "network": "Could not reach the Stellar network. Check your connection and try again.",
     "unknown": "Unexpected error. The details below will help your lecturer.",

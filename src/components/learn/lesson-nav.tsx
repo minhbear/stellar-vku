@@ -1,7 +1,16 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { CheckCircle2, CircleDollarSign, Clock3, Library, Wand2 } from "lucide-react";
+import {
+  CheckCircle2,
+  CircleDollarSign,
+  Clock3,
+  Library,
+  NotebookPen,
+  Radar,
+  Search,
+  Wand2,
+} from "lucide-react";
 
 import { useProgress } from "@/components/learn/use-progress";
 import { Progress } from "@/components/ui/progress";
@@ -13,6 +22,9 @@ const ICONS: Record<LessonIcon, typeof Library> = {
   concepts: Library,
   stablecoin: CircleDollarSign,
   issue: Wand2,
+  trace: Search,
+  hunt: Radar,
+  homework: NotebookPen,
 };
 
 export function LessonNav({ variant = "sidebar" }: { variant?: "sidebar" | "strip" }) {
