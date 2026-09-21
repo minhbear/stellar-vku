@@ -41,6 +41,10 @@ Non-obvious rules:
   query vocabulary anywhere in it, and nothing about signers, thresholds or
   multisig: hints name boxes and tabs of the Stellar Expert UI and link to the
   page that shows the answer.
+- **Module 3 (finance) stays non-technical too**: explain what a service does
+  for the user (who pays whom, how long, what can go wrong), never how the
+  contracts are built. Diagrams go through `FlowWalkthrough` and the shared
+  `@/components/diagram` graph; keep each step's text to a sentence or two.
 - **No em dashes in `src/messages/*.json`.** Use a colon, a comma, a full stop
   or parentheses instead.
 - After changing anything under `src/lib/stellar/`, run

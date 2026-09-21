@@ -5,19 +5,32 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   Banknote,
   BookOpen,
+  Building2,
+  CircleDollarSign,
   Coins,
   Copy,
   Database,
   FileCode2,
+  Gauge,
   Globe,
+  HandCoins,
+  House,
   Landmark,
+  LifeBuoy,
   ListTree,
   Lock,
+  Network,
+  PiggyBank,
+  Receipt,
   Search,
   Send,
   ShieldCheck,
+  Store,
+  User,
+  UserSearch,
   Users,
   Wallet,
+  Zap,
 } from "lucide-react";
 
 import {
@@ -28,7 +41,7 @@ import {
   type GraphStep,
   type Scene,
   type Tone,
-} from "@/components/forensics/scene";
+} from "@/components/diagram/graph";
 import { cn } from "@/lib/utils";
 
 const ICONS: Record<GraphIcon, typeof Wallet> = {
@@ -49,6 +62,20 @@ const ICONS: Record<GraphIcon, typeof Wallet> = {
   lock: Lock,
   rules: ShieldCheck,
   frozen: Lock,
+  person: User,
+  family: Users,
+  bank: Building2,
+  network: Network,
+  fees: Receipt,
+  cash: HandCoins,
+  anchor: Store,
+  stablecoin: CircleDollarSign,
+  bureau: UserSearch,
+  house: House,
+  pool: PiggyBank,
+  oracle: Gauge,
+  backstop: LifeBuoy,
+  liquidator: Zap,
 };
 
 const TONE_COLOR: Record<Tone, string> = {
@@ -64,11 +91,11 @@ function percent(value: number, total: number) {
 }
 
 /**
- * Draws one step of a case scene: the ledger objects involved and the arrows
- * between them. `values` carries the real testnet addresses and amounts so the
- * picture is of the students' own case, not a generic one.
+ * Draws one step of a scene: the actors involved and the arrows between them,
+ * with a dot travelling along every active arrow. `values` overrides a node's
+ * sublabel; the explorer missions use it for real testnet addresses.
  */
-export function TraceGraph({
+export function FlowGraph({
   scene,
   step,
   namespace,

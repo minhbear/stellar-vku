@@ -21,6 +21,8 @@ npm run dev            # http://localhost:3000 → redirects to /en
 | `/[locale]/learn/forensics` | Mission 01: read one wallet in Stellar Expert (creator, holdings, history, what it claims about itself) |
 | `/[locale]/learn/forensics/airdrop` | Mission 02: trace a token airdrop from a bare token address to every holder |
 | `/[locale]/learn/forensics/frozen-wallet` | Mission 03 (homework): a frozen customer wallet and an issuer that kept approval, freezing and clawback |
+| `/[locale]/learn/finance` | Cross-border payments: 500 USD through banks and SWIFT, then through MoneyGram and USDC on Stellar, plus the life of a transaction |
+| `/[locale]/learn/finance/lending` | Lending: a secured loan at a Vietnamese bank next to a Blend lending pool, and how to borrow on Blend testnet |
 
 Locales are `en` (source of truth) and `vi`. Messages live in
 `src/messages/*.json`; the course structure lives in `src/lib/curriculum.ts`.
@@ -95,6 +97,17 @@ from it.
 Answers are checked in the browser (normalised: case-folded addresses,
 `1,000,000` = `1000000.0000000`). A student who opens devtools can read them —
 this is a self-check during a workshop, not an exam.
+
+## The finance module
+
+Module 3 compares a banking service with its on-chain version, twice
+(remittance vs MoneyGram on Stellar, bank loan vs Blend). Each comparison is a
+`FlowWalkthrough`: the shared `FlowGraph` diagram (also used by the explorer
+debriefs, `src/components/diagram/`), a strip of running numbers and a clock,
+then two or three lines of text per step. Scenes live in
+`src/components/finance/scenes.ts`; the numbers there are one illustrative
+example per walkthrough, not market data. Same audience as Module 2: no
+contract internals, no API vocabulary.
 
 ## Conventions
 

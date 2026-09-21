@@ -10,7 +10,9 @@ export type LessonIcon =
   | "issue"
   | "trace"
   | "hunt"
-  | "homework";
+  | "homework"
+  | "remit"
+  | "lending";
 
 export interface LessonDef {
   id: string;
@@ -61,6 +63,15 @@ export const MODULES: ModuleDef[] = [
         kind: "investigation",
         minutes: 35,
       },
+    ],
+  },
+  {
+    id: "finance",
+    slug: "finance",
+    order: 3,
+    lessons: [
+      { id: "payments", slug: "", icon: "remit", kind: "walkthrough", minutes: 30 },
+      { id: "lending", slug: "lending", icon: "lending", kind: "walkthrough", minutes: 30 },
     ],
   },
 ];

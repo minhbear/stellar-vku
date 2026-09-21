@@ -2,7 +2,7 @@
   "meta": {
     "siteName": "Stellar × VKU",
     "defaultTitle": "Tokenization trên Stellar · VKU",
-    "defaultDescription": "Khoá thực hành cho sinh viên fintech: tài sản số được tạo ra như thế nào, một stablecoin được phát hành ra sao, tự tay phát hành token của bạn trên Stellar testnet, và truy vết ví cùng token ngay trên chain."
+    "defaultDescription": "Khoá thực hành cho sinh viên fintech: tài sản số được tạo ra như thế nào, một stablecoin được phát hành ra sao, tự tay phát hành token của bạn trên Stellar testnet, truy vết ví cùng token ngay trên chain, và chuyển tiền xuyên biên giới cùng lending pool vận hành trên Stellar ra sao."
   },
   "common": {
     "next": "Tiếp",
@@ -99,13 +99,30 @@
           "description": "Bài tập về nhà: một ví khách hàng bị đóng băng, và một đơn vị phát hành giữ lại mọi quyền có thể giữ."
         }
       }
+    },
+    "finance": {
+      "title": "Tài chính trên blockchain",
+      "short": "Tài chính on-chain",
+      "description": "Hai dịch vụ tài chính được làm lại trên Stellar: chuyển tiền xuyên biên giới với MoneyGram, và vay từ lending pool với Blend. Mỗi dịch vụ đặt cạnh cách ngân hàng đang làm hôm nay.",
+      "lessons": {
+        "payments": {
+          "title": "Thanh toán xuyên biên giới",
+          "short": "Xuyên biên giới",
+          "description": "Theo chân 500 USD từ Mỹ về Việt Nam, lần đầu qua ngân hàng và SWIFT, lần sau qua MoneyGram và USDC trên Stellar."
+        },
+        "lending": {
+          "title": "Cho vay: ngân hàng và Blend",
+          "short": "Lending pool",
+          "description": "Một khoản vay thế chấp ở ngân hàng Việt Nam diễn ra thế nào, và lending pool Blend trên Stellar làm cùng việc đó mà không cần hồ sơ giấy tờ ra sao."
+        }
+      }
     }
   },
   "home": {
     "eyebrow": "VKU · Chương trình Fintech",
     "title": "Tokenization trên Stellar",
     "titleRich": "Tokenization trên <accent>Stellar</accent>",
-    "lede": "Phần thực hành đi kèm bài giảng. Ôn lại khái niệm, xem một stablecoin thật được phát hành ra sao, tự phát hành token của mình trên Stellar testnet, rồi truy vết ngược lại token đó trên explorer. Không cần biết code.",
+    "lede": "Phần thực hành đi kèm bài giảng. Ôn lại khái niệm, xem một stablecoin thật được phát hành ra sao, tự phát hành token của mình trên Stellar testnet, truy vết ngược lại token đó trên explorer, rồi xem chuyển tiền và cho vay chạy trên blockchain ra sao. Không cần biết code.",
     "ctaPrimary": "Bắt đầu với Tokenization",
     "ctaSecondary": "Xem bạn sẽ làm được gì",
     "badgeTestnet": "Mọi thứ ở đây chạy trên Stellar testnet. Không dùng tiền thật.",
@@ -152,9 +169,9 @@
     },
     "curriculum": {
       "title": "Chương trình học",
-      "lede": "Hiện có hai chuyên đề. Sẽ bổ sung thêm theo tiến độ khoá học.",
+      "lede": "Hiện có ba chuyên đề. Sẽ bổ sung thêm theo tiến độ khoá học.",
       "comingSoon": "Chuyên đề sắp có",
-      "comingSoonBody": "Thanh toán và anchor, DeFi trên Stellar, và smart contract với Soroban."
+      "comingSoonBody": "Smart contract với Soroban, và thêm nhiều ứng dụng trong hệ sinh thái Stellar."
     },
     "footer": {
       "docs": "Tài liệu Stellar",
@@ -1508,6 +1525,914 @@
           {
             "label": "Stellar là gì, giải thích bằng ngôn ngữ đời thường",
             "href": "https://www.stellar.org/learn/intro-to-stellar"
+          }
+        ]
+      }
+    }
+  },
+  "finance": {
+    "ui": {
+      "clock": "Thời điểm",
+      "none": "Chưa có"
+    },
+    "payments": {
+      "title": "Chuyển tiền xuyên biên giới",
+      "lede": "Cùng 500 USD đi cùng một quãng đường hai lần: một lần qua hệ thống ngân hàng, một lần qua Stellar. Để ý tiền phải chờ ở đâu, ai lấy phí, và mất bao lâu.",
+      "example": {
+        "title": "Ví dụ xuyên suốt",
+        "body": "Một người đang làm việc ở Mỹ gửi 500 USD về cho gia đình ở Đà Nẵng vào chiều thứ Sáu. Mọi con số bên dưới là minh hoạ, không phải biểu phí của một ngân hàng cụ thể."
+      },
+      "wire": {
+        "title": "1. Hiện nay tiền đi như thế nào",
+        "lede": "Ngân hàng ở hai nước hiếm khi có tài khoản ở nhau, nên tiền phải nhảy qua các ngân hàng trung gian, còn lệnh chuyển thì đi riêng qua mạng SWIFT.",
+        "diagram": {
+          "title": "Một lệnh chuyển tiền quốc tế qua ngân hàng",
+          "nodes": {
+            "sender": {
+              "label": "Người gửi",
+              "sub": "Ở Mỹ"
+            },
+            "bankA": {
+              "label": "Ngân hàng Mỹ",
+              "sub": "Ngân hàng gửi"
+            },
+            "corr": {
+              "label": "Ngân hàng trung gian",
+              "sub": "Ngân hàng đại lý"
+            },
+            "bankB": {
+              "label": "Ngân hàng Việt Nam",
+              "sub": "Ngân hàng nhận"
+            },
+            "family": {
+              "label": "Gia đình",
+              "sub": "Ở Đà Nẵng"
+            },
+            "swift": {
+              "label": "SWIFT",
+              "sub": "Tin nhắn giữa các ngân hàng"
+            },
+            "fees": {
+              "label": "Phí và tỷ giá",
+              "sub": "Bị trừ dọc đường"
+            }
+          },
+          "edges": {
+            "deposit": "500 USD",
+            "msgA": "Điện chuyển tiền",
+            "msgCorr": "Chuyển tiếp",
+            "msgB": "Điện tới nơi",
+            "hop1": "Tiền di chuyển",
+            "hop2": "Tiền di chuyển",
+            "payout": "Trả bằng VND",
+            "feeA": "Phí chuyển",
+            "feeCorr": "Phí xử lý",
+            "feeB": "Chênh lệch tỷ giá"
+          },
+          "meters": {
+            "amount": {
+              "label": "Số tiền đang trên đường",
+              "unit": "USD"
+            },
+            "fees": {
+              "label": "Mất vào phí",
+              "unit": "USD"
+            }
+          }
+        },
+        "steps": [
+          {
+            "id": "send",
+            "short": "Gửi",
+            "eyebrow": "Bước 1",
+            "title": "Người gửi ra ngân hàng",
+            "body": "Điền tên người nhận, ngân hàng, số tài khoản và mã SWIFT. Ngân hàng kiểm tra danh tính và mục đích chuyển tiền.",
+            "points": [
+              "Cả hai đầu đều phải có tài khoản ngân hàng",
+              "Sai một ký tự trong thông tin tài khoản là tiền bị trả về sau vài ngày"
+            ],
+            "clock": "Thứ Sáu, 14:00"
+          },
+          {
+            "id": "message",
+            "short": "SWIFT",
+            "eyebrow": "Bước 2",
+            "title": "Tin nhắn đi trước, tiền thì chưa",
+            "body": "SWIFT chỉ chở lệnh: \"hãy trả 485 USD vào tài khoản này\". Còn tiền thật phải đi qua các tài khoản mà ngân hàng mở ở nhau.",
+            "points": [
+              "Ngân hàng gửi thu phí chuyển (ở đây 15 USD)",
+              "Gửi sau giờ chốt lệnh trong ngày, nên phải chờ ngày làm việc tiếp theo"
+            ],
+            "clock": "Thứ Sáu, 16:30 (quá giờ chốt lệnh)",
+            "callout": {
+              "kind": "info",
+              "title": "Tin nhắn không phải là tiền",
+              "body": "SWIFT giống như một hệ thống email rất tin cậy giữa các ngân hàng. Việc chuyển tiền thật là một việc riêng."
+            }
+          },
+          {
+            "id": "correspondent",
+            "short": "Trung gian",
+            "eyebrow": "Bước 3",
+            "title": "Một ngân hàng trung gian đứng giữa",
+            "body": "Ngân hàng Mỹ không có tài khoản ở Việt Nam, nên một ngân hàng đại lý lớn có tài khoản ở cả hai nước chuyển tiếp khoản tiền. Ngân hàng này cũng lấy phí.",
+            "points": [
+              "Cuối tuần ngân hàng nghỉ, tiền nằm chờ",
+              "Có tuyến phải qua hai, ba ngân hàng trung gian, mỗi nơi một khoản phí"
+            ],
+            "clock": "Thứ Hai, 10:00"
+          },
+          {
+            "id": "arrive",
+            "short": "Tới nơi",
+            "eyebrow": "Bước 4",
+            "title": "Ngân hàng Việt Nam đổi sang VND",
+            "body": "Ngân hàng nhận kiểm tra giao dịch theo quy định phòng chống rửa tiền, rồi đổi USD sang VND theo tỷ giá của mình, thấp hơn tỷ giá thị trường một chút.",
+            "points": [
+              "Chênh lệch tỷ giá là khoản phí không bao giờ ghi trên biên lai",
+              "Không ai trên đường đi có thể nói chính xác cho người gửi biết tiền đang ở đâu"
+            ],
+            "clock": "Thứ Ba, 09:00"
+          },
+          {
+            "id": "payout",
+            "short": "Nhận tiền",
+            "eyebrow": "Bước 5",
+            "title": "Gia đình cuối cùng cũng nhận được tiền",
+            "body": "Tiền vào tài khoản của gia đình bằng VND, tương đương 465 USD. Người gửi đã trả 500.",
+            "points": [
+              "4 ngày từ lúc gửi tới lúc nhận, tính cả cuối tuần",
+              "35 USD, tức 7 %, mất dọc đường"
+            ],
+            "clock": "Thứ Ba, 15:00"
+          },
+          {
+            "id": "problems",
+            "short": "Cái giá",
+            "eyebrow": "Tổng kết",
+            "title": "35 USD đã đi đâu",
+            "body": "Mỗi ngân hàng trong chuỗi được trả tiền cho chặng của mình, và mỗi chặng lại thêm thời gian. Theo World Bank, chi phí trung bình toàn cầu để gửi tiền về nhà khoảng 6,5 %, và trên 9 % nếu đi qua ngân hàng.",
+            "points": [
+              "Chậm: tính bằng ngày, không phải phút",
+              "Đắt: nhiều lớp phí cộng chênh lệch tỷ giá",
+              "Mù mờ: không ai thấy toàn bộ đường đi"
+            ],
+            "clock": "Tổng cộng: 4 ngày",
+            "callout": {
+              "kind": "warning",
+              "title": "Sao lại nhiều trung gian thế?",
+              "body": "Mỗi ngân hàng giữ một sổ cái riêng. Muốn chuyển tiền thì từng cặp ngân hàng trên tuyến phải tin nhau và đối soát sổ sách với nhau."
+            }
+          }
+        ]
+      },
+      "pains": {
+        "title": "Mô hình này có vấn đề gì",
+        "lede": "Bốn vấn đề đọc thẳng ra từ sơ đồ bên trên.",
+        "items": [
+          {
+            "title": "Chậm",
+            "body": "Mỗi chặng phải chờ giờ làm việc và giờ chốt lệnh. Hai đến năm ngày là bình thường."
+          },
+          {
+            "title": "Đắt",
+            "body": "Mỗi ngân hàng một khoản phí, cộng thêm chênh lệch tỷ giá ẩn. Khoản gửi càng nhỏ càng mất nhiều."
+          },
+          {
+            "title": "Mù mờ",
+            "body": "Người gửi không biết tiền đang ở đâu, cũng không biết khoản phí nào bị trừ ở đâu."
+          },
+          {
+            "title": "Chỉ chạy giờ hành chính",
+            "body": "Cuối tuần và ngày lễ là mọi thứ dừng lại. Hai bên cũng đều phải có tài khoản ngân hàng."
+          }
+        ]
+      },
+      "fix": {
+        "title": "2. Blockchain thay đổi được gì",
+        "lede": "Ba ý tưởng, mỗi ý tưởng bỏ đi một phần của chuỗi ngân hàng.",
+        "items": [
+          {
+            "title": "Một sổ cái chung",
+            "body": "Thay vì mỗi ngân hàng giữ sổ riêng rồi đối soát, mọi người cùng đọc và ghi trên một sổ cái công khai. Việc quyết toán chỉ mất vài giây."
+          },
+          {
+            "title": "Một đồng đô la số",
+            "body": "USDC là token đô la được Circle bảo chứng 1 : 1 (chuyên đề 1). Nó đi như một tin nhắn, nên không còn chặng chuyển tiền riêng phải quyết toán."
+          },
+          {
+            "title": "Anchor ở hai đầu",
+            "body": "Anchor là một doanh nghiệp đáng tin cậy, đổi tiền mặt lấy token và ngược lại. Trên Stellar, MoneyGram là một anchor như vậy, có điểm giao dịch ở hơn 170 quốc gia."
+          }
+        ]
+      },
+      "moneygram": {
+        "title": "3. Cùng 500 USD đó với MoneyGram trên Stellar",
+        "lede": "MoneyGram cho phép người dùng tới một điểm giao dịch, nộp tiền mặt và nhận USDC vào ví Stellar, rồi làm ngược lại ở đầu bên kia. Chặng giữa chỉ còn là một giao dịch trên Stellar.",
+        "diagram": {
+          "title": "Nạp và rút tiền mặt với MoneyGram trên Stellar",
+          "nodes": {
+            "sender": {
+              "label": "Người gửi",
+              "sub": "Có tiền mặt"
+            },
+            "mgA": {
+              "label": "MoneyGram (Mỹ)",
+              "sub": "Anchor: nạp tiền mặt"
+            },
+            "stellar": {
+              "label": "Mạng Stellar",
+              "sub": "Sổ cái công khai"
+            },
+            "mgB": {
+              "label": "MoneyGram",
+              "sub": "Anchor nước nhận: rút tiền"
+            },
+            "family": {
+              "label": "Gia đình",
+              "sub": "Nhận tiền mặt"
+            },
+            "circle": {
+              "label": "Circle",
+              "sub": "Phát hành USDC 1 : 1"
+            },
+            "walletA": {
+              "label": "Ví người gửi",
+              "sub": "VD: LOBSTR, Vibrant"
+            },
+            "walletB": {
+              "label": "Ví của gia đình",
+              "sub": "Ví Stellar"
+            }
+          },
+          "edges": {
+            "cashIn": "500 USD tiền mặt",
+            "usdc": "USDC",
+            "toWallet": "495 USDC",
+            "sign": "Giao dịch đã ký",
+            "settle": "Khoảng 5 giây",
+            "toAnchor": "USDC",
+            "redeem": "Đổi lại USD",
+            "cashOut": "Tiền mặt nội tệ"
+          },
+          "meters": {
+            "amount": {
+              "label": "Số tiền đang trên đường",
+              "unit": "USD"
+            },
+            "fees": {
+              "label": "Mất vào phí",
+              "unit": "USD"
+            }
+          }
+        },
+        "steps": [
+          {
+            "id": "cashIn",
+            "short": "Nạp tiền",
+            "eyebrow": "Bước 1",
+            "title": "Nộp tiền mặt tại quầy MoneyGram",
+            "body": "Người gửi mở ví Stellar trên điện thoại, chọn \"nạp qua MoneyGram\" và nộp 500 USD tiền mặt ở một điểm gần nhà. Không cần tài khoản ngân hàng.",
+            "points": [
+              "MoneyGram vẫn kiểm tra danh tính như ngân hàng",
+              "Đây là việc của anchor: biến tiền mặt thành token"
+            ],
+            "clock": "Thứ Sáu, 14:00"
+          },
+          {
+            "id": "usdc",
+            "short": "USDC",
+            "eyebrow": "Bước 2",
+            "title": "USDC xuất hiện trong ví",
+            "body": "MoneyGram gửi USDC vào ví người gửi, trừ phí nạp. Mỗi USDC được bảo chứng bằng một đô la thật ở Circle, đúng vòng lặp ở chuyên đề 1.",
+            "points": [
+              "Tiền giờ là một token trên sổ cái công khai",
+              "Ai cũng kiểm tra được số dư trên Stellar Expert (chuyên đề 2)"
+            ],
+            "clock": "Thứ Sáu, 14:08"
+          },
+          {
+            "id": "sign",
+            "short": "Ký",
+            "eyebrow": "Bước 3",
+            "title": "Một giao dịch, do người gửi ký",
+            "body": "Ví soạn sẵn một giao dịch: 495 USDC tới địa chỉ của gia đình. Người gửi bấm đồng ý, tức là ký bằng khoá bí mật của mình, và ví gửi nó lên mạng.",
+            "points": [
+              "Không mã SWIFT, không ngân hàng trung gian, không giờ chốt lệnh",
+              "Nửa đêm Chủ nhật cũng chạy y như vậy"
+            ],
+            "clock": "Thứ Sáu, 14:10"
+          },
+          {
+            "id": "settle",
+            "short": "Quyết toán",
+            "eyebrow": "Bước 4",
+            "title": "Hoàn tất sau khoảng 5 giây",
+            "body": "Cứ vài giây, các validator của Stellar lại thống nhất trang sổ cái tiếp theo. Khi giao dịch đã nằm trên đó thì nó là cuối cùng: không ai đảo ngược hay giữ lại để xem xét được.",
+            "points": [
+              "Phí mạng chỉ bằng một phần rất nhỏ của một xu",
+              "Ví của gia đình hiện 495 USDC ngay lập tức"
+            ],
+            "clock": "Thứ Sáu, 14:10 + 5 giây",
+            "callout": {
+              "kind": "success",
+              "title": "Tin nhắn và tiền là một",
+              "body": "Ở tuyến ngân hàng, lệnh và tiền đi tách nhau. Ở đây, bản thân giao dịch chính là việc quyết toán."
+            }
+          },
+          {
+            "id": "cashOut",
+            "short": "Rút tiền",
+            "eyebrow": "Bước 5",
+            "title": "Rút tiền mặt ở đầu bên kia",
+            "body": "Gia đình có thể giữ USDC trong ví, hoặc gửi cho MoneyGram rồi nhận tiền mặt nội tệ tại quầy. Phía sau, MoneyGram đổi USDC lại thành USD với Circle.",
+            "points": [
+              "Phí rút và tỷ giá hiện ra trước khi xác nhận",
+              "Gia đình cũng có thể cứ giữ và tiêu bằng đô la"
+            ],
+            "clock": "Thứ Sáu, 14:40",
+            "callout": {
+              "kind": "warning",
+              "title": "Tuỳ từng quốc gia",
+              "body": "Việc rút tiền mặt phụ thuộc vào điểm giao dịch MoneyGram ở nước nhận. Hãy kiểm tra trước khi dựa vào nó."
+            }
+          },
+          {
+            "id": "compare",
+            "short": "So sánh",
+            "eyebrow": "Tổng kết",
+            "title": "Chưa tới một giờ, 12 USD",
+            "body": "Anchor ở hai đầu vẫn thu phí xử lý tiền mặt, nhưng phần đắt đỏ ở giữa, chuỗi ngân hàng, được thay bằng một giao dịch trên sổ cái chung.",
+            "points": [
+              "Qua ngân hàng: 4 ngày, 35 USD",
+              "MoneyGram trên Stellar: chưa tới một giờ, 12 USD",
+              "Mọi bước đều xem được trên explorer"
+            ],
+            "clock": "Tổng cộng: 40 phút"
+          }
+        ]
+      },
+      "compare": {
+        "title": "Đặt cạnh nhau",
+        "lede": "Cùng một khoản chuyển, hai con đường.",
+        "columns": {
+          "criterion": "",
+          "bank": "Ngân hàng và SWIFT",
+          "stellar": "MoneyGram trên Stellar"
+        },
+        "rows": [
+          {
+            "criterion": "Thời gian",
+            "bank": "2 đến 5 ngày làm việc",
+            "stellar": "Vài giây trên chain, vài phút từ quầy tới quầy"
+          },
+          {
+            "criterion": "Chi phí",
+            "bank": "Nhiều lớp phí cộng chênh lệch tỷ giá, khoảng 6 đến 10 %",
+            "stellar": "Phí nạp và rút tiền mặt; phí mạng gần như bằng 0"
+          },
+          {
+            "criterion": "Giờ hoạt động",
+            "bank": "Ngày làm việc, trước giờ chốt lệnh",
+            "stellar": "Mạng chạy 24/7; quầy giao dịch có giờ riêng"
+          },
+          {
+            "criterion": "Theo dõi",
+            "bank": "Hỏi ngân hàng rồi chờ",
+            "stellar": "Công khai, trên Stellar Expert"
+          },
+          {
+            "criterion": "Cần tài khoản ngân hàng",
+            "bank": "Có, ở cả hai đầu",
+            "stellar": "Không, chỉ cần một ví"
+          },
+          {
+            "criterion": "Hoàn tất khi nào",
+            "bank": "Khi mọi ngân hàng đã quyết toán",
+            "stellar": "Khi sổ cái đóng trang, khoảng 5 giây"
+          }
+        ]
+      },
+      "lifecycle": {
+        "title": "Vòng đời một giao dịch tài chính",
+        "lede": "Giao dịch nào cũng đi qua cùng các giai đoạn: được tạo ra, được kiểm tra, được chuyển đi, được quyết toán và được xác nhận. Khác nhau là ai làm từng giai đoạn và mất bao lâu.",
+        "bank": {
+          "label": "Qua ngân hàng",
+          "total": "Tính bằng ngày, nhiều bên tham gia",
+          "stages": [
+            {
+              "title": "Tạo lệnh",
+              "body": "Người gửi điền lệnh chuyển tiền ở quầy hoặc trên app ngân hàng."
+            },
+            {
+              "title": "Kiểm tra",
+              "body": "Ngân hàng xác minh danh tính và rà soát rửa tiền."
+            },
+            {
+              "title": "Gửi điện",
+              "body": "Một tin nhắn SWIFT báo cho ngân hàng tiếp theo phải trả gì."
+            },
+            {
+              "title": "Chuyển tiền",
+              "body": "Số dư dịch chuyển giữa các tài khoản ngân hàng mở ở nhau."
+            },
+            {
+              "title": "Đối soát",
+              "body": "Từng ngân hàng khớp sổ với nhau, thường vào cuối ngày."
+            },
+            {
+              "title": "Hoàn tất",
+              "body": "Chỉ khi mọi ngân hàng trên tuyến đã quyết toán xong."
+            }
+          ]
+        },
+        "stellar": {
+          "label": "Trên Stellar",
+          "total": "Tính bằng giây, một sổ cái chung",
+          "stages": [
+            {
+              "title": "Tạo",
+              "body": "Ví soạn giao dịch: gửi cho ai, bao nhiêu, phí bao nhiêu."
+            },
+            {
+              "title": "Ký",
+              "body": "Người gửi đồng ý; ví ký giao dịch bằng khoá bí mật."
+            },
+            {
+              "title": "Gửi lên mạng",
+              "body": "Giao dịch đã ký được gửi tới mạng Stellar."
+            },
+            {
+              "title": "Đồng thuận",
+              "body": "Các validator thống nhất trang sổ cái tiếp theo, khoảng 5 giây một lần."
+            },
+            {
+              "title": "Ghi sổ",
+              "body": "Giao dịch được ghi vào sổ cái. Không thể đảo ngược."
+            },
+            {
+              "title": "Kiểm chứng",
+              "body": "Ai cũng tra được trên Stellar Expert, như bạn đã làm ở chuyên đề 2."
+            }
+          ]
+        },
+        "callout": {
+          "title": "Việc kiểm tra danh tính không biến mất",
+          "body": "Trên Stellar, anchor (MoneyGram) vẫn kiểm tra danh tính khi nạp và rút tiền mặt. Cái mất đi là chuỗi ngân hàng ở giữa."
+        }
+      },
+      "next": {
+        "title": "Tiếp theo: đi vay tiền",
+        "body": "Thanh toán giúp tiền di chuyển. Cho vay giúp tiền nhàn rỗi sinh lời. Xem lending pool Blend trên Stellar so với một khoản vay ngân hàng.",
+        "cta": "Sang phần cho vay"
+      },
+      "sources": {
+        "title": "Nguồn",
+        "lede": "Các con số sẽ thay đổi. Kiểm tra tại nguồn trước khi trích dẫn.",
+        "items": [
+          {
+            "label": "World Bank: Remittance Prices Worldwide (chi phí chuyển tiền toàn cầu)",
+            "href": "https://remittanceprices.worldbank.org"
+          },
+          {
+            "label": "Stellar: MoneyGram Ramps",
+            "href": "https://stellar.org/products-and-tools/moneygram"
+          },
+          {
+            "label": "MoneyGram ra mắt dịch vụ đổi crypto sang tiền mặt trên Stellar (2022)",
+            "href": "https://www.prnewswire.com/news-releases/moneygram-launches-pioneering-global-crypto-to-cash-service-on-the-stellar-network-301565815.html"
+          },
+          {
+            "label": "Tài liệu Stellar: anchor là gì",
+            "href": "https://developers.stellar.org/docs/learn/fundamentals/anchors"
+          }
+        ]
+      }
+    },
+    "lending": {
+      "title": "Cho vay: ngân hàng và Blend",
+      "lede": "Đi vay ở đâu cũng cùng một ý: người có tiền nhàn rỗi cho người cần tiền vay, và người vay đặt cọc một thứ gì đó phòng khi không trả được. Đây là ai làm gì ở ngân hàng, và trong một lending pool trên Stellar.",
+      "bank": {
+        "title": "1. Vay tiền ngân hàng ở Việt Nam",
+        "lede": "Ví dụ: vay 500 triệu đồng, thế chấp một căn nhà trị giá 1 tỷ. Ngân hàng đứng giữa mọi thứ.",
+        "diagram": {
+          "title": "Một khoản vay thế chấp ở ngân hàng",
+          "nodes": {
+            "savers": {
+              "label": "Người gửi tiết kiệm",
+              "sub": "Gửi tiền vào"
+            },
+            "bank": {
+              "label": "Ngân hàng",
+              "sub": "Quyết định mọi thứ"
+            },
+            "borrower": {
+              "label": "Người vay",
+              "sub": "Cần một khoản vay"
+            },
+            "cic": {
+              "label": "CIC",
+              "sub": "Trung tâm thông tin tín dụng"
+            },
+            "house": {
+              "label": "Tài sản thế chấp",
+              "sub": "Sổ đỏ căn nhà"
+            }
+          },
+          "edges": {
+            "deposit": "Tiết kiệm, khoảng 5 %/năm",
+            "interest": "Lãi tiền gửi",
+            "apply": "Hồ sơ vay",
+            "check": "Tra cứu tín dụng",
+            "pledge": "Thế chấp nhà",
+            "appraise": "Định giá",
+            "disburse": "500 triệu đồng",
+            "repay": "Gốc + lãi khoảng 10 %/năm",
+            "seize": "Phát mại nếu không trả"
+          },
+          "meters": {
+            "loan": {
+              "label": "Khoản vay",
+              "unit": "triệu đồng"
+            },
+            "collateral": {
+              "label": "Tài sản ngân hàng đang giữ",
+              "unit": "triệu đồng"
+            }
+          }
+        },
+        "steps": [
+          {
+            "id": "deposits",
+            "short": "Huy động",
+            "eyebrow": "Bước 1",
+            "title": "Tiền cho vay từ đâu ra",
+            "body": "Người dân gửi tiết kiệm và nhận lãi khoảng 5 %/năm. Ngân hàng đem số tiền đó cho vay với lãi cao hơn và giữ phần chênh lệch.",
+            "points": [
+              "Người gửi không bao giờ biết tiền của mình được cho ai vay",
+              "Ngân hàng quyết định ai được vay và lãi bao nhiêu"
+            ],
+            "clock": "Trước mọi thứ"
+          },
+          {
+            "id": "apply",
+            "short": "Hồ sơ",
+            "eyebrow": "Bước 2",
+            "title": "Hồ sơ giấy tờ và tra cứu tín dụng",
+            "body": "Người vay nộp CCCD, giấy tờ chứng minh thu nhập và mục đích vay. Ngân hàng tra lịch sử tín dụng của họ trên CIC, trung tâm thông tin tín dụng quốc gia.",
+            "points": [
+              "Không chứng minh được thu nhập hoặc có nợ xấu trên CIC thường là không được vay",
+              "Nhiều người chưa từng có lịch sử tín dụng bị bỏ ngoài"
+            ],
+            "clock": "Ngày 1 đến 3"
+          },
+          {
+            "id": "collateral",
+            "short": "Thế chấp",
+            "eyebrow": "Bước 3",
+            "title": "Căn nhà được định giá và thế chấp",
+            "body": "Ngân hàng định giá căn nhà và thường cho vay tối đa khoảng 70 % giá trị. Hợp đồng thế chấp được công chứng, đăng ký giao dịch bảo đảm, và ngân hàng giữ sổ đỏ.",
+            "points": [
+              "Định giá, công chứng, đăng ký mất nhiều ngày và tốn phí",
+              "Người vay vẫn ở trong căn nhà như bình thường"
+            ],
+            "clock": "Ngày 3 đến 10"
+          },
+          {
+            "id": "disburse",
+            "short": "Giải ngân",
+            "eyebrow": "Bước 4",
+            "title": "Ngân hàng giải ngân",
+            "body": "Sau khi được phê duyệt và ký hợp đồng tín dụng, ngân hàng chuyển 500 triệu đồng cho người vay.",
+            "points": [
+              "Một đến hai tuần kể từ lúc nộp hồ sơ, có khi lâu hơn",
+              "Lãi thường cố định trong thời gian ưu đãi, sau đó thả nổi"
+            ],
+            "clock": "Khoảng tuần thứ 2"
+          },
+          {
+            "id": "repay",
+            "short": "Trả nợ",
+            "eyebrow": "Bước 5",
+            "title": "Trả góp hằng tháng",
+            "body": "Mỗi tháng người vay trả một phần gốc cộng lãi, khoảng 10 %/năm. Một phần tiền lãi trả cho người gửi tiết kiệm, phần còn lại là lợi nhuận của ngân hàng.",
+            "points": [
+              "Trả hết nợ thì ngân hàng trả lại sổ đỏ (giải chấp)",
+              "Trả trước hạn thường bị phạt"
+            ],
+            "clock": "Mỗi tháng, trong nhiều năm"
+          },
+          {
+            "id": "default",
+            "short": "Nợ xấu",
+            "eyebrow": "Nếu có chuyện",
+            "title": "Trễ hạn và phát mại tài sản",
+            "body": "Quá hạn trên 90 ngày, khoản vay thành nợ xấu và bị ghi lên CIC. Ngân hàng khi đó có thể phát mại căn nhà để thu hồi vốn, quá trình có thể kéo dài nhiều tháng.",
+            "points": [
+              "Nợ xấu trên CIC chặn đường vay trong nhiều năm",
+              "Xử lý tài sản thế chấp chậm và tốn kém cho mọi bên"
+            ],
+            "clock": "Sau 90 ngày quá hạn",
+            "callout": {
+              "kind": "info",
+              "title": "Ngân hàng gánh niềm tin",
+              "body": "Người gửi tin ngân hàng, còn ngân hàng tin vào khâu thẩm định của chính mình. Mọi thứ phụ thuộc vào phán đoán của một tổ chức."
+            }
+          }
+        ]
+      },
+      "idea": {
+        "title": "2. Lending pool: cùng một việc, luật chơi khác",
+        "lede": "Trong DeFi, lending pool thay ngân hàng bằng một quỹ tiền chung và những quy tắc ai cũng đọc được.",
+        "items": [
+          {
+            "title": "Một quỹ chung",
+            "body": "Người cho vay bỏ token vào pool và nhận lãi. Người vay lấy tiền từ chính pool đó. Không có ngân hàng nào quyết định ai được vay."
+          },
+          {
+            "title": "Thế chấp trước, không tra tín dụng",
+            "body": "Thay cho điểm tín dụng, bạn gửi vào giá trị lớn hơn số tiền vay. Tài sản thế chấp chính là bảo đảm của bạn."
+          },
+          {
+            "title": "Quy tắc tự vận hành",
+            "body": "Lãi suất, hạn mức vay và việc thanh lý chạy theo quy tắc cố định, 24/7, trong vài giây. Ai cũng kiểm tra được."
+          }
+        ]
+      },
+      "blend": {
+        "title": "3. Blend: lending pool trên Stellar",
+        "lede": "Blend là giao thức cho vay chính trên Stellar. Ví dụ: một pool có USDC và XLM, người vay thế chấp XLM trị giá 1.000 USD để vay USDC.",
+        "diagram": {
+          "title": "Vay tiền từ một pool Blend",
+          "nodes": {
+            "lenders": {
+              "label": "Người cho vay",
+              "sub": "Gửi USDC vào"
+            },
+            "pool": {
+              "label": "Pool Blend",
+              "sub": "USDC và XLM"
+            },
+            "borrower": {
+              "label": "Người vay",
+              "sub": "Có XLM, cần USDC"
+            },
+            "backstop": {
+              "label": "Backstop",
+              "sub": "Quỹ bảo hiểm"
+            },
+            "oracle": {
+              "label": "Nguồn giá",
+              "sub": "Giá XLM theo thời gian thực"
+            },
+            "liquidator": {
+              "label": "Người thanh lý",
+              "sub": "Ai cũng có thể làm"
+            }
+          },
+          "edges": {
+            "supply": "Gửi USDC",
+            "yield": "Tiền lãi",
+            "collateral": "XLM trị giá 1.000 USD",
+            "borrow": "500 USDC",
+            "repay": "Trả gốc + lãi",
+            "price": "Giá XLM",
+            "cover": "Một phần tiền lãi",
+            "rescue": "Bù nợ xấu",
+            "liquidate": "Trả thay một phần nợ",
+            "seize": "Nhận thế chấp giá hời"
+          },
+          "meters": {
+            "collateral": {
+              "label": "Tài sản thế chấp",
+              "unit": "USD"
+            },
+            "debt": {
+              "label": "Dư nợ",
+              "unit": "USD"
+            },
+            "health": {
+              "label": "Độ an toàn (dưới 1,00 là bị thanh lý)"
+            }
+          }
+        },
+        "steps": [
+          {
+            "id": "supply",
+            "short": "Gửi vào",
+            "eyebrow": "Bước 1",
+            "title": "Người cho vay góp tiền vào pool",
+            "body": "Ai có USDC nhàn rỗi thì gửi vào pool từ ví của mình. Họ bắt đầu nhận lãi ngay và rút ra lúc nào cũng được, miễn là phần tiền đó chưa bị vay hết.",
+            "points": [
+              "Không có ngân hàng ở giữa: người cho vay chính là người gửi tiết kiệm",
+              "Mọi khoản gửi đều là giao dịch công khai"
+            ],
+            "clock": "Bất kỳ lúc nào"
+          },
+          {
+            "id": "collateral",
+            "short": "Thế chấp",
+            "eyebrow": "Bước 2",
+            "title": "Người vay thế chấp XLM",
+            "body": "Người vay kết nối ví và gửi XLM trị giá 1.000 USD làm tài sản thế chấp. Nguồn giá cho pool biết số XLM đó đáng giá bao nhiêu, ngay lúc này.",
+            "points": [
+              "Không CCCD, không chứng minh thu nhập, không tra CIC",
+              "Chỉ cần ký một giao dịch"
+            ],
+            "clock": "Phút thứ 1"
+          },
+          {
+            "id": "borrow",
+            "short": "Vay",
+            "eyebrow": "Bước 3",
+            "title": "Vay trong hạn mức",
+            "body": "Trong pool này XLM được tính 75 % giá trị, nên người vay được vay tối đa 750 USDC. Họ vay 500 và tiền về ví sau vài giây.",
+            "points": [
+              "Độ an toàn = 1.000 × 75 % ÷ 500 = 1,50",
+              "Vay ít hơn hạn mức để còn khoảng đệm khi giá biến động"
+            ],
+            "clock": "Phút thứ 2",
+            "callout": {
+              "kind": "info",
+              "title": "Có XLM rồi thì vay làm gì?",
+              "body": "Để có đô la mà không phải bán XLM, ví dụ để chi tiêu trong khi vẫn giữ vị thế của mình."
+            }
+          },
+          {
+            "id": "interest",
+            "short": "Lãi suất",
+            "eyebrow": "Bước 4",
+            "title": "Lãi suất theo cung cầu",
+            "body": "Không ai ngồi đặt lãi suất. Pool bị vay càng nhiều thì lãi vay càng cao và người cho vay càng lời. Một phần tiền lãi chảy vào quỹ backstop.",
+            "points": [
+              "Sau 3 tháng dư nợ tăng lên 510 USDC",
+              "Lãi suất cập nhật liên tục, ai cũng xem được"
+            ],
+            "clock": "Sau 3 tháng"
+          },
+          {
+            "id": "repay",
+            "short": "Trả nợ",
+            "eyebrow": "Bước 5",
+            "title": "Trả nợ và lấy lại XLM",
+            "body": "Người vay trả 510 USDC bất cứ lúc nào họ muốn, rồi rút XLM về. Không phí trả trước hạn, không thủ tục giải chấp.",
+            "points": [
+              "Hai giao dịch, mỗi giao dịch vài giây",
+              "Đó là kết thúc có hậu. Còn nếu giá giảm thì sao?"
+            ],
+            "clock": "Tháng thứ 3"
+          },
+          {
+            "id": "price",
+            "short": "Giá giảm",
+            "eyebrow": "Nếu có chuyện",
+            "title": "XLM giảm 35 %",
+            "body": "Quay lại lúc khoản vay 510 USDC chưa trả. XLM giảm giá, tài sản thế chấp giờ chỉ còn 650 USD. Độ an toàn tụt dưới 1,00: khoản vay không còn an toàn cho người cho vay.",
+            "points": [
+              "Độ an toàn = 650 × 75 % ÷ 510 = 0,96",
+              "Lẽ ra người vay có thể trả bớt nợ hoặc nạp thêm thế chấp"
+            ],
+            "clock": "Một kịch bản khác"
+          },
+          {
+            "id": "liquidate",
+            "short": "Thanh lý",
+            "eyebrow": "Nếu có chuyện",
+            "title": "Người thanh lý vào cuộc",
+            "body": "Bất kỳ ai cũng có thể trả thay một phần khoản vay không an toàn và nhận lại tài sản thế chấp trị giá nhỉnh hơn. Ở đây người thanh lý trả 310 USDC và nhận khoảng 340 USD tiền XLM.",
+            "points": [
+              "Vài phút, không phải nhiều tháng ở toà",
+              "Người vay vẫn giữ 500 USDC nhưng mất một phần XLM"
+            ],
+            "clock": "Vài phút sau",
+            "callout": {
+              "kind": "warning",
+              "title": "Cái giá của thanh lý",
+              "body": "Phần giá hời người thanh lý được hưởng là do người vay trả. Giữ độ an toàn cao hơn 1,00 một khoảng rộng là tránh được."
+            }
+          },
+          {
+            "id": "backstop",
+            "short": "Backstop",
+            "eyebrow": "Lớp bảo vệ cuối",
+            "title": "Backstop bù phần còn thiếu",
+            "body": "Nếu giá sập nhanh tới mức tài sản thế chấp không đủ trả nợ, quỹ backstop của pool sẽ bù phần thiếu, để người cho vay được bảo vệ trước tiên.",
+            "points": [
+              "Người góp vào backstop nhận một phần tiền lãi để đổi lấy rủi ro này",
+              "Mỗi pool có backstop riêng, một pool gặp sự cố không kéo các pool khác chìm theo"
+            ],
+            "clock": "Chỉ khi cần"
+          }
+        ]
+      },
+      "howto": {
+        "title": "Thử ngay: vay trên Blend testnet",
+        "lede": "Blend có bản testnet với token thử nghiệm, nên bạn có thể đi hết vòng vay mà không cần tiền thật.",
+        "steps": [
+          {
+            "title": "Chuẩn bị Freighter",
+            "body": "Chuyển sang Test Net và đảm bảo có XLM testnet, như ở chuyên đề 1."
+          },
+          {
+            "title": "Mở Blend testnet",
+            "body": "Vào testnet.blend.capital và kết nối ví Freighter."
+          },
+          {
+            "title": "Chọn một pool",
+            "body": "Xem pool cho vay những tài sản nào, lãi gửi và lãi vay bao nhiêu."
+          },
+          {
+            "title": "Gửi tài sản thế chấp",
+            "body": "Supply một ít XLM làm thế chấp. Freighter hiện giao dịch: đọc kỹ rồi ký."
+          },
+          {
+            "title": "Vay",
+            "body": "Borrow một token mà pool cho vay. Theo dõi hạn mức vay và đừng vay sát giới hạn."
+          },
+          {
+            "title": "Trả nợ và rút về",
+            "body": "Repay khoản vay, withdraw XLM về ví, rồi tìm lại từng bước trên Stellar Expert."
+          }
+        ],
+        "cta": "Mở Blend testnet",
+        "note": "Chỉ trên testnet. Token thử nghiệm không có giá trị."
+      },
+      "compare": {
+        "title": "Đặt cạnh nhau",
+        "lede": "Cùng một nhu cầu, hai quy trình rất khác nhau.",
+        "columns": {
+          "criterion": "",
+          "bank": "Vay ngân hàng",
+          "stellar": "Pool Blend"
+        },
+        "rows": [
+          {
+            "criterion": "Ai cho vay",
+            "bank": "Ngân hàng, bằng tiền của người gửi tiết kiệm",
+            "stellar": "Người cho vay bỏ token thẳng vào pool"
+          },
+          {
+            "criterion": "Cần gì",
+            "bank": "CCCD, chứng minh thu nhập, CIC sạch, tài sản thế chấp",
+            "stellar": "Một ví và tài sản crypto trị giá lớn hơn khoản vay"
+          },
+          {
+            "criterion": "Bao lâu có tiền",
+            "bank": "Một đến hai tuần",
+            "stellar": "Vài giây"
+          },
+          {
+            "criterion": "Lãi suất",
+            "bank": "Ngân hàng đặt, ưu đãi rồi thả nổi",
+            "stellar": "Theo cung cầu, cập nhật liên tục"
+          },
+          {
+            "criterion": "Trả trước hạn",
+            "bank": "Thường bị phạt",
+            "stellar": "Lúc nào cũng được, không phí"
+          },
+          {
+            "criterion": "Khi không trả được",
+            "bank": "Nợ xấu trên CIC, nhà bị phát mại sau nhiều tháng",
+            "stellar": "Một phần thế chấp bị thanh lý trong vài phút"
+          },
+          {
+            "criterion": "Minh bạch",
+            "bank": "Nội bộ ngân hàng",
+            "stellar": "Mọi khoản vay và lãi suất đều công khai"
+          }
+        ]
+      },
+      "risks": {
+        "title": "Không phải phép màu",
+        "lede": "Lending pool bỏ đi giấy tờ, không bỏ đi rủi ro.",
+        "calloutTitle": "Biết giới hạn trước khi vay",
+        "items": [
+          "Bạn phải có sẵn tài sản trị giá lớn hơn khoản vay, nên nó không giúp được người không có gì để thế chấp.",
+          "Giá crypto biến động nhanh; một cú giảm mạnh có thể khiến bạn bị thanh lý trong vài phút.",
+          "Quy tắc là code: một lỗi hoặc một nguồn giá sai có thể gây thua lỗ.",
+          "Không có ai để gọi khi bạn thao tác nhầm. Bài học này để học, không phải lời khuyên tài chính."
+        ]
+      },
+      "sources": {
+        "title": "Nguồn",
+        "lede": "Tài liệu của Blend giải thích chi tiết từng quy tắc.",
+        "items": [
+          {
+            "label": "Tài liệu Blend: vay (borrowing)",
+            "href": "https://docs.blend.capital/users/lending-borrowing/borrowing"
+          },
+          {
+            "label": "Tài liệu Blend: thanh lý (liquidations)",
+            "href": "https://docs.blend.capital/users/lending-borrowing/liquidations"
+          },
+          {
+            "label": "Tài liệu Blend: quỹ backstop",
+            "href": "https://docs.blend.capital/users/backstopping"
+          },
+          {
+            "label": "Case study của Stellar: ví Meru sinh lời với Blend",
+            "href": "https://stellar.org/case-studies/meru-wallet-uses-blend-defi-protocol-for-yield"
           }
         ]
       }

@@ -2,11 +2,12 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowLeft, ArrowRight, ExternalLink, RotateCcw } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock3, RotateCcw } from "lucide-react";
 
 import { FlowGraph } from "@/components/diagram/flow-graph";
-import type { Scene } from "@/components/diagram/graph";
+import type { FlowScene, FlowStep, MeterDef } from "@/components/finance/scenes";
 import { Callout, type CalloutKind } from "@/components/learn/lesson-shell";
+import { RollingNumber } from "@/components/stablecoin/rolling-number";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -17,29 +18,33 @@ interface Step {
   title: string;
   body: string;
   points: string[];
-  callout: { kind: CalloutKind; title: string; body: string };
+  /** Where the running example is in time, e.g. "Friday, 16:30". */
+  clock: string;
+  callout?: { kind: CalloutKind; title: string; body: string };
 }
 
+const TONE_TEXT: Record<MeterDef["tone"], string> = {
+  fiat: "text-fiat",
+  chain: "text-chain",
+  warning: "text-warning",
+  success: "text-success",
+};
+
 /**
- * The "how it actually worked" replay students get after the hunt: one step per
- * idea, the mission graph on top, and the explorer page that proves each claim.
+ * Step-through diagram for the finance module: the flow on top, a strip of
+ * running numbers and a clock under it, then a short explanation. Same rhythm
+ * as the stablecoin walkthrough, generic over the scene.
  */
-export function Debrief({
+export function FlowWalkthrough({
   scene,
   namespace,
-  values,
-  links = {},
 }: {
-  scene: Scene;
-  /** e.g. `forensics.case1` — steps and diagram labels hang off it. */
+  scene: FlowScene;
+  /** e.g. `finance.payments.wire`: `steps` and `diagram` hang off it. */
   namespace: string;
-  values?: Record<string, string>;
-  /** Step id → the explorer page that step is about. */
-  links?: Record<string, string>;
 }) {
-  const t = useTranslations(`${namespace}.debrief`);
+  const t = useTranslations(namespace);
   const tCommon = useTranslations("common");
-  const tUi = useTranslations("forensics.ui");
   const steps = t.raw("steps") as Step[];
 
   const [index, setIndex] = useState(0);
@@ -49,15 +54,14 @@ export function Debrief({
   const step = steps[index];
   const sceneStep = scene.steps[index] ?? scene.steps[0];
   const atEnd = index === total - 1;
-  const link = links[step.id];
 
   const go = useCallback(
     (next: number) => setIndex(Math.min(Math.max(next, 0), total - 1)),
     [total],
   );
 
-  // Arrow keys drive the replay, but only while it has focus — otherwise they
-  // would hijack scrolling for the whole page.
+  // Arrow keys drive the walkthrough, but only while it has focus, otherwise
+  // they would hijack scrolling for the whole page.
   useEffect(() => {
     const node = containerRef.current;
     if (!node) return;
@@ -93,6 +97,7 @@ export function Debrief({
                 type="button"
                 onClick={() => go(stepIndex)}
                 aria-current={active ? "step" : undefined}
+                // The label is hidden below `lg`, so the button needs its own name.
                 aria-label={`${stepIndex + 1}. ${entry.short}`}
                 title={entry.short}
                 className="group block w-full text-left focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
@@ -122,10 +127,16 @@ export function Debrief({
           scene={scene}
           step={sceneStep}
           namespace={`${namespace}.diagram`}
-          values={values}
-          title={t("diagramTitle")}
+          title={t("diagram.title")}
         />
       </div>
+
+      <MeterStrip
+        meters={scene.meters}
+        step={sceneStep}
+        clock={step.clock}
+        namespace={`${namespace}.diagram.meters`}
+      />
 
       <div className="mt-4 rounded-2xl border border-border bg-card p-5 sm:p-6">
         {/* CSS entrance keyed on the step: a JS cross-fade would stall halfway
@@ -138,7 +149,12 @@ export function Debrief({
             {step.title}
           </h3>
 
-          <div className="mt-4 grid gap-6 lg:grid-cols-[1.15fr_1fr]">
+          <div
+            className={cn(
+              "mt-4 grid gap-6",
+              step.callout && "lg:grid-cols-[1.15fr_1fr]",
+            )}
+          >
             <div className="space-y-4">
               <p className="max-w-[62ch] text-sm leading-relaxed text-muted-foreground text-pretty">
                 {step.body}
@@ -154,23 +170,13 @@ export function Debrief({
                   </li>
                 ))}
               </ul>
-
-              {link ? (
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-muted/50 px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-                >
-                  {tUi("openPage")}
-                  <ExternalLink className="size-3.5" aria-hidden="true" />
-                </a>
-              ) : null}
             </div>
 
-            <Callout kind={step.callout.kind} title={step.callout.title} className="h-fit">
-              {step.callout.body}
-            </Callout>
+            {step.callout ? (
+              <Callout kind={step.callout.kind} title={step.callout.title} className="h-fit">
+                {step.callout.body}
+              </Callout>
+            ) : null}
           </div>
         </div>
       </div>
@@ -205,4 +211,71 @@ export function Debrief({
       </div>
     </div>
   );
+}
+
+function MeterStrip({
+  meters,
+  step,
+  clock,
+  namespace,
+}: {
+  meters: MeterDef[];
+  step: FlowStep;
+  clock: string;
+  namespace: string;
+}) {
+  const t = useTranslations(namespace);
+  const tUi = useTranslations("finance.ui");
+
+  return (
+    <dl
+      className={cn(
+        "mt-4 grid gap-px overflow-hidden rounded-2xl border border-border bg-border",
+        meters.length > 2 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-1 sm:grid-cols-3",
+      )}
+    >
+      <div className="bg-card px-4 py-3">
+        <dt className="flex items-center gap-1.5 text-xs text-muted-foreground">
+          <Clock3 className="size-3.5" aria-hidden="true" />
+          {tUi("clock")}
+        </dt>
+        {/* Keyed so the clock re-enters on every step: time passing is the point. */}
+        <dd key={clock} className="mt-1 animate-rise text-sm font-semibold text-balance">
+          {clock}
+        </dd>
+      </div>
+
+      {meters.map((meter) => {
+        const value = step.values[meter.id];
+        const unit = t.has(`${meter.id}.unit`) ? t(`${meter.id}.unit`) : "";
+        return (
+          <div key={meter.id} className="bg-card px-4 py-3">
+            <dt className="text-xs text-muted-foreground">{t(`${meter.id}.label`)}</dt>
+            <dd
+              className={cn(
+                "mt-1 font-onchain text-base font-semibold",
+                value === undefined ? "text-muted-foreground" : meterColour(meter, value),
+              )}
+            >
+              {value === undefined ? (
+                <span className="text-sm font-normal">{tUi("none")}</span>
+              ) : meter.format === "ratio" ? (
+                value.toFixed(2)
+              ) : (
+                <>
+                  <RollingNumber value={value} /> {unit}
+                </>
+              )}
+            </dd>
+          </div>
+        );
+      })}
+    </dl>
+  );
+}
+
+function meterColour(meter: MeterDef, value: number) {
+  if (meter.dangerBelow !== undefined && value < meter.dangerBelow) return "text-destructive";
+  if (meter.warnBelow !== undefined && value < meter.warnBelow) return "text-warning";
+  return TONE_TEXT[meter.tone];
 }

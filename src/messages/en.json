@@ -2,7 +2,7 @@
   "meta": {
     "siteName": "Stellar × VKU",
     "defaultTitle": "Tokenization on Stellar · VKU",
-    "defaultDescription": "A hands-on course for fintech students: how digital assets are created, how a stablecoin is issued, how to issue your own token on the Stellar testnet, and how to trace wallets and tokens on-chain."
+    "defaultDescription": "A hands-on course for fintech students: how digital assets are created, how a stablecoin is issued, how to issue your own token on the Stellar testnet, how to trace wallets and tokens on-chain, and how cross-border payments and lending pools run on Stellar."
   },
   "common": {
     "next": "Next",
@@ -99,13 +99,30 @@
           "description": "Homework: one frozen customer wallet, and an issuer that kept every power it could."
         }
       }
+    },
+    "finance": {
+      "title": "Finance on the blockchain",
+      "short": "Finance on chain",
+      "description": "Two financial services rebuilt on Stellar: sending money across borders with MoneyGram, and borrowing from a lending pool with Blend. Each one next to how banks do it today.",
+      "lessons": {
+        "payments": {
+          "title": "Cross-border payments",
+          "short": "Cross-border",
+          "description": "Follow 500 USD from the US to Vietnam, first through banks and SWIFT, then through MoneyGram and USDC on Stellar."
+        },
+        "lending": {
+          "title": "Lending: the bank and Blend",
+          "short": "Lending pool",
+          "description": "How a secured loan works at a Vietnamese bank, and how a Blend lending pool on Stellar does the same job without the paperwork."
+        }
+      }
     }
   },
   "home": {
     "eyebrow": "VKU · Fintech program",
     "title": "Tokenization on Stellar",
     "titleRich": "Tokenization on <accent>Stellar</accent>",
-    "lede": "A hands-on companion to the lecture. Refresh the concepts, watch how a real stablecoin is issued, issue a token of your own on the Stellar testnet, then trace one back through the explorer. No coding required.",
+    "lede": "A hands-on companion to the lecture. Refresh the concepts, watch how a real stablecoin is issued, issue a token of your own on the Stellar testnet, trace one back through the explorer, then see how payments and lending work on a blockchain. No coding required.",
     "ctaPrimary": "Start with Tokenization",
     "ctaSecondary": "See what you will build",
     "badgeTestnet": "Everything here runs on the Stellar testnet. No real money is involved.",
@@ -152,9 +169,9 @@
     },
     "curriculum": {
       "title": "Curriculum",
-      "lede": "Two modules so far. More will be added as the course goes on.",
+      "lede": "Three modules so far. More will be added as the course goes on.",
       "comingSoon": "More modules coming",
-      "comingSoonBody": "Payments and anchors, DeFi on Stellar, and smart contracts with Soroban."
+      "comingSoonBody": "Smart contracts with Soroban, and more of the Stellar ecosystem."
     },
     "footer": {
       "docs": "Stellar developer docs",
@@ -1508,6 +1525,914 @@
           {
             "label": "What Stellar is, in plain language",
             "href": "https://www.stellar.org/learn/intro-to-stellar"
+          }
+        ]
+      }
+    }
+  },
+  "finance": {
+    "ui": {
+      "clock": "When",
+      "none": "Not yet"
+    },
+    "payments": {
+      "title": "Sending money across borders",
+      "lede": "The same 500 USD makes the same trip twice: once through the banking system, once over Stellar. Watch where it waits, who takes a cut, and how long it takes.",
+      "example": {
+        "title": "The example",
+        "body": "Someone working in the US sends 500 USD to their family in Da Nang on a Friday afternoon. Every number below is an illustration, not a quote from a real bank."
+      },
+      "wire": {
+        "title": "1. How it works today",
+        "lede": "Banks in different countries rarely hold accounts with each other, so money hops through intermediaries while instructions travel separately over SWIFT.",
+        "diagram": {
+          "title": "An international bank transfer",
+          "nodes": {
+            "sender": {
+              "label": "Sender",
+              "sub": "In the US"
+            },
+            "bankA": {
+              "label": "US bank",
+              "sub": "Sending bank"
+            },
+            "corr": {
+              "label": "Intermediary bank",
+              "sub": "Correspondent"
+            },
+            "bankB": {
+              "label": "Vietnamese bank",
+              "sub": "Receiving bank"
+            },
+            "family": {
+              "label": "Family",
+              "sub": "In Da Nang"
+            },
+            "swift": {
+              "label": "SWIFT",
+              "sub": "Messages between banks"
+            },
+            "fees": {
+              "label": "Fees and FX",
+              "sub": "Taken along the way"
+            }
+          },
+          "edges": {
+            "deposit": "500 USD",
+            "msgA": "Payment message",
+            "msgCorr": "Forwarded",
+            "msgB": "Message arrives",
+            "hop1": "Money moves",
+            "hop2": "Money moves",
+            "payout": "Paid in VND",
+            "feeA": "Wire fee",
+            "feeCorr": "Handling fee",
+            "feeB": "FX margin"
+          },
+          "meters": {
+            "amount": {
+              "label": "Still on its way",
+              "unit": "USD"
+            },
+            "fees": {
+              "label": "Lost to fees",
+              "unit": "USD"
+            }
+          }
+        },
+        "steps": [
+          {
+            "id": "send",
+            "short": "Send",
+            "eyebrow": "Step 1",
+            "title": "The sender goes to the bank",
+            "body": "They fill in the recipient's name, bank, account number and a SWIFT code. The bank checks their identity and the reason for the transfer.",
+            "points": [
+              "A bank account is required on both ends",
+              "One typo in the account details and the money bounces back days later"
+            ],
+            "clock": "Friday, 14:00"
+          },
+          {
+            "id": "message",
+            "short": "SWIFT",
+            "eyebrow": "Step 2",
+            "title": "A message leaves, the money does not",
+            "body": "SWIFT only carries instructions: \"pay 485 USD to this account\". The money itself has to move through accounts that banks hold with each other.",
+            "points": [
+              "The sending bank takes a wire fee (15 USD here)",
+              "Sent after the daily cut-off, so nothing happens until the next business day"
+            ],
+            "clock": "Friday, 16:30 (after cut-off)",
+            "callout": {
+              "kind": "info",
+              "title": "Message is not money",
+              "body": "SWIFT is like a very reliable email between banks. Settling the money is a separate job."
+            }
+          },
+          {
+            "id": "correspondent",
+            "short": "Intermediary",
+            "eyebrow": "Step 3",
+            "title": "An intermediary bank in the middle",
+            "body": "The US bank has no account in Vietnam, so a large correspondent bank that has accounts in both countries passes the money on. It takes its own fee.",
+            "points": [
+              "Banks are closed over the weekend, so the money waits",
+              "Some routes need two or three intermediaries, each with a fee"
+            ],
+            "clock": "Monday, 10:00"
+          },
+          {
+            "id": "arrive",
+            "short": "Arrives",
+            "eyebrow": "Step 4",
+            "title": "The Vietnamese bank converts to VND",
+            "body": "The receiving bank checks the transfer against anti money laundering rules, then converts USD to VND at its own rate, which is a little worse than the market rate.",
+            "points": [
+              "The FX margin is a fee you never see on the receipt",
+              "Nobody along the way can tell the sender exactly where the money is"
+            ],
+            "clock": "Tuesday, 09:00"
+          },
+          {
+            "id": "payout",
+            "short": "Paid",
+            "eyebrow": "Step 5",
+            "title": "The family finally gets paid",
+            "body": "The money lands in the family's account in VND, worth 465 USD. The sender paid 500.",
+            "points": [
+              "4 days door to door, including a weekend",
+              "35 USD, or 7 %, gone on the way"
+            ],
+            "clock": "Tuesday, 15:00"
+          },
+          {
+            "id": "problems",
+            "short": "The cost",
+            "eyebrow": "Summary",
+            "title": "Where the 35 USD went",
+            "body": "Each bank in the chain is paid for its hop, and each hop adds time. The World Bank puts the global average cost of sending money home at about 6.5 %, and above 9 % when it goes through banks.",
+            "points": [
+              "Slow: days, not minutes",
+              "Expensive: several fees plus the FX margin",
+              "Opaque: no one sees the whole path"
+            ],
+            "clock": "Total: 4 days",
+            "callout": {
+              "kind": "warning",
+              "title": "Why so many middlemen?",
+              "body": "Each bank keeps its own private ledger. Moving money means every pair of banks on the route must trust and reconcile with each other."
+            }
+          }
+        ]
+      },
+      "pains": {
+        "title": "What is wrong with it",
+        "lede": "Four problems that come straight out of the diagram above.",
+        "items": [
+          {
+            "title": "Slow",
+            "body": "Every hop waits for business hours and a cut-off time. Two to five days is normal."
+          },
+          {
+            "title": "Expensive",
+            "body": "A fee at every bank plus a hidden FX margin. Small transfers lose the largest share."
+          },
+          {
+            "title": "Opaque",
+            "body": "The sender cannot see where the money is or which fee was taken where."
+          },
+          {
+            "title": "Office hours only",
+            "body": "Weekends and public holidays stop everything. Both sides also need a bank account."
+          }
+        ]
+      },
+      "fix": {
+        "title": "2. What a blockchain changes",
+        "lede": "Three ideas, each one removing part of the chain of banks.",
+        "items": [
+          {
+            "title": "One shared ledger",
+            "body": "Instead of each bank keeping its own books and reconciling, everyone reads and writes the same public ledger. Settlement takes seconds."
+          },
+          {
+            "title": "A digital dollar",
+            "body": "USDC is a dollar token backed 1 : 1 by Circle (Module 1). It moves like a message, so there is no separate money leg to settle."
+          },
+          {
+            "title": "Anchors at the edges",
+            "body": "An anchor is a trusted business that swaps cash for tokens and back. On Stellar, MoneyGram is one of them, with counters in 170+ countries."
+          }
+        ]
+      },
+      "moneygram": {
+        "title": "3. The same 500 USD with MoneyGram on Stellar",
+        "lede": "MoneyGram lets people walk into one of its locations, pay cash, and receive USDC in a Stellar wallet, and the reverse on the other side. The middle of the trip is one Stellar payment.",
+        "diagram": {
+          "title": "MoneyGram cash ramps on Stellar",
+          "nodes": {
+            "sender": {
+              "label": "Sender",
+              "sub": "Has cash"
+            },
+            "mgA": {
+              "label": "MoneyGram (US)",
+              "sub": "Anchor: cash in"
+            },
+            "stellar": {
+              "label": "Stellar network",
+              "sub": "Public ledger"
+            },
+            "mgB": {
+              "label": "MoneyGram",
+              "sub": "Receiving side: cash out"
+            },
+            "family": {
+              "label": "Family",
+              "sub": "Receives cash"
+            },
+            "circle": {
+              "label": "Circle",
+              "sub": "Issues USDC 1 : 1"
+            },
+            "walletA": {
+              "label": "Sender's wallet",
+              "sub": "e.g. LOBSTR, Vibrant"
+            },
+            "walletB": {
+              "label": "Family's wallet",
+              "sub": "Stellar wallet"
+            }
+          },
+          "edges": {
+            "cashIn": "500 USD cash",
+            "usdc": "USDC",
+            "toWallet": "495 USDC",
+            "sign": "Signed payment",
+            "settle": "About 5 seconds",
+            "toAnchor": "USDC",
+            "redeem": "Back to USD",
+            "cashOut": "Cash in local money"
+          },
+          "meters": {
+            "amount": {
+              "label": "Still on its way",
+              "unit": "USD"
+            },
+            "fees": {
+              "label": "Lost to fees",
+              "unit": "USD"
+            }
+          }
+        },
+        "steps": [
+          {
+            "id": "cashIn",
+            "short": "Cash in",
+            "eyebrow": "Step 1",
+            "title": "Cash in at a MoneyGram counter",
+            "body": "The sender opens a Stellar wallet app, chooses \"deposit with MoneyGram\" and pays 500 USD in cash at a nearby location. No bank account needed.",
+            "points": [
+              "MoneyGram checks identity, just like a bank would",
+              "This is the anchor's job: turning cash into tokens"
+            ],
+            "clock": "Friday, 14:00"
+          },
+          {
+            "id": "usdc",
+            "short": "USDC",
+            "eyebrow": "Step 2",
+            "title": "USDC appears in the wallet",
+            "body": "MoneyGram sends USDC to the sender's wallet, minus its cash-in fee. Every USDC is backed by one real dollar at Circle, the loop from Module 1.",
+            "points": [
+              "The money is now a token on a public ledger",
+              "Anyone can check the balance on Stellar Expert (Module 2)"
+            ],
+            "clock": "Friday, 14:08"
+          },
+          {
+            "id": "sign",
+            "short": "Sign",
+            "eyebrow": "Step 3",
+            "title": "One payment, signed by the sender",
+            "body": "The wallet prepares a payment: 495 USDC to the family's address. The sender approves it, which signs it with their secret key, and the wallet sends it to the network.",
+            "points": [
+              "No SWIFT code, no intermediary, no cut-off time",
+              "It works the same on a Sunday at midnight"
+            ],
+            "clock": "Friday, 14:10"
+          },
+          {
+            "id": "settle",
+            "short": "Settle",
+            "eyebrow": "Step 4",
+            "title": "Settled in about 5 seconds",
+            "body": "Stellar validators agree on the next page of the ledger every few seconds. Once the payment is on it, it is final: nobody can reverse it or hold it for review.",
+            "points": [
+              "The network fee is a tiny fraction of a cent",
+              "The family's wallet shows 495 USDC right away"
+            ],
+            "clock": "Friday, 14:10 + 5 seconds",
+            "callout": {
+              "kind": "success",
+              "title": "Message and money in one",
+              "body": "On the bank route the message and the money travel apart. Here the payment is the settlement."
+            }
+          },
+          {
+            "id": "cashOut",
+            "short": "Cash out",
+            "eyebrow": "Step 5",
+            "title": "Cash out on the other side",
+            "body": "The family can keep USDC in the wallet, or send it to MoneyGram and pick up cash in local money at a counter. MoneyGram redeems the USDC with Circle behind the scenes.",
+            "points": [
+              "The cash-out fee and FX rate are shown before confirming",
+              "The family can also just keep and spend dollars"
+            ],
+            "clock": "Friday, 14:40",
+            "callout": {
+              "kind": "warning",
+              "title": "Depends on the country",
+              "body": "Cash out depends on MoneyGram locations in the receiving country. Check availability before relying on it."
+            }
+          },
+          {
+            "id": "compare",
+            "short": "Compare",
+            "eyebrow": "Summary",
+            "title": "Under an hour, 12 USD",
+            "body": "The anchors at each end still charge for handling cash, but the expensive middle of the trip, the chain of banks, is replaced by one payment on a shared ledger.",
+            "points": [
+              "Bank route: 4 days, 35 USD",
+              "MoneyGram on Stellar: under an hour, 12 USD",
+              "Every step is visible on the explorer"
+            ],
+            "clock": "Total: 40 minutes"
+          }
+        ]
+      },
+      "compare": {
+        "title": "Side by side",
+        "lede": "The same transfer, the two routes.",
+        "columns": {
+          "criterion": "",
+          "bank": "Banks and SWIFT",
+          "stellar": "MoneyGram on Stellar"
+        },
+        "rows": [
+          {
+            "criterion": "Time",
+            "bank": "2 to 5 business days",
+            "stellar": "Seconds on chain, minutes counter to counter"
+          },
+          {
+            "criterion": "Cost",
+            "bank": "Several fees plus FX margin, about 6 to 10 %",
+            "stellar": "Cash in and cash out fees; the network fee is almost zero"
+          },
+          {
+            "criterion": "Opening hours",
+            "bank": "Business days, before the cut-off",
+            "stellar": "The network runs 24/7; counters keep their own hours"
+          },
+          {
+            "criterion": "Tracking",
+            "bank": "Ask your bank and wait",
+            "stellar": "Public, on Stellar Expert"
+          },
+          {
+            "criterion": "Needs a bank account",
+            "bank": "Yes, on both sides",
+            "stellar": "No, a wallet app is enough"
+          },
+          {
+            "criterion": "Final when",
+            "bank": "When every bank has settled",
+            "stellar": "When the ledger closes, about 5 seconds"
+          }
+        ]
+      },
+      "lifecycle": {
+        "title": "The life of a financial transaction",
+        "lede": "Every payment goes through the same stages: it is created, checked, passed on, settled and confirmed. What differs is who does each stage and how long it takes.",
+        "bank": {
+          "label": "Through banks",
+          "total": "Days, several parties",
+          "stages": [
+            {
+              "title": "Create",
+              "body": "The sender fills in a transfer form at the bank or in its app."
+            },
+            {
+              "title": "Check",
+              "body": "The bank verifies identity and screens for money laundering."
+            },
+            {
+              "title": "Send the message",
+              "body": "A SWIFT message tells the next bank what to pay."
+            },
+            {
+              "title": "Move the money",
+              "body": "Balances shift between accounts that banks hold with each other."
+            },
+            {
+              "title": "Reconcile",
+              "body": "Each bank matches its books against the others, usually at end of day."
+            },
+            {
+              "title": "Final",
+              "body": "Only once every bank on the route has settled."
+            }
+          ]
+        },
+        "stellar": {
+          "label": "On Stellar",
+          "total": "Seconds, one shared ledger",
+          "stages": [
+            {
+              "title": "Create",
+              "body": "The wallet prepares the payment: to whom, how much, and the fee."
+            },
+            {
+              "title": "Sign",
+              "body": "The sender approves it; the wallet signs it with the secret key."
+            },
+            {
+              "title": "Submit",
+              "body": "The signed payment is sent to the Stellar network."
+            },
+            {
+              "title": "Agree",
+              "body": "Validators agree on the next ledger page, about every 5 seconds."
+            },
+            {
+              "title": "Record",
+              "body": "The payment is written to the ledger. It cannot be reversed."
+            },
+            {
+              "title": "Verify",
+              "body": "Anyone can look it up on Stellar Expert, as you did in Module 2."
+            }
+          ]
+        },
+        "callout": {
+          "title": "Checking identity does not disappear",
+          "body": "On Stellar, the anchor (MoneyGram) still checks identity at cash in and cash out. What goes away is the chain of banks in the middle."
+        }
+      },
+      "next": {
+        "title": "Next: borrowing money",
+        "body": "Payments move money. Lending puts idle money to work. See how a Blend lending pool on Stellar compares with a bank loan.",
+        "cta": "Go to lending"
+      },
+      "sources": {
+        "title": "Sources",
+        "lede": "Numbers change. Check the source before quoting them.",
+        "items": [
+          {
+            "label": "World Bank: Remittance Prices Worldwide",
+            "href": "https://remittanceprices.worldbank.org"
+          },
+          {
+            "label": "Stellar: MoneyGram Ramps",
+            "href": "https://stellar.org/products-and-tools/moneygram"
+          },
+          {
+            "label": "MoneyGram launches its crypto to cash service on Stellar (2022)",
+            "href": "https://www.prnewswire.com/news-releases/moneygram-launches-pioneering-global-crypto-to-cash-service-on-the-stellar-network-301565815.html"
+          },
+          {
+            "label": "Stellar docs: what an anchor is",
+            "href": "https://developers.stellar.org/docs/learn/fundamentals/anchors"
+          }
+        ]
+      }
+    },
+    "lending": {
+      "title": "Lending: the bank and Blend",
+      "lede": "Borrowing is the same idea everywhere: someone with spare money lends it to someone who needs it, and the borrower pledges something in case they cannot pay back. Here is who does what at a bank, and in a lending pool on Stellar.",
+      "bank": {
+        "title": "1. Borrowing from a bank in Vietnam",
+        "lede": "Example: a 500 million VND loan secured by a house worth 1 billion. The bank sits in the middle of everything.",
+        "diagram": {
+          "title": "A secured bank loan",
+          "nodes": {
+            "savers": {
+              "label": "Savers",
+              "sub": "Deposit money"
+            },
+            "bank": {
+              "label": "Bank",
+              "sub": "Decides everything"
+            },
+            "borrower": {
+              "label": "Borrower",
+              "sub": "Needs a loan"
+            },
+            "cic": {
+              "label": "CIC",
+              "sub": "National credit bureau"
+            },
+            "house": {
+              "label": "Collateral",
+              "sub": "House title (sổ đỏ)"
+            }
+          },
+          "edges": {
+            "deposit": "Savings, about 5 % a year",
+            "interest": "Deposit interest",
+            "apply": "Loan application",
+            "check": "Credit check",
+            "pledge": "Pledges the house",
+            "appraise": "Valuation",
+            "disburse": "500 million VND",
+            "repay": "Principal + about 10 % a year",
+            "seize": "Sold if unpaid"
+          },
+          "meters": {
+            "loan": {
+              "label": "Loan",
+              "unit": "M VND"
+            },
+            "collateral": {
+              "label": "Collateral held by the bank",
+              "unit": "M VND"
+            }
+          }
+        },
+        "steps": [
+          {
+            "id": "deposits",
+            "short": "Deposits",
+            "eyebrow": "Step 1",
+            "title": "Where the money comes from",
+            "body": "Savers deposit money and earn about 5 % a year. The bank lends that money out at a higher rate and keeps the difference.",
+            "points": [
+              "Savers never know who their money was lent to",
+              "The bank decides who gets a loan and at what rate"
+            ],
+            "clock": "Before anything else"
+          },
+          {
+            "id": "apply",
+            "short": "Apply",
+            "eyebrow": "Step 2",
+            "title": "Paperwork and a credit check",
+            "body": "The borrower brings ID, proof of income and a loan purpose. The bank looks up their history at CIC, the national credit bureau.",
+            "points": [
+              "No income proof or a bad CIC record usually means no loan",
+              "Many people with no credit history are left out"
+            ],
+            "clock": "Day 1 to 3"
+          },
+          {
+            "id": "collateral",
+            "short": "Collateral",
+            "eyebrow": "Step 3",
+            "title": "The house is valued and pledged",
+            "body": "The bank values the house and usually lends up to about 70 % of it. The pledge is notarised and registered, and the bank keeps the house title.",
+            "points": [
+              "Valuation, notary and registration take days and cost fees",
+              "The borrower keeps living in the house"
+            ],
+            "clock": "Day 3 to 10"
+          },
+          {
+            "id": "disburse",
+            "short": "Disburse",
+            "eyebrow": "Step 4",
+            "title": "The loan is paid out",
+            "body": "After approval and signing the contract, the bank transfers 500 million VND to the borrower.",
+            "points": [
+              "One to two weeks from application, sometimes more",
+              "Rate often fixed for a promo period, then floating"
+            ],
+            "clock": "Around week 2"
+          },
+          {
+            "id": "repay",
+            "short": "Repay",
+            "eyebrow": "Step 5",
+            "title": "Monthly repayments",
+            "body": "Each month the borrower repays part of the loan plus interest, about 10 % a year. Part of that pays the savers, the rest is the bank's margin.",
+            "points": [
+              "When the loan is paid off, the bank returns the house title",
+              "Early repayment usually costs a penalty fee"
+            ],
+            "clock": "Every month, for years"
+          },
+          {
+            "id": "default",
+            "short": "Default",
+            "eyebrow": "If it goes wrong",
+            "title": "Late payments and a forced sale",
+            "body": "After 90 days overdue the loan becomes a bad debt, recorded at CIC. The bank can then sell the house to recover its money, a process that can take months.",
+            "points": [
+              "A bad CIC record blocks future loans for years",
+              "Recovering the collateral is slow and costly for everyone"
+            ],
+            "clock": "After 90 days overdue",
+            "callout": {
+              "kind": "info",
+              "title": "The bank carries the trust",
+              "body": "Savers trust the bank, and the bank trusts its own checks. Everything depends on one institution's judgement."
+            }
+          }
+        ]
+      },
+      "idea": {
+        "title": "2. A lending pool: the same job, different rules",
+        "lede": "In DeFi, a lending pool replaces the bank with a shared pot of money and rules everyone can read.",
+        "items": [
+          {
+            "title": "One shared pool",
+            "body": "Lenders put tokens into a pool and earn interest. Borrowers take from the same pool. No bank decides who is allowed."
+          },
+          {
+            "title": "Collateral first, no credit check",
+            "body": "Instead of a credit score, you deposit more value than you borrow. Your collateral is your guarantee."
+          },
+          {
+            "title": "Rules run by themselves",
+            "body": "Interest rates, borrowing limits and liquidations follow fixed rules, 24/7, in seconds. Anyone can inspect them."
+          }
+        ]
+      },
+      "blend": {
+        "title": "3. Blend: a lending pool on Stellar",
+        "lede": "Blend is the main lending protocol on Stellar. Example: a pool with USDC and XLM, where a borrower pledges 1,000 USD of XLM and borrows USDC.",
+        "diagram": {
+          "title": "Borrowing from a Blend pool",
+          "nodes": {
+            "lenders": {
+              "label": "Lenders",
+              "sub": "Supply USDC"
+            },
+            "pool": {
+              "label": "Blend pool",
+              "sub": "USDC and XLM"
+            },
+            "borrower": {
+              "label": "Borrower",
+              "sub": "Has XLM, needs USDC"
+            },
+            "backstop": {
+              "label": "Backstop",
+              "sub": "Insurance fund"
+            },
+            "oracle": {
+              "label": "Price feed",
+              "sub": "Live XLM price"
+            },
+            "liquidator": {
+              "label": "Liquidator",
+              "sub": "Anyone can be one"
+            }
+          },
+          "edges": {
+            "supply": "Supply USDC",
+            "yield": "Interest",
+            "collateral": "1,000 USD of XLM",
+            "borrow": "500 USDC",
+            "repay": "Repay + interest",
+            "price": "XLM price",
+            "cover": "Share of interest",
+            "rescue": "Covers bad debt",
+            "liquidate": "Repays part of the debt",
+            "seize": "Takes collateral at a discount"
+          },
+          "meters": {
+            "collateral": {
+              "label": "Collateral",
+              "unit": "USD"
+            },
+            "debt": {
+              "label": "Debt",
+              "unit": "USD"
+            },
+            "health": {
+              "label": "Health (below 1.00 = liquidation)"
+            }
+          }
+        },
+        "steps": [
+          {
+            "id": "supply",
+            "short": "Supply",
+            "eyebrow": "Step 1",
+            "title": "Lenders fill the pool",
+            "body": "People with spare USDC deposit it into the pool from their wallet. They start earning interest immediately and can withdraw whenever the money is not lent out.",
+            "points": [
+              "No bank in between: lenders are the savers",
+              "Every deposit is a public transaction"
+            ],
+            "clock": "Any time"
+          },
+          {
+            "id": "collateral",
+            "short": "Collateral",
+            "eyebrow": "Step 2",
+            "title": "The borrower pledges XLM",
+            "body": "The borrower connects a wallet and supplies 1,000 USD worth of XLM as collateral. A price feed tells the pool what that XLM is worth, right now.",
+            "points": [
+              "No ID papers, no income proof, no CIC check",
+              "It takes one signed transaction"
+            ],
+            "clock": "Minute 1"
+          },
+          {
+            "id": "borrow",
+            "short": "Borrow",
+            "eyebrow": "Step 3",
+            "title": "Borrow within the limit",
+            "body": "XLM counts for 75 % of its value in this pool, so the borrower can take up to 750 USDC. They borrow 500 and it lands in their wallet in seconds.",
+            "points": [
+              "Health = 1,000 × 75 % ÷ 500 = 1.50",
+              "Borrowing less than the limit leaves room if prices move"
+            ],
+            "clock": "Minute 2",
+            "callout": {
+              "kind": "info",
+              "title": "Why borrow if you already have XLM?",
+              "body": "To get dollars without selling your XLM, for example to pay for something while keeping your position."
+            }
+          },
+          {
+            "id": "interest",
+            "short": "Interest",
+            "eyebrow": "Step 4",
+            "title": "Interest set by demand",
+            "body": "The rate is not set by a person. The more of the pool is borrowed, the higher the rate for borrowers and the more lenders earn. A share goes to the backstop fund.",
+            "points": [
+              "After 3 months the debt has grown to 510 USDC",
+              "Rates update continuously, anyone can see them"
+            ],
+            "clock": "After 3 months"
+          },
+          {
+            "id": "repay",
+            "short": "Repay",
+            "eyebrow": "Step 5",
+            "title": "Repay and take the XLM back",
+            "body": "The borrower repays 510 USDC whenever they want, then withdraws the XLM. No early repayment fee, no paperwork to release the collateral.",
+            "points": [
+              "Two transactions, a few seconds each",
+              "That is the happy ending. Now, what if the price falls?"
+            ],
+            "clock": "Month 3"
+          },
+          {
+            "id": "price",
+            "short": "Price drops",
+            "eyebrow": "If it goes wrong",
+            "title": "XLM falls 35 %",
+            "body": "Back to the open loan of 510 USDC. XLM drops and the collateral is now worth 650 USD. Health falls below 1.00: the loan is no longer safe for lenders.",
+            "points": [
+              "Health = 650 × 75 % ÷ 510 = 0.96",
+              "The borrower could have repaid part of the debt or added collateral"
+            ],
+            "clock": "Another scenario"
+          },
+          {
+            "id": "liquidate",
+            "short": "Liquidation",
+            "eyebrow": "If it goes wrong",
+            "title": "A liquidator steps in",
+            "body": "Anyone can repay part of an unhealthy loan and receive collateral worth a bit more in return. Here a liquidator repays 310 USDC and takes about 340 USD of XLM.",
+            "points": [
+              "Minutes, not months in court",
+              "The borrower keeps the 500 USDC but loses part of the XLM"
+            ],
+            "clock": "Minutes later",
+            "callout": {
+              "kind": "warning",
+              "title": "The cost of liquidation",
+              "body": "The discount the liquidator earns is paid by the borrower. Keeping health well above 1.00 avoids it."
+            }
+          },
+          {
+            "id": "backstop",
+            "short": "Backstop",
+            "eyebrow": "Last line of defence",
+            "title": "The backstop covers what is left",
+            "body": "If prices crash so fast that collateral cannot cover a debt, the pool's backstop fund pays the gap, so lenders are protected first.",
+            "points": [
+              "Backstop depositors earn part of the interest for taking this risk",
+              "Each pool has its own backstop, so one bad pool does not sink the others"
+            ],
+            "clock": "Only if needed"
+          }
+        ]
+      },
+      "howto": {
+        "title": "Try it: borrowing on Blend testnet",
+        "lede": "Blend runs a testnet version with test tokens, so you can go through the whole loop without real money.",
+        "steps": [
+          {
+            "title": "Prepare Freighter",
+            "body": "Set it to Test Net and make sure you have test XLM, as in Module 1."
+          },
+          {
+            "title": "Open Blend testnet",
+            "body": "Go to testnet.blend.capital and connect your Freighter wallet."
+          },
+          {
+            "title": "Pick a pool",
+            "body": "Look at which assets it lends, the supply rate and the borrow rate."
+          },
+          {
+            "title": "Supply collateral",
+            "body": "Supply some XLM as collateral. Freighter shows the transaction: read it, then sign."
+          },
+          {
+            "title": "Borrow",
+            "body": "Borrow a token the pool offers. Watch your borrow limit and stay well below it."
+          },
+          {
+            "title": "Repay and withdraw",
+            "body": "Repay the loan, withdraw your XLM, then find every step on Stellar Expert."
+          }
+        ],
+        "cta": "Open Blend testnet",
+        "note": "Testnet only. Test tokens have no value."
+      },
+      "compare": {
+        "title": "Side by side",
+        "lede": "Same need, two very different processes.",
+        "columns": {
+          "criterion": "",
+          "bank": "Bank loan",
+          "stellar": "Blend pool"
+        },
+        "rows": [
+          {
+            "criterion": "Who lends",
+            "bank": "The bank, with savers' money",
+            "stellar": "Lenders put tokens into the pool directly"
+          },
+          {
+            "criterion": "What you need",
+            "bank": "ID, income proof, clean CIC record, collateral",
+            "stellar": "A wallet and crypto collateral worth more than the loan"
+          },
+          {
+            "criterion": "Time to get money",
+            "bank": "One to two weeks",
+            "stellar": "Seconds"
+          },
+          {
+            "criterion": "Interest rate",
+            "bank": "Set by the bank, promo then floating",
+            "stellar": "Set by supply and demand, updated continuously"
+          },
+          {
+            "criterion": "Repaying early",
+            "bank": "Usually a penalty fee",
+            "stellar": "Any time, no fee"
+          },
+          {
+            "criterion": "If you cannot pay",
+            "bank": "Bad debt at CIC, house sold after months",
+            "stellar": "Part of the collateral liquidated within minutes"
+          },
+          {
+            "criterion": "Transparency",
+            "bank": "Internal to the bank",
+            "stellar": "Every loan and rate is public"
+          }
+        ]
+      },
+      "risks": {
+        "title": "It is not magic",
+        "lede": "A lending pool removes paperwork, not risk.",
+        "calloutTitle": "Know the limits before you borrow",
+        "items": [
+          "You must already own assets worth more than the loan, so it does not help people with nothing to pledge.",
+          "Crypto prices move fast; a sharp drop can liquidate you in minutes.",
+          "The rules are code: a bug or a wrong price feed can cause losses.",
+          "No one to call if you make a mistake. This lesson is education, not financial advice."
+        ]
+      },
+      "sources": {
+        "title": "Sources",
+        "lede": "The Blend docs explain every rule in more detail.",
+        "items": [
+          {
+            "label": "Blend docs: borrowing",
+            "href": "https://docs.blend.capital/users/lending-borrowing/borrowing"
+          },
+          {
+            "label": "Blend docs: liquidations",
+            "href": "https://docs.blend.capital/users/lending-borrowing/liquidations"
+          },
+          {
+            "label": "Blend docs: the backstop",
+            "href": "https://docs.blend.capital/users/backstopping"
+          },
+          {
+            "label": "Stellar case study: Meru wallet earns yield with Blend",
+            "href": "https://stellar.org/case-studies/meru-wallet-uses-blend-defi-protocol-for-yield"
           }
         ]
       }
