@@ -10,7 +10,7 @@ import {
   Investigation,
   type InvestigationProgress,
 } from "@/components/forensics/investigation";
-import type { Scene } from "@/components/forensics/scene";
+import type { Scene } from "@/components/diagram/graph";
 import { LessonSection } from "@/components/learn/lesson-shell";
 import { Button } from "@/components/ui/button";
 import type { CaseDef } from "@/lib/forensics/cases";

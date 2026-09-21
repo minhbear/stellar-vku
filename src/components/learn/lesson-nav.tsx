@@ -5,6 +5,8 @@ import {
   CheckCircle2,
   CircleDollarSign,
   Clock3,
+  Globe,
+  HandCoins,
   Library,
   NotebookPen,
   Radar,
@@ -25,6 +27,8 @@ const ICONS: Record<LessonIcon, typeof Library> = {
   trace: Search,
   hunt: Radar,
   homework: NotebookPen,
+  remit: Globe,
+  lending: HandCoins,
 };
 
 export function LessonNav({ variant = "sidebar" }: { variant?: "sidebar" | "strip" }) {
