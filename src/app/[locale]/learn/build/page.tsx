@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowUpRight, Code2, Handshake, PiggyBank } from "lucide-react";
+import { ArrowUpRight, Handshake, PiggyBank } from "lucide-react";
 
 import { LessonFooter } from "@/components/learn/lesson-footer";
 import { Callout, LessonHeader, LessonSection } from "@/components/learn/lesson-shell";
@@ -105,12 +105,6 @@ function BuildContent() {
                         {t("apps.soon")}
                       </Button>
                     )}
-                    <Button asChild variant="ghost" className="gap-2">
-                      <a href={dapp.repo} target="_blank" rel="noopener noreferrer">
-                        <Code2 className="size-4" aria-hidden="true" />
-                        {t("apps.source")}
-                      </a>
-                    </Button>
                   </div>
                 </CardContent>
               </Card>
