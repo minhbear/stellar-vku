@@ -116,6 +116,18 @@
           "description": "How a secured loan works at a Vietnamese bank, and how a Blend lending pool on Stellar does the same job without the paperwork."
         }
       }
+    },
+    "build": {
+      "title": "Build and analyse",
+      "short": "Build and analyse",
+      "description": "A walk through how a fintech product on a blockchain is actually put together, then two small dapps to use with your own wallet and pull apart afterwards.",
+      "lessons": {
+        "analyse": {
+          "title": "Reading a fintech dapp",
+          "short": "Analyse a dapp",
+          "description": "Use two working dapps on testnet, then work out which half of each one is the blockchain and which half is an ordinary web app."
+        }
+      }
     }
   },
   "home": {
@@ -169,7 +181,7 @@
     },
     "curriculum": {
       "title": "Curriculum",
-      "lede": "Three modules so far. More will be added as the course goes on.",
+      "lede": "Four modules so far. More will be added as the course goes on.",
       "comingSoon": "More modules coming",
       "comingSoonBody": "Smart contracts with Soroban, and more of the Stellar ecosystem."
     },
@@ -2436,6 +2448,84 @@
           }
         ]
       }
+    }
+  },
+  "build": {
+    "title": "Reading a fintech dapp",
+    "lede": "Two small products, both running on Stellar testnet, both built for this course. Use them with your own wallet first. The interesting part comes after: working out which half of each one actually needed a blockchain.",
+    "intro": {
+      "title": "Use first, explain later",
+      "body": "Nothing on this page is worth reading until you have moved money in one of the two apps. Connect a wallet, press the buttons, then come back."
+    },
+    "steps": {
+      "title": "From an idea to a system",
+      "lede": "The same five questions turn any fintech idea into something you can build.",
+      "items": [
+        {
+          "title": "Find who has to trust whom",
+          "body": "Every fintech pain is somebody holding money or keeping a record on behalf of others. Name that person before naming any technology."
+        },
+        {
+          "title": "Decide what must be unstoppable",
+          "body": "Usually two things: where the money sits, and the rule that decides when it moves. These are the only parts that have to be on a blockchain."
+        },
+        {
+          "title": "Leave everything else off chain",
+          "body": "Names, descriptions, photos, notifications and search belong in an ordinary database. They are cheaper there, and you can fix a typo."
+        },
+        {
+          "title": "Write the rule as code, then try to break it",
+          "body": "A rule in a contract is only as good as the cases you tested. Both of these apps were tested against the cheating paths before a single screen was drawn."
+        },
+        {
+          "title": "Make the wallet the login",
+          "body": "There is no password and no account table. Every action is signed by the user, so every action leaves a public receipt anyone can check."
+        }
+      ]
+    },
+    "apps": {
+      "title": "Two dapps to try",
+      "lede": "Both run on testnet with play money. Grab test XLM inside the app, then invite the people sitting next to you.",
+      "open": "Open the app",
+      "source": "Source code",
+      "soon": "Link coming soon",
+      "items": {
+        "sharebill": {
+          "name": "Share Bill",
+          "tagline": "A shared pot for a trip",
+          "body": "Friends put different amounts into one pot. Spending anything needs a request that more than half the group approves. At the end of the trip the pot splits the spending equally, collects from whoever underpaid and refunds whoever overpaid.",
+          "rule": "The rule: more than half of the members must agree before money leaves the pot."
+        },
+        "escrow": {
+          "name": "Chot Job",
+          "tagline": "Freelance work without getting stiffed",
+          "body": "The client locks the whole budget up front and the work is split into milestones. Each milestone is paid when the client approves it. Two clocks keep both sides honest: silence from the client releases the money to the worker, and a missed deadline hands it back to the client.",
+          "rule": "The rule: approval, or a review window running out, or a deadline passing."
+        }
+      }
+    },
+    "worksheet": {
+      "title": "Questions to answer afterwards",
+      "lede": "Write your answers down before looking at the comparison table at the bottom of each app.",
+      "items": [
+        "While nobody has spent anything yet, where exactly is the money, and who is able to take it out?",
+        "If the person who built the app disappeared tonight, which parts would keep working tomorrow?",
+        "Your display name is stored somewhere. Where, and why was it not put on the blockchain?",
+        "Which of your actions created a transaction? Find one of them again on Stellar Expert.",
+        "To change the rule from more than half agreeing to anyone being allowed to spend, what would have to be rewritten?"
+      ]
+    },
+    "answer": {
+      "title": "The apps mark their own answers",
+      "body": "Every block of data in both apps carries an on-chain or off-chain tag, and the bottom of each screen lists the full split. Use it to check your answers once you have written them."
+    },
+    "prepare": {
+      "title": "Before class",
+      "items": [
+        "Install the Freighter wallet and switch it to Test Net.",
+        "Open either app and press Get test XLM. Friendbot sends play money in a few seconds.",
+        "Form groups of three or four. One person creates the pot or posts the job and reads the invite code out loud."
+      ]
     }
   },
   "issue": {

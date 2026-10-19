@@ -12,7 +12,8 @@ export type LessonIcon =
   | "hunt"
   | "homework"
   | "remit"
-  | "lending";
+  | "lending"
+  | "build";
 
 export interface LessonDef {
   id: string;
@@ -73,6 +74,12 @@ export const MODULES: ModuleDef[] = [
       { id: "payments", slug: "", icon: "remit", kind: "walkthrough", minutes: 30 },
       { id: "lending", slug: "lending", icon: "lending", kind: "walkthrough", minutes: 30 },
     ],
+  },
+  {
+    id: "build",
+    slug: "build",
+    order: 4,
+    lessons: [{ id: "analyse", slug: "", icon: "build", kind: "hands-on", minutes: 45 }],
   },
 ];
 

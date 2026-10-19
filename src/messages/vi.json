@@ -116,6 +116,18 @@
           "description": "Một khoản vay thế chấp ở ngân hàng Việt Nam diễn ra thế nào, và lending pool Blend trên Stellar làm cùng việc đó mà không cần hồ sơ giấy tờ ra sao."
         }
       }
+    },
+    "build": {
+      "title": "Làm và phân tích",
+      "short": "Làm và phân tích",
+      "description": "Đi qua cách một sản phẩm fintech dùng blockchain được dựng nên, rồi dùng thử hai dapp nhỏ bằng ví của chính bạn và mổ xẻ lại chúng.",
+      "lessons": {
+        "analyse": {
+          "title": "Đọc một dapp fintech",
+          "short": "Phân tích dapp",
+          "description": "Dùng hai dapp thật trên testnet, rồi tự chỉ ra phần nào của mỗi app là blockchain và phần nào chỉ là web thường."
+        }
+      }
     }
   },
   "home": {
@@ -169,7 +181,7 @@
     },
     "curriculum": {
       "title": "Chương trình học",
-      "lede": "Hiện có ba chuyên đề. Sẽ bổ sung thêm theo tiến độ khoá học.",
+      "lede": "Hiện có bốn chuyên đề. Sẽ bổ sung thêm theo tiến độ khoá học.",
       "comingSoon": "Chuyên đề sắp có",
       "comingSoonBody": "Smart contract với Soroban, và thêm nhiều ứng dụng trong hệ sinh thái Stellar."
     },
@@ -2436,6 +2448,84 @@
           }
         ]
       }
+    }
+  },
+  "build": {
+    "title": "Đọc một dapp fintech",
+    "lede": "Hai sản phẩm nhỏ, cùng chạy trên Stellar testnet, cùng được viết cho khoá học này. Hãy dùng thử bằng ví của chính bạn trước đã. Phần thú vị nằm ở sau: chỉ ra được nửa nào của mỗi app thật sự cần tới blockchain.",
+    "intro": {
+      "title": "Dùng trước, giải thích sau",
+      "body": "Chưa chuyển tiền trong một trong hai app thì chưa cần đọc trang này. Kết nối ví, bấm thử các nút, rồi quay lại đây."
+    },
+    "steps": {
+      "title": "Từ ý tưởng đến hệ thống",
+      "lede": "Năm câu hỏi này biến một ý tưởng fintech bất kỳ thành thứ có thể dựng được.",
+      "items": [
+        {
+          "title": "Tìm xem ai đang phải tin ai",
+          "body": "Mọi nỗi đau fintech đều là chuyện một người giữ tiền hoặc giữ sổ sách thay cho người khác. Gọi tên người đó ra trước khi gọi tên bất kỳ công nghệ nào."
+        },
+        {
+          "title": "Chọn phần không ai được phép can thiệp",
+          "body": "Thường chỉ có hai thứ: tiền nằm ở đâu, và luật quyết định khi nào tiền được chuyển. Đó là phần duy nhất bắt buộc phải nằm trên blockchain."
+        },
+        {
+          "title": "Phần còn lại để ngoài chain",
+          "body": "Tên, mô tả, hình ảnh, thông báo, tìm kiếm thì để trong database bình thường. Vừa rẻ hơn, vừa sửa được khi gõ sai chính tả."
+        },
+        {
+          "title": "Viết luật thành code rồi tìm cách phá nó",
+          "body": "Một điều luật trong hợp đồng chỉ chắc bằng đúng những tình huống bạn đã test. Hai app này được test các đường gian lận trước khi vẽ màn hình đầu tiên."
+        },
+        {
+          "title": "Lấy ví làm tài khoản đăng nhập",
+          "body": "Không có mật khẩu, không có bảng user. Mọi hành động đều do người dùng ký, nên mọi hành động đều để lại một biên lai công khai ai cũng kiểm tra được."
+        }
+      ]
+    },
+    "apps": {
+      "title": "Hai dapp để dùng thử",
+      "lede": "Cả hai chạy trên testnet bằng tiền thử nghiệm. Nhận XLM test ngay trong app, rồi rủ mấy bạn ngồi cạnh cùng vào.",
+      "open": "Mở ứng dụng",
+      "source": "Mã nguồn",
+      "soon": "Sắp có đường dẫn",
+      "items": {
+        "sharebill": {
+          "name": "Share Bill",
+          "tagline": "Hũ tiền chung cho chuyến đi",
+          "body": "Nhóm bạn góp vào một hũ với số tiền khác nhau. Muốn chi bất cứ khoản nào cũng phải tạo yêu cầu và được quá nửa nhóm đồng ý. Hết chuyến, hũ chia đều phần đã chi, thu thêm của người góp thiếu và trả lại cho người góp dư.",
+          "rule": "Luật: phải quá nửa thành viên đồng ý thì tiền mới rời khỏi hũ."
+        },
+        "escrow": {
+          "name": "Chốt Job",
+          "tagline": "Nhận job freelance không sợ bị bùng",
+          "body": "Khách khoá toàn bộ ngân sách ngay từ đầu, công việc chia thành từng mốc. Mốc nào được khách duyệt thì mốc đó được trả tiền. Hai cái đồng hồ giữ cho cả hai bên thật thà: khách im lặng quá hạn thì tiền về người làm, còn trễ hạn bàn giao thì tiền quay về khách.",
+          "rule": "Luật: khách duyệt, hoặc hết thời gian duyệt, hoặc quá hạn bàn giao."
+        }
+      }
+    },
+    "worksheet": {
+      "title": "Câu hỏi trả lời sau khi dùng",
+      "lede": "Viết câu trả lời ra giấy trước khi mở bảng đối chiếu ở cuối mỗi app.",
+      "items": [
+        "Khi chưa ai chi gì cả, tiền đang nằm chính xác ở đâu, và ai có thể lấy nó ra?",
+        "Nếu người viết app biến mất tối nay, ngày mai phần nào vẫn chạy được?",
+        "Tên hiển thị của bạn được lưu ở đâu đó. Ở đâu, và vì sao nó không được đưa lên blockchain?",
+        "Hành động nào của bạn đã tạo ra một giao dịch? Tìm lại một giao dịch đó trên Stellar Expert.",
+        "Muốn đổi luật từ quá nửa đồng ý thành ai cũng được chi, phải viết lại chỗ nào?"
+      ]
+    },
+    "answer": {
+      "title": "Hai app tự chấm bài cho bạn",
+      "body": "Mỗi khối dữ liệu trong hai app đều gắn nhãn on-chain hoặc off-chain, và cuối mỗi màn hình có bảng liệt kê đầy đủ. Viết đáp án xong rồi hãy mở ra đối chiếu."
+    },
+    "prepare": {
+      "title": "Chuẩn bị trước buổi học",
+      "items": [
+        "Cài ví Freighter rồi chuyển sang mạng Test Net.",
+        "Mở một trong hai app và bấm Nhận XLM test. Friendbot gửi tiền thử về sau vài giây.",
+        "Chia nhóm ba đến bốn người. Một bạn tạo hũ hoặc đăng việc rồi đọc to mã mời cho cả nhóm."
+      ]
     }
   },
   "issue": {
