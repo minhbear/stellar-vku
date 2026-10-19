@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import {
+  Blocks,
   CheckCircle2,
   CircleDollarSign,
   Clock3,
@@ -29,6 +30,7 @@ const ICONS: Record<LessonIcon, typeof Library> = {
   homework: NotebookPen,
   remit: Globe,
   lending: HandCoins,
+  build: Blocks,
 };
 
 export function LessonNav({ variant = "sidebar" }: { variant?: "sidebar" | "strip" }) {
