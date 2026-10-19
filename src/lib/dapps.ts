@@ -6,7 +6,6 @@
 export interface DappLink {
   id: "sharebill" | "escrow";
   url: string;
-  repo: string;
 }
 
 export const DAPPS: DappLink[] = [
@@ -15,15 +14,12 @@ export const DAPPS: DappLink[] = [
     url:
       process.env.NEXT_PUBLIC_SHAREBILL_URL ??
       "https://sharebill-production.up.railway.app",
-    repo: "https://github.com/minhbear/stellar-vku-dapp/tree/main/apps/sharebill",
   },
   {
     id: "escrow",
     url:
       process.env.NEXT_PUBLIC_ESCROW_URL ??
       "https://escrow-production-6fd3.up.railway.app",
-    repo: "https://github.com/minhbear/stellar-vku-dapp/tree/main/apps/escrow",
   },
 ];
 
-export const DAPP_REPO = "https://github.com/minhbear/stellar-vku-dapp";
