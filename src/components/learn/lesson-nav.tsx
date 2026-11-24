@@ -11,8 +11,11 @@ import {
   Library,
   NotebookPen,
   Radar,
+  Rocket,
   Search,
+  Sparkles,
   Wand2,
+  Wrench,
 } from "lucide-react";
 
 import { useProgress } from "@/components/learn/use-progress";
@@ -31,6 +34,9 @@ const ICONS: Record<LessonIcon, typeof Library> = {
   remit: Globe,
   lending: HandCoins,
   build: Blocks,
+  setup: Wrench,
+  prompt: Sparkles,
+  ship: Rocket,
 };
 
 export function LessonNav({ variant = "sidebar" }: { variant?: "sidebar" | "strip" }) {

@@ -23,6 +23,10 @@ npm run dev            # http://localhost:3000 → redirects to /en
 | `/[locale]/learn/forensics/frozen-wallet` | Mission 03 (homework): a frozen customer wallet and an issuer that kept approval, freezing and clawback |
 | `/[locale]/learn/finance` | Cross-border payments: 500 USD through banks and SWIFT, then through MoneyGram and USDC on Stellar, plus the life of a transaction |
 | `/[locale]/learn/finance/lending` | Lending: a secured loan at a Vietnamese bank next to a Blend lending pool, and how to borrow on Blend testnet |
+| `/[locale]/learn/build` | Module 4: use two testnet dapps, then split each into its blockchain half and its web-app half |
+| `/[locale]/learn/contract` | Module 5 (EC project): Windows setup for GitHub Desktop, Build Tools, Rust and the Stellar CLI, with troubleshooting |
+| `/[locale]/learn/contract/prompt` | `stellar contract init`, then a form that turns the student's idea into an AI prompt for a single-file `lib.rs` |
+| `/[locale]/learn/contract/ship` | Build, test, deploy and invoke on testnet, the EC README template, GitHub Desktop publishing, an error-fix prompt |
 
 Locales are `en` (source of truth) and `vi`. Messages live in
 `src/messages/*.json`; the course structure lives in `src/lib/curriculum.ts`.

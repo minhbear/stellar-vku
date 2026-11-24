@@ -128,6 +128,28 @@
           "description": "Use two working dapps on testnet, then work out which half of each one is the blockchain and which half is an ordinary web app."
         }
       }
+    },
+    "contract": {
+      "title": "Your first smart contract (EC project)",
+      "short": "EC project",
+      "description": "Each student builds an EC project: install the tools on Windows, describe an idea so an AI writes the smart contract, deploy it to Stellar testnet and hand it in through GitHub.",
+      "lessons": {
+        "setup": {
+          "title": "Setting up Windows",
+          "short": "Setup",
+          "description": "Create a GitHub account, install GitHub Desktop, Build Tools, Rust and the Stellar CLI, with fixes for the usual errors."
+        },
+        "prompt": {
+          "title": "The idea and the AI prompt",
+          "short": "AI prompt",
+          "description": "Create the project with stellar contract init, then describe your idea in a form so an AI writes the whole contract in lib.rs."
+        },
+        "ship": {
+          "title": "Build, deploy and hand in",
+          "short": "Deploy and submit",
+          "description": "Build, test, deploy to testnet, call every function, write the EC README and push it all with GitHub Desktop."
+        }
+      }
     }
   },
   "home": {
@@ -181,7 +203,7 @@
     },
     "curriculum": {
       "title": "Curriculum",
-      "lede": "Four modules so far. More will be added as the course goes on.",
+      "lede": "Five modules so far. More will be added as the course goes on.",
       "comingSoon": "More modules coming",
       "comingSoonBody": "Smart contracts with Soroban, and more of the Stellar ecosystem."
     },
@@ -2871,5 +2893,920 @@
     "notFoundTitle": "Page not found",
     "notFoundBody": "That link does not lead anywhere on this site.",
     "backHome": "Back to the start"
+  },
+  "contract": {
+    "labels": {
+      "cause": "Why",
+      "fix": "Fix",
+      "copyPrompt": "Copy prompt"
+    },
+    "setup": {
+      "title": "Getting a Windows laptop ready for smart contracts",
+      "lede": "In this session every student builds an EC project: a small smart contract running on Stellar testnet, written by an AI from your own idea, published on GitHub with a README. This first lesson is the setup. Go in order and check each step before moving on.",
+      "risein": {
+        "title": "Before you start: register on Rise In",
+        "lede": "Rise In is where you submit your EC project. Register at the start of the session so that at the end you only have to submit a link.",
+        "steps": {
+          "open": {
+            "title": "Open the program page",
+            "body": "The Stellar Vietnam x VKU EC Project page on Rise In is where the whole class submits.",
+            "links": {
+              "program": "Open Stellar Vietnam x VKU EC Project"
+            }
+          },
+          "account": {
+            "title": "Create an account with Google",
+            "body": "Click Sign In / Up at the top right, choose to sign in with Google, then pick your Gmail account.",
+            "note": "Use one Google account for the whole session, because your submission is tied to it."
+          },
+          "register": {
+            "title": "Register for the program",
+            "body": "Once signed in, open the Stellar Vietnam x VKU EC Project page again, tick the consent boxes and click Register to attend.",
+            "expect": "Once registered you have a place in the program. Come back to this page at the end to submit your GitHub repo link.",
+            "links": {
+              "program": "Open the program page again"
+            }
+          }
+        }
+      },
+      "ec": {
+        "title": "What an EC project contains",
+        "lede": "A finished EC project has four parts. The three lessons in this module go through them one by one.",
+        "parts": [
+          {
+            "title": "A standard Stellar project",
+            "body": "Created with stellar contract init, so the folder layout is the same on every machine."
+          },
+          {
+            "title": "A smart contract in lib.rs",
+            "body": "Written in Rust. You describe the idea, the AI writes the code, and you build it until it works."
+          },
+          {
+            "title": "A contract deployed to testnet",
+            "body": "It has a Contract ID starting with C, can be called from the Stellar CLI and can be looked up on Stellar Expert."
+          },
+          {
+            "title": "A GitHub repo with the standard README",
+            "body": "Description, vision, features, future scope and a Contract Detail section with the Contract ID and a Stellar Expert screenshot."
+          }
+        ],
+        "example": {
+          "title": "See a sample EC project",
+          "body": "This repo shows what the end result looks like."
+        }
+      },
+      "before": {
+        "title": "Before you start",
+        "lede": "Install the night before class if you can: the Build Tools step alone downloads several GB.",
+        "items": [
+          "A Windows 10 or 11 laptop, 64-bit, signed in with an Administrator account.",
+          "At least 10 GB free on drive C.",
+          "A stable connection. Expect 3 to 5 GB of downloads in total.",
+          "About 40 minutes, most of it waiting for installers."
+        ]
+      },
+      "steps": {
+        "title": "Install step by step",
+        "lede": "Commands run in PowerShell or Windows Terminal. Use the copy button in the corner of each box, paste into the terminal with right click or Ctrl+V, then press Enter. Versions used here: Stellar CLI {cli}, Rust {rust} or newer.",
+        "github": {
+          "title": "Create a GitHub account",
+          "body": "GitHub stores your code, and it is where your lecturer looks at what you hand in.",
+          "items": [
+            "Open the sign-up page and use an email address you will keep.",
+            "Pick a readable username such as nguyenvana-vku. It will be part of your submission link.",
+            "Enter the code GitHub emails you.",
+            "When asked for a plan, choose Free."
+          ],
+          "links": {
+            "signup": "Create a GitHub account"
+          }
+        },
+        "desktop": {
+          "title": "Install GitHub Desktop",
+          "body": "GitHub Desktop puts your code on GitHub with a few clicks, no git commands needed.",
+          "items": [
+            "Download and install GitHub Desktop, or run the winget command below.",
+            "Open it and choose Sign in to GitHub.com. When the browser opens, click Authorize desktop.",
+            "On the Configure Git screen keep the default name and email and click Finish."
+          ],
+          "links": {
+            "download": "Download GitHub Desktop"
+          },
+          "captions": {
+            "winget": "Or install it with a command"
+          }
+        },
+        "terminal": {
+          "title": "Open a terminal and make a work folder",
+          "body": "The terminal is the window where you type commands. Windows 11 ships Windows Terminal, Windows 10 has PowerShell.",
+          "items": [
+            "Press the Windows key, type Terminal (or PowerShell) and press Enter.",
+            "Paste the command below to create C:\\stellar. Every project in this module lives there.",
+            "A short path with no accents, no spaces and outside OneDrive avoids a lot of confusing errors later."
+          ],
+          "links": {
+            "terminal": "Install Windows Terminal"
+          },
+          "captions": {
+            "folder": "Create the work folder"
+          }
+        },
+        "buildTools": {
+          "title": "Install Visual Studio Build Tools (C++)",
+          "body": "Rust on Windows needs Microsoft's C++ tools to link programs together. Skip this and the build fails with a missing link.exe.",
+          "items": [
+            "Open the terminal as Administrator: right click Terminal, choose Run as administrator.",
+            "Paste the command below. The Visual Studio Installer appears and runs by itself, for 10 to 20 minutes.",
+            "If you install from the download instead, tick only Desktop development with C++ and click Install.",
+            "Restart the laptop once it finishes."
+          ],
+          "captions": {
+            "winget": "Run in a terminal opened as Administrator"
+          },
+          "links": {
+            "manual": "Download Build Tools to install by hand"
+          },
+          "note": "You do not need the full Visual Studio. Build Tools with Desktop development with C++ is enough."
+        },
+        "rust": {
+          "title": "Install Rust",
+          "body": "Rust is the language Stellar smart contracts are written in. The installer adds three tools: rustup, cargo and rustc.",
+          "items": [
+            "Run the Rust install command.",
+            "Close the terminal completely and open it again. The old window does not know about cargo yet.",
+            "Run the second command to add the wasm32v1-none target, the format Stellar contracts are built into."
+          ],
+          "captions": {
+            "install": "1. Install Rust",
+            "target": "2. Reopen the terminal, then add the smart contract target"
+          },
+          "links": {
+            "manual": "Official installer (rustup-init.exe)"
+          },
+          "note": "If you use rustup-init.exe, take the x86_64 (64-bit) one and keep the default choices (press Enter). Do not pick a gnu toolchain."
+        },
+        "stellar": {
+          "title": "Install the Stellar CLI",
+          "body": "The Stellar CLI is the command-line tool that creates, builds, deploys and calls smart contracts.",
+          "items": [
+            "Run the winget command, or download the .exe installer and click Next until it finishes.",
+            "Close the terminal and open it again."
+          ],
+          "captions": {
+            "winget": "Install with a command"
+          },
+          "links": {
+            "installer": "Download the Stellar CLI installer (.exe)"
+          }
+        },
+        "vscode": {
+          "title": "Install VS Code",
+          "body": "VS Code is where you open the project, paste the AI's code and read errors. The rust-analyzer extension colours the code and underlines mistakes.",
+          "items": [
+            "Install VS Code. During setup tick Add to PATH and Add Open with Code action.",
+            "Open VS Code, go to Extensions (Ctrl+Shift+X), search for rust-analyzer and click Install."
+          ],
+          "links": {
+            "vscode": "Download VS Code",
+            "rustAnalyzer": "rust-analyzer extension"
+          }
+        },
+        "check": {
+          "title": "Check everything",
+          "body": "Open a fresh terminal and run these three commands. Each one must print a version number.",
+          "expect": "You should see rustc 1.9x.x, cargo 1.9x.x and stellar 30.x.x. Three lines means setup is done."
+        }
+      },
+      "trouble": {
+        "title": "Something went wrong?",
+        "lede": "Open the line that matches what you see. If it is not here, copy the whole error into ChatGPT or Claude and say you are on Windows and which command you ran.",
+        "items": {
+          "notRecognized": {
+            "symptom": "cargo, rustc or stellar is not recognised",
+            "error": "stellar : The term 'stellar' is not recognized as the name of a cmdlet, function, script file, or operable program.",
+            "cause": "The terminal was opened before the install, so it does not know where the new program is, or the install did not finish.",
+            "fix": "Close every terminal and VS Code window, open them again and rerun the command. Still failing: restart the laptop. Still failing after that: reinstall that step."
+          },
+          "winget": {
+            "symptom": "The winget command does not work",
+            "error": "winget : The term 'winget' is not recognized as the name of a cmdlet, function, script file, or operable program.",
+            "cause": "An older Windows 10 without App Installer.",
+            "fix": "Open the Microsoft Store, find App Installer and click Update or Get. Or skip winget and use the download button in each step."
+          },
+          "linker": {
+            "symptom": "The build says link.exe is missing",
+            "error": "error: linker `link.exe` not found",
+            "cause": "Visual Studio Build Tools is not installed, or it is installed without Desktop development with C++.",
+            "fix": "Redo the Build Tools step. If it is installed, open Visual Studio Installer, click Modify on Build Tools, tick Desktop development with C++ and click Install. Restart afterwards."
+          },
+          "target": {
+            "symptom": "The build cannot find the core crate",
+            "error": "error[E0463]: can't find crate for `core`",
+            "cause": "The wasm32v1-none target is missing, often after a Rust update.",
+            "fix": "Run the add-target command again, then rebuild."
+          },
+          "oldRust": {
+            "symptom": "Rust says it does not support wasm32v1-none",
+            "error": "error: toolchain 'stable-x86_64-pc-windows-msvc' does not support target 'wasm32v1-none'",
+            "cause": "An older Rust, below 1.84, was already on the laptop.",
+            "fix": "Update Rust to the latest version, then add the target again."
+          },
+          "gnu": {
+            "symptom": "Build Tools is installed but it still fails, or dlltool or gcc is missing",
+            "error": "error: error calling dlltool 'dlltool.exe': program not found",
+            "cause": "Rust is using the gnu toolchain instead of msvc, usually from the wrong rustup-init download or a wrong choice during install.",
+            "fix": "Switch Rust to msvc and add the target again with the two commands below."
+          },
+          "policy": {
+            "symptom": "PowerShell says running scripts is disabled",
+            "error": "cannot be loaded because running scripts is disabled on this system.",
+            "cause": "PowerShell's default policy blocks scripts, and some installers need them.",
+            "fix": "Run the command below in PowerShell, answer Y, then rerun the command that failed."
+          },
+          "path": {
+            "symptom": "Strange build errors with the project in Desktop, Documents or OneDrive",
+            "cause": "OneDrive syncs and locks files during the build. Paths with accents or spaces also confuse some tools.",
+            "fix": "Keep the project under C:\\stellar as in step 3. An accented Windows user name is fine as long as the project is in C:\\stellar."
+          },
+          "antivirus": {
+            "symptom": "The build is very slow or says Access is denied",
+            "error": "Access is denied. (os error 5)",
+            "cause": "Windows Defender or another antivirus is scanning the target folder during the build.",
+            "fix": "Run the build again. If it keeps happening, add C:\\stellar to Exclusions in Windows Security."
+          },
+          "emoji": {
+            "symptom": "The terminal shows ? instead of icons",
+            "cause": "Older PowerShell windows cannot draw the emoji the Stellar CLI prints.",
+            "fix": "It does not affect anything. Use Windows Terminal if you want them to show."
+          }
+        }
+      }
+    },
+    "prompt": {
+      "title": "The idea and the AI prompt",
+      "lede": "Create the project with the Stellar CLI, turn your idea into a clear description, then let an AI (ChatGPT, Claude, Gemini) write the smart contract in one file: lib.rs.",
+      "intro": {
+        "title": "You own the idea, the AI writes the code",
+        "body": "AIs write Rust quickly but tend to change library versions, split code over several files or add things you did not ask for. The form below wraps your idea in a fixed set of technical rules, so the AI hands back one lib.rs that builds with your project as it is."
+      },
+      "init": {
+        "title": "Create the project with the Stellar CLI",
+        "lede": "One project per student. You can rename vku-ec-project, using only lowercase letters, digits and dashes.",
+        "tree": "The folders that were just created",
+        "steps": {
+          "init": {
+            "title": "Initialise the project",
+            "body": "init creates a Rust workspace and a sample contract called hello-world. You will replace the sample's code with the AI's.",
+            "expect": "The terminal prints Writing lines with file names and no error."
+          },
+          "open": {
+            "title": "Open the project in VS Code",
+            "body": "code . opens the current folder in VS Code. If it does nothing, open VS Code, choose File, Open Folder and pick C:\\stellar\\vku-ec-project."
+          },
+          "sdk": {
+            "title": "Find the soroban-sdk version",
+            "body": "Open Cargo.toml at the project root (or run the command below) and find the soroban-sdk line. The number in quotes is what you type into the form.",
+            "expect": "For example soroban-sdk = \"29\" means you type 29."
+          }
+        }
+      },
+      "idea": {
+        "title": "An idea of the right size",
+        "lede": "A first smart contract should be small. The goal is a contract that runs on testnet and that you can explain function by function, not a whole product.",
+        "traits": [
+          "3 to 6 features, each one sentence long.",
+          "One main kind of record: a savings goal, a debt, a ticket, a vote.",
+          "Someone has to sign: only the owner can change their own record.",
+          "At least one rule that says no: the amount must be above 0, no claiming twice, nothing after it closes.",
+          "Record numbers only, no real token transfers yet. Moving real money is the upgrade.",
+          "Tied to finance you know: a class fund, savings, loans between friends, loyalty points, crowdfunding."
+        ],
+        "goodLabel": "Do",
+        "badLabel": "Avoid",
+        "examples": [
+          {
+            "good": "Class fund: the class monitor opens a fund, members record what they paid, anyone can see the total.",
+            "bad": "A full digital bank with loans, cards, interest and a mobile app."
+          },
+          {
+            "good": "A concrete feature: a user adds money to their own savings goal.",
+            "bad": "A vague feature: smart AI money management."
+          },
+          {
+            "good": "A clear rule: only the lender can mark a loan as repaid.",
+            "bad": "No rules at all: anyone can change anything."
+          }
+        ]
+      },
+      "builder": {
+        "sectionTitle": "Build the AI prompt",
+        "sectionLede": "Pick a sample idea to see how the form is filled, or write your own. Click Create prompt, copy it and paste it into a new chat with ChatGPT, Claude or Gemini.",
+        "warning": {
+          "title": "Read the answer before pasting it into the project",
+          "body": "AIs make mistakes. If the answer includes tests, stops halfway or is split into several files, ask it to rewrite the whole lib.rs following the rules in the prompt."
+        },
+        "title": "Describe the idea",
+        "lede": "Write in Vietnamese or English, as specifically as you can. List one feature per line.",
+        "fields": {
+          "projectName": {
+            "label": "Project name",
+            "hint": "Short, in English or Vietnamese without accents.",
+            "placeholder": "e.g. ClassFund"
+          },
+          "sdkVersion": {
+            "label": "soroban-sdk version",
+            "hint": "From Cargo.toml."
+          },
+          "problem": {
+            "label": "Problem and idea",
+            "hint": "What is wrong today, and how your contract fixes it.",
+            "placeholder": "e.g. The class fund lives in the monitor's spreadsheet, so nobody can check it. The contract records every payment so anyone can."
+          },
+          "users": {
+            "label": "Who uses it and what they can do",
+            "hint": "The roles, for example fund creator, member, anyone.",
+            "placeholder": "e.g. The monitor opens the fund. Members record their own payments. Anyone can read the total."
+          },
+          "features": {
+            "label": "Features",
+            "hint": "One feature per line, 2 to 8 lines.",
+            "placeholder": "Open a fund with a name and a target\nA member records how much they paid\nRead the fund total\nRead how much one member paid"
+          },
+          "data": {
+            "label": "What to store",
+            "hint": "Leave empty and the AI will propose it.",
+            "placeholder": "e.g. fund name, target, total paid, amount per member."
+          },
+          "rules": {
+            "label": "Rules",
+            "hint": "When the contract must refuse. Leave empty and the AI will propose them.",
+            "placeholder": "e.g. Amounts must be above 0. The fund can only be opened once."
+          }
+        },
+        "submit": "Create prompt",
+        "output": {
+          "title": "Your prompt",
+          "hint": "Copy all of it into a new chat with the AI. Once you have the code, carry on with the steps below."
+        },
+        "errors": {
+          "projectName": {
+            "required": "Enter a project name (at least 2 characters).",
+            "tooLong": "Project names are at most 60 characters."
+          },
+          "problem": {
+            "tooShort": "Write a little more, at least 20 characters.",
+            "tooLong": "At most 800 characters."
+          },
+          "users": {
+            "required": "Say who will use the contract.",
+            "tooLong": "At most 400 characters."
+          },
+          "features": {
+            "required": "List the features, one per line.",
+            "tooLong": "At most 1200 characters.",
+            "tooFew": "At least 2 features, one per line.",
+            "tooMany": "At most 8 features. A first contract should be small."
+          },
+          "data": {
+            "tooLong": "At most 600 characters."
+          },
+          "rules": {
+            "tooLong": "At most 600 characters."
+          },
+          "sdkVersion": {
+            "format": "Only the version number, for example 29."
+          }
+        },
+        "template": {
+          "intro": "You are an experienced Stellar (Soroban) smart contract developer. Please write the smart contract for the EC project below. I am a fintech student, new to programming, on Windows. The project was created with stellar contract init and the contract lives in {{dir}}.",
+          "projectHeading": "Project",
+          "fields": {
+            "projectName": "Project name",
+            "problem": "Problem and idea",
+            "users": "Users and permissions",
+            "features": "Features",
+            "data": "Data to store",
+            "rules": "Rules"
+          },
+          "fallbackData": "Propose it yourself, keep it minimal.",
+          "fallbackRules": "Propose sensible rules yourself (amounts above 0, only owners change their own records, nothing happens twice).",
+          "rulesHeading": "Technical requirements (mandatory)",
+          "rules": [
+            "Use soroban-sdk version {{sdk}}, exactly as in the existing Cargo.toml. Do not edit Cargo.toml and do not add any other crate.",
+            "All code goes in ONE file: {{dir}}/src/lib.rs. Do not create test.rs or any other file or module.",
+            "The first line is #![no_std]. No std, no f32 or f64. Amounts are i128, times are u64 from env.ledger().timestamp().",
+            "Use #[contracttype] for data structs and one DataKey enum as storage keys. Store with env.storage().persistent().",
+            "A function that changes someone's data takes that person's Address as a parameter and calls require_auth() on it.",
+            "Report errors with one #[contracterror] enum (numbered from 1) and return Result. No panic!, unwrap() or expect().",
+            "No __constructor. If an admin is needed, write init(admin: Address) that can only run once and errors the second time.",
+            "Function and parameter names in English, snake_case. At most 8 public functions and about 250 lines in total.",
+            "Do NOT write tests: no #[cfg(test)] block, no mod test, no testutils.",
+            "Give every function a one-line comment in Vietnamese saying what it does.",
+            "The code must pass stellar contract build as is, with no further edits."
+          ],
+          "answerHeading": "Answer in exactly this format",
+          "answer": [
+            "The whole lib.rs in ONE code block, from the first line to the last, nothing left out, no \"...\".",
+            "A table of functions: name, parameters, who may call it, what it does, which errors it can return.",
+            "For each function, one Windows PowerShell call on ONE line in this form: stellar contract invoke --id {{alias}} --source-account {{identity}} --network testnet -- <function_name> --<parameter> <value>. Address parameters take {{identity}}. Strings go in double quotes.",
+            "The order to call the functions in for a demo, start to finish."
+          ]
+        }
+      },
+      "ideas": {
+        "pick": "Start from a sample idea (click to fill in the form)",
+        "items": [
+          {
+            "projectName": "ClassFund",
+            "summary": "A class fund anyone can check.",
+            "problem": "The class fund is tracked in the monitor's spreadsheet, so nobody else can check who paid what. The contract records every contribution on the blockchain where anyone can read it.",
+            "users": "The class monitor opens the fund and records spending. Members record their own contributions. Anyone can read the balance and each member's total.",
+            "features": [
+              "The monitor opens a fund with a name and a target amount",
+              "A member records how much they just paid",
+              "The monitor records a spending with a reason",
+              "Read the total collected, total spent and balance",
+              "Read how much one member has paid"
+            ],
+            "data": "Fund info (name, target, collected, spent, monitor) and how much each member paid.",
+            "rules": "The fund opens once. Amounts must be above 0. Only the monitor records spending. Spending cannot exceed the balance."
+          },
+          {
+            "projectName": "SavingGoal",
+            "summary": "Set a savings goal and track progress.",
+            "problem": "Students want to save for a laptop but give up halfway. The contract records the goal and every deposit, and blocks withdrawal before the goal is reached.",
+            "users": "Each user has their own goal and only they can change it. Anyone can see the progress.",
+            "features": [
+              "Create a goal with a name and a target amount",
+              "Deposit into the goal",
+              "Withdraw everything once the goal is reached",
+              "Read the goal and how much is saved"
+            ],
+            "data": "Per user: goal name, target, amount saved, withdrawn or not.",
+            "rules": "One open goal per user. Amounts must be above 0. Withdraw only once the target is reached."
+          },
+          {
+            "projectName": "FriendLoan",
+            "summary": "A loan book between friends, no arguments.",
+            "problem": "Friends lend each other money and forget who owes what. The contract records a loan once both agree and marks it when it is repaid.",
+            "users": "The lender creates the loan. The borrower confirms it. Only the lender marks it repaid. Anyone can read it.",
+            "features": [
+              "The lender creates a loan with the borrower, amount and due date",
+              "The borrower confirms the loan",
+              "The lender marks the loan as repaid",
+              "Read a loan by its id",
+              "Read how much one person currently owes"
+            ],
+            "data": "Per loan: id, lender, borrower, amount, due date, confirmed, repaid. A loan id counter.",
+            "rules": "Amounts above 0. No lending to yourself. Only the borrower confirms. A loan cannot be marked repaid twice."
+          },
+          {
+            "projectName": "CafePoints",
+            "summary": "Loyalty points for the cafe near campus.",
+            "problem": "Paper stamp cards get lost and are easy to fake. The contract lets the cafe add points after each purchase and customers redeem them.",
+            "users": "The cafe owner (admin) adds points. Customers redeem their own points. Anyone can read a customer's points.",
+            "features": [
+              "Initialise the contract with the owner's address",
+              "The owner adds points to a customer",
+              "A customer redeems points",
+              "Read a customer's current points",
+              "Read the total points issued"
+            ],
+            "data": "Owner address, points per customer, total points issued.",
+            "rules": "Initialise once. Only the owner adds points. No redeeming more than you have. Points must be above 0."
+          },
+          {
+            "projectName": "ClubTicket",
+            "summary": "Club event tickets that cannot be faked.",
+            "problem": "Printed club tickets are easy to copy and hard to count. The contract issues a limited number of tickets and marks them when people check in.",
+            "users": "Organisers create the event and check people in. Students claim a ticket themselves. Anyone can see how many are left.",
+            "features": [
+              "Organisers create an event with a name and a ticket cap",
+              "A student claims one ticket",
+              "Organisers check in a ticket holder",
+              "Read tickets issued and tickets left",
+              "Check whether a person has a ticket or has checked in"
+            ],
+            "data": "Per event: name, organiser, cap, issued. Each person's ticket status per event.",
+            "rules": "One ticket per person per event. Never more than the cap. Only organisers check in. No checking in twice."
+          },
+          {
+            "projectName": "CrowdPledge",
+            "summary": "Crowdfunding for a student project.",
+            "problem": "Student projects raise money by bank transfer, so backers cannot tell whether the goal was reached. The contract records each pledge and decides success or failure at the deadline.",
+            "users": "The project owner creates the campaign. Backers pledge and can cancel before the deadline. Anyone can see progress.",
+            "features": [
+              "The owner creates a campaign with a goal and a deadline",
+              "A backer pledges an amount",
+              "A backer cancels their pledge before the deadline",
+              "Read the total pledged and the campaign status",
+              "Read how much one backer pledged"
+            ],
+            "data": "Campaign: owner, goal, deadline (timestamp), total pledged. Each backer's pledge.",
+            "rules": "Amounts above 0. No pledging or cancelling after the deadline. You can only cancel what you pledged."
+          },
+          {
+            "projectName": "RentDeposit",
+            "summary": "A record of a room deposit between landlord and student.",
+            "problem": "Students pay a deposit for a rented room and argue about the refund when they move out. The contract records the deposit, the deductions and both sides' confirmations.",
+            "users": "The landlord creates the deposit record. The student confirms paying it. The landlord records deductions at move-out. The student confirms the refund.",
+            "features": [
+              "The landlord creates a deposit record with the student and the amount",
+              "The student confirms the deposit was paid",
+              "The landlord records a deduction with a reason at move-out",
+              "The student confirms the refund amount",
+              "Read a deposit record"
+            ],
+            "data": "Per record: id, landlord, student, deposit, deduction, reason, status.",
+            "rules": "Deposit above 0. Deductions cannot exceed the deposit. Steps happen in order: create, confirm deposit, deduct, confirm refund."
+          },
+          {
+            "projectName": "ScholarVote",
+            "summary": "A faculty vote on scholarship candidates.",
+            "problem": "Paper ballots are hard to audit and people can vote twice. The contract lets only eligible voters vote, once each, with public results.",
+            "users": "The faculty admin adds candidates and grants voting rights. Eligible voters cast one vote. Anyone can read the counts.",
+            "features": [
+              "Initialise the contract with the admin's address",
+              "The admin adds a candidate",
+              "The admin grants an address the right to vote",
+              "An eligible voter votes for a candidate",
+              "Read a candidate's vote count"
+            ],
+            "data": "Admin address, candidates and their counts, voting rights and whether each address has voted.",
+            "rules": "Initialise once. Only the admin adds candidates and grants rights. One vote per voter. No votes for unknown candidates."
+          }
+        ]
+      },
+      "paste": {
+        "title": "Put the AI's code into the project",
+        "lede": "Replace everything in lib.rs with the AI's code, delete the leftover test.rs, then do a quick check.",
+        "steps": {
+          "paste": {
+            "title": "Paste the code into lib.rs",
+            "body": "In VS Code, open contracts\\hello-world\\src\\lib.rs.",
+            "items": [
+              "Press Ctrl+A to select the old content.",
+              "Back in the AI chat, use the Copy button on the code block. Selecting with the mouse tends to miss lines.",
+              "Back in VS Code, press Ctrl+V to paste, then Ctrl+S to save."
+            ]
+          },
+          "deleteTest": {
+            "title": "Delete test.rs",
+            "body": "Your contract no longer uses the hello-world test.rs. Delete it to keep the project tidy: right click the file in VS Code and choose Delete, or run the command below from the project root."
+          },
+          "review": {
+            "title": "Quick self-check",
+            "body": "Skim lib.rs and look for all of these:",
+            "items": [
+              "The first line is #![no_std].",
+              "There is a #[contract] and a #[contractimpl].",
+              "There is an enum marked #[contracterror].",
+              "No mod test line and no #[cfg(test)] block anywhere.",
+              "No ... and no phrases like rest of the code unchanged."
+            ],
+            "expect": "All there? Move on to the next lesson to build and deploy."
+          }
+        }
+      }
+    },
+    "ship": {
+      "title": "Build, deploy to testnet and hand in",
+      "lede": "Turn lib.rs into a contract running on Stellar testnet, call every function, write the EC README, then push the whole project to GitHub with GitHub Desktop.",
+      "intro": {
+        "title": "Two names used in every command",
+        "body": "{identity} is the name of the testnet wallet on your laptop, {alias} is the short name of your contract after deploying. Keep both and every command on this page runs as copied. Run everything from the project root, for example C:\\stellar\\vku-ec-project."
+      },
+      "buildSection": {
+        "title": "Build",
+        "lede": "Building turns the Rust into a .wasm file, which is what goes on testnet.",
+        "steps": {
+          "build": {
+            "title": "Build the contract",
+            "body": "The first build downloads libraries and takes a few minutes. Later builds are much faster.",
+            "expect": "It worked when you see the list of function names and Build Complete. The output is target\\wasm32v1-none\\release\\hello_world.wasm.",
+            "note": "Red errors? Scroll down to Ask the AI to fix it and paste the exact error together with lib.rs."
+          }
+        }
+      },
+      "deploySection": {
+        "title": "Deploy to testnet and call it",
+        "lede": "Testnet is Stellar's practice network: transactions work exactly like the real thing, but the money is free test money.",
+        "steps": {
+          "keys": {
+            "title": "Create a testnet wallet",
+            "body": "The first command creates a wallet called student and asks Friendbot for test XLM. The second prints the wallet address, which starts with G.",
+            "note": "The wallet's secret key is stored on your laptop. Use it on testnet only and never send real money to it."
+          },
+          "deploy": {
+            "title": "Deploy the contract",
+            "body": "This uploads the .wasm to testnet and gives the new contract the short name my-contract.",
+            "expect": "It worked when you see Deployed! and a 56-character Contract ID starting with C. Copy it somewhere: it goes in the README."
+          },
+          "help": {
+            "title": "List the functions you can call",
+            "body": "The Stellar CLI reads the contract and lists its functions. To see one function's parameters, put its name before --help, for example -- create_goal --help.",
+            "expect": "You will see a Commands line and the names of your contract's functions. Select everything from Usage to the end, right click to copy, and use it in step 5."
+          },
+          "invokePrompt": {
+            "title": "Let the AI write the calls",
+            "body": "You do not have to write the commands yourself. Paste the output of step 5 below, press Create prompt, then paste the prompt into the same chat where the AI wrote your code. It replies with a command for each function, plus an explanation.",
+            "items": [
+              "First box: paste the whole output of the --help command from step 5.",
+              "Second box (optional): describe what you want to demo, for example create a class fund, contribute 100, then check the balance.",
+              "Third box: paste lib.rs only if you open a new AI chat."
+            ],
+            "note": "The AI sometimes gets a parameter name wrong. If a command fails, run --help for that function alone (for example -- create_goal --help) and compare the names, or use the fix form at the bottom of this page."
+          },
+          "invoke": {
+            "title": "Call each function",
+            "body": "Run the commands the AI just gave you, one by one, in order. The two below are only examples from the sample savings contract (create_goal, get_goal): your function names and parameters will differ.",
+            "items": [
+              "Address parameters: write student and the CLI swaps in your wallet address.",
+              "Text with spaces: wrap it in double quotes.",
+              "Numbers: write them plainly, no thousands separators.",
+              "Read-only functions print the result along with Simulation identified as read-only. That is not an error."
+            ],
+            "captions": {
+              "write": "A function that writes data (sends a testnet transaction)",
+              "read": "A function that reads data"
+            },
+            "expect": "Every write prints a stellar.expert link. Open it to see your transaction on the blockchain."
+          },
+          "explorer": {
+            "title": "Find the contract on Stellar Expert and take a screenshot",
+            "body": "The command below prints the Contract ID again if you lost it. Open Stellar Expert, make sure the top right says Network testnet, and paste the Contract ID into search.",
+            "items": [
+              "The contract page shows Summary (Created, Creator) and a Contract invocations chart.",
+              "Take a screenshot of the page with Windows + Shift + S.",
+              "Save it in the project root as image.png."
+            ],
+            "captions": {
+              "id": "Show the Contract ID again"
+            },
+            "links": {
+              "expert": "Open Stellar Expert (testnet)"
+            }
+          }
+        }
+      },
+      "readme": {
+        "title": "Write the EC README",
+        "lede": "The README is the first thing your lecturer reads. Keep the template's sections. The AI can write the text from lib.rs.",
+        "promptCaption": "Prompt to have the AI write the README (paste lib.rs with it)",
+        "templateCaption": "EC project README.md template",
+        "prompt": [
+          "Based on the lib.rs below, write the README.md for my EC project in English, using exactly these sections and section names:",
+          "Project Title, Project Description, Project Vision, Key Features, Usage Instructions, Future Scope, Technology Stack, Contract Detail.",
+          "In Contract Detail keep the Contract ID and Deployer lines and the image line ![Contract on Stellar Expert](image.png) as placeholders, I will fill them in.",
+          "Do not invent features the code does not have. Anything not built yet goes under Future Scope.",
+          "",
+          "<paste the whole lib.rs here>"
+        ],
+        "steps": {
+          "write": {
+            "title": "Write the README",
+            "body": "Open README.md at the project root (stellar contract init created it), delete its content and paste the template below or the AI's text. Fill in the Contract ID and the deployer address (stellar keys address student)."
+          },
+          "image": {
+            "title": "Attach the Stellar Expert screenshot",
+            "body": "image.png has to sit next to README.md for GitHub to show it. Save the README with Ctrl+S."
+          }
+        }
+      },
+      "github": {
+        "title": "Push the project with GitHub Desktop",
+        "lede": "Do this once to create the repo. After that it is just Commit and Push.",
+        "steps": {
+          "add": {
+            "title": "Add the project to GitHub Desktop",
+            "body": "Open GitHub Desktop, choose File, Add local repository, click Choose... and select C:\\stellar\\vku-ec-project.",
+            "items": [
+              "When it says This directory does not appear to be a Git repository, click the blue create a repository link.",
+              "In Create a new repository keep the Name, leave Git ignore on None (the project already has a .gitignore), optionally pick MIT as License, and click Create repository."
+            ],
+            "note": "Pick the project folder, the one with Cargo.toml in it. Not C:\\stellar."
+          },
+          "publish": {
+            "title": "Publish to GitHub",
+            "body": "Click Publish repository in the top bar.",
+            "items": [
+              "Name it after your project, for example ClassFund-Stellar.",
+              "Untick Keep this code private so your lecturer can see it.",
+              "Click Publish repository and wait a few seconds."
+            ]
+          },
+          "check": {
+            "title": "Check it on github.com",
+            "body": "Choose Repository, View on GitHub. The repo page must show:",
+            "items": [
+              "Cargo.toml, README.md, image.png and the contracts folder.",
+              "The README rendered under the file list, with the Stellar Expert screenshot.",
+              "NO target folder. If there is one, see the errors below."
+            ]
+          },
+          "update": {
+            "title": "Change something and push again",
+            "body": "Each time you edit lib.rs or the README:",
+            "items": [
+              "Save the file in VS Code.",
+              "Open GitHub Desktop: the Changes tab lists what you edited.",
+              "In Summary at the bottom left, say briefly what you did, for example Add deposit function.",
+              "Click Commit to main.",
+              "Click Push origin in the top bar."
+            ],
+            "note": "Changing lib.rs means building and deploying again. Every deploy creates a NEW contract with a new Contract ID, so update the README and screenshot."
+          }
+        }
+      },
+      "fix": {
+        "title": "Ask the AI to fix it",
+        "lede": "Paste the exact terminal error (from the first error line), plus lib.rs if the code is at fault. The form writes a prompt that asks the AI for the whole fixed file rather than loose snippets."
+      },
+      "trouble": {
+        "title": "Common errors when building, deploying and pushing",
+        "lede": "Open the line that matches what you see.",
+        "items": {
+          "compile": {
+            "symptom": "Build prints red errors with an error[E...] code",
+            "error": "error[E0425]: cannot find value `amount` in this scope",
+            "cause": "The AI's code does not match your soroban-sdk version, or a line went missing when pasting.",
+            "fix": "Use Ask the AI to fix it above: paste the error and the whole lib.rs, replace the file with what comes back and build again. One or two rounds is usual."
+          },
+          "modTest": {
+            "symptom": "Module test not found",
+            "error": "error[E0583]: file not found for module `test`",
+            "cause": "lib.rs still has a mod test; line pointing at the deleted test.rs.",
+            "fix": "Remove the mod test; line from lib.rs (the contract needs no tests), save and build again."
+          },
+          "wasmMissing": {
+            "symptom": "Deploy cannot find the .wasm file",
+            "error": "The system cannot find the path specified. (os error 3)",
+            "cause": "The terminal is in the wrong folder, or the last build failed.",
+            "fix": "Go to the project root (for example cd C:\\stellar\\vku-ec-project), build until you see Build Complete, then deploy."
+          },
+          "notFunded": {
+            "symptom": "Account not found or not enough funds",
+            "error": "Account not found",
+            "cause": "Friendbot never funded the student wallet (a flaky connection when it was created), or testnet was just reset.",
+            "fix": "Fund the wallet again with the command below and rerun."
+          },
+          "contractError": {
+            "symptom": "A call fails with Error(Contract, #number)",
+            "error": "HostError: Error(Contract, #3)",
+            "cause": "The contract is working and refusing under one of your rules. #3 is error number 3 in the #[contracterror] enum.",
+            "fix": "Look up that number in the error enum in lib.rs (for example InvalidAmount = 3), then fix the argument or call things in the right order (create before deposit, say)."
+          },
+          "auth": {
+            "symptom": "A call fails with an Auth error",
+            "error": "HostError: Error(Auth, InvalidAction)",
+            "cause": "The function needs a signature from a different address than the wallet sending the command (--source-account).",
+            "fix": "Pass student for the Address parameter, matching --source-account student. To try a second user, create one with stellar keys generate friend --network testnet --fund and use friend in both places."
+          },
+          "badArg": {
+            "symptom": "Wrong or missing parameter",
+            "error": "error: unexpected argument '--amout' found",
+            "cause": "A typo in a parameter or function name. Names must match lib.rs exactly.",
+            "fix": "Run the help command to see the function names, then put a function name before --help to see its parameters."
+          },
+          "redeploy": {
+            "symptom": "After deploying again, the old data is gone",
+            "error": "Overwriting existing alias 'my-contract' that currently links to contract ID: C...",
+            "cause": "Every deploy creates a new, empty contract. The my-contract name moves to the new one.",
+            "fix": "This is expected. Call the functions that create data again, and update the Contract ID and screenshot in the README."
+          },
+          "readOnly": {
+            "symptom": "It says Simulation identified as read-only",
+            "error": "Simulation identified as read-only. Send by rerunning with `--send=yes`.",
+            "cause": "The function only reads, so the CLI returns the result without sending a transaction.",
+            "fix": "Nothing to do, the result is on the next line. If that function was meant to write data, the code is wrong: ask the AI."
+          },
+          "notRepo": {
+            "symptom": "GitHub Desktop says the folder is not a Git repository",
+            "error": "This directory does not appear to be a Git repository.",
+            "cause": "No repository has been created in that folder yet.",
+            "fix": "Click the create a repository link in the message. Or choose File, New repository with Local path C:\\stellar and Name set to the project folder's name."
+          },
+          "publishName": {
+            "symptom": "Publish says the name already exists",
+            "error": "name already exists on this account",
+            "cause": "Your GitHub account already has a repo with that name.",
+            "fix": "Change the Name in the Publish window, for example add -vku at the end."
+          },
+          "target": {
+            "symptom": "GitHub Desktop lists thousands of changed files under target",
+            "cause": "The .gitignore was deleted, or the project was not created with stellar contract init, so the heavy target build folder is going into Git.",
+            "fix": "Recreate .gitignore at the project root with the single line target and save. GitHub Desktop will hide those files. If they were already pushed, ask your lecturer."
+          }
+        }
+      },
+      "submit": {
+        "title": "Hand it in",
+        "lede": "Send the GitHub repo link to your lecturer once everything below is true.",
+        "items": [
+          "The repo is Public and opens without signing in to GitHub.",
+          "The code is in contracts/hello-world/src/lib.rs and test.rs is gone.",
+          "stellar contract build passes on your laptop.",
+          "The README has every section of the EC template.",
+          "Contract Detail has a Contract ID (starting with C) that matches the contract live on testnet.",
+          "image.png, a screenshot of the contract on Stellar Expert, shows in the README.",
+          "You can explain what each function does and who may call it.",
+          "Your GitHub repo link is submitted on the Rise In Stellar Vietnam x VKU EC Project page."
+        ]
+      }
+    },
+    "fix": {
+      "fields": {
+        "command": {
+          "label": "The command you ran",
+          "hint": "For example stellar contract build or stellar contract deploy."
+        },
+        "error": {
+          "label": "The error",
+          "hint": "Select it in the terminal and right click to copy. Paste from the first error line to the end."
+        },
+        "code": {
+          "label": "Your current lib.rs",
+          "hint": "Worth pasting when the error happens during build."
+        }
+      },
+      "submit": "Create fix prompt",
+      "output": {
+        "title": "Fix prompt",
+        "hint": "Paste it into the same chat where the AI wrote your code, so it keeps the context."
+      },
+      "errors": {
+        "command": {
+          "tooLong": "At most 400 characters."
+        },
+        "error": {
+          "required": "Paste the error (at least 10 characters).",
+          "tooLong": "That is very long. Paste from the first error line only."
+        },
+        "code": {
+          "tooLong": "The file is too long to paste here."
+        }
+      },
+      "template": {
+        "intro": "I am building a Stellar (Soroban) smart contract with soroban-sdk {{sdk}} on Windows. All the code is in one file, {{dir}}/src/lib.rs.",
+        "commandLine": "The command I ran:",
+        "errorLine": "The error:",
+        "codeLine": "My current lib.rs:",
+        "ask": [
+          "Explain briefly and simply what this error means and why it happened.",
+          "If the code is at fault: give me the WHOLE fixed lib.rs in a single code block, nothing left out.",
+          "If it is an install or typing problem: list the steps to take on Windows, with each PowerShell command on one line.",
+          "Keep the rules: a single lib.rs, #![no_std], no Cargo.toml edits, no new crates, no tests."
+        ]
+      }
+    },
+    "invoke": {
+      "fields": {
+        "help": {
+          "label": "Output of the --help command from step 5",
+          "hint": "Select it in the terminal, right click to copy, and paste all of it here.",
+          "placeholder": "Usage: ...\n\nCommands:\n  create_goal\n  get_goal\n  help"
+        },
+        "scenario": {
+          "label": "What you want to demo",
+          "hint": "Plain words are fine, for example: create a class fund, two friends contribute, the class lead spends 50, check the balance."
+        },
+        "code": {
+          "label": "Your lib.rs",
+          "hint": "Only needed if you use a new AI chat, not the one that wrote your code."
+        }
+      },
+      "submit": "Create calls prompt",
+      "output": {
+        "title": "Prompt for the calls",
+        "hint": "Paste it into the same chat where the AI wrote your code, so it remembers the functions and parameters."
+      },
+      "errors": {
+        "help": {
+          "required": "Paste the --help output (at least 10 characters).",
+          "tooLong": "That is very long. Paste only the output of the --help command."
+        },
+        "scenario": {
+          "tooLong": "At most 600 characters."
+        },
+        "code": {
+          "tooLong": "The file is too long to paste here."
+        }
+      },
+      "template": {
+        "intro": "My Stellar (Soroban) contract is deployed on testnet. I use the Stellar CLI in Windows PowerShell, my wallet is called {{identity}}, the contract alias is {{alias}}, and the code is in {{dir}}/src/lib.rs. I cannot code, so write everything so I only have to copy and run it.",
+        "helpLine": "The function list the Stellar CLI printed when I ran --help:",
+        "scenarioLine": "What I want to demo:",
+        "codeLine": "My lib.rs:",
+        "ask": [
+          "Using lib.rs (the one you wrote, or the one I pasted above) and the function list, write a call for EVERY function, in an order that demos the contract from start to finish: functions that create data first, functions that read data after.",
+          "Put each command in its own code block, on ONE line, following this pattern exactly: stellar contract invoke --id {{alias}} --source-account {{identity}} --network testnet -- <function_name> --<parameter_name> <value>. Keep parameter names exactly as in the code.",
+          "Values: Address is {{identity}}; text goes in double quotes; numbers are plain, no thousands separators; bool is true or false. If a parameter is a struct, Vec or Map, write it as JSON and say exactly how to type it in PowerShell.",
+          "If a function needs a signature from someone other than {{identity}}: give the command to create another wallet (stellar keys generate <name> --network testnet --fund) and use --source-account <name> for that call.",
+          "Under each command: one sentence on what it does and what I should see if it works (the returned value, or a stellar.expert link for functions that write data).",
+          "Add one call that is wrong on purpose (for example spending more than the balance, or a caller without permission) so I can see the contract refuse it, and explain the error it prints.",
+          "Do not change lib.rs or rename functions. If the function list above differs from the code you remember, trust the list and tell me."
+        ]
+      }
+    }
   }
 }

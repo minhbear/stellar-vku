@@ -128,6 +128,28 @@
           "description": "Dùng hai dapp thật trên testnet, rồi tự chỉ ra phần nào của mỗi app là blockchain và phần nào chỉ là web thường."
         }
       }
+    },
+    "contract": {
+      "title": "Smart contract đầu tiên (EC project)",
+      "short": "EC project",
+      "description": "Mỗi bạn tự làm một EC project: cài công cụ trên Windows, mô tả ý tưởng để AI viết smart contract, deploy lên Stellar testnet và nộp bài qua GitHub.",
+      "lessons": {
+        "setup": {
+          "title": "Cài đặt trên Windows",
+          "short": "Cài đặt",
+          "description": "Tạo tài khoản GitHub, cài GitHub Desktop, Build Tools, Rust và Stellar CLI, kèm cách xử lý lỗi thường gặp."
+        },
+        "prompt": {
+          "title": "Ý tưởng và prompt cho AI",
+          "short": "Prompt cho AI",
+          "description": "Tạo project bằng stellar contract init, mô tả ý tưởng qua form để AI viết toàn bộ contract trong lib.rs."
+        },
+        "ship": {
+          "title": "Build, deploy và nộp bài",
+          "short": "Deploy và nộp",
+          "description": "Build, test, deploy lên testnet, gọi thử từng hàm, viết README theo mẫu EC và đẩy lên GitHub bằng GitHub Desktop."
+        }
+      }
     }
   },
   "home": {
@@ -181,7 +203,7 @@
     },
     "curriculum": {
       "title": "Chương trình học",
-      "lede": "Hiện có bốn chuyên đề. Sẽ bổ sung thêm theo tiến độ khoá học.",
+      "lede": "Hiện có năm chuyên đề. Sẽ bổ sung thêm theo tiến độ khoá học.",
       "comingSoon": "Chuyên đề sắp có",
       "comingSoonBody": "Smart contract với Soroban, và thêm nhiều ứng dụng trong hệ sinh thái Stellar."
     },
@@ -2871,5 +2893,920 @@
     "notFoundTitle": "Không tìm thấy trang",
     "notFoundBody": "Đường dẫn đó không dẫn tới đâu trên trang này.",
     "backHome": "Về trang đầu"
+  },
+  "contract": {
+    "labels": {
+      "cause": "Nguyên nhân",
+      "fix": "Cách sửa",
+      "copyPrompt": "Sao chép prompt"
+    },
+    "setup": {
+      "title": "Chuẩn bị máy Windows để viết smart contract",
+      "lede": "Buổi này mỗi bạn tự làm một EC project: một smart contract nhỏ chạy trên Stellar testnet, code do AI viết theo ý tưởng của bạn, đăng lên GitHub kèm README. Bài đầu tiên là cài đặt. Làm đúng thứ tự, mỗi bước kiểm tra xong mới sang bước sau.",
+      "risein": {
+        "title": "Trước khi bắt đầu: đăng ký trên Rise In",
+        "lede": "Rise In là nơi bạn nộp bài EC project. Đăng ký ngay từ đầu buổi để cuối buổi chỉ việc nộp link.",
+        "steps": {
+          "open": {
+            "title": "Mở trang chương trình",
+            "body": "Trang Stellar Vietnam x VKU EC Project trên Rise In là nơi cả lớp nộp bài.",
+            "links": {
+              "program": "Mở trang Stellar Vietnam x VKU EC Project"
+            }
+          },
+          "account": {
+            "title": "Tạo tài khoản bằng Google",
+            "body": "Bấm Sign In / Up ở góc trên bên phải, chọn đăng nhập bằng Google rồi chọn tài khoản Gmail của bạn.",
+            "note": "Dùng đúng một tài khoản Google cho cả buổi, vì bài nộp gắn với tài khoản này."
+          },
+          "register": {
+            "title": "Đăng ký tham gia chương trình",
+            "body": "Sau khi đăng nhập, mở lại trang chương trình Stellar Vietnam x VKU EC Project, tick các ô đồng ý rồi bấm Register to attend.",
+            "expect": "Đăng ký xong là bạn đã có chỗ trong chương trình. Cuối buổi quay lại trang này để nộp link repo GitHub.",
+            "links": {
+              "program": "Mở lại trang chương trình"
+            }
+          }
+        }
+      },
+      "ec": {
+        "title": "Một EC project gồm những gì",
+        "lede": "Một EC project hoàn chỉnh có bốn phần. Ba bài của chuyên đề này đi qua lần lượt từng phần.",
+        "parts": [
+          {
+            "title": "Một project Stellar chuẩn",
+            "body": "Tạo bằng lệnh stellar contract init, nên cấu trúc thư mục giống nhau trên mọi máy."
+          },
+          {
+            "title": "Smart contract nằm trong lib.rs",
+            "body": "Viết bằng Rust. Bạn mô tả ý tưởng, AI viết code, bạn build cho tới khi chạy."
+          },
+          {
+            "title": "Contract đã deploy lên testnet",
+            "body": "Có Contract ID bắt đầu bằng chữ C, gọi thử được bằng Stellar CLI và xem được trên Stellar Expert."
+          },
+          {
+            "title": "Repo GitHub có README theo mẫu",
+            "body": "README gồm mô tả, tầm nhìn, tính năng, hướng phát triển và mục Contract Detail có Contract ID cùng ảnh chụp Stellar Expert."
+          }
+        ],
+        "example": {
+          "title": "Xem một EC project mẫu",
+          "body": "Repo này cho thấy sản phẩm cuối trông như thế nào."
+        }
+      },
+      "before": {
+        "title": "Trước khi bắt đầu",
+        "lede": "Nên cài từ tối hôm trước buổi học: riêng bước Build Tools đã tải vài GB.",
+        "items": [
+          "Máy Windows 10 hoặc 11, bản 64-bit, đăng nhập bằng tài khoản có quyền Administrator.",
+          "Ổ C còn trống ít nhất 10 GB.",
+          "Wifi ổn định. Tổng dung lượng tải về khoảng 3 đến 5 GB.",
+          "Khoảng 40 phút, phần lớn là ngồi chờ cài đặt."
+        ]
+      },
+      "steps": {
+        "title": "Cài đặt từng bước",
+        "lede": "Các lệnh chạy trong PowerShell hoặc Windows Terminal. Bấm nút sao chép ở góc phải khung lệnh, dán vào terminal bằng chuột phải hoặc Ctrl+V, rồi bấm Enter. Phiên bản dùng trong bài: Stellar CLI {cli}, Rust từ {rust} trở lên.",
+        "github": {
+          "title": "Tạo tài khoản GitHub",
+          "body": "GitHub là nơi lưu code của bạn và là nơi giảng viên xem bài nộp.",
+          "items": [
+            "Mở trang đăng ký, nhập email bạn dùng lâu dài (không nên dùng email sắp hết hạn).",
+            "Đặt username dễ đọc, ví dụ nguyenvana-vku. Username sẽ nằm trong link bài nộp.",
+            "Nhập mã xác nhận GitHub gửi về email.",
+            "Khi được hỏi chọn gói, chọn Free."
+          ],
+          "links": {
+            "signup": "Tạo tài khoản GitHub"
+          }
+        },
+        "desktop": {
+          "title": "Cài GitHub Desktop",
+          "body": "GitHub Desktop là app đưa code lên GitHub bằng chuột, không cần học lệnh git.",
+          "items": [
+            "Tải và cài GitHub Desktop, hoặc chạy lệnh winget bên dưới.",
+            "Mở app, chọn Sign in to GitHub.com. Trình duyệt mở ra thì bấm Authorize desktop.",
+            "Ở màn hình Configure Git, giữ tên và email mặc định rồi bấm Finish."
+          ],
+          "links": {
+            "download": "Tải GitHub Desktop"
+          },
+          "captions": {
+            "winget": "Hoặc cài bằng lệnh"
+          }
+        },
+        "terminal": {
+          "title": "Mở terminal và tạo thư mục làm việc",
+          "body": "Terminal là cửa sổ để gõ lệnh. Windows 11 có sẵn Windows Terminal, Windows 10 có PowerShell.",
+          "items": [
+            "Bấm phím Windows, gõ Terminal (hoặc PowerShell), bấm Enter.",
+            "Dán lệnh bên dưới để tạo thư mục C:\\stellar. Mọi project của bài này đặt ở đây.",
+            "Đường dẫn ngắn, không dấu, không khoảng trắng, không nằm trong OneDrive giúp tránh rất nhiều lỗi khó hiểu về sau."
+          ],
+          "links": {
+            "terminal": "Cài Windows Terminal"
+          },
+          "captions": {
+            "folder": "Tạo thư mục làm việc"
+          }
+        },
+        "buildTools": {
+          "title": "Cài Visual Studio Build Tools (C++)",
+          "body": "Rust trên Windows cần bộ công cụ C++ của Microsoft để ghép code thành chương trình. Bỏ qua bước này thì lúc build sẽ báo lỗi thiếu link.exe.",
+          "items": [
+            "Mở terminal bằng quyền Administrator: chuột phải vào Terminal, chọn Run as administrator.",
+            "Dán lệnh bên dưới. Visual Studio Installer hiện lên và tự chạy, mất khoảng 10 đến 20 phút.",
+            "Nếu cài bằng file tải về: chỉ tick mục Desktop development with C++ rồi bấm Install.",
+            "Cài xong thì khởi động lại máy một lần."
+          ],
+          "captions": {
+            "winget": "Chạy trong terminal mở bằng quyền Administrator"
+          },
+          "links": {
+            "manual": "Tải Build Tools để cài tay"
+          },
+          "note": "Không cần cài Visual Studio bản đầy đủ. Chỉ cần Build Tools với mục Desktop development with C++."
+        },
+        "rust": {
+          "title": "Cài Rust",
+          "body": "Rust là ngôn ngữ dùng để viết smart contract trên Stellar. Lệnh cài đưa vào máy ba công cụ: rustup, cargo và rustc.",
+          "items": [
+            "Chạy lệnh cài Rust.",
+            "Đóng hẳn terminal rồi mở lại. Terminal cũ chưa biết lệnh cargo vừa cài.",
+            "Chạy lệnh thứ hai để thêm target wasm32v1-none, định dạng mà smart contract Stellar được build ra."
+          ],
+          "captions": {
+            "install": "1. Cài Rust",
+            "target": "2. Mở lại terminal, rồi thêm target cho smart contract"
+          },
+          "links": {
+            "manual": "Trang cài đặt chính thức (rustup-init.exe)"
+          },
+          "note": "Nếu cài bằng rustup-init.exe: chọn bản x86_64 (64-bit), giữ lựa chọn mặc định (bấm Enter). Không chọn bản gnu."
+        },
+        "stellar": {
+          "title": "Cài Stellar CLI",
+          "body": "Stellar CLI là công cụ dòng lệnh để tạo project, build, deploy và gọi smart contract.",
+          "items": [
+            "Chạy lệnh winget, hoặc tải file cài đặt .exe rồi bấm Next đến hết.",
+            "Đóng terminal và mở lại."
+          ],
+          "captions": {
+            "winget": "Cài bằng lệnh"
+          },
+          "links": {
+            "installer": "Tải file cài Stellar CLI (.exe)"
+          }
+        },
+        "vscode": {
+          "title": "Cài VS Code",
+          "body": "VS Code dùng để mở project, dán code AI viết và đọc lỗi. Extension rust-analyzer tô màu code và gạch đỏ chỗ sai.",
+          "items": [
+            "Cài VS Code. Khi cài, tick ô Add to PATH và Add Open with Code action.",
+            "Mở VS Code, vào Extensions (Ctrl+Shift+X), tìm rust-analyzer và bấm Install."
+          ],
+          "links": {
+            "vscode": "Tải VS Code",
+            "rustAnalyzer": "Extension rust-analyzer"
+          }
+        },
+        "check": {
+          "title": "Kiểm tra lại tất cả",
+          "body": "Mở một terminal mới và chạy ba lệnh này. Mỗi lệnh phải in ra một số phiên bản.",
+          "expect": "Kết quả đúng có dạng rustc 1.9x.x, cargo 1.9x.x và stellar 30.x.x. Thấy đủ ba dòng là xong phần cài đặt."
+        }
+      },
+      "trouble": {
+        "title": "Gặp lỗi khi cài?",
+        "lede": "Bấm vào dòng giống lỗi bạn đang thấy. Không có ở đây thì sao chép toàn bộ lỗi, dán cho ChatGPT hoặc Claude, nói rõ bạn dùng Windows và đang chạy lệnh nào.",
+        "items": {
+          "notRecognized": {
+            "symptom": "Gõ lệnh thì báo không nhận ra cargo, rustc hoặc stellar",
+            "error": "stellar : The term 'stellar' is not recognized as the name of a cmdlet, function, script file, or operable program.",
+            "cause": "Terminal được mở trước khi cài nên chưa biết chương trình mới nằm ở đâu, hoặc bước cài chưa xong.",
+            "fix": "Đóng tất cả cửa sổ terminal và VS Code, mở lại rồi chạy lại lệnh. Vẫn lỗi thì khởi động lại máy. Vẫn lỗi nữa thì cài lại đúng bước đó."
+          },
+          "winget": {
+            "symptom": "Lệnh winget không chạy được",
+            "error": "winget : The term 'winget' is not recognized as the name of a cmdlet, function, script file, or operable program.",
+            "cause": "Máy Windows 10 bản cũ chưa có App Installer.",
+            "fix": "Mở Microsoft Store, tìm App Installer, bấm Update hoặc Get. Hoặc bỏ qua winget và dùng nút tải bản cài tay ở mỗi bước."
+          },
+          "linker": {
+            "symptom": "Build báo thiếu link.exe",
+            "error": "error: linker `link.exe` not found",
+            "cause": "Chưa cài Visual Studio Build Tools, hoặc đã cài nhưng thiếu mục Desktop development with C++.",
+            "fix": "Làm lại bước cài Build Tools. Nếu đã cài, mở Visual Studio Installer, bấm Modify ở Build Tools, tick Desktop development with C++ rồi bấm Install. Xong thì khởi động lại máy."
+          },
+          "target": {
+            "symptom": "Build báo không tìm thấy crate core",
+            "error": "error[E0463]: can't find crate for `core`",
+            "cause": "Chưa thêm target wasm32v1-none, hoặc vừa cập nhật Rust nên target bị mất.",
+            "fix": "Chạy lại lệnh thêm target rồi build lại."
+          },
+          "oldRust": {
+            "symptom": "Rust báo không hỗ trợ target wasm32v1-none",
+            "error": "error: toolchain 'stable-x86_64-pc-windows-msvc' does not support target 'wasm32v1-none'",
+            "cause": "Máy đã có sẵn Rust bản cũ hơn 1.84.",
+            "fix": "Cập nhật Rust lên bản mới nhất rồi thêm lại target."
+          },
+          "gnu": {
+            "symptom": "Đã cài Build Tools mà vẫn lỗi, hoặc báo thiếu dlltool hay gcc",
+            "error": "error: error calling dlltool 'dlltool.exe': program not found",
+            "cause": "Rust đang dùng bản gnu thay vì bản msvc, thường do tải nhầm file rustup-init hoặc chọn nhầm lúc cài.",
+            "fix": "Chuyển Rust sang bản msvc và thêm lại target bằng hai lệnh dưới."
+          },
+          "policy": {
+            "symptom": "PowerShell báo running scripts is disabled",
+            "error": "cannot be loaded because running scripts is disabled on this system.",
+            "cause": "Chính sách bảo mật mặc định của PowerShell chặn chạy script, mà một số bước cài đặt cần chạy script.",
+            "fix": "Chạy lệnh dưới trong PowerShell, gõ Y để đồng ý, rồi chạy lại lệnh lúc nãy."
+          },
+          "path": {
+            "symptom": "Lỗi lạ khi build, project nằm trong Desktop, Documents hoặc OneDrive",
+            "cause": "OneDrive đồng bộ và khoá file trong lúc build. Đường dẫn có dấu tiếng Việt hoặc khoảng trắng cũng làm một số công cụ đọc sai.",
+            "fix": "Đặt project trong C:\\stellar như ở bước 3. Tên tài khoản Windows có dấu cũng không sao, miễn project nằm ở C:\\stellar."
+          },
+          "antivirus": {
+            "symptom": "Build chậm bất thường hoặc báo Access is denied",
+            "error": "Access is denied. (os error 5)",
+            "cause": "Windows Defender hoặc phần mềm diệt virus đang quét thư mục target trong lúc build.",
+            "fix": "Chạy lại lệnh build. Nếu lặp lại nhiều lần, thêm C:\\stellar vào mục Exclusions của Windows Security."
+          },
+          "emoji": {
+            "symptom": "Terminal hiện dấu ? thay cho biểu tượng",
+            "cause": "PowerShell bản cũ không hiển thị được emoji mà Stellar CLI in ra.",
+            "fix": "Không ảnh hưởng gì đến kết quả. Muốn hiển thị đúng thì dùng Windows Terminal."
+          }
+        }
+      }
+    },
+    "prompt": {
+      "title": "Ý tưởng và prompt cho AI",
+      "lede": "Tạo project bằng Stellar CLI, viết ý tưởng thành một bản mô tả rõ ràng, rồi để AI (ChatGPT, Claude, Gemini) viết smart contract trong đúng một file lib.rs.",
+      "intro": {
+        "title": "Bạn lo ý tưởng, AI lo code",
+        "body": "AI viết Rust nhanh nhưng hay tự đổi phiên bản thư viện, tách code ra nhiều file hoặc thêm phần thừa. Form bên dưới gói ý tưởng của bạn cùng các quy tắc kỹ thuật cố định thành một prompt, để AI trả về một file lib.rs build được ngay với project của bạn."
+      },
+      "init": {
+        "title": "Tạo project bằng Stellar CLI",
+        "lede": "Mỗi bạn một project. Có thể đổi vku-ec-project thành tên khác, chỉ dùng chữ thường, số và dấu gạch ngang.",
+        "tree": "Cấu trúc thư mục vừa được tạo",
+        "steps": {
+          "init": {
+            "title": "Khởi tạo project",
+            "body": "Lệnh init tạo sẵn một workspace Rust và một contract mẫu tên hello-world. Bạn sẽ thay code của contract mẫu bằng code AI viết.",
+            "expect": "Terminal in ra các dòng Writing kèm tên file, và không có chữ error."
+          },
+          "open": {
+            "title": "Mở project trong VS Code",
+            "body": "Lệnh code . mở thư mục hiện tại trong VS Code. Nếu lệnh không chạy, mở VS Code, vào File, Open Folder, chọn C:\\stellar\\vku-ec-project."
+          },
+          "sdk": {
+            "title": "Xem phiên bản soroban-sdk",
+            "body": "Mở file Cargo.toml ở thư mục gốc (hoặc chạy lệnh dưới) và tìm dòng soroban-sdk. Con số trong ngoặc kép là phiên bản bạn sẽ ghi vào form.",
+            "expect": "Ví dụ thấy soroban-sdk = \"29\" thì ghi 29 vào form."
+          }
+        }
+      },
+      "idea": {
+        "title": "Một ý tưởng vừa sức",
+        "lede": "Smart contract đầu tiên nên nhỏ. Mục tiêu là chạy được trên testnet và giải thích được từng hàm, chưa phải xây cả một sản phẩm.",
+        "traits": [
+          "Có 3 đến 6 chức năng, mỗi chức năng nói được trong một câu.",
+          "Lưu một loại dữ liệu chính: một khoản tiết kiệm, một khoản nợ, một tấm vé, một lá phiếu.",
+          "Có người phải ký: chỉ chủ sở hữu mới được sửa dữ liệu của mình.",
+          "Có ít nhất một quy tắc từ chối: số tiền phải lớn hơn 0, không nhận hai lần, đã đóng thì không gửi thêm.",
+          "Chỉ ghi nhận con số, chưa chuyển token thật. Chuyển tiền thật để dành cho bản nâng cấp.",
+          "Gắn với tài chính quen thuộc: quỹ lớp, tiết kiệm, cho vay giữa bạn bè, điểm thưởng, gọi vốn."
+        ],
+        "goodLabel": "Nên",
+        "badLabel": "Không nên",
+        "examples": [
+          {
+            "good": "Quỹ lớp: lớp trưởng tạo quỹ, thành viên ghi nhận đóng góp, ai cũng xem được tổng quỹ.",
+            "bad": "Một ngân hàng số đầy đủ có cho vay, thẻ, lãi suất và ứng dụng di động."
+          },
+          {
+            "good": "Chức năng cụ thể: người dùng gửi thêm tiền vào mục tiêu tiết kiệm của mình.",
+            "bad": "Chức năng mơ hồ: quản lý tiền thông minh bằng AI."
+          },
+          {
+            "good": "Quy tắc rõ ràng: chỉ người cho vay mới được đánh dấu khoản vay đã trả.",
+            "bad": "Không có quy tắc nào, ai cũng sửa được mọi thứ."
+          }
+        ]
+      },
+      "builder": {
+        "sectionTitle": "Tạo prompt cho AI",
+        "sectionLede": "Chọn một ý tưởng mẫu để xem cách điền, hoặc tự điền ý tưởng của bạn. Bấm Tạo prompt, sao chép, rồi dán vào một cuộc trò chuyện mới với ChatGPT, Claude hoặc Gemini.",
+        "warning": {
+          "title": "Đọc lại câu trả lời trước khi dán vào project",
+          "body": "AI có thể sai. Nếu câu trả lời có phần test, bị cắt ngang giữa chừng hoặc chia thành nhiều file, hãy yêu cầu AI viết lại toàn bộ lib.rs theo đúng các quy tắc trong prompt."
+        },
+        "title": "Mô tả ý tưởng",
+        "lede": "Viết bằng tiếng Việt, càng cụ thể càng tốt. Phần chức năng ghi mỗi chức năng một dòng.",
+        "fields": {
+          "projectName": {
+            "label": "Tên dự án",
+            "hint": "Ngắn gọn, tiếng Anh hoặc tiếng Việt không dấu.",
+            "placeholder": "Ví dụ: ClassFund"
+          },
+          "sdkVersion": {
+            "label": "Phiên bản soroban-sdk",
+            "hint": "Lấy trong Cargo.toml."
+          },
+          "problem": {
+            "label": "Vấn đề và ý tưởng",
+            "hint": "Đang có vấn đề gì, và contract của bạn giải quyết nó như thế nào.",
+            "placeholder": "Ví dụ: Quỹ lớp đang ghi bằng Excel của lớp trưởng nên không ai kiểm tra được. Contract ghi lại từng khoản đóng góp để ai cũng xem được."
+          },
+          "users": {
+            "label": "Ai dùng và được làm gì",
+            "hint": "Các vai trò, ví dụ: người tạo quỹ, thành viên, bất kỳ ai.",
+            "placeholder": "Ví dụ: Lớp trưởng tạo quỹ. Thành viên ghi nhận đóng góp của mình. Ai cũng xem được tổng quỹ."
+          },
+          "features": {
+            "label": "Chức năng",
+            "hint": "Mỗi dòng một chức năng, từ 2 đến 8 dòng.",
+            "placeholder": "Tạo quỹ với tên và số tiền mục tiêu\nThành viên ghi nhận số tiền đã đóng\nXem tổng quỹ\nXem số tiền một thành viên đã đóng"
+          },
+          "data": {
+            "label": "Dữ liệu cần lưu",
+            "hint": "Để trống thì AI tự đề xuất.",
+            "placeholder": "Ví dụ: tên quỹ, mục tiêu, tổng đã góp, số tiền từng thành viên."
+          },
+          "rules": {
+            "label": "Quy tắc",
+            "hint": "Những trường hợp contract phải từ chối. Để trống thì AI tự đề xuất.",
+            "placeholder": "Ví dụ: số tiền phải lớn hơn 0. Chỉ tạo quỹ một lần."
+          }
+        },
+        "submit": "Tạo prompt",
+        "output": {
+          "title": "Prompt của bạn",
+          "hint": "Sao chép toàn bộ, dán vào một cuộc trò chuyện mới với AI. Nhận được code thì làm tiếp các bước bên dưới."
+        },
+        "errors": {
+          "projectName": {
+            "required": "Nhập tên dự án (ít nhất 2 ký tự).",
+            "tooLong": "Tên dự án tối đa 60 ký tự."
+          },
+          "problem": {
+            "tooShort": "Viết thêm một chút, ít nhất 20 ký tự.",
+            "tooLong": "Tối đa 800 ký tự."
+          },
+          "users": {
+            "required": "Cho biết ai sẽ dùng contract.",
+            "tooLong": "Tối đa 400 ký tự."
+          },
+          "features": {
+            "required": "Liệt kê các chức năng, mỗi dòng một chức năng.",
+            "tooLong": "Tối đa 1200 ký tự.",
+            "tooFew": "Cần ít nhất 2 chức năng, mỗi chức năng một dòng.",
+            "tooMany": "Tối đa 8 chức năng. Contract đầu tiên nên nhỏ."
+          },
+          "data": {
+            "tooLong": "Tối đa 600 ký tự."
+          },
+          "rules": {
+            "tooLong": "Tối đa 600 ký tự."
+          },
+          "sdkVersion": {
+            "format": "Chỉ ghi số phiên bản, ví dụ 29."
+          }
+        },
+        "template": {
+          "intro": "Bạn là lập trình viên smart contract Stellar (Soroban) giàu kinh nghiệm. Hãy viết giúp tôi smart contract cho EC project dưới đây. Tôi là sinh viên fintech, mới học lập trình và dùng Windows. Project được tạo bằng lệnh stellar contract init, contract nằm ở {{dir}}.",
+          "projectHeading": "Dự án",
+          "fields": {
+            "projectName": "Tên dự án",
+            "problem": "Vấn đề và ý tưởng",
+            "users": "Người dùng và quyền",
+            "features": "Chức năng cần có",
+            "data": "Dữ liệu cần lưu",
+            "rules": "Quy tắc"
+          },
+          "fallbackData": "Bạn tự đề xuất, càng gọn càng tốt.",
+          "fallbackRules": "Bạn tự đề xuất các quy tắc hợp lý (số tiền phải lớn hơn 0, chỉ chủ sở hữu được sửa dữ liệu của mình, không làm một việc hai lần).",
+          "rulesHeading": "Yêu cầu kỹ thuật (bắt buộc)",
+          "rules": [
+            "Dùng soroban-sdk phiên bản {{sdk}}, đúng như Cargo.toml hiện có. Không sửa Cargo.toml, không thêm crate nào khác.",
+            "Toàn bộ code nằm trong MỘT file duy nhất: {{dir}}/src/lib.rs. Không tạo test.rs hay bất kỳ file, module nào khác.",
+            "Dòng đầu tiên là #![no_std]. Không dùng std, không dùng f32 hay f64. Số tiền dùng i128, thời gian dùng u64 lấy từ env.ledger().timestamp().",
+            "Dùng #[contracttype] cho struct dữ liệu và một enum DataKey làm khoá lưu trữ. Lưu bằng env.storage().persistent().",
+            "Hàm nào thay đổi dữ liệu của ai thì nhận Address của người đó làm tham số và gọi require_auth() trên địa chỉ đó.",
+            "Báo lỗi bằng một enum #[contracterror] (mỗi lỗi một số, bắt đầu từ 1) và trả về Result. Không dùng panic!, unwrap() hay expect().",
+            "Không dùng __constructor. Nếu cần admin, viết hàm init(admin: Address) chỉ gọi được một lần: gọi lần thứ hai thì trả lỗi.",
+            "Tên hàm và tham số bằng tiếng Anh, kiểu snake_case. Tối đa 8 hàm public, cả file không quá khoảng 250 dòng.",
+            "KHÔNG viết test: không có khối #[cfg(test)], không có mod test, không dùng testutils.",
+            "Mỗi hàm có một dòng comment ngắn bằng tiếng Việt giải thích hàm làm gì.",
+            "Code phải build được ngay với stellar contract build, không cần sửa thêm."
+          ],
+          "answerHeading": "Trả lời theo đúng định dạng",
+          "answer": [
+            "Toàn bộ nội dung file lib.rs trong MỘT khối code duy nhất, đủ từ dòng đầu đến dòng cuối, không lược bớt, không viết \"...\".",
+            "Bảng các hàm: tên hàm, tham số, ai được gọi, hàm làm gì, lỗi có thể trả về.",
+            "Với mỗi hàm, một lệnh gọi thử trên Windows PowerShell viết trên MỘT dòng theo mẫu: stellar contract invoke --id {{alias}} --source-account {{identity}} --network testnet -- <tên_hàm> --<tên_tham_số> <giá_trị>. Tham số kiểu Address thì ghi {{identity}}. Chuỗi đặt trong dấu ngoặc kép.",
+            "Thứ tự gọi các hàm để demo từ đầu đến cuối."
+          ]
+        }
+      },
+      "ideas": {
+        "pick": "Chọn nhanh một ý tưởng mẫu (bấm để điền sẵn form)",
+        "items": [
+          {
+            "projectName": "ClassFund",
+            "summary": "Quỹ lớp minh bạch, ai cũng kiểm tra được.",
+            "problem": "Quỹ lớp đang ghi trong file Excel của lớp trưởng nên các bạn khác không kiểm tra được ai đã đóng bao nhiêu. Contract ghi lại từng khoản đóng góp lên blockchain để ai cũng xem được.",
+            "users": "Lớp trưởng tạo quỹ và ghi nhận khoản chi. Thành viên ghi nhận khoản mình đóng. Ai cũng xem được số dư và đóng góp của từng người.",
+            "features": [
+              "Lớp trưởng tạo quỹ với tên và số tiền mục tiêu",
+              "Thành viên ghi nhận số tiền mình vừa đóng",
+              "Lớp trưởng ghi nhận một khoản chi kèm lý do",
+              "Xem tổng đã thu, tổng đã chi và số dư",
+              "Xem số tiền một thành viên đã đóng"
+            ],
+            "data": "Thông tin quỹ (tên, mục tiêu, tổng thu, tổng chi, lớp trưởng), số tiền từng thành viên đã đóng.",
+            "rules": "Chỉ tạo quỹ một lần. Số tiền phải lớn hơn 0. Chỉ lớp trưởng được ghi khoản chi. Không chi quá số dư."
+          },
+          {
+            "projectName": "SavingGoal",
+            "summary": "Đặt mục tiêu tiết kiệm và theo dõi tiến độ.",
+            "problem": "Sinh viên muốn tiết kiệm để mua laptop nhưng hay bỏ giữa chừng. Contract ghi mục tiêu và từng lần gửi, không cho rút trước khi đạt mục tiêu.",
+            "users": "Mỗi người dùng có mục tiêu riêng và chỉ người đó được thay đổi mục tiêu của mình. Ai cũng xem được tiến độ.",
+            "features": [
+              "Tạo mục tiêu với tên và số tiền cần đạt",
+              "Gửi thêm tiền vào mục tiêu",
+              "Rút toàn bộ khi đã đạt mục tiêu",
+              "Xem mục tiêu và số tiền đã tiết kiệm"
+            ],
+            "data": "Mỗi người: tên mục tiêu, số tiền cần đạt, số tiền đã gửi, đã rút hay chưa.",
+            "rules": "Mỗi người chỉ có một mục tiêu đang mở. Số tiền phải lớn hơn 0. Chỉ được rút khi đã gửi đủ."
+          },
+          {
+            "projectName": "FriendLoan",
+            "summary": "Sổ vay mượn giữa bạn bè, không cãi nhau.",
+            "problem": "Bạn bè cho nhau mượn tiền rồi quên ai nợ ai bao nhiêu. Contract ghi lại khoản vay khi cả hai đồng ý và đánh dấu khi đã trả.",
+            "users": "Người cho vay tạo khoản vay. Người vay xác nhận khoản vay. Chỉ người cho vay được đánh dấu đã trả. Ai cũng xem được.",
+            "features": [
+              "Người cho vay tạo khoản vay với người vay, số tiền và hạn trả",
+              "Người vay xác nhận khoản vay",
+              "Người cho vay đánh dấu khoản vay đã trả",
+              "Xem thông tin một khoản vay theo mã",
+              "Xem tổng số tiền một người đang nợ"
+            ],
+            "data": "Mỗi khoản vay: mã, người cho vay, người vay, số tiền, hạn trả, đã xác nhận, đã trả. Bộ đếm mã khoản vay.",
+            "rules": "Số tiền phải lớn hơn 0. Không tự cho mình vay. Chỉ người vay được xác nhận. Không đánh dấu đã trả hai lần."
+          },
+          {
+            "projectName": "CafePoints",
+            "summary": "Tích điểm thưởng cho quán cà phê gần trường.",
+            "problem": "Thẻ tích điểm giấy hay bị mất và quán khó kiểm soát. Contract để quán cộng điểm sau mỗi lần mua và khách đổi điểm lấy ưu đãi.",
+            "users": "Chủ quán (admin) cộng điểm cho khách. Khách tự đổi điểm của mình. Ai cũng xem được điểm của một khách.",
+            "features": [
+              "Khởi tạo contract với địa chỉ chủ quán",
+              "Chủ quán cộng điểm cho khách",
+              "Khách đổi điểm lấy ưu đãi",
+              "Xem điểm hiện có của một khách",
+              "Xem tổng điểm đã phát ra"
+            ],
+            "data": "Địa chỉ chủ quán, điểm của từng khách, tổng điểm đã phát.",
+            "rules": "Chỉ khởi tạo một lần. Chỉ chủ quán được cộng điểm. Không đổi quá số điểm đang có. Số điểm phải lớn hơn 0."
+          },
+          {
+            "projectName": "ClubTicket",
+            "summary": "Vé sự kiện câu lạc bộ, không làm giả được.",
+            "problem": "Vé sự kiện của câu lạc bộ in giấy dễ bị làm giả và khó kiểm soát số lượng. Contract phát vé có giới hạn và đánh dấu vé đã check-in.",
+            "users": "Ban tổ chức tạo sự kiện và check-in người tham gia. Sinh viên tự đăng ký lấy vé. Ai cũng xem được số vé còn lại.",
+            "features": [
+              "Ban tổ chức tạo sự kiện với tên và số vé tối đa",
+              "Sinh viên đăng ký lấy một vé",
+              "Ban tổ chức check-in một người có vé",
+              "Xem số vé đã phát và số vé còn lại",
+              "Kiểm tra một người đã có vé hay đã check-in chưa"
+            ],
+            "data": "Mỗi sự kiện: tên, ban tổ chức, số vé tối đa, số vé đã phát. Trạng thái vé của từng người theo sự kiện.",
+            "rules": "Mỗi người một vé cho mỗi sự kiện. Không phát quá số vé tối đa. Chỉ ban tổ chức được check-in. Không check-in hai lần."
+          },
+          {
+            "projectName": "CrowdPledge",
+            "summary": "Gọi vốn cộng đồng cho dự án sinh viên.",
+            "problem": "Dự án sinh viên gọi vốn qua chuyển khoản nên người ủng hộ không biết dự án đã đạt mục tiêu chưa. Contract ghi từng khoản cam kết và tự xác định chiến dịch thành công hay thất bại khi hết hạn.",
+            "users": "Chủ dự án tạo chiến dịch. Người ủng hộ cam kết số tiền và có thể huỷ trước hạn. Ai cũng xem được tiến độ.",
+            "features": [
+              "Chủ dự án tạo chiến dịch với mục tiêu và thời hạn",
+              "Người ủng hộ cam kết một số tiền",
+              "Người ủng hộ huỷ cam kết trước khi hết hạn",
+              "Xem tổng cam kết và trạng thái chiến dịch",
+              "Xem số tiền một người đã cam kết"
+            ],
+            "data": "Chiến dịch: chủ dự án, mục tiêu, thời hạn (timestamp), tổng cam kết. Số tiền cam kết của từng người.",
+            "rules": "Số tiền phải lớn hơn 0. Không cam kết hoặc huỷ sau khi hết hạn. Chỉ huỷ được phần mình đã cam kết."
+          },
+          {
+            "projectName": "RentDeposit",
+            "summary": "Ghi nhận tiền cọc phòng trọ giữa chủ trọ và sinh viên.",
+            "problem": "Sinh viên đặt cọc phòng trọ nhưng khi trả phòng hay tranh cãi về số tiền được hoàn. Contract ghi số tiền cọc, khoản trừ và xác nhận của cả hai bên.",
+            "users": "Chủ trọ tạo hợp đồng cọc. Sinh viên xác nhận đã đặt cọc. Chủ trọ ghi khoản trừ khi trả phòng. Sinh viên xác nhận số tiền hoàn.",
+            "features": [
+              "Chủ trọ tạo hợp đồng cọc với sinh viên và số tiền cọc",
+              "Sinh viên xác nhận đã đặt cọc",
+              "Chủ trọ ghi khoản trừ kèm lý do khi trả phòng",
+              "Sinh viên xác nhận số tiền được hoàn",
+              "Xem thông tin hợp đồng cọc"
+            ],
+            "data": "Mỗi hợp đồng: mã, chủ trọ, sinh viên, tiền cọc, khoản trừ, lý do, trạng thái.",
+            "rules": "Tiền cọc phải lớn hơn 0. Khoản trừ không vượt tiền cọc. Phải theo đúng thứ tự: tạo, xác nhận cọc, ghi khoản trừ, xác nhận hoàn."
+          },
+          {
+            "projectName": "ScholarVote",
+            "summary": "Bình chọn ứng viên học bổng của khoa.",
+            "problem": "Bình chọn học bổng bằng phiếu giấy khó kiểm tra và có thể bầu nhiều lần. Contract chỉ cho người có quyền bầu, mỗi người một phiếu, kết quả công khai.",
+            "users": "Admin của khoa thêm ứng viên và cấp quyền bầu. Người có quyền bầu một phiếu. Ai cũng xem được số phiếu.",
+            "features": [
+              "Khởi tạo contract với địa chỉ admin",
+              "Admin thêm ứng viên",
+              "Admin cấp quyền bầu cho một địa chỉ",
+              "Người có quyền bầu cho một ứng viên",
+              "Xem số phiếu của một ứng viên"
+            ],
+            "data": "Địa chỉ admin, danh sách ứng viên và số phiếu, quyền bầu và trạng thái đã bầu của từng địa chỉ.",
+            "rules": "Chỉ khởi tạo một lần. Chỉ admin thêm ứng viên và cấp quyền. Mỗi người chỉ bầu một lần. Không bầu cho ứng viên không tồn tại."
+          }
+        ]
+      },
+      "paste": {
+        "title": "Đưa code AI viết vào project",
+        "lede": "Thay toàn bộ nội dung lib.rs bằng code AI viết, xoá file test.rs thừa, rồi tự kiểm tra nhanh.",
+        "steps": {
+          "paste": {
+            "title": "Dán code vào lib.rs",
+            "body": "Trong VS Code, mở file contracts\\hello-world\\src\\lib.rs.",
+            "items": [
+              "Bấm Ctrl+A để chọn hết nội dung cũ.",
+              "Quay lại AI, bấm nút Copy ở góc khối code. Đừng bôi đen bằng chuột vì dễ sót dòng.",
+              "Về VS Code, bấm Ctrl+V để dán, rồi Ctrl+S để lưu."
+            ]
+          },
+          "deleteTest": {
+            "title": "Xoá file test.rs",
+            "body": "Contract của bạn không dùng file test.rs của mẫu hello-world nữa. Xoá đi cho project gọn: chuột phải vào file trong VS Code rồi chọn Delete, hoặc chạy lệnh dưới ở thư mục gốc project."
+          },
+          "review": {
+            "title": "Tự kiểm tra nhanh",
+            "body": "Lướt qua lib.rs, xem có đủ các dấu hiệu sau:",
+            "items": [
+              "Dòng đầu tiên là #![no_std].",
+              "Có #[contract] và #[contractimpl].",
+              "Có một enum gắn #[contracterror].",
+              "Không có dòng mod test hay khối #[cfg(test)] nào.",
+              "Không có dấu ... hay câu kiểu phần còn lại giữ nguyên."
+            ],
+            "expect": "Đủ hết thì sang bài sau để build và deploy."
+          }
+        }
+      }
+    },
+    "ship": {
+      "title": "Build, deploy lên testnet và nộp bài",
+      "lede": "Biến lib.rs thành contract chạy thật trên Stellar testnet, gọi thử từng hàm, viết README theo mẫu EC, rồi đưa cả project lên GitHub bằng GitHub Desktop.",
+      "intro": {
+        "title": "Hai cái tên dùng trong mọi lệnh",
+        "body": "{identity} là tên ví testnet trên máy bạn, {alias} là tên gọi tắt của contract sau khi deploy. Giữ nguyên hai tên này thì sao chép lệnh trên trang là chạy được, không phải sửa. Mọi lệnh chạy ở thư mục gốc project, ví dụ C:\\stellar\\vku-ec-project."
+      },
+      "buildSection": {
+        "title": "Build",
+        "lede": "Build để dịch Rust thành file .wasm, thứ sẽ được đưa lên testnet.",
+        "steps": {
+          "build": {
+            "title": "Build contract",
+            "body": "Lần build đầu phải tải thư viện nên mất vài phút. Các lần sau nhanh hơn nhiều.",
+            "expect": "Thành công khi thấy danh sách tên các hàm và dòng Build Complete. File kết quả nằm ở target\\wasm32v1-none\\release\\hello_world.wasm.",
+            "note": "Có lỗi màu đỏ thì kéo xuống phần Nhờ AI sửa lỗi, dán nguyên văn lỗi cùng file lib.rs."
+          }
+        }
+      },
+      "deploySection": {
+        "title": "Deploy lên testnet và gọi thử",
+        "lede": "Testnet là mạng thử nghiệm của Stellar: giao dịch giống hệt mạng thật nhưng dùng tiền thử, xin miễn phí.",
+        "steps": {
+          "keys": {
+            "title": "Tạo ví testnet",
+            "body": "Lệnh đầu tạo một ví tên student và tự xin XLM thử từ Friendbot. Lệnh sau in ra địa chỉ ví, bắt đầu bằng chữ G.",
+            "note": "Khoá bí mật của ví được lưu trên máy bạn. Ví này chỉ dùng cho testnet, không bao giờ gửi tiền thật vào."
+          },
+          "deploy": {
+            "title": "Deploy contract",
+            "body": "Lệnh này đưa file .wasm lên testnet và đặt tên gọi tắt my-contract cho contract vừa tạo.",
+            "expect": "Thành công khi thấy Deployed! và một Contract ID bắt đầu bằng chữ C, dài 56 ký tự. Sao chép và lưu ID này để ghi vào README."
+          },
+          "help": {
+            "title": "Xem các hàm có thể gọi",
+            "body": "Stellar CLI đọc contract và liệt kê các hàm. Muốn xem tham số của một hàm, thay --help ở cuối bằng tên hàm rồi --help, ví dụ -- create_goal --help.",
+            "expect": "Bạn sẽ thấy dòng Commands và tên các hàm trong contract. Bôi đen từ dòng Usage đến hết, chuột phải để sao chép, rồi dùng ở bước 5."
+          },
+          "invokePrompt": {
+            "title": "Nhờ AI viết lệnh gọi hàm",
+            "body": "Không cần tự viết lệnh. Dán kết quả của bước 5 vào ô dưới, bấm Tạo prompt, rồi dán prompt vào đúng cuộc trò chuyện AI đã viết code cho bạn. AI sẽ trả về lệnh cho từng hàm, kèm giải thích.",
+            "items": [
+              "Ô đầu tiên: dán toàn bộ kết quả lệnh --help ở bước 5.",
+              "Ô thứ hai (không bắt buộc): kể tình huống bạn muốn demo, ví dụ tạo quỹ lớp, góp 100, rồi xem số dư.",
+              "Ô thứ ba: chỉ cần dán lib.rs nếu bạn mở cuộc trò chuyện AI mới."
+            ],
+            "note": "AI đôi khi viết sai tên tham số. Nếu lệnh báo lỗi, chạy lệnh --help cho riêng hàm đó (ví dụ -- create_goal --help) và so tên tham số, hoặc dùng form sửa lỗi ở cuối trang."
+          },
+          "invoke": {
+            "title": "Gọi thử từng hàm",
+            "body": "Chạy lần lượt từng lệnh AI vừa đưa ra, theo đúng thứ tự. Hai lệnh dưới chỉ là ví dụ với contract tiết kiệm mẫu (create_goal, get_goal): tên hàm và tham số của bạn sẽ khác.",
+            "items": [
+              "Tham số kiểu Address: ghi student, CLI tự đổi thành địa chỉ ví của bạn.",
+              "Chuỗi có khoảng trắng: đặt trong dấu ngoặc kép.",
+              "Số: ghi liền, không có dấu chấm hay dấu phẩy phân cách hàng nghìn.",
+              "Hàm chỉ đọc dữ liệu in ra kết quả kèm dòng Simulation identified as read-only. Đó không phải lỗi."
+            ],
+            "captions": {
+              "write": "Hàm ghi dữ liệu (tạo giao dịch trên testnet)",
+              "read": "Hàm đọc dữ liệu"
+            },
+            "expect": "Mỗi lệnh ghi dữ liệu in ra một link stellar.expert. Mở link để xem giao dịch của bạn trên blockchain."
+          },
+          "explorer": {
+            "title": "Xem contract trên Stellar Expert và chụp màn hình",
+            "body": "Lệnh dưới in lại Contract ID nếu bạn quên. Mở Stellar Expert, kiểm tra góc phải đang là Network testnet, dán Contract ID vào ô tìm kiếm.",
+            "items": [
+              "Trang contract hiện phần Summary (Created, Creator) và biểu đồ Contract invocations.",
+              "Chụp màn hình cả trang bằng Windows + Shift + S.",
+              "Lưu ảnh vào thư mục gốc project với tên image.png."
+            ],
+            "captions": {
+              "id": "Xem lại Contract ID"
+            },
+            "links": {
+              "expert": "Mở Stellar Expert (testnet)"
+            }
+          }
+        }
+      },
+      "readme": {
+        "title": "Viết README theo mẫu EC",
+        "lede": "README là thứ giảng viên đọc đầu tiên. Dùng đúng các mục của mẫu. Có thể nhờ AI viết nội dung dựa trên lib.rs.",
+        "promptCaption": "Prompt nhờ AI viết README (dán kèm lib.rs)",
+        "templateCaption": "Mẫu README.md của EC project",
+        "prompt": [
+          "Dựa trên file lib.rs dưới đây, hãy viết file README.md cho EC project của tôi bằng tiếng Anh, theo đúng các mục sau và giữ nguyên tên mục:",
+          "Project Title, Project Description, Project Vision, Key Features, Usage Instructions, Future Scope, Technology Stack, Contract Detail.",
+          "Mục Contract Detail giữ nguyên dòng Contract ID, Deployer và dòng ảnh ![Contract on Stellar Expert](image.png), tôi sẽ tự điền.",
+          "Không bịa tính năng mà code không có. Tính năng chưa làm thì đưa vào Future Scope.",
+          "",
+          "<dán toàn bộ lib.rs ở đây>"
+        ],
+        "steps": {
+          "write": {
+            "title": "Viết nội dung README",
+            "body": "Mở README.md ở thư mục gốc project (file do stellar contract init tạo), xoá nội dung cũ, dán mẫu bên dưới hoặc nội dung AI viết. Điền Contract ID và địa chỉ ví deployer (lệnh stellar keys address student)."
+          },
+          "image": {
+            "title": "Gắn ảnh chụp Stellar Expert",
+            "body": "Ảnh image.png phải nằm cùng thư mục với README.md thì GitHub mới hiện được ảnh. Lưu README bằng Ctrl+S."
+          }
+        }
+      },
+      "github": {
+        "title": "Đưa project lên GitHub bằng GitHub Desktop",
+        "lede": "Làm một lần để tạo repo. Các lần sau chỉ cần Commit rồi Push.",
+        "steps": {
+          "add": {
+            "title": "Thêm project vào GitHub Desktop",
+            "body": "Mở GitHub Desktop, vào File, Add local repository, bấm Choose... và chọn thư mục C:\\stellar\\vku-ec-project.",
+            "items": [
+              "App báo This directory does not appear to be a Git repository: bấm dòng chữ xanh create a repository.",
+              "Ở cửa sổ Create a new repository: giữ nguyên Name, Git ignore để None (project đã có sẵn .gitignore), License có thể chọn MIT. Bấm Create repository."
+            ],
+            "note": "Chọn đúng thư mục project, nơi có file Cargo.toml. Đừng chọn thư mục C:\\stellar."
+          },
+          "publish": {
+            "title": "Publish lên GitHub",
+            "body": "Bấm nút Publish repository ở thanh trên cùng.",
+            "items": [
+              "Đặt Name theo tên dự án, ví dụ ClassFund-Stellar.",
+              "Bỏ tick Keep this code private để giảng viên xem được bài.",
+              "Bấm Publish repository và chờ vài giây."
+            ]
+          },
+          "check": {
+            "title": "Kiểm tra trên github.com",
+            "body": "Vào menu Repository, chọn View on GitHub. Trang repo phải có:",
+            "items": [
+              "Cargo.toml, README.md, image.png và thư mục contracts.",
+              "README hiển thị bên dưới danh sách file, có ảnh Stellar Expert.",
+              "KHÔNG có thư mục target. Nếu có, xem phần lỗi thường gặp bên dưới."
+            ]
+          },
+          "update": {
+            "title": "Sửa code rồi đẩy lại",
+            "body": "Mỗi lần sửa lib.rs hoặc README:",
+            "items": [
+              "Lưu file trong VS Code.",
+              "Mở GitHub Desktop, tab Changes hiện các file vừa sửa.",
+              "Ở ô Summary góc dưới bên trái, ghi ngắn gọn bạn đã làm gì, ví dụ Add deposit function.",
+              "Bấm Commit to main.",
+              "Bấm Push origin ở thanh trên cùng."
+            ],
+            "note": "Sửa lib.rs thì phải build và deploy lại. Mỗi lần deploy tạo ra một contract MỚI với Contract ID mới, nhớ cập nhật README và ảnh chụp."
+          }
+        }
+      },
+      "fix": {
+        "title": "Nhờ AI sửa lỗi",
+        "lede": "Dán nguyên văn lỗi trong terminal (từ dòng error đầu tiên), kèm lib.rs nếu lỗi do code. Form tạo prompt yêu cầu AI trả lại toàn bộ file đã sửa thay vì từng đoạn rời rạc."
+      },
+      "trouble": {
+        "title": "Lỗi thường gặp khi build, deploy và đẩy code",
+        "lede": "Bấm vào dòng giống lỗi bạn đang thấy.",
+        "items": {
+          "compile": {
+            "symptom": "Build báo lỗi màu đỏ có mã error[E...]",
+            "error": "error[E0425]: cannot find value `amount` in this scope",
+            "cause": "Code AI viết chưa khớp với phiên bản soroban-sdk của bạn, hoặc lúc dán bị thiếu dòng.",
+            "fix": "Dùng form Nhờ AI sửa lỗi ở trên: dán lỗi và toàn bộ lib.rs, thay cả file bằng bản AI trả về rồi build lại. Thường chỉ cần một đến hai lượt."
+          },
+          "modTest": {
+            "symptom": "Báo không tìm thấy module test",
+            "error": "error[E0583]: file not found for module `test`",
+            "cause": "lib.rs còn dòng mod test; trỏ tới file test.rs đã bị xoá.",
+            "fix": "Xoá dòng mod test; trong lib.rs (contract không cần test), lưu lại rồi build lại."
+          },
+          "wasmMissing": {
+            "symptom": "Deploy báo không tìm thấy file .wasm",
+            "error": "The system cannot find the path specified. (os error 3)",
+            "cause": "Terminal đang đứng sai thư mục, hoặc lần build trước chưa thành công.",
+            "fix": "Chuyển về thư mục gốc project (ví dụ cd C:\\stellar\\vku-ec-project), build lại đến khi thấy Build Complete, rồi deploy."
+          },
+          "notFunded": {
+            "symptom": "Báo tài khoản không tồn tại hoặc không đủ tiền",
+            "error": "Account not found",
+            "cause": "Ví student chưa được Friendbot nạp tiền (mạng chập chờn lúc tạo ví), hoặc testnet vừa được reset.",
+            "fix": "Nạp lại tiền thử cho ví bằng lệnh dưới rồi chạy lại lệnh lúc nãy."
+          },
+          "contractError": {
+            "symptom": "Gọi hàm báo Error(Contract, #số)",
+            "error": "HostError: Error(Contract, #3)",
+            "cause": "Contract vẫn chạy đúng và đang từ chối theo quy tắc bạn viết. Số #3 là lỗi mang số 3 trong enum #[contracterror].",
+            "fix": "Mở lib.rs, tìm enum lỗi để xem số đó là lỗi gì (ví dụ InvalidAmount = 3), rồi sửa tham số hoặc gọi hàm theo đúng thứ tự (ví dụ phải tạo trước rồi mới gửi)."
+          },
+          "auth": {
+            "symptom": "Gọi hàm báo lỗi Auth",
+            "error": "HostError: Error(Auth, InvalidAction)",
+            "cause": "Hàm cần chữ ký của một địa chỉ khác với ví đang gửi lệnh (--source-account).",
+            "fix": "Truyền tham số Address là student, trùng với --source-account student. Muốn thử với người thứ hai, tạo thêm ví bằng stellar keys generate friend --network testnet --fund rồi dùng friend ở cả hai chỗ."
+          },
+          "badArg": {
+            "symptom": "Báo sai tên tham số hoặc thiếu tham số",
+            "error": "error: unexpected argument '--amout' found",
+            "cause": "Gõ sai tên tham số hoặc tên hàm. Tên phải giống hệt trong lib.rs.",
+            "fix": "Chạy lệnh help để xem đúng tên hàm, rồi thêm tên hàm trước --help để xem tham số của hàm đó."
+          },
+          "redeploy": {
+            "symptom": "Deploy lại xong thì dữ liệu cũ biến mất",
+            "error": "Overwriting existing alias 'my-contract' that currently links to contract ID: C...",
+            "cause": "Mỗi lần deploy tạo ra một contract mới, chưa có dữ liệu. Tên my-contract được chuyển sang contract mới.",
+            "fix": "Đây không phải lỗi. Gọi lại các hàm tạo dữ liệu, và cập nhật Contract ID mới cùng ảnh chụp trong README."
+          },
+          "readOnly": {
+            "symptom": "Báo Simulation identified as read-only",
+            "error": "Simulation identified as read-only. Send by rerunning with `--send=yes`.",
+            "cause": "Hàm chỉ đọc dữ liệu nên CLI không gửi giao dịch, chỉ trả kết quả.",
+            "fix": "Không cần làm gì, kết quả nằm ở dòng bên dưới. Nếu hàm đó lẽ ra phải ghi dữ liệu thì code có vấn đề, hỏi lại AI."
+          },
+          "notRepo": {
+            "symptom": "GitHub Desktop báo thư mục không phải Git repository",
+            "error": "This directory does not appear to be a Git repository.",
+            "cause": "Thư mục chưa được tạo repository.",
+            "fix": "Bấm dòng chữ create a repository ngay trong thông báo. Hoặc vào File, New repository, đặt Local path là C:\\stellar và Name đúng bằng tên thư mục project."
+          },
+          "publishName": {
+            "symptom": "Publish báo tên repository đã tồn tại",
+            "error": "name already exists on this account",
+            "cause": "Tài khoản GitHub của bạn đã có một repo trùng tên.",
+            "fix": "Đổi Name trong cửa sổ Publish, ví dụ thêm -vku ở cuối."
+          },
+          "target": {
+            "symptom": "GitHub Desktop hiện hàng nghìn file thay đổi trong thư mục target",
+            "cause": "File .gitignore bị xoá hoặc project không tạo bằng stellar contract init, nên thư mục target (file build, rất nặng) bị đưa vào Git.",
+            "fix": "Tạo lại file .gitignore ở thư mục gốc với một dòng target rồi lưu. GitHub Desktop sẽ ẩn các file đó. Nếu lỡ đẩy lên rồi, báo giảng viên để xử lý."
+          }
+        }
+      },
+      "submit": {
+        "title": "Nộp bài",
+        "lede": "Gửi link repo GitHub cho giảng viên khi đã đủ các mục sau.",
+        "items": [
+          "Repo để Public, mở được khi chưa đăng nhập GitHub.",
+          "Code nằm trong contracts/hello-world/src/lib.rs, không còn file test.rs.",
+          "stellar contract build chạy thành công trên máy bạn.",
+          "README có đủ các mục theo mẫu EC.",
+          "Mục Contract Detail có Contract ID (bắt đầu bằng C) khớp với contract đang chạy trên testnet.",
+          "Ảnh image.png chụp trang contract trên Stellar Expert hiện được trong README.",
+          "Bạn giải thích được mỗi hàm làm gì và ai được gọi.",
+          "Đã nộp link repo GitHub trên trang Stellar Vietnam x VKU EC Project của Rise In."
+        ]
+      }
+    },
+    "fix": {
+      "fields": {
+        "command": {
+          "label": "Lệnh bạn đã chạy",
+          "hint": "Ví dụ stellar contract build hoặc stellar contract deploy."
+        },
+        "error": {
+          "label": "Nội dung lỗi",
+          "hint": "Bôi đen trong terminal rồi chuột phải để sao chép. Dán từ dòng error đầu tiên đến hết."
+        },
+        "code": {
+          "label": "Nội dung lib.rs hiện tại",
+          "hint": "Nên dán nếu lỗi xảy ra lúc build."
+        }
+      },
+      "submit": "Tạo prompt sửa lỗi",
+      "output": {
+        "title": "Prompt sửa lỗi",
+        "hint": "Dán vào đúng cuộc trò chuyện với AI đã viết code cho bạn, để AI nhớ ngữ cảnh."
+      },
+      "errors": {
+        "command": {
+          "tooLong": "Tối đa 400 ký tự."
+        },
+        "error": {
+          "required": "Dán nội dung lỗi (ít nhất 10 ký tự).",
+          "tooLong": "Lỗi quá dài, chỉ cần dán từ dòng error đầu tiên."
+        },
+        "code": {
+          "tooLong": "File quá dài để dán vào đây."
+        }
+      },
+      "template": {
+        "intro": "Tôi đang làm một smart contract Stellar (Soroban) với soroban-sdk {{sdk}} trên Windows. Toàn bộ code nằm trong một file {{dir}}/src/lib.rs.",
+        "commandLine": "Lệnh tôi đã chạy:",
+        "errorLine": "Lỗi nhận được:",
+        "codeLine": "File lib.rs hiện tại:",
+        "ask": [
+          "Giải thích ngắn gọn bằng tiếng Việt dễ hiểu: lỗi này nghĩa là gì và vì sao xảy ra.",
+          "Nếu lỗi do code: đưa lại TOÀN BỘ file lib.rs đã sửa trong một khối code duy nhất, không lược bớt.",
+          "Nếu lỗi do cài đặt hoặc do gõ lệnh: liệt kê từng bước tôi cần làm trên Windows, kèm lệnh PowerShell viết trên một dòng.",
+          "Giữ nguyên các quy tắc: một file lib.rs duy nhất, #![no_std], không sửa Cargo.toml, không thêm crate, không viết test."
+        ]
+      }
+    },
+    "invoke": {
+      "fields": {
+        "help": {
+          "label": "Kết quả lệnh --help ở bước 5",
+          "hint": "Bôi đen trong terminal rồi chuột phải để sao chép, dán cả đoạn vào đây.",
+          "placeholder": "Usage: ...\n\nCommands:\n  create_goal\n  get_goal\n  help"
+        },
+        "scenario": {
+          "label": "Tình huống muốn demo",
+          "hint": "Viết bằng lời thường, ví dụ: tạo quỹ lớp, hai bạn cùng góp tiền, lớp trưởng chi 50, xem số dư."
+        },
+        "code": {
+          "label": "Nội dung lib.rs",
+          "hint": "Chỉ cần dán nếu bạn dùng cuộc trò chuyện AI mới, không phải cuộc đã viết code."
+        }
+      },
+      "submit": "Tạo prompt gọi hàm",
+      "output": {
+        "title": "Prompt viết lệnh gọi hàm",
+        "hint": "Dán vào đúng cuộc trò chuyện AI đã viết code cho bạn, để AI nhớ các hàm và tham số."
+      },
+      "errors": {
+        "help": {
+          "required": "Dán kết quả lệnh --help (ít nhất 10 ký tự).",
+          "tooLong": "Quá dài, chỉ cần dán phần kết quả của lệnh --help."
+        },
+        "scenario": {
+          "tooLong": "Tối đa 600 ký tự."
+        },
+        "code": {
+          "tooLong": "File quá dài để dán vào đây."
+        }
+      },
+      "template": {
+        "intro": "Contract Stellar (Soroban) của tôi đã deploy lên testnet. Tôi dùng Stellar CLI trên Windows PowerShell, ví tên {{identity}}, contract có tên gọi tắt {{alias}}, code nằm trong {{dir}}/src/lib.rs. Tôi không biết lập trình, hãy viết sao cho tôi chỉ cần sao chép và chạy.",
+        "helpLine": "Danh sách hàm Stellar CLI in ra khi tôi chạy lệnh --help:",
+        "scenarioLine": "Tình huống tôi muốn demo:",
+        "codeLine": "File lib.rs của tôi:",
+        "ask": [
+          "Dựa vào code lib.rs (bạn đã viết, hoặc tôi dán ở trên) và danh sách hàm, viết lệnh gọi cho TỪNG hàm, theo thứ tự hợp lý để demo từ đầu đến cuối: hàm tạo dữ liệu trước, hàm đọc dữ liệu sau.",
+          "Mỗi lệnh nằm trong một khối code riêng, viết trên MỘT dòng, theo đúng mẫu: stellar contract invoke --id {{alias}} --source-account {{identity}} --network testnet -- <tên_hàm> --<tên_tham_số> <giá_trị>. Tên tham số giữ nguyên như trong code.",
+          "Giá trị: Address ghi {{identity}}; chuỗi đặt trong dấu ngoặc kép; số ghi liền, không dấu phân cách hàng nghìn; bool ghi true hoặc false. Nếu tham số là struct, Vec hoặc Map thì ghi dạng JSON và nói rõ cách gõ trên PowerShell.",
+          "Nếu một hàm cần chữ ký của người khác ngoài {{identity}}: đưa lệnh tạo thêm ví (stellar keys generate <tên> --network testnet --fund) và dùng --source-account <tên> cho lệnh đó.",
+          "Dưới mỗi lệnh: một câu tiếng Việt giải thích lệnh làm gì và kết quả tôi sẽ thấy nếu chạy đúng (giá trị trả về, hoặc link stellar.expert với hàm ghi dữ liệu).",
+          "Thêm một lệnh cố tình gọi sai (ví dụ vượt số dư hoặc người không có quyền) để tôi thấy contract chặn lại, kèm giải thích lỗi sẽ in ra.",
+          "Không sửa lib.rs, không đổi tên hàm. Nếu danh sách hàm ở trên khác với code bạn nhớ, tin vào danh sách hàm và báo cho tôi biết."
+        ]
+      }
+    }
   }
 }
