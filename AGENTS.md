@@ -47,5 +47,11 @@ Non-obvious rules:
   `@/components/diagram` graph; keep each step's text to a sentence or two.
 - **No em dashes in `src/messages/*.json`.** Use a colon, a comma, a full stop
   or parentheses instead.
+- **Module 5 (EC project) targets Windows students who code with an AI.** Commands
+  live in `src/lib/contract/toolchain.ts`, never in message files, and are
+  written for PowerShell on one line. `SOROBAN_SDK_MAJOR` must match what
+  `stellar contract init` writes for `STELLAR_CLI_VERSION`; bump them together.
+  Prompt templates are read with `t.raw` (they contain Rust braces) and use
+  `{{name}}` placeholders filled in `src/lib/contract/prompt.ts`.
 - After changing anything under `src/lib/stellar/`, run
   `npm run verify:issuance` — it exercises all three issuance paths on testnet.
