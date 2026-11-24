@@ -2903,6 +2903,32 @@
     "setup": {
       "title": "Getting a Windows laptop ready for smart contracts",
       "lede": "In this session every student builds an EC project: a small smart contract running on Stellar testnet, written by an AI from your own idea, published on GitHub with a README. This first lesson is the setup. Go in order and check each step before moving on.",
+      "risein": {
+        "title": "Before you start: register on Rise In",
+        "lede": "Rise In is where you submit your EC project. Register at the start of the session so that at the end you only have to submit a link.",
+        "steps": {
+          "open": {
+            "title": "Open the program page",
+            "body": "The Stellar Vietnam x VKU EC Project page on Rise In is where the whole class submits.",
+            "links": {
+              "program": "Open Stellar Vietnam x VKU EC Project"
+            }
+          },
+          "account": {
+            "title": "Create an account with Google",
+            "body": "Click Sign In / Up at the top right, choose to sign in with Google, then pick your Gmail account.",
+            "note": "Use one Google account for the whole session, because your submission is tied to it."
+          },
+          "register": {
+            "title": "Register for the program",
+            "body": "Once signed in, open the Stellar Vietnam x VKU EC Project page again, tick the consent boxes and click Register to attend.",
+            "expect": "Once registered you have a place in the program. Come back to this page at the end to submit your GitHub repo link.",
+            "links": {
+              "program": "Open the program page again"
+            }
+          }
+        }
+      },
       "ec": {
         "title": "What an EC project contains",
         "lede": "A finished EC project has four parts. The three lessons in this module go through them one by one.",
@@ -2913,7 +2939,7 @@
           },
           {
             "title": "A smart contract in lib.rs",
-            "body": "Written in Rust. You describe the idea, the AI writes the code, and you build and test it until it works."
+            "body": "Written in Rust. You describe the idea, the AI writes the code, and you build it until it works."
           },
           {
             "title": "A contract deployed to testnet",
@@ -2926,7 +2952,7 @@
         ],
         "example": {
           "title": "See a sample EC project",
-          "body": "This repo shows what the end result looks like. Note that it still has the hello-world test.rs from the template, so cargo test fails on it. Yours will not have that problem."
+          "body": "This repo shows what the end result looks like."
         }
       },
       "before": {
@@ -3121,7 +3147,7 @@
       "lede": "Create the project with the Stellar CLI, turn your idea into a clear description, then let an AI (ChatGPT, Claude, Gemini) write the smart contract in one file: lib.rs.",
       "intro": {
         "title": "You own the idea, the AI writes the code",
-        "body": "AIs write Rust quickly but tend to change library versions, split code over several files or forget tests. The form below wraps your idea in a fixed set of technical rules, so the AI hands back one lib.rs that builds with your project as it is."
+        "body": "AIs write Rust quickly but tend to change library versions, split code over several files or add things you did not ask for. The form below wraps your idea in a fixed set of technical rules, so the AI hands back one lib.rs that builds with your project as it is."
       },
       "init": {
         "title": "Create the project with the Stellar CLI",
@@ -3177,7 +3203,7 @@
         "sectionLede": "Pick a sample idea to see how the form is filled, or write your own. Click Create prompt, copy it and paste it into a new chat with ChatGPT, Claude or Gemini.",
         "warning": {
           "title": "Read the answer before pasting it into the project",
-          "body": "AIs make mistakes. If the answer has no tests, stops halfway or is split into several files, ask it to rewrite the whole lib.rs following the rules in the prompt."
+          "body": "AIs make mistakes. If the answer includes tests, stops halfway or is split into several files, ask it to rewrite the whole lib.rs following the rules in the prompt."
         },
         "title": "Describe the idea",
         "lede": "Write in Vietnamese or English, as specifically as you can. List one feature per line.",
@@ -3267,16 +3293,16 @@
           "rulesHeading": "Technical requirements (mandatory)",
           "rules": [
             "Use soroban-sdk version {{sdk}}, exactly as in the existing Cargo.toml. Do not edit Cargo.toml and do not add any other crate.",
-            "All code goes in ONE file: {{dir}}/src/lib.rs. Do not create test.rs or any other file or module. No standalone `mod test;` line.",
+            "All code goes in ONE file: {{dir}}/src/lib.rs. Do not create test.rs or any other file or module.",
             "The first line is #![no_std]. No std, no f32 or f64. Amounts are i128, times are u64 from env.ledger().timestamp().",
             "Use #[contracttype] for data structs and one DataKey enum as storage keys. Store with env.storage().persistent().",
             "A function that changes someone's data takes that person's Address as a parameter and calls require_auth() on it.",
             "Report errors with one #[contracterror] enum (numbered from 1) and return Result. No panic!, unwrap() or expect().",
             "No __constructor. If an admin is needed, write init(admin: Address) that can only run once and errors the second time.",
             "Function and parameter names in English, snake_case. At most 8 public functions and about 250 lines in total.",
-            "Put the tests at the end of lib.rs in #[cfg(test)] mod test { ... }, using env.mock_all_auths() and Address::generate (import soroban_sdk::testutils::Address as _). At least one success test and one failure test (use client.try_<function_name>).",
+            "Do NOT write tests: no #[cfg(test)] block, no mod test, no testutils.",
             "Give every function a one-line comment in Vietnamese saying what it does.",
-            "The code must pass stellar contract build and cargo test as is, with no further edits."
+            "The code must pass stellar contract build as is, with no further edits."
           ],
           "answerHeading": "Answer in exactly this format",
           "answer": [
@@ -3413,7 +3439,7 @@
       },
       "paste": {
         "title": "Put the AI's code into the project",
-        "lede": "Replace everything in lib.rs with the AI's code, delete the old test file, then do a quick check.",
+        "lede": "Replace everything in lib.rs with the AI's code, delete the leftover test.rs, then do a quick check.",
         "steps": {
           "paste": {
             "title": "Paste the code into lib.rs",
@@ -3426,7 +3452,7 @@
           },
           "deleteTest": {
             "title": "Delete test.rs",
-            "body": "The tests now live in lib.rs. The old test.rs still calls the sample's hello function, so cargo test would fail. Right click the file in VS Code and choose Delete, or run the command below from the project root."
+            "body": "Your contract no longer uses the hello-world test.rs. Delete it to keep the project tidy: right click the file in VS Code and choose Delete, or run the command below from the project root."
           },
           "review": {
             "title": "Quick self-check",
@@ -3435,8 +3461,7 @@
               "The first line is #![no_std].",
               "There is a #[contract] and a #[contractimpl].",
               "There is an enum marked #[contracterror].",
-              "The end of the file has #[cfg(test)] mod test { ... } with a few #[test] functions.",
-              "No standalone mod test; line anywhere.",
+              "No mod test line and no #[cfg(test)] block anywhere.",
               "No ... and no phrases like rest of the code unchanged."
             ],
             "expect": "All there? Move on to the next lesson to build and deploy."
@@ -3452,19 +3477,14 @@
         "body": "{identity} is the name of the testnet wallet on your laptop, {alias} is the short name of your contract after deploying. Keep both and every command on this page runs as copied. Run everything from the project root, for example C:\\stellar\\vku-ec-project."
       },
       "buildSection": {
-        "title": "Build and test",
-        "lede": "Building turns the Rust into a .wasm file. Testing checks the functions behave before anything goes on the network.",
+        "title": "Build",
+        "lede": "Building turns the Rust into a .wasm file, which is what goes on testnet.",
         "steps": {
           "build": {
             "title": "Build the contract",
             "body": "The first build downloads libraries and takes a few minutes. Later builds are much faster.",
             "expect": "It worked when you see the list of function names and Build Complete. The output is target\\wasm32v1-none\\release\\hello_world.wasm.",
             "note": "Red errors? Scroll down to Ask the AI to fix it and paste the exact error together with lib.rs."
-          },
-          "test": {
-            "title": "Run the tests",
-            "body": "Tests run on your laptop, cost nothing and need no network.",
-            "expect": "It worked when the last line says test result: ok and 0 failed."
           }
         }
       },
@@ -3485,7 +3505,7 @@
           "help": {
             "title": "List the functions you can call",
             "body": "The Stellar CLI reads the contract and lists its functions. To see one function's parameters, put its name before --help, for example -- create_goal --help.",
-            "expect": "You will see a Commands line and the names of your contract's functions. Select everything from Usage to the end, right click to copy, and use it in step 6."
+            "expect": "You will see a Commands line and the names of your contract's functions. Select everything from Usage to the end, right click to copy, and use it in step 5."
           },
           "invokePrompt": {
             "title": "Let the AI write the calls",
@@ -3607,16 +3627,16 @@
         "lede": "Open the line that matches what you see.",
         "items": {
           "compile": {
-            "symptom": "Build or test prints red errors with an error[E...] code",
+            "symptom": "Build prints red errors with an error[E...] code",
             "error": "error[E0425]: cannot find value `amount` in this scope",
             "cause": "The AI's code does not match your soroban-sdk version, or a line went missing when pasting.",
             "fix": "Use Ask the AI to fix it above: paste the error and the whole lib.rs, replace the file with what comes back and build again. One or two rounds is usual."
           },
           "modTest": {
-            "symptom": "Module test not found, or function hello not found",
+            "symptom": "Module test not found",
             "error": "error[E0583]: file not found for module `test`",
-            "cause": "lib.rs still has a mod test; line pointing at a deleted test.rs, or the old test.rs is still there calling the sample's hello.",
-            "fix": "Remove the standalone mod test; line from lib.rs (tests belong in the #[cfg(test)] mod test block at the end) and delete test.rs if it is still there."
+            "cause": "lib.rs still has a mod test; line pointing at the deleted test.rs.",
+            "fix": "Remove the mod test; line from lib.rs (the contract needs no tests), save and build again."
           },
           "wasmMissing": {
             "symptom": "Deploy cannot find the .wasm file",
@@ -3685,11 +3705,12 @@
         "items": [
           "The repo is Public and opens without signing in to GitHub.",
           "The code is in contracts/hello-world/src/lib.rs and test.rs is gone.",
-          "stellar contract build and cargo test both pass on your laptop.",
+          "stellar contract build passes on your laptop.",
           "The README has every section of the EC template.",
           "Contract Detail has a Contract ID (starting with C) that matches the contract live on testnet.",
           "image.png, a screenshot of the contract on Stellar Expert, shows in the README.",
-          "You can explain what each function does and who may call it."
+          "You can explain what each function does and who may call it.",
+          "Your GitHub repo link is submitted on the Rise In Stellar Vietnam x VKU EC Project page."
         ]
       }
     },
@@ -3697,7 +3718,7 @@
       "fields": {
         "command": {
           "label": "The command you ran",
-          "hint": "For example stellar contract build or cargo test."
+          "hint": "For example stellar contract build or stellar contract deploy."
         },
         "error": {
           "label": "The error",
@@ -3705,7 +3726,7 @@
         },
         "code": {
           "label": "Your current lib.rs",
-          "hint": "Worth pasting when the error happens during build or test."
+          "hint": "Worth pasting when the error happens during build."
         }
       },
       "submit": "Create fix prompt",
@@ -3734,7 +3755,7 @@
           "Explain briefly and simply what this error means and why it happened.",
           "If the code is at fault: give me the WHOLE fixed lib.rs in a single code block, nothing left out.",
           "If it is an install or typing problem: list the steps to take on Windows, with each PowerShell command on one line.",
-          "Keep the rules: a single lib.rs, #![no_std], no Cargo.toml edits, no new crates, tests inside the #[cfg(test)] mod test block of lib.rs."
+          "Keep the rules: a single lib.rs, #![no_std], no Cargo.toml edits, no new crates, no tests."
         ]
       }
     },

@@ -13,10 +13,7 @@ import { Callout, LessonHeader, LessonSection } from "@/components/learn/lesson-
 import { README_TEMPLATE } from "@/lib/contract/readme";
 import { COMMANDS, CONTRACT_ALIAS, IDENTITY, LINKS } from "@/lib/contract/toolchain";
 
-const BUILD_STEPS: GuideStepConfig[] = [
-  { id: "build", commands: [{ code: COMMANDS.build }] },
-  { id: "test", commands: [{ code: COMMANDS.test }] },
-];
+const BUILD_STEPS: GuideStepConfig[] = [{ id: "build", commands: [{ code: COMMANDS.build }] }];
 
 const DEPLOY_STEPS: GuideStepConfig[] = [
   { id: "keys", commands: [{ code: COMMANDS.keys }] },
@@ -102,11 +99,11 @@ function ShipContent() {
       </LessonSection>
 
       <LessonSection title={t("deploySection.title")} lede={t("deploySection.lede")}>
-        <GuideSteps namespace="contract.ship.deploySection.steps" steps={DEPLOY_STEPS} start={3} />
+        <GuideSteps namespace="contract.ship.deploySection.steps" steps={DEPLOY_STEPS} start={2} />
       </LessonSection>
 
       <LessonSection id="readme" title={t("readme.title")} lede={t("readme.lede")}>
-        <GuideSteps namespace="contract.ship.readme.steps" steps={README_STEPS} start={9} />
+        <GuideSteps namespace="contract.ship.readme.steps" steps={README_STEPS} start={8} />
         <div className="mt-4 grid gap-4 lg:grid-cols-2">
           <CommandBlock code={readmePrompt} caption={t("readme.promptCaption")} />
           <CommandBlock code={README_TEMPLATE} caption={t("readme.templateCaption")} />
@@ -114,7 +111,7 @@ function ShipContent() {
       </LessonSection>
 
       <LessonSection title={t("github.title")} lede={t("github.lede")}>
-        <GuideSteps namespace="contract.ship.github.steps" steps={GITHUB_STEPS} start={11} />
+        <GuideSteps namespace="contract.ship.github.steps" steps={GITHUB_STEPS} start={10} />
       </LessonSection>
 
       <LessonSection id="fix" title={t("fix.title")} lede={t("fix.lede")}>

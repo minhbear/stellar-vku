@@ -13,6 +13,12 @@ interface Part {
   body: string;
 }
 
+const RISEIN_STEPS: GuideStepConfig[] = [
+  { id: "open", links: [{ href: LINKS.riseinProgram, label: "program" }] },
+  { id: "account" },
+  { id: "register", links: [{ href: LINKS.riseinProgram, label: "program" }] },
+];
+
 const STEPS: GuideStepConfig[] = [
   { id: "github", links: [{ href: LINKS.github, label: "signup" }] },
   {
@@ -95,6 +101,10 @@ function SetupContent() {
         title={t("title")}
         lede={t("lede")}
       />
+
+      <LessonSection id="risein" title={t("risein.title")} lede={t("risein.lede")}>
+        <GuideSteps namespace="contract.setup.risein.steps" steps={RISEIN_STEPS} />
+      </LessonSection>
 
       <LessonSection title={t("ec.title")} lede={t("ec.lede")}>
         <ol className="grid gap-3 sm:grid-cols-2">

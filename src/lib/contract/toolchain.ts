@@ -30,6 +30,7 @@ export const LINKS = {
   vscode: "https://code.visualstudio.com/",
   rustAnalyzer: "https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer",
   expertContract: "https://stellar.expert/explorer/testnet/contract/",
+  riseinProgram: "https://www.risein.com/programs/stellar-vietnam-x-vku-ec-project",
   exampleRepo: "https://github.com/rajnandaniy563-droid/ChainSubscription-Hub",
   sorobanExamples: "https://github.com/stellar/soroban-examples",
 } as const;
@@ -52,7 +53,6 @@ export const COMMANDS = {
   deleteTest: `del ${CONTRACT_DIR}\\src\\test.rs`,
   checkSdk: "type Cargo.toml",
   build: "stellar contract build",
-  test: "cargo test",
   keys: `stellar keys generate ${IDENTITY} --network testnet --fund\nstellar keys address ${IDENTITY}`,
   fund: `stellar keys fund ${IDENTITY} --network testnet`,
   deploy: `stellar contract deploy --wasm ${WASM_PATH} --source-account ${IDENTITY} --network testnet --alias ${CONTRACT_ALIAS}`,
