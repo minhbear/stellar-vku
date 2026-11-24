@@ -3484,11 +3484,22 @@
           },
           "help": {
             "title": "List the functions you can call",
-            "body": "The Stellar CLI reads the contract and lists its functions. To see one function's parameters, put its name before --help, for example -- create_goal --help."
+            "body": "The Stellar CLI reads the contract and lists its functions. To see one function's parameters, put its name before --help, for example -- create_goal --help.",
+            "expect": "You will see a Commands line and the names of your contract's functions. Select everything from Usage to the end, right click to copy, and use it in step 6."
+          },
+          "invokePrompt": {
+            "title": "Let the AI write the calls",
+            "body": "You do not have to write the commands yourself. Paste the output of step 5 below, press Create prompt, then paste the prompt into the same chat where the AI wrote your code. It replies with a command for each function, plus an explanation.",
+            "items": [
+              "First box: paste the whole output of the --help command from step 5.",
+              "Second box (optional): describe what you want to demo, for example create a class fund, contribute 100, then check the balance.",
+              "Third box: paste lib.rs only if you open a new AI chat."
+            ],
+            "note": "The AI sometimes gets a parameter name wrong. If a command fails, run --help for that function alone (for example -- create_goal --help) and compare the names, or use the fix form at the bottom of this page."
           },
           "invoke": {
             "title": "Call each function",
-            "body": "Use the commands the AI wrote at the end of its answer. The two below are examples from the sample savings contract (create_goal, get_goal): your function names and parameters will differ.",
+            "body": "Run the commands the AI just gave you, one by one, in order. The two below are only examples from the sample savings contract (create_goal, get_goal): your function names and parameters will differ.",
             "items": [
               "Address parameters: write student and the CLI swaps in your wallet address.",
               "Text with spaces: wrap it in double quotes.",
@@ -3724,6 +3735,55 @@
           "If the code is at fault: give me the WHOLE fixed lib.rs in a single code block, nothing left out.",
           "If it is an install or typing problem: list the steps to take on Windows, with each PowerShell command on one line.",
           "Keep the rules: a single lib.rs, #![no_std], no Cargo.toml edits, no new crates, tests inside the #[cfg(test)] mod test block of lib.rs."
+        ]
+      }
+    },
+    "invoke": {
+      "fields": {
+        "help": {
+          "label": "Output of the --help command from step 5",
+          "hint": "Select it in the terminal, right click to copy, and paste all of it here.",
+          "placeholder": "Usage: ...\n\nCommands:\n  create_goal\n  get_goal\n  help"
+        },
+        "scenario": {
+          "label": "What you want to demo",
+          "hint": "Plain words are fine, for example: create a class fund, two friends contribute, the class lead spends 50, check the balance."
+        },
+        "code": {
+          "label": "Your lib.rs",
+          "hint": "Only needed if you use a new AI chat, not the one that wrote your code."
+        }
+      },
+      "submit": "Create calls prompt",
+      "output": {
+        "title": "Prompt for the calls",
+        "hint": "Paste it into the same chat where the AI wrote your code, so it remembers the functions and parameters."
+      },
+      "errors": {
+        "help": {
+          "required": "Paste the --help output (at least 10 characters).",
+          "tooLong": "That is very long. Paste only the output of the --help command."
+        },
+        "scenario": {
+          "tooLong": "At most 600 characters."
+        },
+        "code": {
+          "tooLong": "The file is too long to paste here."
+        }
+      },
+      "template": {
+        "intro": "My Stellar (Soroban) contract is deployed on testnet. I use the Stellar CLI in Windows PowerShell, my wallet is called {{identity}}, the contract alias is {{alias}}, and the code is in {{dir}}/src/lib.rs. I cannot code, so write everything so I only have to copy and run it.",
+        "helpLine": "The function list the Stellar CLI printed when I ran --help:",
+        "scenarioLine": "What I want to demo:",
+        "codeLine": "My lib.rs:",
+        "ask": [
+          "Using lib.rs (the one you wrote, or the one I pasted above) and the function list, write a call for EVERY function, in an order that demos the contract from start to finish: functions that create data first, functions that read data after.",
+          "Put each command in its own code block, on ONE line, following this pattern exactly: stellar contract invoke --id {{alias}} --source-account {{identity}} --network testnet -- <function_name> --<parameter_name> <value>. Keep parameter names exactly as in the code.",
+          "Values: Address is {{identity}}; text goes in double quotes; numbers are plain, no thousands separators; bool is true or false. If a parameter is a struct, Vec or Map, write it as JSON and say exactly how to type it in PowerShell.",
+          "If a function needs a signature from someone other than {{identity}}: give the command to create another wallet (stellar keys generate <name> --network testnet --fund) and use --source-account <name> for that call.",
+          "Under each command: one sentence on what it does and what I should see if it works (the returned value, or a stellar.expert link for functions that write data).",
+          "Add one call that is wrong on purpose (for example spending more than the balance, or a caller without permission) so I can see the contract refuse it, and explain the error it prints.",
+          "Do not change lib.rs or rename functions. If the function list above differs from the code you remember, trust the list and tell me."
         ]
       }
     }

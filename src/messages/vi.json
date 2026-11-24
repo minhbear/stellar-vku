@@ -3484,11 +3484,22 @@
           },
           "help": {
             "title": "Xem các hàm có thể gọi",
-            "body": "Stellar CLI đọc contract và liệt kê các hàm. Muốn xem tham số của một hàm, thay --help ở cuối bằng tên hàm rồi --help, ví dụ -- create_goal --help."
+            "body": "Stellar CLI đọc contract và liệt kê các hàm. Muốn xem tham số của một hàm, thay --help ở cuối bằng tên hàm rồi --help, ví dụ -- create_goal --help.",
+            "expect": "Bạn sẽ thấy dòng Commands và tên các hàm trong contract. Bôi đen từ dòng Usage đến hết, chuột phải để sao chép, rồi dùng ở bước 6."
+          },
+          "invokePrompt": {
+            "title": "Nhờ AI viết lệnh gọi hàm",
+            "body": "Không cần tự viết lệnh. Dán kết quả của bước 5 vào ô dưới, bấm Tạo prompt, rồi dán prompt vào đúng cuộc trò chuyện AI đã viết code cho bạn. AI sẽ trả về lệnh cho từng hàm, kèm giải thích.",
+            "items": [
+              "Ô đầu tiên: dán toàn bộ kết quả lệnh --help ở bước 5.",
+              "Ô thứ hai (không bắt buộc): kể tình huống bạn muốn demo, ví dụ tạo quỹ lớp, góp 100, rồi xem số dư.",
+              "Ô thứ ba: chỉ cần dán lib.rs nếu bạn mở cuộc trò chuyện AI mới."
+            ],
+            "note": "AI đôi khi viết sai tên tham số. Nếu lệnh báo lỗi, chạy lệnh --help cho riêng hàm đó (ví dụ -- create_goal --help) và so tên tham số, hoặc dùng form sửa lỗi ở cuối trang."
           },
           "invoke": {
             "title": "Gọi thử từng hàm",
-            "body": "Dùng các lệnh AI đã viết ở cuối câu trả lời. Hai lệnh dưới là ví dụ với contract tiết kiệm mẫu (create_goal, get_goal): tên hàm và tham số của bạn sẽ khác.",
+            "body": "Chạy lần lượt từng lệnh AI vừa đưa ra, theo đúng thứ tự. Hai lệnh dưới chỉ là ví dụ với contract tiết kiệm mẫu (create_goal, get_goal): tên hàm và tham số của bạn sẽ khác.",
             "items": [
               "Tham số kiểu Address: ghi student, CLI tự đổi thành địa chỉ ví của bạn.",
               "Chuỗi có khoảng trắng: đặt trong dấu ngoặc kép.",
@@ -3724,6 +3735,55 @@
           "Nếu lỗi do code: đưa lại TOÀN BỘ file lib.rs đã sửa trong một khối code duy nhất, không lược bớt.",
           "Nếu lỗi do cài đặt hoặc do gõ lệnh: liệt kê từng bước tôi cần làm trên Windows, kèm lệnh PowerShell viết trên một dòng.",
           "Giữ nguyên các quy tắc: một file lib.rs duy nhất, #![no_std], không sửa Cargo.toml, không thêm crate, test nằm trong khối #[cfg(test)] mod test của lib.rs."
+        ]
+      }
+    },
+    "invoke": {
+      "fields": {
+        "help": {
+          "label": "Kết quả lệnh --help ở bước 5",
+          "hint": "Bôi đen trong terminal rồi chuột phải để sao chép, dán cả đoạn vào đây.",
+          "placeholder": "Usage: ...\n\nCommands:\n  create_goal\n  get_goal\n  help"
+        },
+        "scenario": {
+          "label": "Tình huống muốn demo",
+          "hint": "Viết bằng lời thường, ví dụ: tạo quỹ lớp, hai bạn cùng góp tiền, lớp trưởng chi 50, xem số dư."
+        },
+        "code": {
+          "label": "Nội dung lib.rs",
+          "hint": "Chỉ cần dán nếu bạn dùng cuộc trò chuyện AI mới, không phải cuộc đã viết code."
+        }
+      },
+      "submit": "Tạo prompt gọi hàm",
+      "output": {
+        "title": "Prompt viết lệnh gọi hàm",
+        "hint": "Dán vào đúng cuộc trò chuyện AI đã viết code cho bạn, để AI nhớ các hàm và tham số."
+      },
+      "errors": {
+        "help": {
+          "required": "Dán kết quả lệnh --help (ít nhất 10 ký tự).",
+          "tooLong": "Quá dài, chỉ cần dán phần kết quả của lệnh --help."
+        },
+        "scenario": {
+          "tooLong": "Tối đa 600 ký tự."
+        },
+        "code": {
+          "tooLong": "File quá dài để dán vào đây."
+        }
+      },
+      "template": {
+        "intro": "Contract Stellar (Soroban) của tôi đã deploy lên testnet. Tôi dùng Stellar CLI trên Windows PowerShell, ví tên {{identity}}, contract có tên gọi tắt {{alias}}, code nằm trong {{dir}}/src/lib.rs. Tôi không biết lập trình, hãy viết sao cho tôi chỉ cần sao chép và chạy.",
+        "helpLine": "Danh sách hàm Stellar CLI in ra khi tôi chạy lệnh --help:",
+        "scenarioLine": "Tình huống tôi muốn demo:",
+        "codeLine": "File lib.rs của tôi:",
+        "ask": [
+          "Dựa vào code lib.rs (bạn đã viết, hoặc tôi dán ở trên) và danh sách hàm, viết lệnh gọi cho TỪNG hàm, theo thứ tự hợp lý để demo từ đầu đến cuối: hàm tạo dữ liệu trước, hàm đọc dữ liệu sau.",
+          "Mỗi lệnh nằm trong một khối code riêng, viết trên MỘT dòng, theo đúng mẫu: stellar contract invoke --id {{alias}} --source-account {{identity}} --network testnet -- <tên_hàm> --<tên_tham_số> <giá_trị>. Tên tham số giữ nguyên như trong code.",
+          "Giá trị: Address ghi {{identity}}; chuỗi đặt trong dấu ngoặc kép; số ghi liền, không dấu phân cách hàng nghìn; bool ghi true hoặc false. Nếu tham số là struct, Vec hoặc Map thì ghi dạng JSON và nói rõ cách gõ trên PowerShell.",
+          "Nếu một hàm cần chữ ký của người khác ngoài {{identity}}: đưa lệnh tạo thêm ví (stellar keys generate <tên> --network testnet --fund) và dùng --source-account <tên> cho lệnh đó.",
+          "Dưới mỗi lệnh: một câu tiếng Việt giải thích lệnh làm gì và kết quả tôi sẽ thấy nếu chạy đúng (giá trị trả về, hoặc link stellar.expert với hàm ghi dữ liệu).",
+          "Thêm một lệnh cố tình gọi sai (ví dụ vượt số dư hoặc người không có quyền) để tôi thấy contract chặn lại, kèm giải thích lỗi sẽ in ra.",
+          "Không sửa lib.rs, không đổi tên hàm. Nếu danh sách hàm ở trên khác với code bạn nhớ, tin vào danh sách hàm và báo cho tôi biết."
         ]
       }
     }

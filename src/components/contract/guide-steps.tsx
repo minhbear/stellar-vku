@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { ArrowUpRight } from "lucide-react";
 
@@ -21,6 +22,8 @@ export interface GuideStepConfig {
   id: string;
   commands?: GuideCommand[];
   links?: GuideLink[];
+  /** Extra content (a form, say) shown after the commands. */
+  slot?: ReactNode;
 }
 
 /**
@@ -91,6 +94,8 @@ export function GuideSteps({
                     caption={command.caption ? t(`${step.id}.captions.${command.caption}`) : undefined}
                   />
                 ))}
+
+                {step.slot}
 
                 {t.has(`${step.id}.expect`) ? (
                   <Callout kind="success">{t(`${step.id}.expect`)}</Callout>

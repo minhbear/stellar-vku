@@ -6,6 +6,7 @@ import { CheckCircle2 } from "lucide-react";
 import { CommandBlock } from "@/components/contract/command-block";
 import { FixErrorPrompt } from "@/components/contract/fix-error-prompt";
 import { GuideSteps, type GuideStepConfig } from "@/components/contract/guide-steps";
+import { InvokePrompt } from "@/components/contract/invoke-prompt";
 import { Troubleshooting, type TroubleshootItem } from "@/components/contract/troubleshooting";
 import { LessonFooter } from "@/components/learn/lesson-footer";
 import { Callout, LessonHeader, LessonSection } from "@/components/learn/lesson-shell";
@@ -21,6 +22,7 @@ const DEPLOY_STEPS: GuideStepConfig[] = [
   { id: "keys", commands: [{ code: COMMANDS.keys }] },
   { id: "deploy", commands: [{ code: COMMANDS.deploy }] },
   { id: "help", commands: [{ code: COMMANDS.help }] },
+  { id: "invokePrompt", slot: <InvokePrompt /> },
   {
     id: "invoke",
     commands: [
@@ -104,7 +106,7 @@ function ShipContent() {
       </LessonSection>
 
       <LessonSection id="readme" title={t("readme.title")} lede={t("readme.lede")}>
-        <GuideSteps namespace="contract.ship.readme.steps" steps={README_STEPS} start={8} />
+        <GuideSteps namespace="contract.ship.readme.steps" steps={README_STEPS} start={9} />
         <div className="mt-4 grid gap-4 lg:grid-cols-2">
           <CommandBlock code={readmePrompt} caption={t("readme.promptCaption")} />
           <CommandBlock code={README_TEMPLATE} caption={t("readme.templateCaption")} />
@@ -112,7 +114,7 @@ function ShipContent() {
       </LessonSection>
 
       <LessonSection title={t("github.title")} lede={t("github.lede")}>
-        <GuideSteps namespace="contract.ship.github.steps" steps={GITHUB_STEPS} start={10} />
+        <GuideSteps namespace="contract.ship.github.steps" steps={GITHUB_STEPS} start={11} />
       </LessonSection>
 
       <LessonSection id="fix" title={t("fix.title")} lede={t("fix.lede")}>

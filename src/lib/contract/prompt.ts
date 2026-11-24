@@ -1,4 +1,9 @@
-import { featureLines, type ContractPromptValues, type FixErrorValues } from "@/lib/schemas/contract-prompt";
+import {
+  featureLines,
+  type ContractPromptValues,
+  type FixErrorValues,
+  type InvokePromptValues,
+} from "@/lib/schemas/contract-prompt";
 import { CONTRACT_ALIAS, CONTRACT_DIR, IDENTITY } from "@/lib/contract/toolchain";
 
 /**
@@ -22,6 +27,14 @@ export interface FixTemplate {
   intro: string;
   commandLine: string;
   errorLine: string;
+  codeLine: string;
+  ask: string[];
+}
+
+export interface InvokeTemplate {
+  intro: string;
+  helpLine: string;
+  scenarioLine: string;
   codeLine: string;
   ask: string[];
 }
@@ -66,6 +79,15 @@ export function buildFixPrompt(template: FixTemplate, values: FixErrorValues, sd
   parts.push(`${template.errorLine}\n\`\`\`\n${values.error}\n\`\`\``);
   if (values.code) parts.push(`${template.codeLine}\n\`\`\`rust\n${values.code}\n\`\`\``);
   parts.push(numbered(template.ask, vars));
+  return parts.join("\n\n");
+}
+
+export function buildInvokePrompt(template: InvokeTemplate, values: InvokePromptValues): string {
+  const parts = [fill(template.intro, SHARED)];
+  parts.push(`${template.helpLine}\n\`\`\`\n${values.help}\n\`\`\``);
+  if (values.scenario) parts.push(`${template.scenarioLine}\n${values.scenario}`);
+  if (values.code) parts.push(`${template.codeLine}\n\`\`\`rust\n${values.code}\n\`\`\``);
+  parts.push(numbered(template.ask, SHARED));
   return parts.join("\n\n");
 }
 

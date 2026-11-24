@@ -35,6 +35,16 @@ export function createFixErrorSchema(t: Translate) {
 
 export type FixErrorValues = z.infer<ReturnType<typeof createFixErrorSchema>>;
 
+export function createInvokePromptSchema(t: Translate) {
+  return z.object({
+    help: z.string().trim().min(10, t("help.required")).max(8000, t("help.tooLong")),
+    scenario: z.string().trim().max(600, t("scenario.tooLong")),
+    code: z.string().trim().max(30000, t("code.tooLong")),
+  });
+}
+
+export type InvokePromptValues = z.infer<ReturnType<typeof createInvokePromptSchema>>;
+
 /** One feature per line; bullets and numbering the student typed are dropped. */
 export function featureLines(value: string): string[] {
   return value
