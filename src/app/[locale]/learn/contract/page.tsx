@@ -6,6 +6,7 @@ import { GuideSteps, type GuideStepConfig } from "@/components/contract/guide-st
 import { Troubleshooting, type TroubleshootItem } from "@/components/contract/troubleshooting";
 import { LessonFooter } from "@/components/learn/lesson-footer";
 import { Callout, LessonHeader, LessonSection } from "@/components/learn/lesson-shell";
+import { Link } from "@/i18n/navigation";
 import { COMMANDS, LINKS, MIN_RUST_VERSION, STELLAR_CLI_VERSION } from "@/lib/contract/toolchain";
 
 interface Part {
@@ -100,7 +101,17 @@ function SetupContent() {
         eyebrow={`${tCommon("module")} 5 · ${tModule("title")}`}
         title={t("title")}
         lede={t("lede")}
-      />
+      >
+        <Callout kind="info" title={t("mac.title")} className="mt-6 max-w-[65ch]">
+          {t("mac.body")}{" "}
+          <Link
+            href="/learn/contract/macos"
+            className="font-medium text-foreground underline underline-offset-3"
+          >
+            {t("mac.link")}
+          </Link>
+        </Callout>
+      </LessonHeader>
 
       <LessonSection id="risein" title={t("risein.title")} lede={t("risein.lede")}>
         <GuideSteps namespace="contract.setup.risein.steps" steps={RISEIN_STEPS} />

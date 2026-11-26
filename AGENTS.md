@@ -49,7 +49,11 @@ Non-obvious rules:
   or parentheses instead.
 - **Module 5 (EC project) targets Windows students who code with an AI.** Commands
   live in `src/lib/contract/toolchain.ts`, never in message files, and are
-  written for PowerShell on one line. `SOROBAN_SDK_MAJOR` must match what
+  written for PowerShell on one line. MacBook students get their own setup lesson
+  (`contract/macos`); their commands are `MAC_COMMANDS` (zsh) in the same file,
+  and only commands that differ from Windows get a Mac version. The AI prompts
+  name the OS and shell through `{{os}}`/`{{shell}}`, filled from the
+  Windows/macOS switch (`use-platform.ts`). `SOROBAN_SDK_MAJOR` must match what
   `stellar contract init` writes for `STELLAR_CLI_VERSION`; bump them together.
   Prompt templates are read with `t.raw` (they contain Rust braces) and use
   `{{name}}` placeholders filled in `src/lib/contract/prompt.ts`.

@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Terminal } from "lucide-react";
 
 import { FormField } from "@/components/contract/form-field";
+import { PlatformSwitch, usePlatformVars } from "@/components/contract/platform-switch";
 import { PromptOutput } from "@/components/contract/prompt-output";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -21,6 +22,7 @@ export function InvokePrompt() {
 
   const schema = useMemo(() => createInvokePromptSchema((key) => tErrors(key)), [tErrors]);
   const template = t.raw("template") as InvokeTemplate;
+  const platform = usePlatformVars();
   const [prompt, setPrompt] = useState<string | null>(null);
 
   const {
@@ -36,10 +38,11 @@ export function InvokePrompt() {
   return (
     <div className="space-y-4">
       <form
-        onSubmit={handleSubmit((values) => setPrompt(buildInvokePrompt(template, values)))}
+        onSubmit={handleSubmit((values) => setPrompt(buildInvokePrompt(template, values, platform)))}
         noValidate
         className="space-y-4 rounded-xl border border-border bg-background p-4"
       >
+        <PlatformSwitch />
         <FormField id="invoke-help" label={t("fields.help.label")} hint={t("fields.help.hint")} error={errors.help?.message}>
           <Textarea
             id="invoke-help"
