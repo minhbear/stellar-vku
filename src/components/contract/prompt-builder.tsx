@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Sparkles } from "lucide-react";
 
 import { FormField } from "@/components/contract/form-field";
+import { PlatformSwitch, usePlatformVars } from "@/components/contract/platform-switch";
 import { PromptOutput } from "@/components/contract/prompt-output";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -58,6 +59,7 @@ export function PromptBuilder() {
   const schema = useMemo(() => createContractPromptSchema((key) => tErrors(key)), [tErrors]);
   const ideas = tIdeas.raw("items") as IdeaPreset[];
   const template = t.raw("template") as PromptTemplate;
+  const platform = usePlatformVars();
 
   const [prompt, setPrompt] = useState<string | null>(null);
 
@@ -87,7 +89,7 @@ export function PromptBuilder() {
   }
 
   function onSubmit(values: ContractPromptValues) {
-    setPrompt(buildContractPrompt(template, values));
+    setPrompt(buildContractPrompt(template, values, platform));
   }
 
   return (
@@ -117,6 +119,7 @@ export function PromptBuilder() {
             <p className="max-w-[65ch] text-sm text-muted-foreground">{t("lede")}</p>
           </CardHeader>
           <CardContent className="space-y-5">
+            <PlatformSwitch />
             <div className="grid gap-5 sm:grid-cols-[1fr_10rem]">
               <FormField
                 id="projectName"

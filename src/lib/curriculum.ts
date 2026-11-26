@@ -15,6 +15,7 @@ export type LessonIcon =
   | "lending"
   | "build"
   | "setup"
+  | "mac"
   | "prompt"
   | "ship";
 
@@ -90,6 +91,7 @@ export const MODULES: ModuleDef[] = [
     order: 5,
     lessons: [
       { id: "setup", slug: "", icon: "setup", kind: "hands-on", minutes: 40 },
+      { id: "macos", slug: "macos", icon: "mac", kind: "hands-on", minutes: 35 },
       { id: "prompt", slug: "prompt", icon: "prompt", kind: "hands-on", minutes: 35 },
       { id: "ship", slug: "ship", icon: "ship", kind: "hands-on", minutes: 45 },
     ],

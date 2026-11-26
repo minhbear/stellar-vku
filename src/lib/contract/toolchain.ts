@@ -14,6 +14,9 @@ export const MIN_RUST_VERSION = "1.84.0";
 /** `stellar contract init` names the first contract `hello-world`. */
 export const CONTRACT_DIR = "contracts\\hello-world";
 export const WASM_PATH = "target\\wasm32v1-none\\release\\hello_world.wasm";
+/** Same paths for macOS, where the shell needs forward slashes. */
+export const CONTRACT_DIR_MAC = CONTRACT_DIR.replaceAll("\\", "/");
+export const WASM_PATH_MAC = WASM_PATH.replaceAll("\\", "/");
 
 /** Identity and alias used in every command so students can copy them as-is. */
 export const IDENTITY = "student";
@@ -27,6 +30,7 @@ export const LINKS = {
   stellarCliRelease: `https://github.com/stellar/stellar-cli/releases/tag/v${STELLAR_CLI_VERSION}`,
   stellarCliInstaller: `https://github.com/stellar/stellar-cli/releases/download/v${STELLAR_CLI_VERSION}/stellar-cli-installer-${STELLAR_CLI_VERSION}-x86_64-pc-windows-msvc.exe`,
   windowsTerminal: "https://aka.ms/terminal",
+  homebrew: "https://brew.sh/",
   vscode: "https://code.visualstudio.com/",
   rustAnalyzer: "https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer",
   expertContract: "https://stellar.expert/explorer/testnet/contract/",
@@ -60,4 +64,27 @@ export const COMMANDS = {
   invokeWrite: `stellar contract invoke --id ${CONTRACT_ALIAS} --source-account ${IDENTITY} --network testnet -- create_goal --owner ${IDENTITY} --name "Laptop" --target 1000`,
   invokeRead: `stellar contract invoke --id ${CONTRACT_ALIAS} --source-account ${IDENTITY} --network testnet -- get_goal --owner ${IDENTITY}`,
   contractId: `stellar contract alias show ${CONTRACT_ALIAS} --network testnet`,
+} as const;
+
+/**
+ * macOS versions of the commands above, for zsh in the Terminal app. Only the
+ * ones that differ: `stellar`, `rustup` and `cargo` calls are the same on both.
+ */
+export const MAC_COMMANDS = {
+  makeFolder: "mkdir -p ~/stellar && cd ~/stellar",
+  xcode: "xcode-select --install",
+  homebrew:
+    '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"',
+  brewPath:
+    "echo 'eval \"$(/opt/homebrew/bin/brew shellenv)\"' >> ~/.zprofile && eval \"$(/opt/homebrew/bin/brew shellenv)\"",
+  brewGithubDesktop: "brew install --cask github",
+  rustup: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y",
+  cargoEnv: 'source "$HOME/.cargo/env"',
+  brewUninstallRust: "brew uninstall rust",
+  brewStellar: "brew install stellar-cli",
+  brewVscode: "brew install --cask visual-studio-code",
+  init: (project: string) => `cd ~/stellar\nstellar contract init ${project}\ncd ${project}`,
+  deleteTest: `rm ${CONTRACT_DIR_MAC}/src/test.rs`,
+  checkSdk: "cat Cargo.toml",
+  deploy: `stellar contract deploy --wasm ${WASM_PATH_MAC} --source-account ${IDENTITY} --network testnet --alias ${CONTRACT_ALIAS}`,
 } as const;

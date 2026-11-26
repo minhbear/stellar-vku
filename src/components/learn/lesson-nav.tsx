@@ -8,6 +8,7 @@ import {
   Clock3,
   Globe,
   HandCoins,
+  Laptop,
   Library,
   NotebookPen,
   Radar,
@@ -35,6 +36,7 @@ const ICONS: Record<LessonIcon, typeof Library> = {
   lending: HandCoins,
   build: Blocks,
   setup: Wrench,
+  mac: Laptop,
   prompt: Sparkles,
   ship: Rocket,
 };

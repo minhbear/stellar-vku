@@ -11,13 +11,19 @@ import { Troubleshooting, type TroubleshootItem } from "@/components/contract/tr
 import { LessonFooter } from "@/components/learn/lesson-footer";
 import { Callout, LessonHeader, LessonSection } from "@/components/learn/lesson-shell";
 import { README_TEMPLATE } from "@/lib/contract/readme";
-import { COMMANDS, CONTRACT_ALIAS, IDENTITY, LINKS } from "@/lib/contract/toolchain";
+import { COMMANDS, CONTRACT_ALIAS, IDENTITY, LINKS, MAC_COMMANDS } from "@/lib/contract/toolchain";
 
 const BUILD_STEPS: GuideStepConfig[] = [{ id: "build", commands: [{ code: COMMANDS.build }] }];
 
 const DEPLOY_STEPS: GuideStepConfig[] = [
   { id: "keys", commands: [{ code: COMMANDS.keys }] },
-  { id: "deploy", commands: [{ code: COMMANDS.deploy }] },
+  {
+    id: "deploy",
+    commands: [
+      { code: COMMANDS.deploy, caption: "windows" },
+      { code: MAC_COMMANDS.deploy, caption: "mac" },
+    ],
+  },
   { id: "help", commands: [{ code: COMMANDS.help }] },
   { id: "invokePrompt", slot: <InvokePrompt /> },
   {

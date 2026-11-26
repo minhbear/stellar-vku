@@ -7,19 +7,37 @@ import { GuideSteps, type GuideStepConfig } from "@/components/contract/guide-st
 import { PromptBuilder } from "@/components/contract/prompt-builder";
 import { LessonFooter } from "@/components/learn/lesson-footer";
 import { Callout, LessonHeader, LessonSection } from "@/components/learn/lesson-shell";
-import { COMMANDS, CONTRACT_DIR, SOROBAN_SDK_MAJOR } from "@/lib/contract/toolchain";
+import { COMMANDS, CONTRACT_DIR, MAC_COMMANDS, SOROBAN_SDK_MAJOR } from "@/lib/contract/toolchain";
 
 const PROJECT = "vku-ec-project";
 
 const INIT_STEPS: GuideStepConfig[] = [
-  { id: "init", commands: [{ code: COMMANDS.init(PROJECT) }] },
+  {
+    id: "init",
+    commands: [
+      { code: COMMANDS.init(PROJECT), caption: "windows" },
+      { code: MAC_COMMANDS.init(PROJECT), caption: "mac" },
+    ],
+  },
   { id: "open", commands: [{ code: COMMANDS.openCode }] },
-  { id: "sdk", commands: [{ code: COMMANDS.checkSdk }] },
+  {
+    id: "sdk",
+    commands: [
+      { code: COMMANDS.checkSdk, caption: "windows" },
+      { code: MAC_COMMANDS.checkSdk, caption: "mac" },
+    ],
+  },
 ];
 
 const PASTE_STEPS: GuideStepConfig[] = [
   { id: "paste" },
-  { id: "deleteTest", commands: [{ code: COMMANDS.deleteTest }] },
+  {
+    id: "deleteTest",
+    commands: [
+      { code: COMMANDS.deleteTest, caption: "windows" },
+      { code: MAC_COMMANDS.deleteTest, caption: "mac" },
+    ],
+  },
   { id: "review" },
 ];
 

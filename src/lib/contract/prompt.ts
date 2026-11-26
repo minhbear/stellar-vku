@@ -39,6 +39,12 @@ export interface InvokeTemplate {
   ask: string[];
 }
 
+/** How the templates name the student's laptop and terminal: `{{os}}`, `{{shell}}`. */
+export interface PlatformVars {
+  os: string;
+  shell: string;
+}
+
 function fill(text: string, values: Record<string, string>): string {
   return text.replace(/\{\{(\w+)\}\}/g, (match, key: string) => values[key] ?? match);
 }
@@ -49,8 +55,12 @@ const SHARED = {
   identity: IDENTITY,
 };
 
-export function buildContractPrompt(template: PromptTemplate, values: ContractPromptValues): string {
-  const vars = { ...SHARED, sdk: values.sdkVersion };
+export function buildContractPrompt(
+  template: PromptTemplate,
+  values: ContractPromptValues,
+  platform: PlatformVars,
+): string {
+  const vars = { ...SHARED, ...platform, sdk: values.sdkVersion };
   const features = featureLines(values.features)
     .map((line) => `- ${line}`)
     .join("\n");
@@ -72,8 +82,13 @@ export function buildContractPrompt(template: PromptTemplate, values: ContractPr
   ].join("\n\n");
 }
 
-export function buildFixPrompt(template: FixTemplate, values: FixErrorValues, sdk: string): string {
-  const vars = { ...SHARED, sdk };
+export function buildFixPrompt(
+  template: FixTemplate,
+  values: FixErrorValues,
+  sdk: string,
+  platform: PlatformVars,
+): string {
+  const vars = { ...SHARED, ...platform, sdk };
   const parts = [fill(template.intro, vars)];
   if (values.command) parts.push(`${template.commandLine}\n${values.command}`);
   parts.push(`${template.errorLine}\n\`\`\`\n${values.error}\n\`\`\``);
@@ -82,12 +97,17 @@ export function buildFixPrompt(template: FixTemplate, values: FixErrorValues, sd
   return parts.join("\n\n");
 }
 
-export function buildInvokePrompt(template: InvokeTemplate, values: InvokePromptValues): string {
-  const parts = [fill(template.intro, SHARED)];
+export function buildInvokePrompt(
+  template: InvokeTemplate,
+  values: InvokePromptValues,
+  platform: PlatformVars,
+): string {
+  const vars = { ...SHARED, ...platform };
+  const parts = [fill(template.intro, vars)];
   parts.push(`${template.helpLine}\n\`\`\`\n${values.help}\n\`\`\``);
   if (values.scenario) parts.push(`${template.scenarioLine}\n${values.scenario}`);
   if (values.code) parts.push(`${template.codeLine}\n\`\`\`rust\n${values.code}\n\`\`\``);
-  parts.push(numbered(template.ask, SHARED));
+  parts.push(numbered(template.ask, vars));
   return parts.join("\n\n");
 }
 

@@ -132,12 +132,17 @@
     "contract": {
       "title": "Your first smart contract (EC project)",
       "short": "EC project",
-      "description": "Each student builds an EC project: install the tools on Windows, describe an idea so an AI writes the smart contract, deploy it to Stellar testnet and hand it in through GitHub.",
+      "description": "Each student builds an EC project: install the tools on Windows or macOS, describe an idea so an AI writes the smart contract, deploy it to Stellar testnet and hand it in through GitHub.",
       "lessons": {
         "setup": {
           "title": "Setting up Windows",
           "short": "Setup",
           "description": "Create a GitHub account, install GitHub Desktop, Build Tools, Rust and the Stellar CLI, with fixes for the usual errors."
+        },
+        "macos": {
+          "title": "Setting up a Mac",
+          "short": "Mac setup",
+          "description": "The same setup for MacBook students: Command Line Tools, Homebrew, Rust, the Stellar CLI and VS Code, the Mac versions of later commands, and fixes for the usual errors."
         },
         "prompt": {
           "title": "The idea and the AI prompt",
@@ -2900,9 +2905,28 @@
       "fix": "Fix",
       "copyPrompt": "Copy prompt"
     },
+    "platform": {
+      "label": "My laptop",
+      "hint": "The prompt asks the AI for commands that run in your terminal.",
+      "windows": {
+        "label": "Windows",
+        "os": "Windows",
+        "shell": "Windows PowerShell"
+      },
+      "mac": {
+        "label": "macOS",
+        "os": "macOS",
+        "shell": "the macOS Terminal (zsh)"
+      }
+    },
     "setup": {
       "title": "Getting a Windows laptop ready for smart contracts",
       "lede": "In this session every student builds an EC project: a small smart contract running on Stellar testnet, written by an AI from your own idea, published on GitHub with a README. This first lesson is the setup. Go in order and check each step before moving on.",
+      "mac": {
+        "title": "Using a MacBook?",
+        "body": "Do the Rise In registration below, then follow the Mac lesson instead of the Windows install steps on this page.",
+        "link": "Open the Mac setup"
+      },
       "risein": {
         "title": "Before you start: register on Rise In",
         "lede": "Rise In is where you submit your EC project. Register at the start of the session so that at the end you only have to submit a link.",
@@ -3142,6 +3166,225 @@
         }
       }
     },
+    "macos": {
+      "title": "Getting a Mac ready for smart contracts",
+      "lede": "The same tools as the Windows lesson, installed the Mac way: Homebrew instead of winget, the Terminal app instead of PowerShell, and Apple's Command Line Tools instead of Visual Studio Build Tools. Go in order and check each step before moving on.",
+      "intro": {
+        "title": "Register on Rise In first",
+        "body": "Rise In registration and the four parts of an EC project are the same on every laptop and are covered at the top of the previous lesson. Do that part first, then come back here instead of the Windows install steps.",
+        "link": "Go to the Rise In registration"
+      },
+      "before": {
+        "title": "Before you start",
+        "lede": "Install the night before class if you can: the Command Line Tools and Rust downloads take a while on a shared connection.",
+        "items": [
+          "A MacBook on macOS 13 Ventura or newer, Apple Silicon (M1 to M4) or Intel. Both work with the same commands.",
+          "Your Mac login password. Homebrew asks for it during install.",
+          "At least 10 GB free. Check in System Settings, General, Storage.",
+          "About 35 minutes, most of it waiting for downloads."
+        ]
+      },
+      "steps": {
+        "title": "Install step by step",
+        "lede": "Commands run in the Terminal app. Use the copy button in the corner of each box, paste into Terminal with Cmd+V, then press Return. Versions used here: Stellar CLI {cli}, Rust {rust} or newer.",
+        "github": {
+          "title": "Create a GitHub account",
+          "body": "GitHub stores your code, and it is where your lecturer looks at what you hand in. Skip this step if you already have an account.",
+          "items": [
+            "Open the sign-up page and use an email address you will keep.",
+            "Pick a readable username such as nguyenvana-vku. It will be part of your submission link.",
+            "Enter the code GitHub emails you.",
+            "When asked for a plan, choose Free."
+          ],
+          "links": {
+            "signup": "Create a GitHub account"
+          }
+        },
+        "terminal": {
+          "title": "Open Terminal and make a work folder",
+          "body": "Terminal is the Mac app where you type commands. Every project in this module lives in a folder called stellar in your home folder.",
+          "items": [
+            "Press Cmd+Space to open Spotlight, type Terminal and press Return.",
+            "Keep Terminal in the Dock: right click its icon, choose Options, Keep in Dock.",
+            "Paste the command below to create the stellar folder and move into it."
+          ],
+          "captions": {
+            "folder": "Create the work folder"
+          },
+          "note": "Your home folder is not synced to iCloud, unlike Desktop and Documents. Keeping the project in ~/stellar avoids files being locked or moved to the cloud during a build."
+        },
+        "xcode": {
+          "title": "Install the Command Line Tools",
+          "body": "Rust on a Mac needs Apple's linker and compilers to put programs together. This is the Mac version of the Windows Build Tools step, and much smaller.",
+          "items": [
+            "Run the command below.",
+            "A window appears. Click Install, then Agree, and wait 5 to 15 minutes.",
+            "If the terminal says the tools are already installed, move on to the next step."
+          ],
+          "note": "You do not need the full Xcode app from the App Store. The Command Line Tools are enough."
+        },
+        "homebrew": {
+          "title": "Install Homebrew",
+          "body": "Homebrew is the Mac app installer for the terminal, like winget on Windows. The next steps use it to install GitHub Desktop, the Stellar CLI and VS Code with one command each.",
+          "items": [
+            "Run the install command. When it asks for Password, type your Mac login password and press Return.",
+            "Press Return again when it asks to continue, then wait for Installation successful.",
+            "On an Apple Silicon Mac, run the second command so Terminal can find brew. On an Intel Mac you can skip it.",
+            "Close Terminal with Cmd+Q and open it again."
+          ],
+          "captions": {
+            "install": "1. Install Homebrew",
+            "path": "2. Apple Silicon only: let Terminal find brew"
+          },
+          "links": {
+            "site": "Homebrew website"
+          },
+          "note": "Nothing appears while you type the password, not even dots. That is normal: type it and press Return.",
+          "expect": "brew --version prints Homebrew 4.x or newer."
+        },
+        "desktop": {
+          "title": "Install GitHub Desktop",
+          "body": "GitHub Desktop puts your code on GitHub with a few clicks, no git commands needed.",
+          "items": [
+            "Run the command below, or download the app and drag it into Applications.",
+            "Open GitHub Desktop from Launchpad and choose Sign in to GitHub.com. When the browser opens, click Authorize desktop.",
+            "On the Configure Git screen keep the default name and email and click Finish."
+          ],
+          "captions": {
+            "brew": "Install with Homebrew"
+          },
+          "links": {
+            "download": "Download GitHub Desktop"
+          }
+        },
+        "rust": {
+          "title": "Install Rust",
+          "body": "Rust is the language Stellar smart contracts are written in. The installer adds three tools: rustup, cargo and rustc.",
+          "items": [
+            "Run the Rust install command. It picks the default choices by itself.",
+            "Close Terminal with Cmd+Q and open it again. The old window does not know about cargo yet.",
+            "Run the second command to add the wasm32v1-none target, the format Stellar contracts are built into."
+          ],
+          "captions": {
+            "install": "1. Install Rust",
+            "target": "2. Reopen Terminal, then add the smart contract target"
+          },
+          "links": {
+            "manual": "Official Rust installer page"
+          },
+          "note": "Install Rust with this command, not with brew install rust. The Homebrew version has no rustup, so it cannot add the smart contract target."
+        },
+        "stellar": {
+          "title": "Install the Stellar CLI",
+          "body": "The Stellar CLI is the command-line tool that creates, builds, deploys and calls smart contracts.",
+          "items": [
+            "Run the command below and wait for it to finish.",
+            "Close Terminal and open it again."
+          ],
+          "links": {
+            "release": "Stellar CLI release notes"
+          }
+        },
+        "vscode": {
+          "title": "Install VS Code",
+          "body": "VS Code is where you open the project, paste the AI's code and read errors. The rust-analyzer extension colours the code and underlines mistakes.",
+          "items": [
+            "Run the command below. It also sets up the code command used in the next lesson.",
+            "Open VS Code from Launchpad, go to Extensions (Cmd+Shift+X), search for rust-analyzer and click Install."
+          ],
+          "links": {
+            "vscode": "Download VS Code",
+            "rustAnalyzer": "rust-analyzer extension"
+          }
+        },
+        "check": {
+          "title": "Check everything",
+          "body": "Open a fresh Terminal window and run these three commands. Each one must print a version number.",
+          "expect": "You should see rustc 1.9x.x, cargo 1.9x.x and stellar 30.x.x. Three lines means setup is done."
+        }
+      },
+      "differences": {
+        "title": "In the next lessons, on a Mac",
+        "lede": "The next two lessons show both versions of every command that differs. The rest of the lessons work the same once you keep these habits in mind.",
+        "habits": [
+          "Wherever a lesson says C:\\stellar, your folder is ~/stellar, for example ~/stellar/vku-ec-project.",
+          "Ctrl shortcuts become Cmd: Cmd+C, Cmd+V, Cmd+S, Cmd+A.",
+          "Take the Stellar Expert screenshot with Cmd+Shift+4, then drag over the page. The image lands on your Desktop.",
+          "In GitHub Desktop, Add local repository opens Finder: go to your home folder, then stellar, then your project."
+        ],
+        "windows": "Windows (PowerShell)",
+        "mac": "macOS (Terminal)",
+        "commands": {
+          "init": "Create the project",
+          "sdk": "Show Cargo.toml",
+          "deleteTest": "Delete test.rs",
+          "deploy": "Deploy the contract"
+        }
+      },
+      "trouble": {
+        "title": "Something went wrong?",
+        "lede": "Open the line that matches what you see. If it is not here, copy the whole error into ChatGPT or Claude and say you are on a Mac, Apple Silicon or Intel, and which command you ran.",
+        "items": {
+          "notFound": {
+            "symptom": "cargo, rustc or stellar: command not found",
+            "error": "zsh: command not found: cargo",
+            "cause": "Terminal was opened before the install, so it does not know where the new program is, or the install did not finish.",
+            "fix": "Quit Terminal with Cmd+Q, open it again and rerun the command. For cargo and rustc you can also run the command below in the current window. Still failing: redo that install step."
+          },
+          "brewNotFound": {
+            "symptom": "brew: command not found right after installing Homebrew",
+            "error": "zsh: command not found: brew",
+            "cause": "On Apple Silicon, Homebrew installs into /opt/homebrew, which Terminal does not look in until you tell it to.",
+            "fix": "Run the command below, then close and reopen Terminal."
+          },
+          "xcrun": {
+            "symptom": "The build or git says the developer path is invalid",
+            "error": "xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun",
+            "cause": "The Command Line Tools are missing, often after a macOS update removes them.",
+            "fix": "Install them again with the command below, then rerun the command that failed."
+          },
+          "password": {
+            "symptom": "Typing the password shows nothing",
+            "cause": "Terminal hides passwords completely, without dots or stars.",
+            "fix": "Type your Mac login password anyway and press Return. If it was wrong, Terminal says Sorry, try again."
+          },
+          "brewRust": {
+            "symptom": "rustup: command not found, or Rust was installed with Homebrew",
+            "error": "zsh: command not found: rustup",
+            "cause": "Rust came from brew install rust, which has no rustup and cannot add the smart contract target.",
+            "fix": "Remove it with the command below, then redo the Install Rust step."
+          },
+          "target": {
+            "symptom": "The build cannot find the core crate",
+            "error": "error[E0463]: can't find crate for `core`",
+            "cause": "The wasm32v1-none target is missing, often after a Rust update.",
+            "fix": "Run the add-target command again, then rebuild."
+          },
+          "oldRust": {
+            "symptom": "Rust says it does not support wasm32v1-none",
+            "error": "error: toolchain 'stable-aarch64-apple-darwin' does not support target 'wasm32v1-none'",
+            "cause": "An older Rust, below 1.84, was already on the Mac.",
+            "fix": "Update Rust to the latest version, then add the target again."
+          },
+          "code": {
+            "symptom": "code . says command not found",
+            "error": "zsh: command not found: code",
+            "cause": "VS Code was installed by dragging it into Applications, which does not add the code command.",
+            "fix": "Open VS Code, press Cmd+Shift+P, type shell command and choose Shell Command: Install 'code' command in PATH. Then reopen Terminal."
+          },
+          "unverified": {
+            "symptom": "macOS says an app cannot be opened because Apple cannot check it",
+            "cause": "macOS blocks apps downloaded from a browser until you confirm them once.",
+            "fix": "Open System Settings, Privacy and Security, scroll down and click Open Anyway next to the app's name. Installing with Homebrew avoids this."
+          },
+          "icloud": {
+            "symptom": "Strange build errors with the project in Desktop, Documents or iCloud Drive",
+            "cause": "iCloud can sync or offload files while the build is using them.",
+            "fix": "Keep the project under ~/stellar as in step 2. Move the folder there with Finder and open it again in VS Code."
+          }
+        }
+      }
+    },
     "prompt": {
       "title": "The idea and the AI prompt",
       "lede": "Create the project with the Stellar CLI, turn your idea into a clear description, then let an AI (ChatGPT, Claude, Gemini) write the smart contract in one file: lib.rs.",
@@ -3157,7 +3400,11 @@
           "init": {
             "title": "Initialise the project",
             "body": "init creates a Rust workspace and a sample contract called hello-world. You will replace the sample's code with the AI's.",
-            "expect": "The terminal prints Writing lines with file names and no error."
+            "expect": "The terminal prints Writing lines with file names and no error.",
+            "captions": {
+              "windows": "Windows (PowerShell)",
+              "mac": "macOS (Terminal)"
+            }
           },
           "open": {
             "title": "Open the project in VS Code",
@@ -3166,7 +3413,11 @@
           "sdk": {
             "title": "Find the soroban-sdk version",
             "body": "Open Cargo.toml at the project root (or run the command below) and find the soroban-sdk line. The number in quotes is what you type into the form.",
-            "expect": "For example soroban-sdk = \"29\" means you type 29."
+            "expect": "For example soroban-sdk = \"29\" means you type 29.",
+            "captions": {
+              "windows": "Windows (PowerShell)",
+              "mac": "macOS (Terminal)"
+            }
           }
         }
       },
@@ -3278,7 +3529,7 @@
           }
         },
         "template": {
-          "intro": "You are an experienced Stellar (Soroban) smart contract developer. Please write the smart contract for the EC project below. I am a fintech student, new to programming, on Windows. The project was created with stellar contract init and the contract lives in {{dir}}.",
+          "intro": "You are an experienced Stellar (Soroban) smart contract developer. Please write the smart contract for the EC project below. I am a fintech student, new to programming, on {{os}}. The project was created with stellar contract init and the contract lives in {{dir}}.",
           "projectHeading": "Project",
           "fields": {
             "projectName": "Project name",
@@ -3308,7 +3559,7 @@
           "answer": [
             "The whole lib.rs in ONE code block, from the first line to the last, nothing left out, no \"...\".",
             "A table of functions: name, parameters, who may call it, what it does, which errors it can return.",
-            "For each function, one Windows PowerShell call on ONE line in this form: stellar contract invoke --id {{alias}} --source-account {{identity}} --network testnet -- <function_name> --<parameter> <value>. Address parameters take {{identity}}. Strings go in double quotes.",
+            "For each function, one call for {{shell}} on ONE line in this form: stellar contract invoke --id {{alias}} --source-account {{identity}} --network testnet -- <function_name> --<parameter> <value>. Address parameters take {{identity}}. Strings go in double quotes.",
             "The order to call the functions in for a demo, start to finish."
           ]
         }
@@ -3452,7 +3703,11 @@
           },
           "deleteTest": {
             "title": "Delete test.rs",
-            "body": "Your contract no longer uses the hello-world test.rs. Delete it to keep the project tidy: right click the file in VS Code and choose Delete, or run the command below from the project root."
+            "body": "Your contract no longer uses the hello-world test.rs. Delete it to keep the project tidy: right click the file in VS Code and choose Delete, or run the command below from the project root.",
+            "captions": {
+              "windows": "Windows (PowerShell)",
+              "mac": "macOS (Terminal)"
+            }
           },
           "review": {
             "title": "Quick self-check",
@@ -3500,7 +3755,11 @@
           "deploy": {
             "title": "Deploy the contract",
             "body": "This uploads the .wasm to testnet and gives the new contract the short name my-contract.",
-            "expect": "It worked when you see Deployed! and a 56-character Contract ID starting with C. Copy it somewhere: it goes in the README."
+            "expect": "It worked when you see Deployed! and a 56-character Contract ID starting with C. Copy it somewhere: it goes in the README.",
+            "captions": {
+              "windows": "Windows (PowerShell)",
+              "mac": "macOS (Terminal)"
+            }
           },
           "help": {
             "title": "List the functions you can call",
@@ -3747,14 +4006,14 @@
         }
       },
       "template": {
-        "intro": "I am building a Stellar (Soroban) smart contract with soroban-sdk {{sdk}} on Windows. All the code is in one file, {{dir}}/src/lib.rs.",
+        "intro": "I am building a Stellar (Soroban) smart contract with soroban-sdk {{sdk}} on {{os}}. All the code is in one file, {{dir}}/src/lib.rs.",
         "commandLine": "The command I ran:",
         "errorLine": "The error:",
         "codeLine": "My current lib.rs:",
         "ask": [
           "Explain briefly and simply what this error means and why it happened.",
           "If the code is at fault: give me the WHOLE fixed lib.rs in a single code block, nothing left out.",
-          "If it is an install or typing problem: list the steps to take on Windows, with each PowerShell command on one line.",
+          "If it is an install or typing problem: list the steps to take on {{os}}, with each command for {{shell}} on one line.",
           "Keep the rules: a single lib.rs, #![no_std], no Cargo.toml edits, no new crates, no tests."
         ]
       }
@@ -3793,14 +4052,14 @@
         }
       },
       "template": {
-        "intro": "My Stellar (Soroban) contract is deployed on testnet. I use the Stellar CLI in Windows PowerShell, my wallet is called {{identity}}, the contract alias is {{alias}}, and the code is in {{dir}}/src/lib.rs. I cannot code, so write everything so I only have to copy and run it.",
+        "intro": "My Stellar (Soroban) contract is deployed on testnet. I use the Stellar CLI in {{shell}}, my wallet is called {{identity}}, the contract alias is {{alias}}, and the code is in {{dir}}/src/lib.rs. I cannot code, so write everything so I only have to copy and run it.",
         "helpLine": "The function list the Stellar CLI printed when I ran --help:",
         "scenarioLine": "What I want to demo:",
         "codeLine": "My lib.rs:",
         "ask": [
           "Using lib.rs (the one you wrote, or the one I pasted above) and the function list, write a call for EVERY function, in an order that demos the contract from start to finish: functions that create data first, functions that read data after.",
           "Put each command in its own code block, on ONE line, following this pattern exactly: stellar contract invoke --id {{alias}} --source-account {{identity}} --network testnet -- <function_name> --<parameter_name> <value>. Keep parameter names exactly as in the code.",
-          "Values: Address is {{identity}}; text goes in double quotes; numbers are plain, no thousands separators; bool is true or false. If a parameter is a struct, Vec or Map, write it as JSON and say exactly how to type it in PowerShell.",
+          "Values: Address is {{identity}}; text goes in double quotes; numbers are plain, no thousands separators; bool is true or false. If a parameter is a struct, Vec or Map, write it as JSON and say exactly how to type it in {{shell}}.",
           "If a function needs a signature from someone other than {{identity}}: give the command to create another wallet (stellar keys generate <name> --network testnet --fund) and use --source-account <name> for that call.",
           "Under each command: one sentence on what it does and what I should see if it works (the returned value, or a stellar.expert link for functions that write data).",
           "Add one call that is wrong on purpose (for example spending more than the balance, or a caller without permission) so I can see the contract refuse it, and explain the error it prints.",

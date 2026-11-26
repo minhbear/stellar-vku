@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Bug } from "lucide-react";
 
 import { FormField } from "@/components/contract/form-field";
+import { PlatformSwitch, usePlatformVars } from "@/components/contract/platform-switch";
 import { PromptOutput } from "@/components/contract/prompt-output";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,6 +24,7 @@ export function FixErrorPrompt() {
 
   const schema = useMemo(() => createFixErrorSchema((key) => tErrors(key)), [tErrors]);
   const template = t.raw("template") as FixTemplate;
+  const platform = usePlatformVars();
   const [prompt, setPrompt] = useState<string | null>(null);
 
   const {
@@ -38,10 +40,11 @@ export function FixErrorPrompt() {
   return (
     <div className="space-y-4">
       <form
-        onSubmit={handleSubmit((values) => setPrompt(buildFixPrompt(template, values, SOROBAN_SDK_MAJOR)))}
+        onSubmit={handleSubmit((values) => setPrompt(buildFixPrompt(template, values, SOROBAN_SDK_MAJOR, platform)))}
         noValidate
         className="space-y-4 rounded-xl border border-border bg-card p-5"
       >
+        <PlatformSwitch />
         <FormField
           id="fix-command"
           label={t("fields.command.label")}

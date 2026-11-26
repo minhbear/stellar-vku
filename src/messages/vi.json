@@ -132,12 +132,17 @@
     "contract": {
       "title": "Smart contract đầu tiên (EC project)",
       "short": "EC project",
-      "description": "Mỗi bạn tự làm một EC project: cài công cụ trên Windows, mô tả ý tưởng để AI viết smart contract, deploy lên Stellar testnet và nộp bài qua GitHub.",
+      "description": "Mỗi bạn tự làm một EC project: cài công cụ trên Windows hoặc macOS, mô tả ý tưởng để AI viết smart contract, deploy lên Stellar testnet và nộp bài qua GitHub.",
       "lessons": {
         "setup": {
           "title": "Cài đặt trên Windows",
           "short": "Cài đặt",
           "description": "Tạo tài khoản GitHub, cài GitHub Desktop, Build Tools, Rust và Stellar CLI, kèm cách xử lý lỗi thường gặp."
+        },
+        "macos": {
+          "title": "Cài đặt trên MacBook",
+          "short": "Cài trên Mac",
+          "description": "Phần cài đặt dành cho bạn dùng MacBook: Command Line Tools, Homebrew, Rust, Stellar CLI và VS Code, các lệnh phiên bản Mac cho bài sau, kèm cách xử lý lỗi thường gặp."
         },
         "prompt": {
           "title": "Ý tưởng và prompt cho AI",
@@ -2900,9 +2905,28 @@
       "fix": "Cách sửa",
       "copyPrompt": "Sao chép prompt"
     },
+    "platform": {
+      "label": "Máy của bạn",
+      "hint": "Prompt sẽ yêu cầu AI viết lệnh chạy đúng trên terminal của bạn.",
+      "windows": {
+        "label": "Windows",
+        "os": "Windows",
+        "shell": "Windows PowerShell"
+      },
+      "mac": {
+        "label": "macOS",
+        "os": "macOS",
+        "shell": "Terminal (zsh) của macOS"
+      }
+    },
     "setup": {
       "title": "Chuẩn bị máy Windows để viết smart contract",
       "lede": "Buổi này mỗi bạn tự làm một EC project: một smart contract nhỏ chạy trên Stellar testnet, code do AI viết theo ý tưởng của bạn, đăng lên GitHub kèm README. Bài đầu tiên là cài đặt. Làm đúng thứ tự, mỗi bước kiểm tra xong mới sang bước sau.",
+      "mac": {
+        "title": "Bạn dùng MacBook?",
+        "body": "Làm phần đăng ký Rise In bên dưới, rồi làm theo bài cài trên Mac thay cho các bước cài Windows ở trang này.",
+        "link": "Mở bài cài trên Mac"
+      },
       "risein": {
         "title": "Trước khi bắt đầu: đăng ký trên Rise In",
         "lede": "Rise In là nơi bạn nộp bài EC project. Đăng ký ngay từ đầu buổi để cuối buổi chỉ việc nộp link.",
@@ -3142,6 +3166,225 @@
         }
       }
     },
+    "macos": {
+      "title": "Chuẩn bị MacBook để làm smart contract",
+      "lede": "Cùng bộ công cụ như bài cài trên Windows, nhưng cài theo kiểu Mac: Homebrew thay cho winget, ứng dụng Terminal thay cho PowerShell, Command Line Tools của Apple thay cho Visual Studio Build Tools. Làm lần lượt từng bước và kiểm tra xong mới qua bước sau.",
+      "intro": {
+        "title": "Đăng ký Rise In trước",
+        "body": "Phần đăng ký Rise In và bốn phần của một EC project giống nhau trên mọi máy, đã có ở đầu bài trước. Làm phần đó trước, rồi quay lại đây thay cho các bước cài trên Windows.",
+        "link": "Tới phần đăng ký Rise In"
+      },
+      "before": {
+        "title": "Trước khi bắt đầu",
+        "lede": "Nên cài từ tối hôm trước buổi học: Command Line Tools và Rust tải khá lâu khi cả lớp dùng chung mạng.",
+        "items": [
+          "MacBook chạy macOS 13 Ventura trở lên, chip Apple Silicon (M1 đến M4) hoặc Intel. Cả hai dùng chung một bộ lệnh.",
+          "Mật khẩu đăng nhập máy Mac. Homebrew sẽ hỏi khi cài.",
+          "Còn trống ít nhất 10 GB. Xem trong System Settings, General, Storage.",
+          "Khoảng 35 phút, phần lớn là chờ tải."
+        ]
+      },
+      "steps": {
+        "title": "Cài đặt từng bước",
+        "lede": "Các lệnh chạy trong ứng dụng Terminal. Bấm nút sao chép ở góc phải khung lệnh, dán vào Terminal bằng Cmd+V, rồi bấm Return. Phiên bản dùng trong bài: Stellar CLI {cli}, Rust từ {rust} trở lên.",
+        "github": {
+          "title": "Tạo tài khoản GitHub",
+          "body": "GitHub là nơi lưu code và là nơi giảng viên xem bài nộp của bạn. Đã có tài khoản thì bỏ qua bước này.",
+          "items": [
+            "Mở trang đăng ký, dùng email bạn sẽ dùng lâu dài.",
+            "Chọn username dễ đọc, ví dụ nguyenvana-vku. Tên này sẽ nằm trong link nộp bài.",
+            "Nhập mã GitHub gửi về email.",
+            "Khi được hỏi chọn gói, chọn Free."
+          ],
+          "links": {
+            "signup": "Tạo tài khoản GitHub"
+          }
+        },
+        "terminal": {
+          "title": "Mở Terminal và tạo thư mục làm việc",
+          "body": "Terminal là ứng dụng trên Mac để gõ lệnh. Mọi project trong module này nằm trong thư mục stellar ở thư mục cá nhân (home) của bạn.",
+          "items": [
+            "Bấm Cmd+Space để mở Spotlight, gõ Terminal rồi bấm Return.",
+            "Giữ Terminal trên Dock: chuột phải vào biểu tượng, chọn Options, Keep in Dock.",
+            "Dán lệnh bên dưới để tạo thư mục stellar và đi vào thư mục đó."
+          ],
+          "captions": {
+            "folder": "Tạo thư mục làm việc"
+          },
+          "note": "Thư mục home không đồng bộ lên iCloud như Desktop và Documents. Để project ở ~/stellar giúp file không bị khoá hay bị đẩy lên cloud giữa lúc build."
+        },
+        "xcode": {
+          "title": "Cài Command Line Tools",
+          "body": "Rust trên Mac cần trình liên kết và trình biên dịch của Apple để ghép chương trình. Đây là bước tương đương Build Tools trên Windows, nhưng nhẹ hơn nhiều.",
+          "items": [
+            "Chạy lệnh bên dưới.",
+            "Một cửa sổ hiện ra. Bấm Install, rồi Agree, chờ 5 đến 15 phút.",
+            "Nếu terminal báo đã cài rồi (already installed) thì qua bước tiếp theo."
+          ],
+          "note": "Không cần cài cả ứng dụng Xcode trên App Store. Chỉ Command Line Tools là đủ."
+        },
+        "homebrew": {
+          "title": "Cài Homebrew",
+          "body": "Homebrew là trình cài ứng dụng bằng lệnh trên Mac, giống winget trên Windows. Các bước sau dùng nó để cài GitHub Desktop, Stellar CLI và VS Code, mỗi thứ một lệnh.",
+          "items": [
+            "Chạy lệnh cài. Khi hiện chữ Password, gõ mật khẩu đăng nhập máy Mac rồi bấm Return.",
+            "Bấm Return thêm lần nữa khi được hỏi có tiếp tục không, rồi chờ đến khi thấy Installation successful.",
+            "Với Mac chip Apple Silicon, chạy lệnh thứ hai để Terminal tìm thấy brew. Mac chip Intel có thể bỏ qua.",
+            "Thoát Terminal bằng Cmd+Q rồi mở lại."
+          ],
+          "captions": {
+            "install": "1. Cài Homebrew",
+            "path": "2. Chỉ Apple Silicon: để Terminal tìm thấy brew"
+          },
+          "links": {
+            "site": "Trang chủ Homebrew"
+          },
+          "note": "Khi gõ mật khẩu sẽ không hiện gì cả, kể cả dấu chấm. Đó là bình thường: cứ gõ rồi bấm Return.",
+          "expect": "Lệnh brew --version in ra Homebrew 4.x trở lên."
+        },
+        "desktop": {
+          "title": "Cài GitHub Desktop",
+          "body": "GitHub Desktop giúp đưa code lên GitHub bằng vài cú click, không cần gõ lệnh git.",
+          "items": [
+            "Chạy lệnh bên dưới, hoặc tải ứng dụng về rồi kéo vào thư mục Applications.",
+            "Mở GitHub Desktop từ Launchpad, chọn Sign in to GitHub.com. Trình duyệt mở ra thì bấm Authorize desktop.",
+            "Ở màn hình Configure Git, giữ nguyên tên và email mặc định rồi bấm Finish."
+          ],
+          "captions": {
+            "brew": "Cài bằng Homebrew"
+          },
+          "links": {
+            "download": "Tải GitHub Desktop"
+          }
+        },
+        "rust": {
+          "title": "Cài Rust",
+          "body": "Rust là ngôn ngữ dùng để viết smart contract trên Stellar. Lệnh cài đưa vào máy ba công cụ: rustup, cargo và rustc.",
+          "items": [
+            "Chạy lệnh cài Rust. Lệnh tự chọn các lựa chọn mặc định.",
+            "Thoát Terminal bằng Cmd+Q rồi mở lại. Cửa sổ cũ chưa biết lệnh cargo vừa cài.",
+            "Chạy lệnh thứ hai để thêm target wasm32v1-none, định dạng mà smart contract Stellar được build ra."
+          ],
+          "captions": {
+            "install": "1. Cài Rust",
+            "target": "2. Mở lại Terminal, rồi thêm target cho smart contract"
+          },
+          "links": {
+            "manual": "Trang cài Rust chính thức"
+          },
+          "note": "Cài Rust bằng lệnh này, không dùng brew install rust. Bản Rust của Homebrew không có rustup nên không thêm được target cho smart contract."
+        },
+        "stellar": {
+          "title": "Cài Stellar CLI",
+          "body": "Stellar CLI là công cụ dòng lệnh để tạo, build, deploy và gọi smart contract.",
+          "items": [
+            "Chạy lệnh bên dưới và chờ chạy xong.",
+            "Đóng Terminal rồi mở lại."
+          ],
+          "links": {
+            "release": "Ghi chú phiên bản Stellar CLI"
+          }
+        },
+        "vscode": {
+          "title": "Cài VS Code",
+          "body": "VS Code là nơi bạn mở project, dán code AI viết và đọc lỗi. Extension rust-analyzer tô màu code và gạch chân chỗ sai.",
+          "items": [
+            "Chạy lệnh bên dưới. Lệnh này cũng cài sẵn lệnh code dùng ở bài sau.",
+            "Mở VS Code từ Launchpad, vào Extensions (Cmd+Shift+X), tìm rust-analyzer và bấm Install."
+          ],
+          "links": {
+            "vscode": "Tải VS Code",
+            "rustAnalyzer": "Extension rust-analyzer"
+          }
+        },
+        "check": {
+          "title": "Kiểm tra lại",
+          "body": "Mở một cửa sổ Terminal mới và chạy ba lệnh này. Lệnh nào cũng phải in ra số phiên bản.",
+          "expect": "Bạn sẽ thấy rustc 1.9x.x, cargo 1.9x.x và stellar 30.x.x. Đủ ba dòng là cài xong."
+        }
+      },
+      "differences": {
+        "title": "Ở các bài sau, nếu dùng Mac",
+        "lede": "Hai bài tiếp theo ghi cả hai phiên bản cho mỗi lệnh khác nhau. Phần còn lại làm y như hướng dẫn, chỉ cần nhớ mấy thói quen sau.",
+        "habits": [
+          "Chỗ nào bài viết ghi C:\\stellar thì thư mục của bạn là ~/stellar, ví dụ ~/stellar/vku-ec-project.",
+          "Phím tắt Ctrl đổi thành Cmd: Cmd+C, Cmd+V, Cmd+S, Cmd+A.",
+          "Chụp màn hình Stellar Expert bằng Cmd+Shift+4 rồi kéo chuột quanh trang. Ảnh được lưu ra Desktop.",
+          "Trong GitHub Desktop, Add local repository mở Finder: vào thư mục home, rồi stellar, rồi thư mục project."
+        ],
+        "windows": "Windows (PowerShell)",
+        "mac": "macOS (Terminal)",
+        "commands": {
+          "init": "Tạo project",
+          "sdk": "Xem Cargo.toml",
+          "deleteTest": "Xoá test.rs",
+          "deploy": "Deploy contract"
+        }
+      },
+      "trouble": {
+        "title": "Gặp lỗi?",
+        "lede": "Mở dòng giống với thứ bạn đang thấy. Nếu không có ở đây, sao chép toàn bộ lỗi vào ChatGPT hoặc Claude, nói rõ bạn dùng Mac chip Apple Silicon hay Intel và vừa chạy lệnh gì.",
+        "items": {
+          "notFound": {
+            "symptom": "Gõ lệnh thì báo không tìm thấy cargo, rustc hoặc stellar",
+            "error": "zsh: command not found: cargo",
+            "cause": "Terminal được mở trước khi cài nên chưa biết chương trình mới nằm ở đâu, hoặc bước cài chưa xong.",
+            "fix": "Thoát Terminal bằng Cmd+Q, mở lại rồi chạy lại lệnh. Với cargo và rustc, bạn cũng có thể chạy lệnh bên dưới ngay trong cửa sổ hiện tại. Vẫn lỗi thì làm lại bước cài đó."
+          },
+          "brewNotFound": {
+            "symptom": "Vừa cài Homebrew xong mà gõ brew vẫn báo không tìm thấy",
+            "error": "zsh: command not found: brew",
+            "cause": "Trên Apple Silicon, Homebrew cài vào /opt/homebrew, Terminal chưa tìm ở đó cho đến khi bạn chỉ cho nó.",
+            "fix": "Chạy lệnh bên dưới, rồi đóng và mở lại Terminal."
+          },
+          "xcrun": {
+            "symptom": "Build hoặc git báo developer path không hợp lệ",
+            "error": "xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun",
+            "cause": "Máy thiếu Command Line Tools, thường do bản cập nhật macOS gỡ mất.",
+            "fix": "Cài lại bằng lệnh bên dưới, rồi chạy lại lệnh vừa lỗi."
+          },
+          "password": {
+            "symptom": "Gõ mật khẩu mà không thấy hiện gì",
+            "cause": "Terminal ẩn hoàn toàn mật khẩu, không hiện dấu chấm hay dấu sao.",
+            "fix": "Cứ gõ mật khẩu đăng nhập máy Mac rồi bấm Return. Nếu sai, Terminal sẽ báo Sorry, try again."
+          },
+          "brewRust": {
+            "symptom": "Báo không tìm thấy rustup, hoặc đã cài Rust bằng Homebrew",
+            "error": "zsh: command not found: rustup",
+            "cause": "Rust được cài bằng brew install rust, bản này không có rustup nên không thêm được target cho smart contract.",
+            "fix": "Gỡ bản đó bằng lệnh bên dưới, rồi làm lại bước Cài Rust."
+          },
+          "target": {
+            "symptom": "Build báo không tìm thấy crate core",
+            "error": "error[E0463]: can't find crate for `core`",
+            "cause": "Thiếu target wasm32v1-none, hay gặp sau khi cập nhật Rust.",
+            "fix": "Chạy lại lệnh thêm target, rồi build lại."
+          },
+          "oldRust": {
+            "symptom": "Rust báo không hỗ trợ wasm32v1-none",
+            "error": "error: toolchain 'stable-aarch64-apple-darwin' does not support target 'wasm32v1-none'",
+            "cause": "Máy đã có sẵn Rust bản cũ, dưới 1.84.",
+            "fix": "Cập nhật Rust lên bản mới nhất, rồi thêm lại target."
+          },
+          "code": {
+            "symptom": "Gõ code . thì báo không tìm thấy lệnh",
+            "error": "zsh: command not found: code",
+            "cause": "VS Code được cài bằng cách kéo vào Applications, cách này không thêm lệnh code.",
+            "fix": "Mở VS Code, bấm Cmd+Shift+P, gõ shell command rồi chọn Shell Command: Install 'code' command in PATH. Sau đó mở lại Terminal."
+          },
+          "unverified": {
+            "symptom": "macOS báo không mở được ứng dụng vì Apple không kiểm tra được",
+            "cause": "macOS chặn ứng dụng tải bằng trình duyệt cho đến khi bạn xác nhận một lần.",
+            "fix": "Mở System Settings, Privacy and Security, kéo xuống và bấm Open Anyway cạnh tên ứng dụng. Cài bằng Homebrew thì không gặp lỗi này."
+          },
+          "icloud": {
+            "symptom": "Lỗi build khó hiểu khi project nằm trong Desktop, Documents hoặc iCloud Drive",
+            "cause": "iCloud có thể đồng bộ hoặc đẩy file lên cloud đúng lúc đang build.",
+            "fix": "Để project trong ~/stellar như bước 2. Dùng Finder chuyển thư mục về đó rồi mở lại trong VS Code."
+          }
+        }
+      }
+    },
     "prompt": {
       "title": "Ý tưởng và prompt cho AI",
       "lede": "Tạo project bằng Stellar CLI, viết ý tưởng thành một bản mô tả rõ ràng, rồi để AI (ChatGPT, Claude, Gemini) viết smart contract trong đúng một file lib.rs.",
@@ -3157,7 +3400,11 @@
           "init": {
             "title": "Khởi tạo project",
             "body": "Lệnh init tạo sẵn một workspace Rust và một contract mẫu tên hello-world. Bạn sẽ thay code của contract mẫu bằng code AI viết.",
-            "expect": "Terminal in ra các dòng Writing kèm tên file, và không có chữ error."
+            "expect": "Terminal in ra các dòng Writing kèm tên file, và không có chữ error.",
+            "captions": {
+              "windows": "Windows (PowerShell)",
+              "mac": "macOS (Terminal)"
+            }
           },
           "open": {
             "title": "Mở project trong VS Code",
@@ -3166,7 +3413,11 @@
           "sdk": {
             "title": "Xem phiên bản soroban-sdk",
             "body": "Mở file Cargo.toml ở thư mục gốc (hoặc chạy lệnh dưới) và tìm dòng soroban-sdk. Con số trong ngoặc kép là phiên bản bạn sẽ ghi vào form.",
-            "expect": "Ví dụ thấy soroban-sdk = \"29\" thì ghi 29 vào form."
+            "expect": "Ví dụ thấy soroban-sdk = \"29\" thì ghi 29 vào form.",
+            "captions": {
+              "windows": "Windows (PowerShell)",
+              "mac": "macOS (Terminal)"
+            }
           }
         }
       },
@@ -3278,7 +3529,7 @@
           }
         },
         "template": {
-          "intro": "Bạn là lập trình viên smart contract Stellar (Soroban) giàu kinh nghiệm. Hãy viết giúp tôi smart contract cho EC project dưới đây. Tôi là sinh viên fintech, mới học lập trình và dùng Windows. Project được tạo bằng lệnh stellar contract init, contract nằm ở {{dir}}.",
+          "intro": "Bạn là lập trình viên smart contract Stellar (Soroban) giàu kinh nghiệm. Hãy viết giúp tôi smart contract cho EC project dưới đây. Tôi là sinh viên fintech, mới học lập trình và dùng {{os}}. Project được tạo bằng lệnh stellar contract init, contract nằm ở {{dir}}.",
           "projectHeading": "Dự án",
           "fields": {
             "projectName": "Tên dự án",
@@ -3308,7 +3559,7 @@
           "answer": [
             "Toàn bộ nội dung file lib.rs trong MỘT khối code duy nhất, đủ từ dòng đầu đến dòng cuối, không lược bớt, không viết \"...\".",
             "Bảng các hàm: tên hàm, tham số, ai được gọi, hàm làm gì, lỗi có thể trả về.",
-            "Với mỗi hàm, một lệnh gọi thử trên Windows PowerShell viết trên MỘT dòng theo mẫu: stellar contract invoke --id {{alias}} --source-account {{identity}} --network testnet -- <tên_hàm> --<tên_tham_số> <giá_trị>. Tham số kiểu Address thì ghi {{identity}}. Chuỗi đặt trong dấu ngoặc kép.",
+            "Với mỗi hàm, một lệnh gọi thử trên {{shell}} viết trên MỘT dòng theo mẫu: stellar contract invoke --id {{alias}} --source-account {{identity}} --network testnet -- <tên_hàm> --<tên_tham_số> <giá_trị>. Tham số kiểu Address thì ghi {{identity}}. Chuỗi đặt trong dấu ngoặc kép.",
             "Thứ tự gọi các hàm để demo từ đầu đến cuối."
           ]
         }
@@ -3452,7 +3703,11 @@
           },
           "deleteTest": {
             "title": "Xoá file test.rs",
-            "body": "Contract của bạn không dùng file test.rs của mẫu hello-world nữa. Xoá đi cho project gọn: chuột phải vào file trong VS Code rồi chọn Delete, hoặc chạy lệnh dưới ở thư mục gốc project."
+            "body": "Contract của bạn không dùng file test.rs của mẫu hello-world nữa. Xoá đi cho project gọn: chuột phải vào file trong VS Code rồi chọn Delete, hoặc chạy lệnh dưới ở thư mục gốc project.",
+            "captions": {
+              "windows": "Windows (PowerShell)",
+              "mac": "macOS (Terminal)"
+            }
           },
           "review": {
             "title": "Tự kiểm tra nhanh",
@@ -3500,7 +3755,11 @@
           "deploy": {
             "title": "Deploy contract",
             "body": "Lệnh này đưa file .wasm lên testnet và đặt tên gọi tắt my-contract cho contract vừa tạo.",
-            "expect": "Thành công khi thấy Deployed! và một Contract ID bắt đầu bằng chữ C, dài 56 ký tự. Sao chép và lưu ID này để ghi vào README."
+            "expect": "Thành công khi thấy Deployed! và một Contract ID bắt đầu bằng chữ C, dài 56 ký tự. Sao chép và lưu ID này để ghi vào README.",
+            "captions": {
+              "windows": "Windows (PowerShell)",
+              "mac": "macOS (Terminal)"
+            }
           },
           "help": {
             "title": "Xem các hàm có thể gọi",
@@ -3747,14 +4006,14 @@
         }
       },
       "template": {
-        "intro": "Tôi đang làm một smart contract Stellar (Soroban) với soroban-sdk {{sdk}} trên Windows. Toàn bộ code nằm trong một file {{dir}}/src/lib.rs.",
+        "intro": "Tôi đang làm một smart contract Stellar (Soroban) với soroban-sdk {{sdk}} trên {{os}}. Toàn bộ code nằm trong một file {{dir}}/src/lib.rs.",
         "commandLine": "Lệnh tôi đã chạy:",
         "errorLine": "Lỗi nhận được:",
         "codeLine": "File lib.rs hiện tại:",
         "ask": [
           "Giải thích ngắn gọn bằng tiếng Việt dễ hiểu: lỗi này nghĩa là gì và vì sao xảy ra.",
           "Nếu lỗi do code: đưa lại TOÀN BỘ file lib.rs đã sửa trong một khối code duy nhất, không lược bớt.",
-          "Nếu lỗi do cài đặt hoặc do gõ lệnh: liệt kê từng bước tôi cần làm trên Windows, kèm lệnh PowerShell viết trên một dòng.",
+          "Nếu lỗi do cài đặt hoặc do gõ lệnh: liệt kê từng bước tôi cần làm trên {{os}}, kèm lệnh cho {{shell}} viết trên một dòng.",
           "Giữ nguyên các quy tắc: một file lib.rs duy nhất, #![no_std], không sửa Cargo.toml, không thêm crate, không viết test."
         ]
       }
@@ -3793,14 +4052,14 @@
         }
       },
       "template": {
-        "intro": "Contract Stellar (Soroban) của tôi đã deploy lên testnet. Tôi dùng Stellar CLI trên Windows PowerShell, ví tên {{identity}}, contract có tên gọi tắt {{alias}}, code nằm trong {{dir}}/src/lib.rs. Tôi không biết lập trình, hãy viết sao cho tôi chỉ cần sao chép và chạy.",
+        "intro": "Contract Stellar (Soroban) của tôi đã deploy lên testnet. Tôi dùng Stellar CLI trên {{shell}}, ví tên {{identity}}, contract có tên gọi tắt {{alias}}, code nằm trong {{dir}}/src/lib.rs. Tôi không biết lập trình, hãy viết sao cho tôi chỉ cần sao chép và chạy.",
         "helpLine": "Danh sách hàm Stellar CLI in ra khi tôi chạy lệnh --help:",
         "scenarioLine": "Tình huống tôi muốn demo:",
         "codeLine": "File lib.rs của tôi:",
         "ask": [
           "Dựa vào code lib.rs (bạn đã viết, hoặc tôi dán ở trên) và danh sách hàm, viết lệnh gọi cho TỪNG hàm, theo thứ tự hợp lý để demo từ đầu đến cuối: hàm tạo dữ liệu trước, hàm đọc dữ liệu sau.",
           "Mỗi lệnh nằm trong một khối code riêng, viết trên MỘT dòng, theo đúng mẫu: stellar contract invoke --id {{alias}} --source-account {{identity}} --network testnet -- <tên_hàm> --<tên_tham_số> <giá_trị>. Tên tham số giữ nguyên như trong code.",
-          "Giá trị: Address ghi {{identity}}; chuỗi đặt trong dấu ngoặc kép; số ghi liền, không dấu phân cách hàng nghìn; bool ghi true hoặc false. Nếu tham số là struct, Vec hoặc Map thì ghi dạng JSON và nói rõ cách gõ trên PowerShell.",
+          "Giá trị: Address ghi {{identity}}; chuỗi đặt trong dấu ngoặc kép; số ghi liền, không dấu phân cách hàng nghìn; bool ghi true hoặc false. Nếu tham số là struct, Vec hoặc Map thì ghi dạng JSON và nói rõ cách gõ trên {{shell}}.",
           "Nếu một hàm cần chữ ký của người khác ngoài {{identity}}: đưa lệnh tạo thêm ví (stellar keys generate <tên> --network testnet --fund) và dùng --source-account <tên> cho lệnh đó.",
           "Dưới mỗi lệnh: một câu tiếng Việt giải thích lệnh làm gì và kết quả tôi sẽ thấy nếu chạy đúng (giá trị trả về, hoặc link stellar.expert với hàm ghi dữ liệu).",
           "Thêm một lệnh cố tình gọi sai (ví dụ vượt số dư hoặc người không có quyền) để tôi thấy contract chặn lại, kèm giải thích lỗi sẽ in ra.",
